@@ -495,7 +495,7 @@ section{
 }
 
 .result-value{
-    font-size:32px;
+    font-size:28px;
     font-weight:800;
     color:var(--cyan);
     margin-top:3px;
@@ -1314,22 +1314,22 @@ footer strong{
 
                 <div class="input-group">
                     <label>Supply Voltage <span>V</span></label>
-                    <input type="number" id="spVoltage" placeholder="Example: 12" value="12" step="any">
+                    <input type="number" id="spVoltage" placeholder="Example: 12" step="any">
                 </div>
 
                 <div class="input-group">
                     <label>Resistor 1 (R1) <span>Ω</span></label>
-                    <input type="number" id="r1" placeholder="Example: 10" value="10" step="any">
+                    <input type="number" id="r1" placeholder="Example: 10" step="any">
                 </div>
 
                 <div class="input-group">
                     <label>Resistor 2 (R2) <span>Ω</span></label>
-                    <input type="number" id="r2" placeholder="Example: 20" value="20" step="any">
+                    <input type="number" id="r2" placeholder="Example: 20" step="any">
                 </div>
 
                 <div class="input-group">
                     <label>Resistor 3 (R3 - Optional) <span>Ω</span></label>
-                    <input type="number" id="r3" placeholder="Optional" step="any">
+                    <input type="number" id="r3" placeholder="Optional (e.g. 30)" step="any">
                 </div>
 
                 <button class="calculate-btn" onclick="calculateSeriesParallel()">
@@ -1345,17 +1345,17 @@ footer strong{
 
                 <div class="result-box">
                     <div class="result-label">EQUIVALENT RESISTANCE (Req)</div>
-                    <div class="result-value" id="reqResult">30.00 Ω</div>
+                    <div class="result-value" id="reqResult">—</div>
                 </div>
 
                 <div class="result-box" style="margin-top: 15px;">
                     <div class="result-label">TOTAL CURRENT (I)</div>
-                    <div class="result-value" id="totCurrentResult">0.4000 A</div>
+                    <div class="result-value" id="totCurrentResult">—</div>
                 </div>
 
                 <div class="result-box" style="margin-top: 15px;">
                     <div class="result-label">TOTAL POWER (P)</div>
-                    <div class="result-value" id="powerResult">4.800 W</div>
+                    <div class="result-value" id="powerResult">—</div>
                 </div>
 
             </div>
@@ -1397,22 +1397,26 @@ footer strong{
 
                 <div class="input-group">
                     <label>Current In 1 (I1) <span>A</span></label>
-                    <input type="number" id="kclI1" value="5" step="any" oninput="calculateKCL()">
+                    <input type="number" id="kclI1" placeholder="Example: 5" step="any">
                 </div>
 
                 <div class="input-group">
                     <label>Current In 2 (I2) <span>A</span></label>
-                    <input type="number" id="kclI2" value="3" step="any" oninput="calculateKCL()">
+                    <input type="number" id="kclI2" placeholder="Example: 3" step="any">
                 </div>
 
                 <div class="input-group">
                     <label>Current Out 1 (I3) <span>A</span></label>
-                    <input type="number" id="kclI3" value="4" step="any" oninput="calculateKCL()">
+                    <input type="number" id="kclI3" placeholder="Example: 4" step="any">
                 </div>
 
-                <div class="result-box">
+                <button class="calculate-btn" onclick="calculateKCL()">
+                    CALCULATE KCL ⚡
+                </button>
+
+                <div class="result-box" style="margin-top:18px;">
                     <div class="result-label">REMAINING OUTFLOW CURRENT (I4)</div>
-                    <div class="result-value" id="kclResult">4.0000 A</div>
+                    <div class="result-value" id="kclResult">—</div>
                 </div>
 
             </div>
@@ -1429,22 +1433,26 @@ footer strong{
 
                 <div class="input-group">
                     <label>Supply Voltage (Vs) <span>V</span></label>
-                    <input type="number" id="kvlVs" value="24" step="any" oninput="calculateKVL()">
+                    <input type="number" id="kvlVs" placeholder="Example: 24" step="any">
                 </div>
 
                 <div class="input-group">
                     <label>Voltage Drop 1 (V1) <span>V</span></label>
-                    <input type="number" id="kvlV1" value="10" step="any" oninput="calculateKVL()">
+                    <input type="number" id="kvlV1" placeholder="Example: 10" step="any">
                 </div>
 
                 <div class="input-group">
                     <label>Voltage Drop 2 (V2) <span>V</span></label>
-                    <input type="number" id="kvlV2" value="8" step="any" oninput="calculateKVL()">
+                    <input type="number" id="kvlV2" placeholder="Example: 8" step="any">
                 </div>
 
-                <div class="result-box">
+                <button class="calculate-btn" onclick="calculateKVL()">
+                    CALCULATE KVL ⚡
+                </button>
+
+                <div class="result-box" style="margin-top:18px;">
                     <div class="result-label">REMAINING VOLTAGE DROP (V3)</div>
-                    <div class="result-value" id="kvlResult">6.0000 V</div>
+                    <div class="result-value" id="kvlResult">—</div>
                 </div>
 
             </div>
@@ -2019,29 +2027,52 @@ function calculateOhm(){
 
 function calculateSeriesParallel(){
     const type = document.getElementById("circuitType").value;
-    const V = parseFloat(document.getElementById("spVoltage").value) || 0;
-    const r1 = parseFloat(document.getElementById("r1").value) || 0;
-    const r2 = parseFloat(document.getElementById("r2").value) || 0;
-    const r3 = parseFloat(document.getElementById("r3").value) || 0;
+    const V = parseFloat(document.getElementById("spVoltage").value);
+    const r1 = parseFloat(document.getElementById("r1").value);
+    const r2 = parseFloat(document.getElementById("r2").value);
+    const r3 = parseFloat(document.getElementById("r3").value);
+
+    const reqBox = document.getElementById("reqResult");
+    const curBox = document.getElementById("totCurrentResult");
+    const powBox = document.getElementById("powerResult");
+
+    // validation check
+    if (isNaN(V) || (isNaN(r1) && isNaN(r2))) {
+        reqBox.innerText = "Please enter values";
+        curBox.innerText = "Please enter values";
+        powBox.innerText = "Please enter values";
+        reqBox.style.color = "var(--red)";
+        curBox.style.color = "var(--red)";
+        powBox.style.color = "var(--red)";
+        return;
+    }
+
+    const valR1 = isNaN(r1) ? 0 : r1;
+    const valR2 = isNaN(r2) ? 0 : r2;
+    const valR3 = isNaN(r3) ? 0 : r3;
 
     let req = 0;
 
     if(type === "series"){
-        req = r1 + r2 + r3;
+        req = valR1 + valR2 + valR3;
     } else {
         let invSum = 0;
-        if(r1 > 0) invSum += 1 / r1;
-        if(r2 > 0) invSum += 1 / r2;
-        if(r3 > 0) invSum += 1 / r3;
+        if(valR1 > 0) invSum += 1 / valR1;
+        if(valR2 > 0) invSum += 1 / valR2;
+        if(valR3 > 0) invSum += 1 / valR3;
         req = invSum > 0 ? (1 / invSum) : 0;
     }
 
     const current = req > 0 ? (V / req) : 0;
     const power = V * current;
 
-    document.getElementById("reqResult").innerText = req.toFixed(2) + " Ω";
-    document.getElementById("totCurrentResult").innerText = current.toFixed(4) + " A";
-    document.getElementById("powerResult").innerText = power.toFixed(3) + " W";
+    reqBox.style.color = "var(--cyan)";
+    curBox.style.color = "var(--cyan)";
+    powBox.style.color = "var(--cyan)";
+
+    reqBox.innerText = req.toFixed(2) + " Ω";
+    curBox.innerText = current.toFixed(4) + " A";
+    powBox.innerText = power.toFixed(3) + " W";
 }
 
 
@@ -2050,12 +2081,23 @@ function calculateSeriesParallel(){
    ========================================================= */
 
 function calculateKCL(){
-    const i1 = parseFloat(document.getElementById("kclI1").value) || 0;
-    const i2 = parseFloat(document.getElementById("kclI2").value) || 0;
-    const i3 = parseFloat(document.getElementById("kclI3").value) || 0;
+    const i1Val = document.getElementById("kclI1").value;
+    const i2Val = document.getElementById("kclI2").value;
+    const i3Val = document.getElementById("kclI3").value;
+
+    const resultBox = document.getElementById("kclResult");
+
+    if (i1Val === "" || i2Val === "" || i3Val === "") {
+        resultBox.innerText = "Enter all values";
+        resultBox.style.color = "var(--red)";
+        return;
+    }
+
+    const i1 = parseFloat(i1Val) || 0;
+    const i2 = parseFloat(i2Val) || 0;
+    const i3 = parseFloat(i3Val) || 0;
 
     const remainingI4 = (i1 + i2) - i3;
-    const resultBox = document.getElementById("kclResult");
 
     if (remainingI4 < 0) {
         resultBox.style.color = "var(--red)";
@@ -2067,12 +2109,23 @@ function calculateKCL(){
 }
 
 function calculateKVL(){
-    const vs = parseFloat(document.getElementById("kvlVs").value) || 0;
-    const v1 = parseFloat(document.getElementById("kvlV1").value) || 0;
-    const v2 = parseFloat(document.getElementById("kvlV2").value) || 0;
+    const vsVal = document.getElementById("kvlVs").value;
+    const v1Val = document.getElementById("kvlV1").value;
+    const v2Val = document.getElementById("kvlV2").value;
+
+    const resultBox = document.getElementById("kvlResult");
+
+    if (vsVal === "" || v1Val === "" || v2Val === "") {
+        resultBox.innerText = "Enter all values";
+        resultBox.style.color = "var(--red)";
+        return;
+    }
+
+    const vs = parseFloat(vsVal) || 0;
+    const v1 = parseFloat(v1Val) || 0;
+    const v2 = parseFloat(v2Val) || 0;
 
     const remainingV3 = vs - (v1 + v2);
-    const resultBox = document.getElementById("kvlResult");
 
     if (remainingV3 < 0) {
         resultBox.style.color = "var(--red)";
@@ -2082,10 +2135,6 @@ function calculateKVL(){
         resultBox.innerText = remainingV3.toFixed(4) + " V";
     }
 }
-
-// Initial calculation load
-calculateKCL();
-calculateKVL();
 
 
 /* =========================================================
