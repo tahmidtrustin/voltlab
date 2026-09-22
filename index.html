@@ -3,34 +3,973 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>VoltLab — Where Electricity Comes Alive</title>
+
+    <meta name="description"
+          content="VoltLab is an interactive learning platform for basic electricity, electrical circuits, Ohm's Law, Kirchhoff's Laws and circuit analysis.">
+
+    <style>
+
+        /* ==============================
+           GLOBAL
+        ============================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #07111f;
+            color: #f4f8ff;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: min(1120px, 90%);
+            margin: auto;
+        }
+
+
+        /* ==============================
+           NAVIGATION
+        ============================== */
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            background: rgba(7, 17, 31, 0.94);
+            border-bottom: 1px solid #1c334d;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            min-height: 72px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .logo-icon {
+            width: 38px;
+            height: 38px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 10px;
+
+            background: #00d9ff;
+            color: #07111f;
+
+            font-size: 22px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #b9c8d9;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #00d9ff;
+        }
+
+
+        /* ==============================
+           HERO
+        ============================== */
+
+        .hero {
+            min-height: 650px;
+
+            display: flex;
+            align-items: center;
+
+            position: relative;
+            overflow: hidden;
+
+            background:
+                radial-gradient(circle at 80% 30%, rgba(0, 217, 255, 0.12), transparent 30%),
+                radial-gradient(circle at 15% 70%, rgba(0, 217, 255, 0.08), transparent 28%);
+        }
+
+        .hero-content {
+            max-width: 760px;
+            padding: 90px 0;
+        }
+
+        .eyebrow {
+            display: inline-block;
+
+            padding: 7px 14px;
+            margin-bottom: 20px;
+
+            border: 1px solid #24506c;
+            border-radius: 30px;
+
+            color: #00d9ff;
+            background: rgba(0, 217, 255, 0.06);
+
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            font-size: clamp(55px, 9vw, 100px);
+            line-height: 0.95;
+            letter-spacing: -4px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: #00d9ff;
+        }
+
+        .hero h2 {
+            font-size: clamp(22px, 4vw, 38px);
+            font-weight: 500;
+            color: #d8e4f0;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            max-width: 680px;
+            color: #9db0c4;
+            font-size: 18px;
+            margin-bottom: 35px;
+        }
+
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 14px 24px;
+
+            border-radius: 10px;
+
+            font-weight: bold;
+            font-size: 15px;
+
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            background: #00d9ff;
+            color: #06101c;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 217, 255, 0.25);
+        }
+
+        .btn-secondary {
+            border: 1px solid #2a465f;
+            color: #dce8f4;
+        }
+
+        .btn-secondary:hover {
+            border-color: #00d9ff;
+            color: #00d9ff;
+        }
+
+
+        /* ==============================
+           CIRCUIT DECORATION
+        ============================== */
+
+        .circuit {
+            position: absolute;
+            right: 4%;
+            bottom: 12%;
+
+            width: 280px;
+            height: 180px;
+
+            opacity: 0.65;
+        }
+
+        .wire {
+            position: absolute;
+            background: #00d9ff;
+        }
+
+        .wire.horizontal {
+            height: 2px;
+        }
+
+        .wire.vertical {
+            width: 2px;
+        }
+
+        .wire.one {
+            width: 110px;
+            top: 30px;
+            left: 40px;
+        }
+
+        .wire.two {
+            height: 120px;
+            top: 30px;
+            left: 40px;
+        }
+
+        .wire.three {
+            width: 170px;
+            bottom: 30px;
+            left: 40px;
+        }
+
+        .wire.four {
+            height: 120px;
+            top: 30px;
+            right: 70px;
+        }
+
+        .node {
+            position: absolute;
+
+            width: 12px;
+            height: 12px;
+
+            border-radius: 50%;
+
+            background: #00d9ff;
+
+            box-shadow: 0 0 18px #00d9ff;
+        }
+
+        .node.one {
+            top: 24px;
+            left: 34px;
+        }
+
+        .node.two {
+            top: 24px;
+            right: 64px;
+        }
+
+        .node.three {
+            bottom: 24px;
+            left: 34px;
+        }
+
+        .node.four {
+            bottom: 24px;
+            right: 64px;
+        }
+
+
+        /* ==============================
+           INTRO
+        ============================== */
+
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-header {
+            max-width: 700px;
+            margin-bottom: 50px;
+        }
+
+        .section-label {
+            color: #00d9ff;
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .section h2 {
+            font-size: clamp(32px, 5vw, 52px);
+            line-height: 1.1;
+            margin-bottom: 16px;
+        }
+
+        .section-header p {
+            color: #9db0c4;
+            font-size: 17px;
+        }
+
+
+        /* ==============================
+           FEATURE CARDS
+        ============================== */
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            padding: 30px;
+
+            background: #0c1b2d;
+            border: 1px solid #1b344c;
+            border-radius: 18px;
+
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            border-color: #00d9ff;
+            box-shadow: 0 15px 40px rgba(0, 217, 255, 0.08);
+        }
+
+        .card-icon {
+            width: 52px;
+            height: 52px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 14px;
+
+            background: rgba(0, 217, 255, 0.08);
+            color: #00d9ff;
+
+            font-size: 25px;
+
+            margin-bottom: 22px;
+        }
+
+        .card h3 {
+            font-size: 23px;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #8fa4b9;
+            font-size: 15px;
+        }
+
+
+        /* ==============================
+           FORMULA SECTION
+        ============================== */
+
+        .formula-section {
+            background: #091624;
+            border-top: 1px solid #132a40;
+            border-bottom: 1px solid #132a40;
+        }
+
+        .formula-box {
+            padding: 50px;
+
+            border-radius: 22px;
+
+            background: #0c1b2d;
+            border: 1px solid #1d3b54;
+
+            text-align: center;
+        }
+
+        .formula-box h3 {
+            color: #91a7bc;
+            font-size: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .formula {
+            font-size: clamp(48px, 8vw, 80px);
+            font-weight: 800;
+            color: #00d9ff;
+            margin-bottom: 15px;
+        }
+
+        .formula-box p {
+            color: #91a7bc;
+        }
+
+
+        /* ==============================
+           LAB PREVIEW
+        ============================== */
+
+        .lab-preview {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .lab-text p {
+            color: #9db0c4;
+            margin-bottom: 25px;
+        }
+
+        .circuit-board {
+            min-height: 300px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 30px;
+
+            border-radius: 20px;
+
+            background:
+                linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px),
+                #091522;
+
+            background-size: 25px 25px;
+
+            border: 1px solid #1c3a52;
+        }
+
+        .simple-circuit {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .component {
+            padding: 14px 18px;
+
+            border: 2px solid #00d9ff;
+            border-radius: 8px;
+
+            color: #00d9ff;
+
+            font-weight: bold;
+            background: rgba(0, 217, 255, 0.05);
+        }
+
+        .line {
+            width: 35px;
+            height: 2px;
+            background: #00d9ff;
+        }
+
+
+        /* ==============================
+           CHALLENGE
+        ============================== */
+
+        .challenge {
+            text-align: center;
+
+            padding: 70px 30px;
+
+            background: linear-gradient(
+                135deg,
+                #0b2034,
+                #0c1726
+            );
+
+            border: 1px solid #21445f;
+            border-radius: 22px;
+        }
+
+        .challenge h2 {
+            margin-bottom: 15px;
+        }
+
+        .challenge p {
+            color: #9db0c4;
+            max-width: 650px;
+            margin: 0 auto 28px;
+        }
+
+
+        /* ==============================
+           FOOTER
+        ============================== */
+
+        footer {
+            padding: 35px 0;
+
+            border-top: 1px solid #193047;
+
+            color: #71879c;
+            font-size: 14px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-brand {
+            color: #dbe8f5;
+            font-weight: bold;
+        }
+
+
+        /* ==============================
+           MOBILE
+        ============================== */
+
+        @media (max-width: 800px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                min-height: auto;
+            }
+
+            .hero-content {
+                padding: 80px 0;
+            }
+
+            .hero h1 {
+                letter-spacing: -2px;
+            }
+
+            .circuit {
+                display: none;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .lab-preview {
+                grid-template-columns: 1fr;
+            }
+
+            .formula-box {
+                padding: 35px 20px;
+            }
+
+            .section {
+                padding: 75px 0;
+            }
+        }
+
+    </style>
 </head>
+
 
 <body>
 
-    <h1>⚡ VoltLab</h1>
 
-    <h2>Where Electricity Comes Alive</h2>
+    <!-- ==============================
+         NAVIGATION
+    ============================== -->
 
-    <p>
-        Explore, experiment, and understand the fundamentals of electricity
-        through interactive learning.
-    </p>
+    <nav>
 
-    <h3>⚡ Learn</h3>
-    <p>
-        Understand voltage, current, resistance, power, and electrical energy.
-    </p>
+        <div class="container nav-container">
 
-    <h3>🔬 Virtual Lab</h3>
-    <p>
-        Explore electrical circuits and discover how they work.
-    </p>
+            <a href="#" class="logo">
 
-    <h3>🧠 Challenge</h3>
-    <p>
-        Test your knowledge with circuit problems and challenges.
-    </p>
+                <span class="logo-icon">⚡</span>
+
+                <span>VoltLab</span>
+
+            </a>
+
+
+            <ul class="nav-links">
+
+                <li>
+                    <a href="#home">Home</a>
+                </li>
+
+                <li>
+                    <a href="#learn">Learn</a>
+                </li>
+
+                <li>
+                    <a href="#lab">Virtual Lab</a>
+                </li>
+
+                <li>
+                    <a href="#challenge">Challenge</a>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- ==============================
+         HERO
+    ============================== -->
+
+    <main id="home">
+
+        <section class="hero">
+
+            <div class="container">
+
+                <div class="hero-content">
+
+                    <div class="eyebrow">
+                        Interactive Basic Electricity Lab
+                    </div>
+
+                    <h1>
+                        Volt<span>Lab</span>
+                    </h1>
+
+                    <h2>
+                        Where Electricity Comes Alive.
+                    </h2>
+
+                    <p>
+                        Explore the fundamentals of electricity through
+                        visual explanations, circuit experiments,
+                        electrical laws, calculations, and challenges.
+                    </p>
+
+
+                    <div class="buttons">
+
+                        <a href="#learn" class="btn btn-primary">
+                            ⚡ Start Learning
+                        </a>
+
+                        <a href="#lab" class="btn btn-secondary">
+                            🔬 Enter the Lab
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Decorative circuit -->
+
+            <div class="circuit">
+
+                <div class="wire horizontal one"></div>
+                <div class="wire vertical two"></div>
+                <div class="wire horizontal three"></div>
+                <div class="wire vertical four"></div>
+
+                <div class="node one"></div>
+                <div class="node two"></div>
+                <div class="node three"></div>
+                <div class="node four"></div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ==============================
+             LEARNING INTRO
+        ============================== -->
+
+        <section class="section" id="learn">
+
+            <div class="container">
+
+                <div class="section-header">
+
+                    <div class="section-label">
+                        Learn • Experiment • Understand
+                    </div>
+
+                    <h2>
+                        Electricity is not just a formula.
+                    </h2>
+
+                    <p>
+                        VoltLab turns basic electrical theory into a
+                        visual and interactive learning experience.
+                    </p>
+
+                </div>
+
+
+                <div class="features">
+
+
+                    <div class="card">
+
+                        <div class="card-icon">
+                            ⚡
+                        </div>
+
+                        <h3>
+                            Learn
+                        </h3>
+
+                        <p>
+                            Understand voltage, current, resistance,
+                            power, energy, Ohm's Law and Kirchhoff's Laws
+                            with simple explanations.
+                        </p>
+
+                    </div>
+
+
+                    <div class="card">
+
+                        <div class="card-icon">
+                            🔬
+                        </div>
+
+                        <h3>
+                            Experiment
+                        </h3>
+
+                        <p>
+                            Explore series and parallel circuits and
+                            discover how electrical quantities change
+                            inside a circuit.
+                        </p>
+
+                    </div>
+
+
+                    <div class="card">
+
+                        <div class="card-icon">
+                            🧠
+                        </div>
+
+                        <h3>
+                            Challenge
+                        </h3>
+
+                        <p>
+                            Solve circuit problems, test your knowledge
+                            and develop your electrical problem-solving
+                            skills.
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ==============================
+             FORMULA
+        ============================== -->
+
+        <section class="section formula-section">
+
+            <div class="container">
+
+                <div class="formula-box">
+
+                    <h3>
+                        The Fundamental Relationship
+                    </h3>
+
+                    <div class="formula">
+                        V = IR
+                    </div>
+
+                    <p>
+                        Voltage = Current × Resistance
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ==============================
+             VIRTUAL LAB
+        ============================== -->
+
+        <section class="section" id="lab">
+
+            <div class="container">
+
+                <div class="lab-preview">
+
+
+                    <div class="lab-text">
+
+                        <div class="section-label">
+                            Virtual Laboratory
+                        </div>
+
+                        <h2>
+                            Don't just read the circuit.
+                            Experiment with it.
+                        </h2>
+
+                        <p>
+                            Build your understanding of electrical
+                            circuits through visual circuit models,
+                            calculations and virtual experiments.
+                        </p>
+
+                        <a href="#challenge" class="btn btn-primary">
+                            Enter Virtual Lab →
+                        </a>
+
+                    </div>
+
+
+                    <div class="circuit-board">
+
+                        <div class="simple-circuit">
+
+                            <div class="component">
+                                🔋 Battery
+                            </div>
+
+                            <div class="line"></div>
+
+                            <div class="component">
+                                R
+                            </div>
+
+                            <div class="line"></div>
+
+                            <div class="component">
+                                💡 Load
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ==============================
+             CHALLENGE
+        ============================== -->
+
+        <section class="section" id="challenge">
+
+            <div class="container">
+
+                <div class="challenge">
+
+                    <div class="section-label">
+                        Circuit Challenge
+                    </div>
+
+                    <h2>
+                        Think Like an Engineer.
+                    </h2>
+
+                    <p>
+                        Can you calculate the current through a
+                        6Ω resistor connected to a 12V source?
+                    </p>
+
+                    <a href="#" class="btn btn-primary">
+                        Start Challenge →
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- ==============================
+         FOOTER
+    ============================== -->
+
+    <footer>
+
+        <div class="container footer-content">
+
+            <div>
+                <span class="footer-brand">
+                    ⚡ VoltLab
+                </span>
+
+                <br>
+
+                Where Electricity Comes Alive.
+            </div>
+
+            <div>
+                CSE Educational Project • 2026
+            </div>
+
+        </div>
+
+    </footer>
+
 
 </body>
 </html>
