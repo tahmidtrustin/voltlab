@@ -94,14 +94,15 @@ nav{
 
 .nav-links{
     display:flex;
-    gap:20px;
+    gap:15px;
     list-style:none;
 }
 
 .nav-links a{
     color:#b8c7dd;
     text-decoration:none;
-    font-size:14px;
+    font-size:12px;
+    font-weight:600;
     transition:.25s;
 }
 
@@ -191,6 +192,7 @@ section{
     margin-right:10px;
     font-weight:700;
     transition:.25s;
+    cursor:pointer;
 }
 
 .btn-primary{
@@ -254,13 +256,8 @@ section{
     animation:moveEnergy 3s linear infinite;
 }
 
-.energy:nth-child(2){
-    animation-delay:1s;
-}
-
-.energy:nth-child(3){
-    animation-delay:2s;
-}
+.energy:nth-child(2){ animation-delay:1s; }
+.energy:nth-child(3){ animation-delay:2s; }
 
 @keyframes moveEnergy{
     0%{left:30px;top:65px;}
@@ -290,15 +287,6 @@ section{
     font-size:20px;
 }
 
-.battery::after{
-    content:"";
-    position:absolute;
-    bottom:-28px;
-    left:19px;
-    color:var(--cyan);
-    font-size:20px;
-}
-
 .resistor{
     position:absolute;
     right:65px;
@@ -324,33 +312,10 @@ section{
     box-shadow:0 0 8px rgba(33,212,253,.4);
 }
 
-.w1{
-    width:280px;
-    height:3px;
-    left:82px;
-    top:65px;
-}
-
-.w2{
-    width:280px;
-    height:3px;
-    left:82px;
-    top:230px;
-}
-
-.w3{
-    width:3px;
-    height:165px;
-    left:82px;
-    top:65px;
-}
-
-.w4{
-    width:3px;
-    height:165px;
-    right:65px;
-    top:65px;
-}
+.w1{ width:280px; height:3px; left:82px; top:65px; }
+.w2{ width:280px; height:3px; left:82px; top:230px; }
+.w3{ width:3px; height:165px; left:82px; top:65px; }
+.w4{ width:3px; height:165px; right:65px; top:65px; }
 
 /* ================= FEATURE CARDS ================= */
 
@@ -387,25 +352,10 @@ section{
     margin-bottom:18px;
 }
 
-.card h3{
-    margin-bottom:9px;
-}
+.card h3{ margin-bottom:9px; }
+.card p{ color:var(--muted); font-size:14px; }
 
-.card p{
-    color:var(--muted);
-    font-size:14px;
-}
-
-/* ================= LEARN ================= */
-
-.lesson-number{
-    color:var(--cyan);
-    font-size:13px;
-    margin-bottom:7px;
-    font-weight:bold;
-}
-
-/* ================= LAB SECTIONS ================= */
+/* ================= LAB SECTIONS & PANELS ================= */
 
 .lab-section{
     background:linear-gradient(180deg,transparent,rgba(33,212,253,.025),transparent);
@@ -425,21 +375,10 @@ section{
     box-shadow:var(--glow);
 }
 
-.lab-panel h3{
-    font-size:22px;
-    margin-bottom:8px;
-}
+.lab-panel h3{ font-size:22px; margin-bottom:8px; }
+.lab-description{ color:var(--muted); font-size:14px; margin-bottom:25px; }
 
-.lab-description{
-    color:var(--muted);
-    font-size:14px;
-    margin-bottom:25px;
-}
-
-.input-group{
-    margin-bottom:18px;
-}
-
+.input-group{ margin-bottom:18px; }
 .input-group label{
     display:flex;
     justify-content:space-between;
@@ -447,10 +386,7 @@ section{
     color:#cbd8ea;
     font-size:14px;
 }
-
-.input-group span{
-    color:var(--cyan);
-}
+.input-group span{ color:var(--cyan); }
 
 .input-group input, .input-group select{
     width:100%;
@@ -478,6 +414,7 @@ section{
     cursor:pointer;
     font-size:15px;
     margin-top:5px;
+    color:#03101c;
 }
 
 .result-box{
@@ -489,261 +426,122 @@ section{
     text-align:center;
 }
 
-.result-label{
-    color:var(--muted);
-    font-size:13px;
-}
+.result-label{ color:var(--muted); font-size:13px; }
+.result-value{ font-size:32px; font-weight:800; color:var(--cyan); margin-top:3px; }
 
-.result-value{
-    font-size:32px;
-    font-weight:800;
-    color:var(--cyan);
-    margin-top:3px;
-}
+/* ================= STEP 6: CIRCUIT BUILDER ================= */
 
-/* LED Visualizer Style */
-.led-box{
+.builder-toolbar{
     display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    min-height:200px;
+    gap:10px;
+    margin-bottom:15px;
+    flex-wrap:wrap;
 }
 
-.led-bulb{
-    width:80px;
-    height:80px;
-    border-radius:50%;
-    background:#1f293d;
-    border:3px solid var(--muted);
-    transition: all 0.3s ease;
-    box-shadow: 0 0 0px transparent;
-}
-
-/* ================= OHM VISUAL ================= */
-
-.ohm-visual{
-    min-height:330px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    flex-direction:column;
-}
-
-.visual-circuit{
-    width:90%;
-    height:180px;
-    position:relative;
-}
-
-.v-wire{
-    position:absolute;
-    background:#29466e;
-}
-
-.v-top{
-    width:80%;
-    height:3px;
-    top:25px;
-    left:10%;
-}
-
-.v-bottom{
-    width:80%;
-    height:3px;
-    bottom:25px;
-    left:10%;
-}
-
-.v-left{
-    height:140px;
-    width:3px;
-    top:25px;
-    left:10%;
-}
-
-.v-right{
-    height:140px;
-    width:3px;
-    top:25px;
-    right:10%;
-}
-
-.v-battery{
-    position:absolute;
-    left:5%;
-    top:70px;
-    width:40px;
-    height:55px;
-    border:3px solid var(--cyan);
-    border-radius:5px;
-}
-
-.v-battery::after{
-    content:"12V";
-    position:absolute;
-    left:-3px;
-    top:62px;
-    color:var(--cyan);
-    font-size:12px;
-    white-space:nowrap;
-}
-
-.v-resistor{
-    position:absolute;
-    right:17%;
-    top:72px;
-    width:80px;
-    height:45px;
-    border:3px solid var(--orange);
-    transform:skew(-15deg);
-}
-
-.v-current{
-    position:absolute;
-    top:2px;
-    left:42%;
-    color:var(--green);
-    font-size:13px;
-}
-
-.current-dot{
-    position:absolute;
-    width:9px;
-    height:9px;
-    background:var(--green);
-    border-radius:50%;
-    box-shadow:0 0 15px var(--green);
-    animation:currentMove 2s linear infinite;
-}
-
-@keyframes currentMove{
-    0%{left:12%;top:20px;}
-    25%{left:86%;top:20px;}
-    50%{left:86%;top:150px;}
-    75%{left:12%;top:150px;}
-    100%{left:12%;top:20px;}
-}
-
-.formula{
-    text-align:center;
-    margin-top:15px;
-    color:var(--muted);
-}
-
-.formula strong{
+.tool-btn{
+    padding:10px 15px;
+    background:#0d1a33;
+    border:1px solid var(--line);
+    border-radius:8px;
     color:white;
-    font-size:20px;
-}
-
-/* ================= VIRTUAL LAB ================= */
-
-.virtual-lab{
-    display:grid;
-    grid-template-columns:1.2fr .8fr;
-    gap:25px;
-}
-
-.lab-screen{
-    min-height:350px;
-    background:#030914;
-    border:1px solid #1e365e;
-    border-radius:20px;
-    padding:25px;
-    position:relative;
-    overflow:hidden;
-}
-
-.screen-title{
-    color:var(--cyan);
+    cursor:pointer;
+    transition:.2s;
     font-size:13px;
-    margin-bottom:20px;
-    letter-spacing:1px;
 }
 
-.components{
+.tool-btn:hover{ border-color:var(--cyan); background:#122447; }
+
+.builder-canvas{
+    width:100%;
+    height:250px;
+    border:2px dashed #1e365e;
+    border-radius:15px;
+    background:#030814;
     display:flex;
     align-items:center;
     justify-content:center;
     gap:15px;
-    height:230px;
+    padding:10px;
 }
 
-.component{
-    padding:18px 20px;
-    border:1px solid #29466e;
-    border-radius:12px;
-    background:#0b162c;
+.canvas-node{
+    padding:15px 20px;
+    border:1px solid var(--cyan);
+    border-radius:10px;
+    background:rgba(33,212,253,.05);
+    color:white;
     text-align:center;
+    min-width:90px;
 }
 
-.component .symbol{
-    font-size:28px;
-    margin-bottom:5px;
+/* ================= STEP 7: CIRCUIT DETECTIVE ================= */
+
+.detective-card{
+    background:#081329;
+    border:1px solid var(--line);
+    padding:20px;
+    border-radius:15px;
+    margin-bottom:15px;
 }
 
-.component small{
-    color:var(--muted);
-}
+.detective-card h4{ color:var(--cyan); margin-bottom:8px; }
 
-.flow-line{
-    width:50px;
-    height:3px;
-    background:var(--cyan);
-    box-shadow:0 0 10px var(--cyan);
-}
+/* ================= STEP 8: QUIZ SYSTEM ================= */
 
-.lab-status{
-    position:absolute;
-    bottom:20px;
-    left:25px;
-    right:25px;
-    padding:12px;
-    border-radius:8px;
-    background:rgba(34,197,94,.08);
-    border:1px solid rgba(34,197,94,.2);
-    color:#7bea9d;
-    font-size:13px;
-}
-
-/* ================= CHALLENGE ================= */
-
-.challenge{
+.quiz-container{
     max-width:800px;
     margin:auto;
 }
 
-.question{
-    font-size:20px;
+.quiz-card{
+    background:linear-gradient(145deg,rgba(16,28,54,.9),rgba(6,13,28,.95));
+    border:1px solid var(--line);
+    padding:30px;
+    border-radius:20px;
     margin-bottom:20px;
 }
 
-.options{
-    display:grid;
-    gap:12px;
-}
-
-.option{
-    padding:15px;
+.quiz-option{
+    display:block;
+    width:100%;
+    text-align:left;
+    padding:14px;
+    margin-top:10px;
+    background:#09152b;
     border:1px solid var(--line);
     border-radius:10px;
-    background:#0a1428;
     color:white;
     cursor:pointer;
-    text-align:left;
     transition:.2s;
 }
 
-.option:hover{
-    border-color:var(--cyan);
-    background:#0e1c35;
+.quiz-option:hover{ border-color:var(--cyan); background:#102242; }
+
+/* ================= STEP 9: ASK VOLT ================= */
+
+.chat-box{
+    height:250px;
+    overflow-y:auto;
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:15px;
+    background:#030814;
+    margin-bottom:15px;
 }
 
-.feedback{
-    margin-top:20px;
-    min-height:25px;
-    font-weight:bold;
+.chat-msg{
+    margin-bottom:12px;
+    padding:10px 14px;
+    border-radius:10px;
+    font-size:14px;
+    max-width:85%;
 }
+
+.user-msg{ background:var(--blue); color:white; margin-left:auto; text-align:right; }
+.volt-msg{ background:#10203e; color:var(--cyan); border:1px solid rgba(33,212,253,.2); }
+
+.chat-input-area{ display:flex; gap:10px; }
+.chat-input-area input{ flex:1; }
 
 /* ================= TEAM ================= */
 
@@ -772,51 +570,8 @@ section{
     background:#101c36;
 }
 
-.member-photo img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-}
-
-.placeholder{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    color:#526783;
-    font-size:32px;
-}
-
-.team-card h3{
-    font-size:17px;
-    margin-bottom:5px;
-}
-
-.role{
-    color:var(--cyan);
-    font-size:13px;
-    margin-bottom:10px;
-}
-
-.team-info{
-    color:var(--muted);
-    font-size:12px;
-}
-
-/* ================= ABOUT ================= */
-
-.about-box{
-    max-width:900px;
-    margin:auto;
-    padding:35px;
-    border-radius:22px;
-    border:1px solid var(--line);
-    background:linear-gradient(145deg,rgba(16,28,54,.75),rgba(6,13,28,.85));
-}
-
-.about-box p{
-    color:var(--muted);
-    margin-bottom:15px;
-}
+.member-photo img{ width:100%; height:100%; object-fit:cover; }
+.placeholder{ display:flex; align-items:center; justify-content:center; color:#526783; font-size:32px; }
 
 /* ================= FOOTER ================= */
 
@@ -827,1206 +582,366 @@ footer{
     color:#637795;
     font-size:13px;
 }
+footer strong{ color:var(--cyan); }
 
-footer strong{
-    color:var(--cyan);
-}
-
-/* ================= RESPONSIVE ================= */
-
+/* RESPONSIVE */
 @media(max-width:900px){
-
-    .hero-grid,
-    .lab-wrapper,
-    .virtual-lab{
-        grid-template-columns:1fr;
-    }
-
-    .cards{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .team-grid{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .hero{
-        padding-top:130px;
-    }
+    .hero-grid, .lab-wrapper{ grid-template-columns:1fr; }
+    .cards, .team-grid{ grid-template-columns:repeat(2,1fr); }
 }
-
 @media(max-width:600px){
-
-    .nav-container{
-        flex-direction:column;
-        gap:10px;
-    }
-
-    .nav-links{
-        gap:10px;
-        flex-wrap:wrap;
-        justify-content:center;
-    }
-
-    section{
-        padding:70px 0;
-    }
-
-    .hero h1{
-        font-size:48px;
-    }
-
-    .cards,
-    .team-grid{
-        grid-template-columns:1fr;
-    }
-
-    .circuit-box{
-        transform:scale(.85);
-    }
-
-    .components{
-        transform:scale(.8);
-    }
+    .cards, .team-grid{ grid-template-columns:1fr; }
 }
 </style>
 </head>
 
 <body>
 
-<!-- ================= NAVIGATION ================= -->
-
+<!-- NAVIGATION -->
 <nav>
     <div class="nav-container">
-
-        <div class="logo">
-            ⚡ Volt<span>Lab</span>
-        </div>
-
+        <div class="logo">⚡ Volt<span>Lab</span></div>
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
-            <li><a href="#learn">Learn</a></li>
             <li><a href="#ohm">Ohm's Lab</a></li>
-            <li><a href="#series-parallel">Series/Parallel</a></li>
-            <li><a href="#led-sim">LED Brightness</a></li>
-            <li><a href="#virtual">Virtual Lab</a></li>
-            <li><a href="#challenge">Challenge</a></li>
+            <li><a href="#sp">Series/Parallel</a></li>
+            <li><a href="#kcl-kvl">KCL/KVL</a></li>
+            <li><a href="#builder">Builder</a></li>
+            <li><a href="#detective">Detective</a></li>
+            <li><a href="#quiz">Quiz</a></li>
+            <li><a href="#askvolt">Ask Volt</a></li>
             <li><a href="#team">Team</a></li>
         </ul>
-
     </div>
 </nav>
 
-
-<!-- ================= HERO ================= -->
-
+<!-- HERO -->
 <section class="hero" id="home">
-
     <div class="container">
-
         <div class="hero-grid">
-
             <div>
-
-                <div class="badge">
-                    ⚡ BASIC ELECTRICITY • INTERACTIVE LAB
-                </div>
-
-                <h1>
-                    Where <span class="gradient-text">Electricity</span><br>
-                    Comes Alive.
-                </h1>
-
-                <p>
-                    Learn electricity by seeing it, calculating it,
-                    building it and experimenting with it.
-                    Welcome to VoltLab — an interactive virtual
-                    electrical laboratory.
-                </p>
-
-                <a href="#ohm" class="btn btn-primary">
-                    Enter the Lab →
-                </a>
-
-                <a href="#learn" class="btn btn-secondary">
-                    Start Learning
-                </a>
-
+                <div class="badge">⚡ BASIC ELECTRICITY • VIRTUAL LAB</div>
+                <h1>Where <span class="gradient-text">Electricity</span><br>Comes Alive.</h1>
+                <p>Learn electricity by seeing, calculating, building, and solving real interactive electrical problems.</p>
+                <a href="#ohm" class="btn btn-primary">Enter the Lab →</a>
             </div>
-
-
             <div class="hero-circuit">
-
                 <div class="circuit-box">
-
-                    <div class="wire w1"></div>
-                    <div class="wire w2"></div>
-                    <div class="wire w3"></div>
-                    <div class="wire w4"></div>
-
+                    <div class="wire w1"></div><div class="wire w2"></div><div class="wire w3"></div><div class="wire w4"></div>
                     <div class="battery"></div>
-
                     <div class="resistor"></div>
-                    <div class="resistor-label">RESISTOR</div>
-
-                    <div class="energy"></div>
-                    <div class="energy"></div>
-                    <div class="energy"></div>
-
+                    <div class="energy"></div><div class="energy"></div>
                 </div>
-
             </div>
-
         </div>
-
     </div>
-
 </section>
 
-
-<!-- ================= FEATURES ================= -->
-
-<section>
-
-    <div class="container">
-
-        <div class="section-title">
-            <h2>One Lab. Many Ways to Learn.</h2>
-            <p>Understand the theory, then interact with it.</p>
-        </div>
-
-        <div class="cards">
-
-            <div class="card">
-                <div class="icon">⚡</div>
-                <h3>Learn Fundamentals</h3>
-                <p>
-                    Understand voltage, current, resistance,
-                    power and basic circuit concepts.
-                </p>
-            </div>
-
-            <div class="card">
-                <div class="icon">🧪</div>
-                <h3>Virtual Laboratory</h3>
-                <p>
-                    Experiment with electrical components
-                    inside an interactive virtual environment.
-                </p>
-            </div>
-
-            <div class="card">
-                <div class="icon">🧮</div>
-                <h3>Formula Lab</h3>
-                <p>
-                    Use electrical formulas and instantly
-                    see how changing values affects a circuit.
-                </p>
-            </div>
-
-            <div class="card">
-                <div class="icon">🔌</div>
-                <h3>Circuit Builder</h3>
-                <p>
-                    Build and understand circuits by connecting
-                    different electrical components.
-                </p>
-            </div>
-
-            <div class="card">
-                <div class="icon">🕵️</div>
-                <h3>Circuit Detective</h3>
-                <p>
-                    Find mistakes in circuits and develop
-                    practical troubleshooting skills.
-                </p>
-            </div>
-
-            <div class="card">
-                <div class="icon">🎯</div>
-                <h3>Challenge Mode</h3>
-                <p>
-                    Test your knowledge with interactive
-                    electricity problems.
-                </p>
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ================= LEARN ================= -->
-
-<section id="learn">
-
-    <div class="container">
-
-        <div class="section-title">
-
-            <h2>Electricity Fundamentals</h2>
-
-            <p>
-                Start with the concepts behind every electrical circuit.
-            </p>
-
-        </div>
-
-
-        <div class="cards">
-
-            <div class="card">
-                <div class="lesson-number">01 — FUNDAMENTAL</div>
-                <h3>Voltage</h3>
-                <p>
-                    Voltage is the electrical potential difference
-                    that pushes charge through a circuit.
-                </p>
-            </div>
-
-            <div class="card">
-                <div class="lesson-number">02 — FUNDAMENTAL</div>
-                <h3>Current</h3>
-                <p>
-                    Electric current describes the rate at which
-                    charge flows through a circuit.
-                </p>
-            </div>
-
-            <div class="card">
-                <div class="lesson-number">03 — FUNDAMENTAL</div>
-                <h3>Resistance</h3>
-                <p>
-                    Resistance opposes the flow of electric current.
-                </p>
-            </div>
-
-            <div class="card">
-                <div class="lesson-number">04 — LAW</div>
-                <h3>Ohm's Law</h3>
-                <p>
-                    The relationship between voltage, current
-                    and resistance is V = IR.
-                </p>
-            </div>
-
-            <div class="card">
-                <div class="lesson-number">05 — CIRCUITS</div>
-                <h3>Series & Parallel</h3>
-                <p>
-                    Learn how components behave when connected
-                    in series or parallel.
-                </p>
-            </div>
-
-            <div class="card">
-                <div class="lesson-number">06 — LAWS</div>
-                <h3>KCL & KVL</h3>
-                <p>
-                    Explore Kirchhoff's Current and Voltage Laws
-                    through practical circuits.
-                </p>
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ================= OHM'S LAW ================= -->
-
+<!-- OHM'S LAW -->
 <section id="ohm" class="lab-section">
-
     <div class="container">
-
         <div class="section-title">
-
-            <h2>⚡ Ohm's Law Interactive Lab</h2>
-
-            <p>
-                Enter any two values and VoltLab calculates the third.
-            </p>
-
+            <h2>⚡ Ohm's Law Calculator</h2>
+            <p>Enter any two values to find the third (V = I × R).</p>
         </div>
-
-
         <div class="lab-wrapper">
-
             <div class="lab-panel">
-
-                <h3>Ohm's Law Calculator</h3>
-
-                <p class="lab-description">
-                    Enter any two values. Leave exactly one field empty.
-                </p>
-
-
                 <div class="input-group">
-
-                    <label>
-                        Voltage
-                        <span>V</span>
-                    </label>
-
-                    <input
-                        type="number"
-                        id="voltage"
-                        placeholder="Example: 12"
-                        step="any"
-                    >
-
+                    <label>Voltage <span>V</span></label>
+                    <input type="number" id="voltage" placeholder="12">
                 </div>
-
-
                 <div class="input-group">
-
-                    <label>
-                        Current
-                        <span>A</span>
-                    </label>
-
-                    <input
-                        type="number"
-                        id="current"
-                        placeholder="Example: 2"
-                        step="any"
-                    >
-
+                    <label>Current <span>A</span></label>
+                    <input type="number" id="current" placeholder="2">
                 </div>
-
-
                 <div class="input-group">
-
-                    <label>
-                        Resistance
-                        <span>Ω</span>
-                    </label>
-
-                    <input
-                        type="number"
-                        id="resistance"
-                        placeholder="Example: 6"
-                        step="any"
-                    >
-
+                    <label>Resistance <span>Ω</span></label>
+                    <input type="number" id="resistance" placeholder="6">
                 </div>
-
-
-                <button
-                    class="calculate-btn"
-                    onclick="calculateOhm()"
-                >
-                    CALCULATE ⚡
-                </button>
-
-
+                <button class="calculate-btn" onclick="calculateOhm()">CALCULATE ⚡</button>
+            </div>
+            <div class="lab-panel">
                 <div class="result-box">
-
-                    <div class="result-label">
-                        CALCULATED RESULT
-                    </div>
-
-                    <div
-                        class="result-value"
-                        id="ohmResult"
-                    >
-                        —
-                    </div>
-
+                    <div class="result-label">RESULT</div>
+                    <div class="result-value" id="ohmResult">—</div>
                 </div>
-
             </div>
-
-
-            <div class="lab-panel ohm-visual">
-
-                <h3>Live Circuit View</h3>
-
-                <div class="visual-circuit">
-
-                    <div class="v-wire v-top"></div>
-                    <div class="v-wire v-bottom"></div>
-                    <div class="v-wire v-left"></div>
-                    <div class="v-wire v-right"></div>
-
-                    <div class="v-battery"></div>
-
-                    <div class="v-resistor"></div>
-
-                    <div class="current-dot"></div>
-
-                    <div class="v-current">
-                        CURRENT FLOW →
-                    </div>
-
-                </div>
-
-
-                <div class="formula">
-                    Ohm's Law:
-                    <strong>V = I × R</strong>
-                </div>
-
-            </div>
-
         </div>
-
     </div>
-
 </section>
 
-
-<!-- ================= STEP 4: SERIES & PARALLEL LAB ================= -->
-
-<section id="series-parallel" class="lab-section">
-
+<!-- STEP 4: SERIES & PARALLEL -->
+<section id="sp" class="lab-section">
     <div class="container">
-
         <div class="section-title">
-
-            <h2>🔌 Series & Parallel Circuit Lab</h2>
-
-            <p>
-                Calculate Equivalent Resistance, Total Current, and Power for multi-resistor circuits.
-            </p>
-
+            <h2>🔌 Series & Parallel Lab</h2>
+            <p>Analyze multi-resistor circuit behavior.</p>
         </div>
-
-
         <div class="lab-wrapper">
-
             <div class="lab-panel">
-
-                <h3>Circuit Configuration</h3>
-
                 <div class="input-group">
-                    <label>Circuit Type <span>Type</span></label>
-                    <select id="circuitType">
+                    <label>Circuit Type</label>
+                    <select id="spType">
                         <option value="series">Series Circuit</option>
                         <option value="parallel">Parallel Circuit</option>
                     </select>
                 </div>
-
-                <div class="input-group">
-                    <label>Supply Voltage <span>V</span></label>
-                    <input type="number" id="spVoltage" placeholder="Example: 12" value="12" step="any">
-                </div>
-
-                <div class="input-group">
-                    <label>Resistor 1 (R1) <span>Ω</span></label>
-                    <input type="number" id="r1" placeholder="Example: 10" value="10" step="any">
-                </div>
-
-                <div class="input-group">
-                    <label>Resistor 2 (R2) <span>Ω</span></label>
-                    <input type="number" id="r2" placeholder="Example: 20" value="20" step="any">
-                </div>
-
-                <div class="input-group">
-                    <label>Resistor 3 (R3 - Optional) <span>Ω</span></label>
-                    <input type="number" id="r3" placeholder="Optional" step="any">
-                </div>
-
-                <button class="calculate-btn" onclick="calculateSeriesParallel()">
-                    ANALYZE CIRCUIT 🔌
-                </button>
-
+                <div class="input-group"><label>Voltage (V)</label><input type="number" id="spV" value="12"></div>
+                <div class="input-group"><label>R1 (Ω)</label><input type="number" id="spR1" value="10"></div>
+                <div class="input-group"><label>R2 (Ω)</label><input type="number" id="spR2" value="20"></div>
+                <button class="calculate-btn" onclick="calcSP()">ANALYZE 🔌</button>
             </div>
-
-
             <div class="lab-panel">
-
-                <h3>Analysis Results</h3>
-
-                <div class="result-box">
-                    <div class="result-label">EQUIVALENT RESISTANCE (Req)</div>
-                    <div class="result-value" id="reqResult">30.00 Ω</div>
-                </div>
-
-                <div class="result-box" style="margin-top: 15px;">
-                    <div class="result-label">TOTAL CURRENT (I)</div>
-                    <div class="result-value" id="totCurrentResult">0.4000 A</div>
-                </div>
-
-                <div class="result-box" style="margin-top: 15px;">
-                    <div class="result-label">TOTAL POWER (P)</div>
-                    <div class="result-value" id="powerResult">4.800 W</div>
-                </div>
-
+                <div class="result-box"><div class="result-label">Req</div><div class="result-value" id="spReq">30.00 Ω</div></div>
+                <div class="result-box" style="margin-top:10px;"><div class="result-label">Total Current</div><div class="result-value" id="spI">0.40 A</div></div>
             </div>
-
         </div>
-
     </div>
-
 </section>
 
-
-<!-- ================= EXTRA FEATURE: LED BRIGHTNESS & POWER SIMULATOR ================= -->
-
-<section id="led-sim" class="lab-section">
-
+<!-- STEP 5: KCL & KVL -->
+<section id="kcl-kvl" class="lab-section">
     <div class="container">
-
         <div class="section-title">
-
-            <h2>💡 LED Brightness & Power Simulator</h2>
-
-            <p>
-                Adjust Resistance and Voltage to see live LED brightness response and power consumption.
-            </p>
-
+            <h2>⚖️ KCL & KVL Simulator</h2>
+            <p>Verify Kirchhoff's Laws live.</p>
         </div>
-
-
         <div class="lab-wrapper">
-
             <div class="lab-panel">
+                <h3>KCL (Junction Rule)</h3>
+                <div class="input-group"><label>I1 In (A)</label><input type="number" id="kcl1" value="5" oninput="runKCL()"></div>
+                <div class="input-group"><label>I2 In (A)</label><input type="number" id="kcl2" value="3" oninput="runKCL()"></div>
+                <div class="input-group"><label>I3 Out (A)</label><input type="number" id="kcl3" value="4" oninput="runKCL()"></div>
+                <div class="result-box"><div class="result-label">Remaining I4 Out</div><div class="result-value" id="kclRes">4.00 A</div></div>
+            </div>
+            <div class="lab-panel">
+                <h3>KVL (Loop Rule)</h3>
+                <div class="input-group"><label>Source Vs (V)</label><input type="number" id="kvlVs" value="24" oninput="runKVL()"></div>
+                <div class="input-group"><label>Drop V1 (V)</label><input type="number" id="kvlV1" value="10" oninput="runKVL()"></div>
+                <div class="input-group"><label>Drop V2 (V)</label><input type="number" id="kvlV2" value="8" oninput="runKVL()"></div>
+                <div class="result-box"><div class="result-label">Remaining V3 Drop</div><div class="result-value" id="kvlRes">6.00 V</div></div>
+            </div>
+        </div>
+    </div>
+</section>
 
-                <h3>Controls</h3>
+<!-- STEP 6: CIRCUIT BUILDER -->
+<section id="builder" class="lab-section">
+    <div class="container">
+        <div class="section-title">
+            <h2>🛠️ Interactive Circuit Builder</h2>
+            <p>Click components to build your custom circuit.</p>
+        </div>
+        <div class="lab-panel">
+            <div class="builder-toolbar">
+                <button class="tool-btn" onclick="addComp('🔋 12V Battery')">+ Add Battery</button>
+                <button class="tool-btn" onclick="addComp('〰️ Resistor')">+ Add Resistor</button>
+                <button class="tool-btn" onclick="addComp('💡 Bulb')">+ Add Bulb</button>
+                <button class="tool-btn" onclick="addComp('🔘 Switch [ON]')">+ Add Switch</button>
+                <button class="tool-btn" style="background:var(--red);" onclick="clearCanvas()">Clear All</button>
+            </div>
+            <div class="builder-canvas" id="canvas">
+                <div class="canvas-node">🔋 12V Battery</div>
+                <div style="color:var(--cyan)">➔</div>
+                <div class="canvas-node">💡 Bulb</div>
+            </div>
+        </div>
+    </div>
+</section>
 
-                <div class="input-group">
-                    <label>Supply Voltage <span>(0V - 12V)</span></label>
-                    <input type="range" id="ledVolt" min="0" max="12" value="5" step="0.5" oninput="updateLED()">
-                    <p style="text-align:right; color:var(--cyan);" id="ledVoltVal">5.0 V</p>
+<!-- STEP 7: CIRCUIT DETECTIVE -->
+<section id="detective" class="lab-section">
+    <div class="container">
+        <div class="section-title">
+            <h2>🕵️ Circuit Detective</h2>
+            <p>Troubleshoot real-world circuit issues.</p>
+        </div>
+        <div class="lab-wrapper">
+            <div class="lab-panel">
+                <div class="detective-card">
+                    <h4>Case #1: The Dim Light Mystery</h4>
+                    <p style="color:var(--muted); font-size:14px; margin-bottom:10px;">A 12V bulb lights up very dimly when connected to two 100Ω resistors. Why?</p>
+                    <button class="tool-btn" onclick="solveCase('Resistors are connected in SERIES, creating 200Ω resistance and limiting current!')">Reveal Diagnosis 🔍</button>
                 </div>
-
-                <div class="input-group">
-                    <label>Current Limiting Resistor <span>(50Ω - 1000Ω)</span></label>
-                    <input type="range" id="ledRes" min="50" max="1000" value="220" step="10" oninput="updateLED()">
-                    <p style="text-align:right; color:var(--cyan);" id="ledResVal">220 Ω</p>
+                <div class="detective-card">
+                    <h4>Case #2: The Instant Fuse Blow</h4>
+                    <p style="color:var(--muted); font-size:14px; margin-bottom:10px;">Connecting a battery directly to a wire with zero load causes the wire to heat up instantly.</p>
+                    <button class="tool-btn" onclick="solveCase('SHORT CIRCUIT! Infinite current flows due to near zero resistance.')">Reveal Diagnosis 🔍</button>
                 </div>
-
+            </div>
+            <div class="lab-panel">
                 <div class="result-box">
-                    <div class="result-label">CALCULATED POWER DISCIPATION</div>
-                    <div class="result-value" id="ledPower">0.114 W</div>
+                    <div class="result-label">DIAGNOSIS REPORT</div>
+                    <div id="caseResult" style="font-size:16px; color:var(--cyan); margin-top:10px;">Select a case to inspect.</div>
                 </div>
-
             </div>
-
-
-            <div class="lab-panel led-box">
-
-                <h3>Visual Response</h3>
-
-                <div id="ledBulb" class="led-bulb" style="margin: 20px 0;"></div>
-
-                <p id="ledStatus" style="font-weight: bold; color: var(--green);">● NORMAL GLOW</p>
-
-            </div>
-
         </div>
-
     </div>
-
 </section>
 
-
-<!-- ================= VIRTUAL LAB ================= -->
-
-<section id="virtual">
-
+<!-- STEP 8: QUIZ SYSTEM -->
+<section id="quiz" class="lab-section">
     <div class="container">
-
         <div class="section-title">
-
-            <h2>🧪 Virtual Electrical Lab</h2>
-
-            <p>
-                A preview of the interactive laboratory environment.
-            </p>
-
+            <h2>🎯 Electrical Knowledge Quiz</h2>
+            <p>Test your knowledge & track your score live.</p>
         </div>
+        <div class="quiz-container">
+            <div class="quiz-card">
+                <h3>Score: <span id="quizScore" style="color:var(--cyan)">0</span> / 2</h3>
+                <br>
+                <p>1. What formula represents Ohm's Law?</p>
+                <button class="quiz-option" onclick="answerQuiz(1, true)">A. V = I × R</button>
+                <button class="quiz-option" onclick="answerQuiz(1, false)">B. P = V / I</button>
 
-
-        <div class="virtual-lab">
-
-            <div class="lab-screen">
-
-                <div class="screen-title">
-                    VOLTLAB / EXPERIMENT_01
-                </div>
-
-                <div class="components">
-
-                    <div class="component">
-                        <div class="symbol">🔋</div>
-                        <small>POWER SOURCE</small>
-                    </div>
-
-                    <div class="flow-line"></div>
-
-                    <div class="component">
-                        <div class="symbol">〰️</div>
-                        <small>RESISTOR</small>
-                    </div>
-
-                    <div class="flow-line"></div>
-
-                    <div class="component">
-                        <div class="symbol">💡</div>
-                        <small>LOAD</small>
-                    </div>
-
-                </div>
-
-                <div class="lab-status">
-                    ● CIRCUIT STATUS: ACTIVE — ELECTRONS FLOWING
-                </div>
-
+                <br><br>
+                <p>2. In a series circuit, what remains constant across all components?</p>
+                <button class="quiz-option" onclick="answerQuiz(2, false)">A. Voltage</button>
+                <button class="quiz-option" onclick="answerQuiz(2, true)">B. Current</button>
             </div>
-
-
-            <div class="lab-panel">
-
-                <h3>What happens here?</h3>
-
-                <p class="lab-description">
-                    A real electrical circuit needs a source,
-                    a conducting path and a load. Voltage provides
-                    the potential difference while current represents
-                    the movement of charge.
-                </p>
-
-                <div class="card">
-
-                    <h3>Coming Next</h3>
-
-                    <p>
-                        Interactive circuit construction,
-                        series/parallel experiments and
-                        Kirchhoff's law experiments.
-                    </p>
-
-                </div>
-
-            </div>
-
         </div>
-
     </div>
-
 </section>
 
-
-<!-- ================= CHALLENGE ================= -->
-
-<section id="challenge">
-
+<!-- STEP 9: ASK VOLT ASSISTANT -->
+<section id="askvolt" class="lab-section">
     <div class="container">
-
         <div class="section-title">
-
-            <h2>🎯 Circuit Challenge</h2>
-
-            <p>
-                Think like an electrical engineer.
-            </p>
-
+            <h2>🤖 Ask Volt — Educational Assistant</h2>
+            <p>Ask any basic electrical question!</p>
         </div>
-
-
-        <div class="challenge card">
-
-            <div class="question">
-                A circuit has a voltage of 12 V and resistance
-                of 6 Ω. What is the current?
+        <div class="lab-panel" style="max-width:700px; margin:auto;">
+            <div class="chat-box" id="chatBox">
+                <div class="chat-msg volt-msg">Hello! I am Volt Assistant ⚡ Ask me anything about Voltage, Current, Ohm's law, KCL, or KVL!</div>
             </div>
-
-
-            <div class="options">
-
-                <button
-                    class="option"
-                    onclick="checkAnswer(this,false)"
-                >
-                    A. 0.5 A
-                </button>
-
-                <button
-                    class="option"
-                    onclick="checkAnswer(this,true)"
-                >
-                    B. 2 A
-                </button>
-
-                <button
-                    class="option"
-                    onclick="checkAnswer(this,false)"
-                >
-                    C. 6 A
-                </button>
-
-                <button
-                    class="option"
-                    onclick="checkAnswer(this,false)"
-                >
-                    D. 72 A
-                </button>
-
+            <div class="chat-input-area">
+                <input type="text" id="chatInput" placeholder="Type your question (e.g., What is voltage?)..." onkeydown="if(event.key==='Enter') sendAskVolt()">
+                <button class="btn btn-primary" onclick="sendAskVolt()">Send ⚡</button>
             </div>
-
-
-            <div
-                class="feedback"
-                id="feedback"
-            ></div>
-
         </div>
-
     </div>
-
 </section>
 
-
-<!-- ================= TEAM ================= -->
-
+<!-- TEAM SECTION -->
 <section id="team">
-
     <div class="container">
-
         <div class="section-title">
-
             <h2>👨‍💻 Project Team</h2>
-
-            <p>
-                Designed and developed by CSE students of
-                Jamalpur Science and Technology University.
-            </p>
-
+            <p>CSE Students • Jamalpur Science and Technology University</p>
         </div>
-
-
         <div class="team-grid">
-
-            <!-- TAHMID -->
-
             <div class="team-card">
-
-                <div class="member-photo">
-
-                    <img
-                        src="tahmid.jpg"
-                        alt="Md. Tahmid Siddique"
-                    >
-
-                </div>
-
+                <div class="member-photo"><img src="tahmid.jpg" alt="Tahmid"></div>
                 <h3>Md. Tahmid Siddique</h3>
-
-                <div class="role">
-                    Website Builder / Project Lead
-                </div>
-
-                <div class="team-info">
-                    Jamalpur Science and Technology University<br>
-                    Department of Computer Science & Engineering<br>
-                    trustinunivers@gmail.com
-                </div>
-
+                <div class="role" style="color:var(--cyan); font-size:13px;">Lead Developer</div>
             </div>
-
-
-            <!-- MEMBER 2 -->
-
-            <div class="team-card">
-
-                <div class="member-photo placeholder">
-                    02
-                </div>
-
-                <h3>Team Member 02</h3>
-
-                <div class="role">
-                    Team Member
-                </div>
-
-                <div class="team-info">
-                    Name to be added
-                </div>
-
-            </div>
-
-
-            <!-- MEMBER 3 -->
-
-            <div class="team-card">
-
-                <div class="member-photo placeholder">
-                    03
-                </div>
-
-                <h3>Team Member 03</h3>
-
-                <div class="role">
-                    Team Member
-                </div>
-
-                <div class="team-info">
-                    Name to be added
-                </div>
-
-            </div>
-
-
-            <!-- MEMBER 4 -->
-
-            <div class="team-card">
-
-                <div class="member-photo placeholder">
-                    04
-                </div>
-
-                <h3>Team Member 04</h3>
-
-                <div class="role">
-                    Team Member
-                </div>
-
-                <div class="team-info">
-                    Name to be added
-                </div>
-
-            </div>
-
+            <div class="team-card"><div class="member-photo placeholder">02</div><h3>Member 02</h3></div>
+            <div class="team-card"><div class="member-photo placeholder">03</div><h3>Member 03</h3></div>
+            <div class="team-card"><div class="member-photo placeholder">04</div><h3>Member 04</h3></div>
         </div>
-
     </div>
-
 </section>
 
-
-<!-- ================= ABOUT ================= -->
-
-<section>
-
-    <div class="container">
-
-        <div class="section-title">
-
-            <h2>About VoltLab</h2>
-
-        </div>
-
-
-        <div class="about-box">
-
-            <p>
-                <strong>VoltLab</strong> is an interactive educational
-                website designed to make Basic Electricity easier to
-                understand through visualization, calculation and
-                experimentation.
-            </p>
-
-            <p>
-                Instead of presenting electricity only as formulas
-                and theoretical notes, VoltLab aims to create a
-                virtual laboratory where students can interact with
-                electrical concepts.
-            </p>
-
-            <p>
-                The project combines web technology, interactive
-                simulations and engineering concepts to create a
-                more engaging learning experience.
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ================= CONCLUSION ================= -->
-
-<section>
-
-    <div class="container">
-
-        <div class="section-title">
-
-            <h2>Conclusion</h2>
-
-            <p>
-                Turning electrical theory into an interactive experience.
-            </p>
-
-        </div>
-
-
-        <div class="about-box">
-
-            <p>
-                VoltLab demonstrates how modern web technology can
-                transform traditional electrical concepts into a more
-                visual, interactive and engaging learning experience.
-            </p>
-
-            <p>
-                Through interactive calculations, virtual experiments,
-                circuit challenges and future simulation tools, the
-                platform is designed to help students understand not
-                only the formulas, but also what actually happens
-                inside an electrical circuit.
-            </p>
-
-            <p>
-                This project represents the collaborative work,
-                creativity and technical learning of CSE students
-                at Jamalpur Science and Technology University.
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ================= FOOTER ================= -->
-
+<!-- FOOTER -->
 <footer>
-
     <div class="container">
-
-        ⚡ <strong>VoltLab</strong> —
-        Where Electricity Comes Alive.
-
-        <br><br>
-
-        CSE Students • Jamalpur Science and Technology University
-
-        <br><br>
-
-        Developed by <strong>Md. Tahmid Siddique</strong>
-        and his teammates.
-
-        <br>
-
-        © 2026 <strong>Trustin Univers</strong>.
-        All Rights Reserved.
-
+        ⚡ <strong>VoltLab</strong> — CSE Students, Jamalpur Science and Technology University. © 2026.
     </div>
-
 </footer>
 
-
-<!-- ================= JAVASCRIPT ================= -->
-
+<!-- JAVASCRIPT LOGIC -->
 <script>
-
-/* =========================================================
-   OHM'S LAW CALCULATOR
-   ========================================================= */
-
+// OHM'S LAW
 function calculateOhm(){
+    let V = parseFloat(document.getElementById("voltage").value);
+    let I = parseFloat(document.getElementById("current").value);
+    let R = parseFloat(document.getElementById("resistance").value);
+    let res = document.getElementById("ohmResult");
 
-    const V = parseFloat(
-        document.getElementById("voltage").value
-    );
-
-    const I = parseFloat(
-        document.getElementById("current").value
-    );
-
-    const R = parseFloat(
-        document.getElementById("resistance").value
-    );
-
-    const result =
-        document.getElementById("ohmResult");
-
-
-    let filled = 0;
-
-    if(!isNaN(V)) filled++;
-    if(!isNaN(I)) filled++;
-    if(!isNaN(R)) filled++;
-
-
-    if(filled !== 2){
-
-        result.innerHTML =
-            "Enter exactly 2 values";
-
-        result.style.color = "#ef4444";
-
-        return;
-    }
-
-
-    /* Find Current */
-
-    if(isNaN(I)){
-
-        if(R === 0){
-
-            result.innerHTML = "Invalid R";
-
-            return;
-        }
-
-        const answer = V / R;
-
-        document.getElementById("current").value =
-            answer.toFixed(4);
-
-        result.innerHTML =
-            answer.toFixed(4) + " A";
-
-    }
-
-
-    /* Find Voltage */
-
-    else if(isNaN(V)){
-
-        const answer = I * R;
-
-        document.getElementById("voltage").value =
-            answer.toFixed(4);
-
-        result.innerHTML =
-            answer.toFixed(4) + " V";
-
-    }
-
-
-    /* Find Resistance */
-
-    else if(isNaN(R)){
-
-        if(I === 0){
-
-            result.innerHTML = "Invalid I";
-
-            return;
-        }
-
-        const answer = V / I;
-
-        document.getElementById("resistance").value =
-            answer.toFixed(4);
-
-        result.innerHTML =
-            answer.toFixed(4) + " Ω";
-
-    }
-
-
-    result.style.color = "#21d4fd";
+    if(!isNaN(V) && !isNaN(I)){ R = V / I; res.innerText = R.toFixed(2) + " Ω"; }
+    else if(!isNaN(V) && !isNaN(R)){ I = V / R; res.innerText = I.toFixed(2) + " A"; }
+    else if(!isNaN(I) && !isNaN(R)){ V = I * R; res.innerText = V.toFixed(2) + " V"; }
+    else { res.innerText = "Enter any 2 values"; }
 }
 
+// SERIES & PARALLEL
+function calcSP(){
+    let type = document.getElementById("spType").value;
+    let V = parseFloat(document.getElementById("spV").value) || 0;
+    let r1 = parseFloat(document.getElementById("spR1").value) || 0;
+    let r2 = parseFloat(document.getElementById("spR2").value) || 0;
 
-/* =========================================================
-   SERIES & PARALLEL CALCULATOR
-   ========================================================= */
+    let req = (type === "series") ? (r1 + r2) : (1 / ((1/r1) + (1/r2)));
+    let i = req > 0 ? V / req : 0;
 
-function calculateSeriesParallel(){
-    const type = document.getElementById("circuitType").value;
-    const V = parseFloat(document.getElementById("spVoltage").value) || 0;
-    const r1 = parseFloat(document.getElementById("r1").value) || 0;
-    const r2 = parseFloat(document.getElementById("r2").value) || 0;
-    const r3 = parseFloat(document.getElementById("r3").value) || 0;
-
-    let req = 0;
-
-    if(type === "series"){
-        req = r1 + r2 + r3;
-    } else {
-        let invSum = 0;
-        if(r1 > 0) invSum += 1 / r1;
-        if(r2 > 0) invSum += 1 / r2;
-        if(r3 > 0) invSum += 1 / r3;
-        req = invSum > 0 ? (1 / invSum) : 0;
-    }
-
-    const current = req > 0 ? (V / req) : 0;
-    const power = V * current;
-
-    document.getElementById("reqResult").innerText = req.toFixed(2) + " Ω";
-    document.getElementById("totCurrentResult").innerText = current.toFixed(4) + " A";
-    document.getElementById("powerResult").innerText = power.toFixed(3) + " W";
+    document.getElementById("spReq").innerText = req.toFixed(2) + " Ω";
+    document.getElementById("spI").innerText = i.toFixed(2) + " A";
 }
 
-
-/* =========================================================
-   LED SIMULATOR
-   ========================================================= */
-
-function updateLED(){
-    const V = parseFloat(document.getElementById("ledVolt").value);
-    const R = parseFloat(document.getElementById("ledRes").value);
-
-    document.getElementById("ledVoltVal").innerText = V.toFixed(1) + " V";
-    document.getElementById("ledResVal").innerText = R + " Ω";
-
-    const I = V / R; // Current in A
-    const P = V * I; // Power in W
-
-    document.getElementById("ledPower").innerText = P.toFixed(3) + " W";
-
-    const bulb = document.getElementById("ledBulb");
-    const status = document.getElementById("ledStatus");
-
-    if (I === 0) {
-        bulb.style.background = "#1f293d";
-        bulb.style.boxShadow = "none";
-        status.innerText = "● OFF";
-        status.style.color = "var(--muted)";
-    } else if (I > 0.04) { // Over-current (> 40mA)
-        bulb.style.background = "#ef4444";
-        bulb.style.boxShadow = "0 0 30px #ef4444";
-        status.innerText = "🔥 WARNING: LED DAMAGED (OVERCURRENT)";
-        status.style.color = "#ef4444";
-    } else {
-        const glowOpacity = Math.min(1, I / 0.02); // 20mA max optimal
-        bulb.style.background = "#21d4fd";
-        bulb.style.boxShadow = `0 0 ${glowOpacity * 40}px #21d4fd, 0 0 ${glowOpacity * 80}px #21d4fd`;
-        status.innerText = "● NORMAL OPERATION";
-        status.style.color = "var(--green)";
-    }
+// KCL & KVL
+function runKCL(){
+    let i1 = parseFloat(document.getElementById("kcl1").value) || 0;
+    let i2 = parseFloat(document.getElementById("kcl2").value) || 0;
+    let i3 = parseFloat(document.getElementById("kcl3").value) || 0;
+    document.getElementById("kclRes").innerText = ((i1 + i2) - i3).toFixed(2) + " A";
+}
+function runKVL(){
+    let vs = parseFloat(document.getElementById("kvlVs").value) || 0;
+    let v1 = parseFloat(document.getElementById("kvlV1").value) || 0;
+    let v2 = parseFloat(document.getElementById("kvlV2").value) || 0;
+    document.getElementById("kvlRes").innerText = (vs - (v1 + v2)).toFixed(2) + " V";
 }
 
-// Initial LED load
-updateLED();
+// BUILDER
+function addComp(name){
+    let canvas = document.getElementById("canvas");
+    let arrow = document.createElement("div");
+    arrow.style.color = "var(--cyan)";
+    arrow.innerText = "➔";
+    let node = document.createElement("div");
+    node.className = "canvas-node";
+    node.innerText = name;
+    canvas.appendChild(arrow);
+    canvas.appendChild(node);
+}
+function clearCanvas(){ document.getElementById("canvas").innerHTML = ''; }
 
+// DETECTIVE
+function solveCase(text){ document.getElementById("caseResult").innerText = text; }
 
-/* =========================================================
-   CHALLENGE SYSTEM
-   ========================================================= */
-
-function checkAnswer(button,isCorrect){
-
-    const feedback =
-        document.getElementById("feedback");
-
-
-    if(isCorrect){
-
-        feedback.innerHTML =
-            "✓ Correct! Using I = V / R → I = 12 / 6 = 2 A.";
-
-        feedback.style.color =
-            "#22c55e";
-
-    }else{
-
-        feedback.innerHTML =
-            "✗ Not quite. Try using Ohm's Law: I = V / R.";
-
-        feedback.style.color =
-            "#ef4444";
-
-    }
-
+// QUIZ SYSTEM
+let score = 0;
+let answered = {};
+function answerQuiz(q, isCorrect){
+    if(answered[q]) return;
+    answered[q] = true;
+    if(isCorrect) score += 1;
+    document.getElementById("quizScore").innerText = score;
 }
 
+// ASK VOLT ASSISTANT
+function sendAskVolt(){
+    let input = document.getElementById("chatInput");
+    let txt = input.value.trim().toLowerCase();
+    if(!txt) return;
+
+    let box = document.getElementById("chatBox");
+    box.innerHTML += `<div class="chat-msg user-msg">${input.value}</div>`;
+
+    let reply = "I am trained on basic circuits! You can ask about Voltage, Current, Resistance, KCL or KVL.";
+    if(txt.includes("voltage")) reply = "Voltage is the electrical pressure that drives current through a circuit (V).";
+    else if(txt.includes("current")) reply = "Current is the rate of flow of electric charge (I), measured in Amperes.";
+    else if(txt.includes("ohm")) reply = "Ohm's law states V = I × R, linking Voltage, Current, and Resistance.";
+    else if(txt.includes("kcl")) reply = "KCL states that total current entering a node equals total current leaving.";
+    else if(txt.includes("kvl")) reply = "KVL states that the sum of voltages around any closed loop is zero.";
+
+    setTimeout(() => {
+        box.innerHTML += `<div class="chat-msg volt-msg">${reply}</div>`;
+        box.scrollTop = box.scrollHeight;
+    }, 400);
+
+    input.value = "";
+}
 </script>
 
 </body>
