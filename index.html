@@ -908,6 +908,7 @@ footer strong{
             <li><a href="#learn">Learn</a></li>
             <li><a href="#ohm">Ohm's Lab</a></li>
             <li><a href="#series-parallel">Series/Parallel</a></li>
+            <li><a href="#kcl-kvl">KCL/KVL</a></li>
             <li><a href="#led-sim">LED Brightness</a></li>
             <li><a href="#virtual">Virtual Lab</a></li>
             <li><a href="#challenge">Challenge</a></li>
@@ -1355,6 +1356,95 @@ footer strong{
                 <div class="result-box" style="margin-top: 15px;">
                     <div class="result-label">TOTAL POWER (P)</div>
                     <div class="result-value" id="powerResult">4.800 W</div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= STEP 5: KCL & KVL CALCULATOR ================= -->
+
+<section id="kcl-kvl" class="lab-section">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>⚖️ Kirchhoff's Laws Lab (KCL & KVL)</h2>
+
+            <p>
+                Verify Kirchhoff's Current Law (Node) and Voltage Law (Loop) interactively.
+            </p>
+
+        </div>
+
+
+        <div class="lab-wrapper">
+
+            <!-- KCL PANEL -->
+            <div class="lab-panel">
+
+                <h3>Kirchhoff's Current Law (KCL)</h3>
+
+                <p class="lab-description">
+                    Total Current Entering a Junction = Total Current Leaving (Σ I_in = Σ I_out).
+                </p>
+
+                <div class="input-group">
+                    <label>Current In 1 (I1) <span>A</span></label>
+                    <input type="number" id="kclI1" value="5" step="any" oninput="calculateKCL()">
+                </div>
+
+                <div class="input-group">
+                    <label>Current In 2 (I2) <span>A</span></label>
+                    <input type="number" id="kclI2" value="3" step="any" oninput="calculateKCL()">
+                </div>
+
+                <div class="input-group">
+                    <label>Current Out 1 (I3) <span>A</span></label>
+                    <input type="number" id="kclI3" value="4" step="any" oninput="calculateKCL()">
+                </div>
+
+                <div class="result-box">
+                    <div class="result-label">REMAINING OUTFLOW CURRENT (I4)</div>
+                    <div class="result-value" id="kclResult">4.0000 A</div>
+                </div>
+
+            </div>
+
+
+            <!-- KVL PANEL -->
+            <div class="lab-panel">
+
+                <h3>Kirchhoff's Voltage Law (KVL)</h3>
+
+                <p class="lab-description">
+                    Sum of Voltage Drops in a Closed Loop Equals Total Source Voltage (Σ V_source = Σ V_drops).
+                </p>
+
+                <div class="input-group">
+                    <label>Supply Voltage (Vs) <span>V</span></label>
+                    <input type="number" id="kvlVs" value="24" step="any" oninput="calculateKVL()">
+                </div>
+
+                <div class="input-group">
+                    <label>Voltage Drop 1 (V1) <span>V</span></label>
+                    <input type="number" id="kvlV1" value="10" step="any" oninput="calculateKVL()">
+                </div>
+
+                <div class="input-group">
+                    <label>Voltage Drop 2 (V2) <span>V</span></label>
+                    <input type="number" id="kvlV2" value="8" step="any" oninput="calculateKVL()">
+                </div>
+
+                <div class="result-box">
+                    <div class="result-label">REMAINING VOLTAGE DROP (V3)</div>
+                    <div class="result-value" id="kvlResult">6.0000 V</div>
                 </div>
 
             </div>
@@ -1953,6 +2043,49 @@ function calculateSeriesParallel(){
     document.getElementById("totCurrentResult").innerText = current.toFixed(4) + " A";
     document.getElementById("powerResult").innerText = power.toFixed(3) + " W";
 }
+
+
+/* =========================================================
+   STEP 5: KCL & KVL CALCULATOR LOGIC
+   ========================================================= */
+
+function calculateKCL(){
+    const i1 = parseFloat(document.getElementById("kclI1").value) || 0;
+    const i2 = parseFloat(document.getElementById("kclI2").value) || 0;
+    const i3 = parseFloat(document.getElementById("kclI3").value) || 0;
+
+    const remainingI4 = (i1 + i2) - i3;
+    const resultBox = document.getElementById("kclResult");
+
+    if (remainingI4 < 0) {
+        resultBox.style.color = "var(--red)";
+        resultBox.innerText = remainingI4.toFixed(4) + " A (Invalid Outflow)";
+    } else {
+        resultBox.style.color = "var(--cyan)";
+        resultBox.innerText = remainingI4.toFixed(4) + " A";
+    }
+}
+
+function calculateKVL(){
+    const vs = parseFloat(document.getElementById("kvlVs").value) || 0;
+    const v1 = parseFloat(document.getElementById("kvlV1").value) || 0;
+    const v2 = parseFloat(document.getElementById("kvlV2").value) || 0;
+
+    const remainingV3 = vs - (v1 + v2);
+    const resultBox = document.getElementById("kvlResult");
+
+    if (remainingV3 < 0) {
+        resultBox.style.color = "var(--red)";
+        resultBox.innerText = remainingV3.toFixed(4) + " V (Over-drop)";
+    } else {
+        resultBox.style.color = "var(--cyan)";
+        resultBox.innerText = remainingV3.toFixed(4) + " V";
+    }
+}
+
+// Initial calculation load
+calculateKCL();
+calculateKVL();
 
 
 /* =========================================================
