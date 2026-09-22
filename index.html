@@ -1,1726 +1,1439 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <meta name="description"
-        content="VoltLab - An interactive Basic Electricity learning platform developed by CSE students of JSTU.">
-
-    <title>VoltLab — Where Electricity Comes Alive</title>
-
-    <style>
-
-        /* =========================================================
-           GLOBAL
-        ========================================================= */
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #070b14;
-            color: #f3f4f6;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        button {
-            font-family: inherit;
-        }
-
-
-        /* =========================================================
-           NAVIGATION
-        ========================================================= */
-
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 75px;
-
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-
-            padding: 0 7%;
-
-            background: rgba(7, 11, 20, 0.82);
-            backdrop-filter: blur(15px);
-
-            border-bottom: 1px solid rgba(255,255,255,0.06);
-
-            z-index: 1000;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-
-            font-size: 23px;
-            font-weight: 800;
-            letter-spacing: 1px;
-        }
-
-        .logo-icon {
-            width: 35px;
-            height: 35px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            border-radius: 10px;
-
-            background: #00e5ff;
-            color: #061018;
-
-            font-size: 21px;
-            font-weight: 900;
-
-            box-shadow: 0 0 20px rgba(0,229,255,0.35);
-        }
-
-        .logo span {
-            color: #00e5ff;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 30px;
-        }
-
-        .nav-links a {
-            color: #aeb6c4;
-            font-size: 14px;
-            transition: 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: #00e5ff;
-        }
-
-
-        /* =========================================================
-           HERO
-        ========================================================= */
-
-        .hero {
-            min-height: 100vh;
-
-            display: flex;
-            align-items: center;
-
-            padding: 120px 8% 80px;
-
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: "";
-
-            position: absolute;
-
-            width: 500px;
-            height: 500px;
-
-            background: rgba(0,229,255,0.07);
-
-            border-radius: 50%;
-
-            filter: blur(100px);
-
-            top: 5%;
-            right: -150px;
-        }
-
-        .hero-content {
-            width: 55%;
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero-badge {
-            display: inline-block;
-
-            padding: 8px 15px;
-
-            border: 1px solid rgba(0,229,255,0.25);
-
-            border-radius: 50px;
-
-            color: #00e5ff;
-
-            font-size: 12px;
-            font-weight: 700;
-
-            letter-spacing: 1px;
-
-            background: rgba(0,229,255,0.05);
-
-            margin-bottom: 25px;
-        }
-
-        .hero h1 {
-            font-size: clamp(48px, 7vw, 82px);
-            line-height: 1.05;
-            margin-bottom: 25px;
-        }
-
-        .hero h1 span {
-            color: #00e5ff;
-        }
-
-        .hero p {
-            max-width: 650px;
-
-            color: #9ca3af;
-
-            font-size: 18px;
-
-            margin-bottom: 35px;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-
-            padding: 13px 23px;
-
-            border-radius: 10px;
-
-            font-weight: 700;
-
-            font-size: 14px;
-
-            transition: 0.3s;
-
-            cursor: pointer;
-        }
-
-        .btn-primary {
-            background: #00e5ff;
-            color: #061018;
-
-            box-shadow: 0 0 25px rgba(0,229,255,0.18);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 0 35px rgba(0,229,255,0.35);
-        }
-
-        .btn-secondary {
-            border: 1px solid rgba(255,255,255,0.12);
-            color: white;
-            background: rgba(255,255,255,0.03);
-        }
-
-        .btn-secondary:hover {
-            border-color: #00e5ff;
-            color: #00e5ff;
-            transform: translateY(-3px);
-        }
-
-
-        /* =========================================================
-           CIRCUIT VISUAL
-        ========================================================= */
-
-        .circuit-visual {
-            position: absolute;
-
-            right: 6%;
-            top: 50%;
-
-            transform: translateY(-50%);
-
-            width: 400px;
-            height: 400px;
-        }
-
-        .circle {
-            position: absolute;
-
-            width: 300px;
-            height: 300px;
-
-            border: 1px solid rgba(0,229,255,0.15);
-
-            border-radius: 50%;
-
-            top: 50%;
-            left: 50%;
-
-            transform: translate(-50%, -50%);
-        }
-
-        .circle.two {
-            width: 220px;
-            height: 220px;
-            border-color: rgba(0,229,255,0.25);
-        }
-
-        .circuit-node {
-            position: absolute;
-
-            width: 70px;
-            height: 70px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            border-radius: 18px;
-
-            background: rgba(0,229,255,0.07);
-
-            border: 1px solid rgba(0,229,255,0.4);
-
-            color: #00e5ff;
-
-            font-weight: 800;
-
-            box-shadow: 0 0 25px rgba(0,229,255,0.08);
-        }
-
-        .node-top {
-            top: 5%;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .node-right {
-            right: 5%;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-
-        .node-bottom {
-            bottom: 5%;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .node-left {
-            left: 5%;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-
-
-        /* =========================================================
-           GENERAL SECTION
-        ========================================================= */
-
-        section {
-            padding: 100px 8%;
-        }
-
-        .section-heading {
-            text-align: center;
-
-            max-width: 750px;
-
-            margin: 0 auto 60px;
-        }
-
-        .section-tag {
-            display: inline-block;
-
-            color: #00e5ff;
-
-            font-size: 11px;
-
-            letter-spacing: 2px;
-
-            font-weight: 800;
-
-            margin-bottom: 15px;
-        }
-
-        .section-heading h2 {
-            font-size: clamp(35px, 5vw, 55px);
-
-            line-height: 1.15;
-
-            margin-bottom: 18px;
-        }
-
-        .section-heading h2 span {
-            color: #00e5ff;
-        }
-
-        .section-heading p {
-            color: #9ca3af;
-
-            font-size: 16px;
-
-            line-height: 1.8;
-        }
-
-
-        /* =========================================================
-           FEATURES
-        ========================================================= */
-
-        .features {
-            background:
-                radial-gradient(
-                    circle at 10% 20%,
-                    rgba(0,229,255,0.05),
-                    transparent 30%
-                );
-        }
-
-        .feature-grid {
-            max-width: 1200px;
-
-            margin: auto;
-
-            display: grid;
-
-            grid-template-columns: repeat(3, 1fr);
-
-            gap: 25px;
-        }
-
-        .feature-card {
-            padding: 32px;
-
-            background: rgba(255,255,255,0.035);
-
-            border: 1px solid rgba(255,255,255,0.07);
-
-            border-radius: 20px;
-
-            transition: 0.35s;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-8px);
-
-            border-color: rgba(0,229,255,0.35);
-
-            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
-        }
-
-        .feature-icon {
-            width: 55px;
-            height: 55px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            border-radius: 15px;
-
-            background: rgba(0,229,255,0.08);
-
-            border: 1px solid rgba(0,229,255,0.18);
-
-            color: #00e5ff;
-
-            font-size: 25px;
-
-            margin-bottom: 22px;
-        }
-
-        .feature-card h3 {
-            font-size: 21px;
-
-            margin-bottom: 12px;
-        }
-
-        .feature-card p {
-            color: #9ca3af;
-
-            font-size: 14px;
-
-            line-height: 1.7;
-        }
-
-
-        /* =========================================================
-           LEARN SECTION
-        ========================================================= */
-
-        .learn-section {
-            background: #090e18;
-        }
-
-        .learn-grid {
-            max-width: 1150px;
-
-            margin: auto;
-
-            display: grid;
-
-            grid-template-columns: repeat(2, 1fr);
-
-            gap: 22px;
-        }
-
-        .lesson {
-            padding: 28px;
-
-            border-radius: 18px;
-
-            border: 1px solid rgba(255,255,255,0.07);
-
-            background: rgba(255,255,255,0.025);
-
-            transition: 0.3s;
-        }
-
-        .lesson:hover {
-            border-color: rgba(0,229,255,0.3);
-        }
-
-        .lesson-number {
-            color: #00e5ff;
-
-            font-size: 12px;
-
-            font-weight: 800;
-
-            letter-spacing: 1px;
-
-            margin-bottom: 8px;
-        }
-
-        .lesson h3 {
-            margin-bottom: 8px;
-
-            font-size: 20px;
-        }
-
-        .lesson p {
-            color: #9ca3af;
-
-            font-size: 14px;
-        }
-
-
-        /* =========================================================
-           FORMULA LAB
-        ========================================================= */
-
-        .formula-section {
-            text-align: center;
-
-            background:
-                radial-gradient(
-                    circle at center,
-                    rgba(0,229,255,0.08),
-                    transparent 50%
-                );
-        }
-
-        .formula-box {
-            max-width: 850px;
-
-            margin: auto;
-
-            padding: 60px 30px;
-
-            border-radius: 25px;
-
-            border: 1px solid rgba(0,229,255,0.2);
-
-            background: rgba(255,255,255,0.025);
-
-            box-shadow: 0 25px 80px rgba(0,0,0,0.25);
-        }
-
-        .formula {
-            font-size: clamp(55px, 9vw, 95px);
-
-            font-weight: 900;
-
-            letter-spacing: 5px;
-
-            color: #00e5ff;
-
-            text-shadow: 0 0 30px rgba(0,229,255,0.25);
-
-            margin-bottom: 25px;
-        }
-
-        .formula-explanation {
-            color: #9ca3af;
-
-            font-size: 16px;
-        }
-
-
-        /* =========================================================
-           VIRTUAL LAB
-        ========================================================= */
-
-        .lab-section {
-            background: #090e18;
-        }
-
-        .lab-container {
-            max-width: 1100px;
-
-            margin: auto;
-
-            padding: 50px;
-
-            border-radius: 25px;
-
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(0,229,255,0.05),
-                    rgba(255,255,255,0.02)
-                );
-
-            border: 1px solid rgba(255,255,255,0.08);
-        }
-
-        .lab-top {
-            display: flex;
-
-            justify-content: space-between;
-
-            align-items: center;
-
-            margin-bottom: 45px;
-        }
-
-        .lab-top h3 {
-            font-size: 28px;
-        }
-
-        .lab-status {
-            color: #00e5ff;
-
-            font-size: 12px;
-
-            border: 1px solid rgba(0,229,255,0.25);
-
-            padding: 7px 13px;
-
-            border-radius: 50px;
-        }
-
-        .circuit-board {
-            min-height: 280px;
-
-            position: relative;
-
-            border-radius: 20px;
-
-            border: 1px dashed rgba(255,255,255,0.12);
-
-            background:
-                linear-gradient(
-                    rgba(255,255,255,0.015) 1px,
-                    transparent 1px
-                ),
-                linear-gradient(
-                    90deg,
-                    rgba(255,255,255,0.015) 1px,
-                    transparent 1px
-                );
-
-            background-size: 35px 35px;
-        }
-
-        .component {
-            position: absolute;
-
-            padding: 16px 20px;
-
-            border-radius: 12px;
-
-            background: #0d1422;
-
-            border: 1px solid rgba(0,229,255,0.35);
-
-            color: #00e5ff;
-
-            font-weight: 700;
-
-            box-shadow: 0 0 20px rgba(0,229,255,0.08);
-        }
-
-        .battery {
-            left: 8%;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-
-        .resistor {
-            left: 42%;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-
-        .load {
-            right: 8%;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-
-        .wire {
-            position: absolute;
-
-            height: 2px;
-
-            background: #00e5ff;
-
-            box-shadow: 0 0 8px rgba(0,229,255,0.5);
-        }
-
-        .wire-one {
-            width: 28%;
-
-            left: 18%;
-
-            top: 50%;
-        }
-
-        .wire-two {
-            width: 28%;
-
-            left: 52%;
-
-            top: 50%;
-        }
-
-
-        /* =========================================================
-           CHALLENGE
-        ========================================================= */
-
-        .challenge-section {
-            background:
-                radial-gradient(
-                    circle at 90% 30%,
-                    rgba(99,102,241,0.08),
-                    transparent 30%
-                );
-        }
-
-        .challenge-card {
-            max-width: 1000px;
-
-            margin: auto;
-
-            padding: 45px;
-
-            border-radius: 25px;
-
-            border: 1px solid rgba(255,255,255,0.08);
-
-            background: rgba(255,255,255,0.025);
-        }
-
-        .challenge-label {
-            color: #00e5ff;
-
-            font-size: 11px;
-
-            letter-spacing: 2px;
-
-            font-weight: 800;
-
-            margin-bottom: 15px;
-        }
-
-        .challenge-card h3 {
-            font-size: 28px;
-
-            margin-bottom: 15px;
-        }
-
-        .challenge-card p {
-            color: #9ca3af;
-
-            margin-bottom: 25px;
-        }
-
-        .challenge-options {
-            display: grid;
-
-            grid-template-columns: repeat(2, 1fr);
-
-            gap: 12px;
-        }
-
-        .option {
-            padding: 15px 18px;
-
-            border-radius: 10px;
-
-            border: 1px solid rgba(255,255,255,0.08);
-
-            background: rgba(255,255,255,0.025);
-
-            color: #d1d5db;
-
-            cursor: pointer;
-
-            transition: 0.25s;
-        }
-
-        .option:hover {
-            border-color: #00e5ff;
-
-            color: #00e5ff;
-        }
-
-
-        /* =========================================================
-           TEAM SECTION
-        ========================================================= */
-
-        .team-section {
-            padding: 110px 8%;
-
-            background:
-                radial-gradient(
-                    circle at 20% 20%,
-                    rgba(0,229,255,0.07),
-                    transparent 30%
-                ),
-                radial-gradient(
-                    circle at 80% 80%,
-                    rgba(99,102,241,0.07),
-                    transparent 30%
-                );
-        }
-
-        .team-grid {
-            max-width: 1200px;
-
-            margin: auto;
-
-            display: grid;
-
-            grid-template-columns: repeat(2, 1fr);
-
-            gap: 28px;
-        }
-
-        .team-card {
-            position: relative;
-
-            padding: 30px;
-
-            border: 1px solid rgba(255,255,255,0.08);
-
-            border-radius: 24px;
-
-            background: rgba(255,255,255,0.035);
-
-            backdrop-filter: blur(12px);
-
-            transition: all 0.35s ease;
-
-            overflow: hidden;
-        }
-
-        .team-card:hover {
-            transform: translateY(-8px);
-
-            border-color: rgba(0,229,255,0.4);
-
-            box-shadow: 0 20px 60px rgba(0,0,0,0.25);
-        }
-
-        .founder-card {
-            border-color: rgba(0,229,255,0.25);
-
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(0,229,255,0.07),
-                    rgba(255,255,255,0.025)
-                );
-        }
-
-        .member-photo,
-        .member-placeholder {
-            width: 110px;
-            height: 110px;
-
-            border-radius: 50%;
-
-            margin-bottom: 25px;
-
-            overflow: hidden;
-        }
-
-        .member-photo {
-            border: 3px solid #00e5ff;
-
-            box-shadow:
-                0 0 30px rgba(0,229,255,0.25);
-        }
-
-        .member-photo img {
-            width: 100%;
-            height: 100%;
-
-            object-fit: cover;
-
-            display: block;
-        }
-
-        .member-placeholder {
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(0,229,255,0.15),
-                    rgba(99,102,241,0.15)
-                );
-
-            border: 2px dashed rgba(0,229,255,0.35);
-        }
-
-        .member-placeholder span {
-            font-size: 28px;
-
-            font-weight: 800;
-
-            color: #00e5ff;
-        }
-
-        .member-role {
-            font-size: 11px;
-
-            letter-spacing: 1.5px;
-
-            font-weight: 700;
-
-            color: #00e5ff;
-        }
-
-        .member-info h3 {
-            font-size: 25px;
-
-            margin: 10px 0 12px;
-        }
-
-        .member-description {
-            color: #9ca3af;
-
-            line-height: 1.7;
-
-            font-size: 14px;
-
-            margin-bottom: 22px;
-        }
-
-        .member-details {
-            display: flex;
-
-            flex-direction: column;
-
-            gap: 12px;
-        }
-
-        .member-details div {
-            display: flex;
-
-            flex-direction: column;
-
-            gap: 3px;
-
-            padding-bottom: 10px;
-
-            border-bottom: 1px solid rgba(255,255,255,0.06);
-        }
-
-        .member-details strong {
-            font-size: 11px;
-
-            text-transform: uppercase;
-
-            letter-spacing: 1px;
-
-            color: #6b7280;
-        }
-
-        .member-details span {
-            color: #d1d5db;
-
-            font-size: 13px;
-
-            line-height: 1.5;
-        }
-
-
-        /* =========================================================
-           CONTACT / PROJECT INFO
-        ========================================================= */
-
-        .about-section {
-            background: #090e18;
-        }
-
-        .about-box {
-            max-width: 1000px;
-
-            margin: auto;
-
-            display: grid;
-
-            grid-template-columns: 1fr 1fr;
-
-            gap: 25px;
-        }
-
-        .about-card {
-            padding: 35px;
-
-            border-radius: 20px;
-
-            border: 1px solid rgba(255,255,255,0.07);
-
-            background: rgba(255,255,255,0.025);
-        }
-
-        .about-card h3 {
-            font-size: 22px;
-
-            margin-bottom: 15px;
-        }
-
-        .about-card p {
-            color: #9ca3af;
-
-            font-size: 14px;
-
-            line-height: 1.8;
-        }
-
-
-        /* =========================================================
-           FOOTER
-        ========================================================= */
-
-        footer {
-            padding: 45px 8%;
-
-            border-top: 1px solid rgba(255,255,255,0.07);
-
-            background: #05080f;
-
-            text-align: center;
-        }
-
-        .footer-logo {
-            font-size: 24px;
-
-            font-weight: 800;
-
-            margin-bottom: 10px;
-        }
-
-        .footer-logo span {
-            color: #00e5ff;
-        }
-
-        footer p {
-            color: #6b7280;
-
-            font-size: 13px;
-        }
-
-        .footer-credit {
-            margin-top: 12px;
-
-            color: #4b5563;
-
-            font-size: 12px;
-        }
-
-        .footer-credit span {
-            color: #00e5ff;
-        }
-
-
-        /* =========================================================
-           RESPONSIVE
-        ========================================================= */
-
-        @media (max-width: 1000px) {
-
-            .hero-content {
-                width: 100%;
-            }
-
-            .circuit-visual {
-                opacity: 0.18;
-
-                right: -80px;
-            }
-
-            .feature-grid {
-                grid-template-columns: 1fr;
-            }
-
-        }
-
-
-        @media (max-width: 800px) {
-
-            nav {
-                padding: 0 5%;
-            }
-
-            .nav-links {
-                gap: 12px;
-            }
-
-            .nav-links a {
-                font-size: 12px;
-            }
-
-            section {
-                padding: 80px 6%;
-            }
-
-            .learn-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .team-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .about-box {
-                grid-template-columns: 1fr;
-            }
-
-            .challenge-options {
-                grid-template-columns: 1fr;
-            }
-
-            .lab-container {
-                padding: 25px;
-            }
-
-        }
-
-
-        @media (max-width: 600px) {
-
-            .logo {
-                font-size: 18px;
-            }
-
-            .logo-icon {
-                width: 30px;
-                height: 30px;
-                font-size: 17px;
-            }
-
-            .nav-links {
-                gap: 8px;
-            }
-
-            .nav-links a:nth-child(2),
-            .nav-links a:nth-child(3) {
-                display: none;
-            }
-
-            .hero {
-                padding-top: 120px;
-            }
-
-            .hero h1 {
-                font-size: 48px;
-            }
-
-            .hero p {
-                font-size: 16px;
-            }
-
-            .circuit-visual {
-                display: none;
-            }
-
-            .component {
-                padding: 10px 12px;
-                font-size: 11px;
-            }
-
-            .lab-top {
-                align-items: flex-start;
-                flex-direction: column;
-                gap: 12px;
-            }
-
-        }
-
-    </style>
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>VoltLab | Where Electricity Comes Alive</title>
+
+<style>
+/* =========================================================
+   VOLTLAB — FIXED FUTURISTIC ELECTRICAL LAB THEME
+   Future features should follow this visual system.
+   ========================================================= */
+
+:root{
+    --bg:#050816;
+    --bg2:#081126;
+    --panel:#0b1429;
+    --panel2:#101c36;
+    --line:#1d3157;
+    --text:#eef6ff;
+    --muted:#91a5c5;
+    --cyan:#21d4fd;
+    --blue:#3b82f6;
+    --purple:#8b5cf6;
+    --green:#22c55e;
+    --orange:#f59e0b;
+    --red:#ef4444;
+    --glow:0 0 25px rgba(33,212,253,.20);
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:
+        radial-gradient(circle at 20% 10%,rgba(33,212,253,.08),transparent 30%),
+        radial-gradient(circle at 80% 30%,rgba(139,92,246,.08),transparent 30%),
+        var(--bg);
+    color:var(--text);
+    line-height:1.6;
+    overflow-x:hidden;
+}
+
+/* subtle circuit-grid background */
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    opacity:.18;
+    background-image:
+        linear-gradient(rgba(33,212,253,.05) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(33,212,253,.05) 1px,transparent 1px);
+    background-size:50px 50px;
+    mask-image:linear-gradient(to bottom,black,transparent 85%);
+}
+
+/* ================= NAVIGATION ================= */
+
+nav{
+    position:fixed;
+    top:0;
+    width:100%;
+    z-index:1000;
+    background:rgba(5,8,22,.82);
+    backdrop-filter:blur(15px);
+    border-bottom:1px solid rgba(33,212,253,.12);
+}
+
+.nav-container{
+    max-width:1200px;
+    margin:auto;
+    padding:15px 25px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-size:25px;
+    font-weight:800;
+    letter-spacing:1px;
+    color:white;
+}
+
+.logo span{
+    color:var(--cyan);
+    text-shadow:0 0 15px rgba(33,212,253,.7);
+}
+
+.nav-links{
+    display:flex;
+    gap:24px;
+    list-style:none;
+}
+
+.nav-links a{
+    color:#b8c7dd;
+    text-decoration:none;
+    font-size:14px;
+    transition:.25s;
+}
+
+.nav-links a:hover{
+    color:var(--cyan);
+    text-shadow:0 0 10px rgba(33,212,253,.6);
+}
+
+/* ================= GENERAL ================= */
+
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:0 25px;
+}
+
+section{
+    padding:95px 0;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:50px;
+}
+
+.section-title h2{
+    font-size:38px;
+    margin-bottom:10px;
+}
+
+.section-title p{
+    color:var(--muted);
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    position:relative;
+    padding-top:90px;
+}
+
+.hero-grid{
+    display:grid;
+    grid-template-columns:1.05fr .95fr;
+    gap:60px;
+    align-items:center;
+}
+
+.badge{
+    display:inline-block;
+    padding:7px 14px;
+    border:1px solid rgba(33,212,253,.35);
+    border-radius:30px;
+    color:var(--cyan);
+    background:rgba(33,212,253,.06);
+    font-size:13px;
+    margin-bottom:20px;
+}
+
+.hero h1{
+    font-size:clamp(45px,7vw,78px);
+    line-height:1;
+    margin-bottom:20px;
+}
+
+.gradient-text{
+    background:linear-gradient(90deg,var(--cyan),#60a5fa,var(--purple));
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.hero p{
+    color:var(--muted);
+    font-size:18px;
+    max-width:650px;
+    margin-bottom:30px;
+}
+
+.btn{
+    display:inline-block;
+    text-decoration:none;
+    padding:13px 22px;
+    border-radius:10px;
+    margin-right:10px;
+    font-weight:700;
+    transition:.25s;
+}
+
+.btn-primary{
+    background:linear-gradient(90deg,var(--cyan),var(--blue));
+    color:#03101c;
+    box-shadow:0 0 25px rgba(33,212,253,.2);
+}
+
+.btn-primary:hover{
+    transform:translateY(-3px);
+    box-shadow:0 0 35px rgba(33,212,253,.4);
+}
+
+.btn-secondary{
+    border:1px solid var(--line);
+    color:white;
+    background:rgba(255,255,255,.03);
+}
+
+.btn-secondary:hover{
+    border-color:var(--cyan);
+}
+
+/* ================= HERO CIRCUIT ================= */
+
+.hero-circuit{
+    min-height:360px;
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.circuit-box{
+    width:100%;
+    max-width:470px;
+    height:300px;
+    border:1px solid rgba(33,212,253,.18);
+    border-radius:25px;
+    background:linear-gradient(145deg,rgba(16,28,54,.85),rgba(7,14,30,.9));
+    box-shadow:var(--glow);
+    position:relative;
+    overflow:hidden;
+}
+
+.circuit-box::before{
+    content:"";
+    position:absolute;
+    inset:20px;
+    border:1px dashed rgba(33,212,253,.12);
+    border-radius:18px;
+}
+
+.energy{
+    position:absolute;
+    width:10px;
+    height:10px;
+    background:var(--cyan);
+    border-radius:50%;
+    box-shadow:0 0 15px var(--cyan);
+    animation:moveEnergy 3s linear infinite;
+}
+
+.energy:nth-child(2){
+    animation-delay:1s;
+}
+
+.energy:nth-child(3){
+    animation-delay:2s;
+}
+
+@keyframes moveEnergy{
+    0%{left:30px;top:65px;}
+    25%{left:calc(100% - 40px);top:65px;}
+    50%{left:calc(100% - 40px);top:230px;}
+    75%{left:30px;top:230px;}
+    100%{left:30px;top:65px;}
+}
+
+.battery{
+    position:absolute;
+    left:55px;
+    top:120px;
+    width:55px;
+    height:65px;
+    border:3px solid var(--cyan);
+    border-radius:7px;
+    box-shadow:0 0 18px rgba(33,212,253,.3);
+}
+
+.battery::before{
+    content:"+";
+    position:absolute;
+    top:-28px;
+    left:17px;
+    color:var(--cyan);
+    font-size:20px;
+}
+
+.battery::after{
+    content:"";
+    position:absolute;
+    bottom:-28px;
+    left:19px;
+    color:var(--cyan);
+    font-size:20px;
+}
+
+.resistor{
+    position:absolute;
+    right:65px;
+    top:130px;
+    width:90px;
+    height:45px;
+    border:3px solid var(--orange);
+    transform:skew(-20deg);
+    box-shadow:0 0 18px rgba(245,158,11,.25);
+}
+
+.resistor-label{
+    position:absolute;
+    right:80px;
+    top:185px;
+    color:var(--orange);
+    font-size:13px;
+}
+
+.wire{
+    position:absolute;
+    background:var(--cyan);
+    box-shadow:0 0 8px rgba(33,212,253,.4);
+}
+
+.w1{
+    width:280px;
+    height:3px;
+    left:82px;
+    top:65px;
+}
+
+.w2{
+    width:280px;
+    height:3px;
+    left:82px;
+    top:230px;
+}
+
+.w3{
+    width:3px;
+    height:165px;
+    left:82px;
+    top:65px;
+}
+
+.w4{
+    width:3px;
+    height:165px;
+    right:65px;
+    top:65px;
+}
+
+/* ================= FEATURE CARDS ================= */
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.card{
+    background:linear-gradient(145deg,rgba(16,28,54,.8),rgba(8,16,32,.9));
+    border:1px solid var(--line);
+    border-radius:18px;
+    padding:25px;
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-7px);
+    border-color:rgba(33,212,253,.55);
+    box-shadow:0 15px 40px rgba(0,0,0,.3),0 0 25px rgba(33,212,253,.08);
+}
+
+.icon{
+    width:50px;
+    height:50px;
+    border-radius:14px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:rgba(33,212,253,.08);
+    color:var(--cyan);
+    font-size:25px;
+    margin-bottom:18px;
+}
+
+.card h3{
+    margin-bottom:9px;
+}
+
+.card p{
+    color:var(--muted);
+    font-size:14px;
+}
+
+/* ================= LEARN ================= */
+
+.lesson-number{
+    color:var(--cyan);
+    font-size:13px;
+    margin-bottom:7px;
+    font-weight:bold;
+}
+
+/* ================= OHM'S LAW LAB ================= */
+
+.lab-section{
+    background:linear-gradient(180deg,transparent,rgba(33,212,253,.025),transparent);
+}
+
+.lab-wrapper{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:30px;
+}
+
+.lab-panel{
+    background:linear-gradient(145deg,rgba(16,28,54,.92),rgba(6,13,28,.95));
+    border:1px solid var(--line);
+    border-radius:22px;
+    padding:30px;
+    box-shadow:var(--glow);
+}
+
+.lab-panel h3{
+    font-size:22px;
+    margin-bottom:8px;
+}
+
+.lab-description{
+    color:var(--muted);
+    font-size:14px;
+    margin-bottom:25px;
+}
+
+.input-group{
+    margin-bottom:18px;
+}
+
+.input-group label{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:7px;
+    color:#cbd8ea;
+    font-size:14px;
+}
+
+.input-group span{
+    color:var(--cyan);
+}
+
+.input-group input{
+    width:100%;
+    padding:13px 14px;
+    background:#060d1c;
+    border:1px solid #22385f;
+    border-radius:10px;
+    outline:none;
+    color:white;
+    font-size:16px;
+}
+
+.input-group input:focus{
+    border-color:var(--cyan);
+    box-shadow:0 0 15px rgba(33,212,253,.1);
+}
+
+.calculate-btn{
+    width:100%;
+    border:none;
+    padding:14px;
+    border-radius:10px;
+    background:linear-gradient(90deg,var(--cyan),var(--blue));
+    font-weight:bold;
+    cursor:pointer;
+    font-size:15px;
+    margin-top:5px;
+}
+
+.result-box{
+    margin-top:20px;
+    padding:20px;
+    border-radius:14px;
+    background:rgba(33,212,253,.06);
+    border:1px solid rgba(33,212,253,.2);
+    text-align:center;
+}
+
+.result-label{
+    color:var(--muted);
+    font-size:13px;
+}
+
+.result-value{
+    font-size:38px;
+    font-weight:800;
+    color:var(--cyan);
+    margin-top:3px;
+}
+
+/* Ohm visual */
+
+.ohm-visual{
+    min-height:330px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+}
+
+.visual-circuit{
+    width:90%;
+    height:180px;
+    position:relative;
+}
+
+.v-wire{
+    position:absolute;
+    background:#29466e;
+}
+
+.v-top{
+    width:80%;
+    height:3px;
+    top:25px;
+    left:10%;
+}
+
+.v-bottom{
+    width:80%;
+    height:3px;
+    bottom:25px;
+    left:10%;
+}
+
+.v-left{
+    height:140px;
+    width:3px;
+    top:25px;
+    left:10%;
+}
+
+.v-right{
+    height:140px;
+    width:3px;
+    top:25px;
+    right:10%;
+}
+
+.v-battery{
+    position:absolute;
+    left:5%;
+    top:70px;
+    width:40px;
+    height:55px;
+    border:3px solid var(--cyan);
+    border-radius:5px;
+}
+
+.v-battery::after{
+    content:"12V";
+    position:absolute;
+    left:-3px;
+    top:62px;
+    color:var(--cyan);
+    font-size:12px;
+    white-space:nowrap;
+}
+
+.v-resistor{
+    position:absolute;
+    right:17%;
+    top:72px;
+    width:80px;
+    height:45px;
+    border:3px solid var(--orange);
+    transform:skew(-15deg);
+}
+
+.v-current{
+    position:absolute;
+    top:2px;
+    left:42%;
+    color:var(--green);
+    font-size:13px;
+}
+
+.current-dot{
+    position:absolute;
+    width:9px;
+    height:9px;
+    background:var(--green);
+    border-radius:50%;
+    box-shadow:0 0 15px var(--green);
+    animation:currentMove 2s linear infinite;
+}
+
+@keyframes currentMove{
+    0%{left:12%;top:20px;}
+    25%{left:86%;top:20px;}
+    50%{left:86%;top:150px;}
+    75%{left:12%;top:150px;}
+    100%{left:12%;top:20px;}
+}
+
+.formula{
+    text-align:center;
+    margin-top:15px;
+    color:var(--muted);
+}
+
+.formula strong{
+    color:white;
+    font-size:20px;
+}
+
+/* ================= VIRTUAL LAB ================= */
+
+.virtual-lab{
+    display:grid;
+    grid-template-columns:1.2fr .8fr;
+    gap:25px;
+}
+
+.lab-screen{
+    min-height:350px;
+    background:#030914;
+    border:1px solid #1e365e;
+    border-radius:20px;
+    padding:25px;
+    position:relative;
+    overflow:hidden;
+}
+
+.screen-title{
+    color:var(--cyan);
+    font-size:13px;
+    margin-bottom:20px;
+    letter-spacing:1px;
+}
+
+.components{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:15px;
+    height:230px;
+}
+
+.component{
+    padding:18px 20px;
+    border:1px solid #29466e;
+    border-radius:12px;
+    background:#0b162c;
+    text-align:center;
+}
+
+.component .symbol{
+    font-size:28px;
+    margin-bottom:5px;
+}
+
+.component small{
+    color:var(--muted);
+}
+
+.flow-line{
+    width:50px;
+    height:3px;
+    background:var(--cyan);
+    box-shadow:0 0 10px var(--cyan);
+}
+
+.lab-status{
+    position:absolute;
+    bottom:20px;
+    left:25px;
+    right:25px;
+    padding:12px;
+    border-radius:8px;
+    background:rgba(34,197,94,.08);
+    border:1px solid rgba(34,197,94,.2);
+    color:#7bea9d;
+    font-size:13px;
+}
+
+/* ================= CHALLENGE ================= */
+
+.challenge{
+    max-width:800px;
+    margin:auto;
+}
+
+.question{
+    font-size:20px;
+    margin-bottom:20px;
+}
+
+.options{
+    display:grid;
+    gap:12px;
+}
+
+.option{
+    padding:15px;
+    border:1px solid var(--line);
+    border-radius:10px;
+    background:#0a1428;
+    color:white;
+    cursor:pointer;
+    text-align:left;
+    transition:.2s;
+}
+
+.option:hover{
+    border-color:var(--cyan);
+    background:#0e1c35;
+}
+
+.feedback{
+    margin-top:20px;
+    min-height:25px;
+    font-weight:bold;
+}
+
+/* ================= TEAM ================= */
+
+.team-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+}
+
+.team-card{
+    text-align:center;
+    padding:25px 18px;
+    border:1px solid var(--line);
+    border-radius:18px;
+    background:linear-gradient(145deg,#0d1830,#070f20);
+}
+
+.member-photo{
+    width:110px;
+    height:110px;
+    margin:0 auto 18px;
+    border-radius:50%;
+    overflow:hidden;
+    border:2px solid var(--cyan);
+    box-shadow:0 0 25px rgba(33,212,253,.2);
+    background:#101c36;
+}
+
+.member-photo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.placeholder{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#526783;
+    font-size:32px;
+}
+
+.team-card h3{
+    font-size:17px;
+    margin-bottom:5px;
+}
+
+.role{
+    color:var(--cyan);
+    font-size:13px;
+    margin-bottom:10px;
+}
+
+.team-info{
+    color:var(--muted);
+    font-size:12px;
+}
+
+/* ================= ABOUT ================= */
+
+.about-box{
+    max-width:900px;
+    margin:auto;
+    padding:35px;
+    border-radius:22px;
+    border:1px solid var(--line);
+    background:linear-gradient(145deg,rgba(16,28,54,.75),rgba(6,13,28,.85));
+}
+
+.about-box p{
+    color:var(--muted);
+    margin-bottom:15px;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    border-top:1px solid rgba(33,212,253,.1);
+    padding:35px 0;
+    text-align:center;
+    color:#637795;
+    font-size:13px;
+}
+
+footer strong{
+    color:var(--cyan);
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:900px){
+
+    .hero-grid,
+    .lab-wrapper,
+    .virtual-lab{
+        grid-template-columns:1fr;
+    }
+
+    .cards{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .team-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .hero{
+        padding-top:130px;
+    }
+}
+
+@media(max-width:600px){
+
+    .nav-container{
+        flex-direction:column;
+        gap:10px;
+    }
+
+    .nav-links{
+        gap:12px;
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+    section{
+        padding:70px 0;
+    }
+
+    .hero h1{
+        font-size:48px;
+    }
+
+    .cards,
+    .team-grid{
+        grid-template-columns:1fr;
+    }
+
+    .circuit-box{
+        transform:scale(.85);
+    }
+
+    .components{
+        transform:scale(.8);
+    }
+}
+</style>
 </head>
-
 
 <body>
 
+<!-- ================= NAVIGATION ================= -->
 
-    <!-- =========================================================
-         NAVIGATION
-    ========================================================= -->
+<nav>
+    <div class="nav-container">
 
-    <nav>
-
-        <a href="#home" class="logo">
-
-            <div class="logo-icon">⚡</div>
-
-            Volt<span>Lab</span>
-
-        </a>
-
-        <div class="nav-links">
-
-            <a href="#home">Home</a>
-
-            <a href="#learn">Learn</a>
-
-            <a href="#lab">Virtual Lab</a>
-
-            <a href="#challenge">Challenge</a>
-
-            <a href="#team">Team</a>
-
+        <div class="logo">
+            ⚡ Volt<span>Lab</span>
         </div>
 
-    </nav>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#learn">Learn</a></li>
+            <li><a href="#ohm">Ohm's Lab</a></li>
+            <li><a href="#virtual">Virtual Lab</a></li>
+            <li><a href="#challenge">Challenge</a></li>
+            <li><a href="#team">Team</a></li>
+        </ul>
+
+    </div>
+</nav>
 
 
+<!-- ================= HERO ================= -->
 
-    <!-- =========================================================
-         HERO
-    ========================================================= -->
+<section class="hero" id="home">
 
-    <section class="hero" id="home">
+    <div class="container">
 
-        <div class="hero-content">
+        <div class="hero-grid">
 
-            <div class="hero-badge">
-                BASIC ELECTRICITY • INTERACTIVE LEARNING
-            </div>
+            <div>
 
-            <h1>
-                Where Electricity
-                <span>Comes Alive.</span>
-            </h1>
-
-            <p>
-                Welcome to VoltLab — an interactive learning space
-                where electrical concepts are not just read,
-                but explored, visualized and understood.
-            </p>
-
-            <div class="hero-buttons">
-
-                <a href="#learn" class="btn btn-primary">
-                    Start Learning →
-                </a>
-
-                <a href="#lab" class="btn btn-secondary">
-                    Enter the Lab
-                </a>
-
-            </div>
-
-        </div>
-
-
-        <!-- CIRCUIT DECORATION -->
-
-        <div class="circuit-visual">
-
-            <div class="circle"></div>
-
-            <div class="circle two"></div>
-
-            <div class="circuit-node node-top">
-                V
-            </div>
-
-            <div class="circuit-node node-right">
-                R
-            </div>
-
-            <div class="circuit-node node-bottom">
-                I
-            </div>
-
-            <div class="circuit-node node-left">
-                Ω
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =========================================================
-         FEATURES
-    ========================================================= -->
-
-    <section class="features">
-
-        <div class="section-heading">
-
-            <span class="section-tag">
-                WHY VOLTLAB?
-            </span>
-
-            <h2>
-                Learn. <span>Experiment.</span> Understand.
-            </h2>
-
-            <p>
-                VoltLab transforms basic electricity from static
-                textbook theory into an interactive digital
-                learning experience.
-            </p>
-
-        </div>
-
-
-        <div class="feature-grid">
-
-
-            <div class="feature-card">
-
-                <div class="feature-icon">
-                    ⚡
+                <div class="badge">
+                    ⚡ BASIC ELECTRICITY • INTERACTIVE LAB
                 </div>
 
-                <h3>
-                    Learn
-                </h3>
+                <h1>
+                    Where <span class="gradient-text">Electricity</span><br>
+                    Comes Alive.
+                </h1>
 
+                <p>
+                    Learn electricity by seeing it, calculating it,
+                    building it and experimenting with it.
+                    Welcome to VoltLab — an interactive virtual
+                    electrical laboratory.
+                </p>
+
+                <a href="#ohm" class="btn btn-primary">
+                    Enter the Lab →
+                </a>
+
+                <a href="#learn" class="btn btn-secondary">
+                    Start Learning
+                </a>
+
+            </div>
+
+
+            <div class="hero-circuit">
+
+                <div class="circuit-box">
+
+                    <div class="wire w1"></div>
+                    <div class="wire w2"></div>
+                    <div class="wire w3"></div>
+                    <div class="wire w4"></div>
+
+                    <div class="battery"></div>
+
+                    <div class="resistor"></div>
+                    <div class="resistor-label">RESISTOR</div>
+
+                    <div class="energy"></div>
+                    <div class="energy"></div>
+                    <div class="energy"></div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FEATURES ================= -->
+
+<section>
+
+    <div class="container">
+
+        <div class="section-title">
+            <h2>One Lab. Many Ways to Learn.</h2>
+            <p>Understand the theory, then interact with it.</p>
+        </div>
+
+        <div class="cards">
+
+            <div class="card">
+                <div class="icon">⚡</div>
+                <h3>Learn Fundamentals</h3>
                 <p>
                     Understand voltage, current, resistance,
-                    power, circuits and fundamental electrical
-                    concepts through simple explanations.
+                    power and basic circuit concepts.
                 </p>
-
             </div>
 
-
-            <div class="feature-card">
-
-                <div class="feature-icon">
-                    🔬
-                </div>
-
-                <h3>
-                    Experiment
-                </h3>
-
+            <div class="card">
+                <div class="icon">🧪</div>
+                <h3>Virtual Laboratory</h3>
                 <p>
-                    Explore virtual circuits and visualize
-                    how electrical components interact with
-                    each other.
+                    Experiment with electrical components
+                    inside an interactive virtual environment.
                 </p>
-
             </div>
 
-
-            <div class="feature-card">
-
-                <div class="feature-icon">
-                    🎯
-                </div>
-
-                <h3>
-                    Challenge
-                </h3>
-
+            <div class="card">
+                <div class="icon">🧮</div>
+                <h3>Formula Lab</h3>
                 <p>
-                    Test your understanding with circuit
-                    questions and problem-solving challenges.
+                    Use electrical formulas and instantly
+                    see how changing values affects a circuit.
                 </p>
-
             </div>
 
+            <div class="card">
+                <div class="icon">🔌</div>
+                <h3>Circuit Builder</h3>
+                <p>
+                    Build and understand circuits by connecting
+                    different electrical components.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="icon">🕵️</div>
+                <h3>Circuit Detective</h3>
+                <p>
+                    Find mistakes in circuits and develop
+                    practical troubleshooting skills.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="icon">🎯</div>
+                <h3>Challenge Mode</h3>
+                <p>
+                    Test your knowledge with interactive
+                    electricity problems.
+                </p>
+            </div>
 
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
+<!-- ================= LEARN ================= -->
 
-    <!-- =========================================================
-         LEARN
-    ========================================================= -->
+<section id="learn">
 
-    <section class="learn-section" id="learn">
+    <div class="container">
 
-        <div class="section-heading">
+        <div class="section-title">
 
-            <span class="section-tag">
-                LEARNING PATH
-            </span>
-
-            <h2>
-                Master the <span>Basics</span>
-            </h2>
+            <h2>Electricity Fundamentals</h2>
 
             <p>
-                Start from the fundamentals and gradually
-                build your understanding of electrical circuits.
+                Start with the concepts behind every electrical circuit.
             </p>
 
         </div>
 
 
-        <div class="learn-grid">
+        <div class="cards">
 
-
-            <div class="lesson">
-
-                <div class="lesson-number">
-                    01 — FUNDAMENTALS
-                </div>
-
-                <h3>
-                    Electric Charge
-                </h3>
-
+            <div class="card">
+                <div class="lesson-number">01 — FUNDAMENTAL</div>
+                <h3>Voltage</h3>
                 <p>
-                    Learn what electric charge is and how
-                    positive and negative charges behave.
+                    Voltage is the electrical potential difference
+                    that pushes charge through a circuit.
                 </p>
-
             </div>
 
-
-            <div class="lesson">
-
-                <div class="lesson-number">
-                    02 — CORE CONCEPT
-                </div>
-
-                <h3>
-                    Voltage
-                </h3>
-
+            <div class="card">
+                <div class="lesson-number">02 — FUNDAMENTAL</div>
+                <h3>Current</h3>
                 <p>
-                    Understand potential difference and
-                    why voltage drives current through a circuit.
+                    Electric current describes the rate at which
+                    charge flows through a circuit.
                 </p>
-
             </div>
 
-
-            <div class="lesson">
-
-                <div class="lesson-number">
-                    03 — CORE CONCEPT
-                </div>
-
-                <h3>
-                    Electric Current
-                </h3>
-
+            <div class="card">
+                <div class="lesson-number">03 — FUNDAMENTAL</div>
+                <h3>Resistance</h3>
                 <p>
-                    Explore the movement of electric charge
-                    and understand current direction.
+                    Resistance opposes the flow of electric current.
                 </p>
-
             </div>
 
-
-            <div class="lesson">
-
-                <div class="lesson-number">
-                    04 — CORE CONCEPT
-                </div>
-
-                <h3>
-                    Resistance
-                </h3>
-
+            <div class="card">
+                <div class="lesson-number">04 — LAW</div>
+                <h3>Ohm's Law</h3>
                 <p>
-                    Learn how resistance affects current
-                    and how resistors behave in circuits.
+                    The relationship between voltage, current
+                    and resistance is V = IR.
                 </p>
-
             </div>
 
-
-            <div class="lesson">
-
-                <div class="lesson-number">
-                    05 — CIRCUITS
-                </div>
-
-                <h3>
-                    Series & Parallel
-                </h3>
-
+            <div class="card">
+                <div class="lesson-number">05 — CIRCUITS</div>
+                <h3>Series & Parallel</h3>
                 <p>
-                    Compare series and parallel circuits
-                    and understand their electrical behavior.
+                    Learn how components behave when connected
+                    in series or parallel.
                 </p>
-
             </div>
 
-
-            <div class="lesson">
-
-                <div class="lesson-number">
-                    06 — LAWS
-                </div>
-
-                <h3>
-                    Kirchhoff's Laws
-                </h3>
-
+            <div class="card">
+                <div class="lesson-number">06 — LAWS</div>
+                <h3>KCL & KVL</h3>
                 <p>
-                    Explore KCL and KVL and understand
-                    how they are applied to electrical networks.
+                    Explore Kirchhoff's Current and Voltage Laws
+                    through practical circuits.
                 </p>
-
             </div>
-
 
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
+<!-- ================= OHM'S LAW ================= -->
 
-    <!-- =========================================================
-         FORMULA LAB
-    ========================================================= -->
+<section id="ohm" class="lab-section">
 
-    <section class="formula-section">
+    <div class="container">
 
-        <div class="section-heading">
+        <div class="section-title">
 
-            <span class="section-tag">
-                FORMULA LAB
-            </span>
-
-            <h2>
-                One Formula. <span>Three Variables.</span>
-            </h2>
-
-        </div>
-
-
-        <div class="formula-box">
-
-            <div class="formula">
-                V = IR
-            </div>
-
-            <p class="formula-explanation">
-                Ohm's Law describes the relationship between
-                voltage (V), current (I), and resistance (R).
-            </p>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =========================================================
-         VIRTUAL LAB
-    ========================================================= -->
-
-    <section class="lab-section" id="lab">
-
-        <div class="section-heading">
-
-            <span class="section-tag">
-                VIRTUAL LABORATORY
-            </span>
-
-            <h2>
-                Build. Connect. <span>Observe.</span>
-            </h2>
+            <h2>⚡ Ohm's Law Interactive Lab</h2>
 
             <p>
-                A preview of the interactive electrical
-                laboratory experience inside VoltLab.
+                Enter any two values and VoltLab calculates the third.
             </p>
 
         </div>
 
 
-        <div class="lab-container">
+        <div class="lab-wrapper">
 
-            <div class="lab-top">
+            <!-- CALCULATOR -->
 
-                <h3>
-                    Simple Circuit
-                </h3>
+            <div class="lab-panel">
+
+                <h3>Ohm's Law Calculator</h3>
+
+                <p class="lab-description">
+                    Enter any two values. Leave exactly one field empty.
+                </p>
+
+
+                <div class="input-group">
+
+                    <label>
+                        Voltage
+                        <span>V</span>
+                    </label>
+
+                    <input
+                        type="number"
+                        id="voltage"
+                        placeholder="Example: 12"
+                        step="any"
+                    >
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label>
+                        Current
+                        <span>A</span>
+                    </label>
+
+                    <input
+                        type="number"
+                        id="current"
+                        placeholder="Example: 2"
+                        step="any"
+                    >
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label>
+                        Resistance
+                        <span>Ω</span>
+                    </label>
+
+                    <input
+                        type="number"
+                        id="resistance"
+                        placeholder="Example: 6"
+                        step="any"
+                    >
+
+                </div>
+
+
+                <button
+                    class="calculate-btn"
+                    onclick="calculateOhm()"
+                >
+                    CALCULATE ⚡
+                </button>
+
+
+                <div class="result-box">
+
+                    <div class="result-label">
+                        CALCULATED RESULT
+                    </div>
+
+                    <div
+                        class="result-value"
+                        id="ohmResult"
+                    >
+                        —
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- VISUAL -->
+
+            <div class="lab-panel ohm-visual">
+
+                <h3>Live Circuit View</h3>
+
+                <div class="visual-circuit">
+
+                    <div class="v-wire v-top"></div>
+                    <div class="v-wire v-bottom"></div>
+                    <div class="v-wire v-left"></div>
+                    <div class="v-wire v-right"></div>
+
+                    <div class="v-battery"></div>
+
+                    <div class="v-resistor"></div>
+
+                    <div class="current-dot"></div>
+
+                    <div class="v-current">
+                        CURRENT FLOW →
+                    </div>
+
+                </div>
+
+
+                <div class="formula">
+                    Ohm's Law:
+                    <strong>V = I × R</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= VIRTUAL LAB ================= -->
+
+<section id="virtual">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>🧪 Virtual Electrical Lab</h2>
+
+            <p>
+                A preview of the interactive laboratory environment.
+            </p>
+
+        </div>
+
+
+        <div class="virtual-lab">
+
+            <div class="lab-screen">
+
+                <div class="screen-title">
+                    VOLTLAB / EXPERIMENT_01
+                </div>
+
+                <div class="components">
+
+                    <div class="component">
+                        <div class="symbol">🔋</div>
+                        <small>POWER SOURCE</small>
+                    </div>
+
+                    <div class="flow-line"></div>
+
+                    <div class="component">
+                        <div class="symbol">〰️</div>
+                        <small>RESISTOR</small>
+                    </div>
+
+                    <div class="flow-line"></div>
+
+                    <div class="component">
+                        <div class="symbol">💡</div>
+                        <small>LOAD</small>
+                    </div>
+
+                </div>
 
                 <div class="lab-status">
-                    ● CIRCUIT READY
+                    ● CIRCUIT STATUS: ACTIVE — ELECTRONS FLOWING
                 </div>
 
             </div>
 
 
-            <div class="circuit-board">
+            <div class="lab-panel">
 
-                <div class="component battery">
-                    🔋 Battery
-                </div>
+                <h3>What happens here?</h3>
 
-                <div class="wire wire-one"></div>
+                <p class="lab-description">
+                    A real electrical circuit needs a source,
+                    a conducting path and a load. Voltage provides
+                    the potential difference while current represents
+                    the movement of charge.
+                </p>
 
-                <div class="component resistor">
-                    Ω Resistor
-                </div>
+                <div class="card">
 
-                <div class="wire wire-two"></div>
+                    <h3>Coming Next</h3>
 
-                <div class="component load">
-                    💡 Load
+                    <p>
+                        Interactive circuit construction,
+                        series/parallel experiments and
+                        Kirchhoff's law experiments.
+                    </p>
+
                 </div>
 
             </div>
 
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
+<!-- ================= CHALLENGE ================= -->
 
-    <!-- =========================================================
-         CHALLENGE
-    ========================================================= -->
+<section id="challenge">
 
-    <section class="challenge-section" id="challenge">
+    <div class="container">
 
-        <div class="section-heading">
+        <div class="section-title">
 
-            <span class="section-tag">
-                CIRCUIT CHALLENGE
-            </span>
-
-            <h2>
-                Think Like an <span>Engineer.</span>
-            </h2>
+            <h2>🎯 Circuit Challenge</h2>
 
             <p>
-                Test your understanding by solving
-                electrical problems and circuit situations.
+                Think like an electrical engineer.
             </p>
 
         </div>
 
 
-        <div class="challenge-card">
+        <div class="challenge card">
 
-            <div class="challenge-label">
-                QUICK QUESTION
+            <div class="question">
+                A circuit has a voltage of 12 V and resistance
+                of 6 Ω. What is the current?
             </div>
 
-            <h3>
-                According to Ohm's Law, what happens to
-                current if resistance increases while voltage
-                remains constant?
-            </h3>
 
-            <p>
-                Choose the answer you think is correct.
-            </p>
+            <div class="options">
 
+                <button
+                    class="option"
+                    onclick="checkAnswer(this,false)"
+                >
+                    A. 0.5 A
+                </button>
 
-            <div class="challenge-options">
+                <button
+                    class="option"
+                    onclick="checkAnswer(this,true)"
+                >
+                    B. 2 A
+                </button>
 
-                <div class="option" onclick="checkAnswer(false)">
-                    A. Current increases
-                </div>
+                <button
+                    class="option"
+                    onclick="checkAnswer(this,false)"
+                >
+                    C. 6 A
+                </button>
 
-                <div class="option" onclick="checkAnswer(true)">
-                    B. Current decreases
-                </div>
-
-                <div class="option" onclick="checkAnswer(false)">
-                    C. Current becomes zero immediately
-                </div>
-
-                <div class="option" onclick="checkAnswer(false)">
-                    D. Voltage increases
-                </div>
+                <button
+                    class="option"
+                    onclick="checkAnswer(this,false)"
+                >
+                    D. 72 A
+                </button>
 
             </div>
 
-            <p id="answer-message"
-                style="margin-top:20px; font-weight:700;">
-            </p>
+
+            <div
+                class="feedback"
+                id="feedback"
+            ></div>
 
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
+<!-- ================= TEAM ================= -->
 
-    <!-- =========================================================
-         TEAM
-    ========================================================= -->
+<section id="team">
 
-    <section class="team-section" id="team">
+    <div class="container">
 
-        <div class="section-heading">
+        <div class="section-title">
 
-            <span class="section-tag">
-                THE PEOPLE BEHIND VOLTLAB
-            </span>
-
-            <h2>
-                Meet Our <span>Team</span>
-            </h2>
+            <h2>👨‍💻 Project Team</h2>
 
             <p>
-                VoltLab is a collaborative educational project
-                developed by a team of Computer Science &
-                Engineering students of JSTU.
+                Designed and developed as a Basic Electricity course project.
             </p>
 
         </div>
@@ -1728,452 +1441,301 @@
 
         <div class="team-grid">
 
+            <!-- TAHMID -->
 
-            <!-- =================================================
-                 TEAM MEMBER 01 — TAHMID
-            ================================================= -->
-
-            <div class="team-card founder-card">
-
-                <!--
-                    YOUR PHOTO
-
-                    Upload your photo to the GitHub repository
-                    and name it:
-
-                    tahmid.jpg
-
-                    Then it will automatically appear here.
-                -->
+            <div class="team-card">
 
                 <div class="member-photo">
 
                     <img
                         src="tahmid.jpg"
                         alt="Md. Tahmid Siddique"
-                        onerror="this.style.display='none'; this.parentElement.classList.add('photo-missing');"
                     >
 
-                    <div class="photo-fallback">
-                        TS
-                    </div>
-
                 </div>
 
+                <h3>Md. Tahmid Siddique</h3>
 
-                <div class="member-info">
+                <div class="role">
+                    Website Builder / Project Lead
+                </div>
 
-                    <span class="member-role">
-                        WEBSITE BUILDER • PROJECT LEAD
-                    </span>
-
-                    <h3>
-                        Md. Tahmid Siddique
-                    </h3>
-
-                    <p class="member-description">
-                        CSE student and the website builder of
-                        VoltLab, working on the digital design,
-                        web development and interactive
-                        presentation of the project.
-                    </p>
-
-
-                    <div class="member-details">
-
-                        <div>
-
-                            <strong>
-                                University
-                            </strong>
-
-                            <span>
-                                Jamalpur Science and Technology University (JSTU)
-                            </span>
-
-                        </div>
-
-
-                        <div>
-
-                            <strong>
-                                Department
-                            </strong>
-
-                            <span>
-                                Computer Science & Engineering (CSE)
-                            </span>
-
-                        </div>
-
-
-                        <div>
-
-                            <strong>
-                                Contact
-                            </strong>
-
-                            <span>
-                                trustinunivers@gmail.com
-                            </span>
-
-                        </div>
-
-                    </div>
-
+                <div class="team-info">
+                    Jamalpur Science and Technology University<br>
+                    Department of Computer Science & Engineering<br>
+                    trustinunivers@gmail.com
                 </div>
 
             </div>
 
 
-
-            <!-- =================================================
-                 TEAM MEMBER 02
-            ================================================= -->
+            <!-- MEMBER 2 -->
 
             <div class="team-card">
 
-                <div class="member-placeholder">
-
-                    <span>
-                        02
-                    </span>
-
+                <div class="member-photo placeholder">
+                    02
                 </div>
 
+                <h3>Team Member 02</h3>
 
-                <div class="member-info">
+                <div class="role">
+                    Team Member
+                </div>
 
-                    <span class="member-role">
-                        TEAM MEMBER
-                    </span>
-
-                    <!--
-                        LATER:
-                        Replace "Team Member 02"
-                        with the actual name.
-                    -->
-
-                    <h3>
-                        Team Member 02
-                    </h3>
-
-                    <p class="member-description">
-                        Team member information will be added
-                        after the project team is finalized.
-                    </p>
-
-
-                    <div class="member-details">
-
-                        <div>
-
-                            <strong>
-                                University
-                            </strong>
-
-                            <span>
-                                Jamalpur Science and Technology University (JSTU)
-                            </span>
-
-                        </div>
-
-
-                        <div>
-
-                            <strong>
-                                Department
-                            </strong>
-
-                            <span>
-                                Computer Science & Engineering (CSE)
-                            </span>
-
-                        </div>
-
-                    </div>
-
+                <div class="team-info">
+                    Name to be added
                 </div>
 
             </div>
 
 
-
-            <!-- =================================================
-                 TEAM MEMBER 03
-            ================================================= -->
+            <!-- MEMBER 3 -->
 
             <div class="team-card">
 
-                <div class="member-placeholder">
-
-                    <span>
-                        03
-                    </span>
-
+                <div class="member-photo placeholder">
+                    03
                 </div>
 
+                <h3>Team Member 03</h3>
 
-                <div class="member-info">
+                <div class="role">
+                    Team Member
+                </div>
 
-                    <span class="member-role">
-                        TEAM MEMBER
-                    </span>
-
-                    <!--
-                        LATER:
-                        Replace "Team Member 03"
-                        with the actual name.
-                    -->
-
-                    <h3>
-                        Team Member 03
-                    </h3>
-
-                    <p class="member-description">
-                        Team member information will be added
-                        after the project team is finalized.
-                    </p>
-
-
-                    <div class="member-details">
-
-                        <div>
-
-                            <strong>
-                                University
-                            </strong>
-
-                            <span>
-                                Jamalpur Science and Technology University (JSTU)
-                            </span>
-
-                        </div>
-
-
-                        <div>
-
-                            <strong>
-                                Department
-                            </strong>
-
-                            <span>
-                                Computer Science & Engineering (CSE)
-                            </span>
-
-                        </div>
-
-                    </div>
-
+                <div class="team-info">
+                    Name to be added
                 </div>
 
             </div>
 
 
-
-            <!-- =================================================
-                 TEAM MEMBER 04
-            ================================================= -->
+            <!-- MEMBER 4 -->
 
             <div class="team-card">
 
-                <div class="member-placeholder">
-
-                    <span>
-                        04
-                    </span>
-
+                <div class="member-photo placeholder">
+                    04
                 </div>
 
+                <h3>Team Member 04</h3>
 
-                <div class="member-info">
+                <div class="role">
+                    Team Member
+                </div>
 
-                    <span class="member-role">
-                        TEAM MEMBER
-                    </span>
-
-                    <!--
-                        LATER:
-                        Replace "Team Member 04"
-                        with the actual name.
-                    -->
-
-                    <h3>
-                        Team Member 04
-                    </h3>
-
-                    <p class="member-description">
-                        Team member information will be added
-                        after the project team is finalized.
-                    </p>
-
-
-                    <div class="member-details">
-
-                        <div>
-
-                            <strong>
-                                University
-                            </strong>
-
-                            <span>
-                                Jamalpur Science and Technology University (JSTU)
-                            </span>
-
-                        </div>
-
-
-                        <div>
-
-                            <strong>
-                                Department
-                            </strong>
-
-                            <span>
-                                Computer Science & Engineering (CSE)
-                            </span>
-
-                        </div>
-
-                    </div>
-
+                <div class="team-info">
+                    Name to be added
                 </div>
 
             </div>
-
 
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
+<!-- ================= ABOUT ================= -->
 
-    <!-- =========================================================
-         ABOUT PROJECT
-    ========================================================= -->
+<section>
 
-    <section class="about-section">
+    <div class="container">
 
-        <div class="section-heading">
+        <div class="section-title">
 
-            <span class="section-tag">
-                ABOUT THE PROJECT
-            </span>
-
-            <h2>
-                Why We Built <span>VoltLab</span>
-            </h2>
-
-            <p>
-                A student-built digital learning project
-                designed to make Basic Electricity more
-                understandable and engaging.
-            </p>
+            <h2>About VoltLab</h2>
 
         </div>
 
 
         <div class="about-box">
 
+            <p>
+                <strong>VoltLab</strong> is an interactive educational
+                website designed to make Basic Electricity easier to
+                understand through visualization, calculation and
+                experimentation.
+            </p>
 
-            <div class="about-card">
+            <p>
+                Instead of presenting electricity only as formulas
+                and theoretical notes, VoltLab aims to create a
+                virtual laboratory where students can interact with
+                electrical concepts.
+            </p>
 
-                <h3>
-                    🎓 Academic Project
-                </h3>
-
-                <p>
-                    VoltLab is developed as a Basic Electricity
-                    course project by students of the Department
-                    of Computer Science & Engineering at
-                    Jamalpur Science and Technology University.
-                </p>
-
-            </div>
-
-
-            <div class="about-card">
-
-                <h3>
-                    ⚡ Our Goal
-                </h3>
-
-                <p>
-                    Our goal is to present electrical concepts
-                    through an interactive digital environment
-                    so that students can learn concepts,
-                    visualize circuits and practice problems
-                    more effectively.
-                </p>
-
-            </div>
-
+            <p>
+                The project combines web technology, interactive
+                simulations and engineering concepts to create a
+                more engaging learning experience.
+            </p>
 
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
+<!-- ================= FOOTER ================= -->
 
-    <!-- =========================================================
-         FOOTER
-    ========================================================= -->
+<footer>
 
-    <footer>
+    <div class="container">
 
-        <div class="footer-logo">
-            Volt<span>Lab</span>
-        </div>
+        ⚡ <strong>VoltLab</strong> —
+        Where Electricity Comes Alive.
 
-        <p>
-            Where Electricity Comes Alive.
-        </p>
+        <br><br>
 
-        <div class="footer-credit">
-            Built by <span>Md. Tahmid Siddique</span> &amp; Team
-        </div>
+        Basic Electricity Course Project • JSTU CSE
 
-        <div class="footer-credit">
-            Department of Computer Science &amp; Engineering —
-            JSTU
-        </div>
+    </div>
 
-    </footer>
+</footer>
 
 
+<!-- ================= JAVASCRIPT ================= -->
 
-    <!-- =========================================================
-         JAVASCRIPT
-    ========================================================= -->
+<script>
 
-    <script>
+/* =========================================================
+   OHM'S LAW CALCULATOR
+   ========================================================= */
 
-        function checkAnswer(correct) {
+function calculateOhm(){
 
-            const message =
-                document.getElementById("answer-message");
+    const V = parseFloat(
+        document.getElementById("voltage").value
+    );
 
-            if (correct) {
+    const I = parseFloat(
+        document.getElementById("current").value
+    );
 
-                message.innerHTML =
-                    "✓ Correct! According to I = V/R, current decreases when resistance increases.";
+    const R = parseFloat(
+        document.getElementById("resistance").value
+    );
 
-                message.style.color = "#00e5ff";
+    const result =
+        document.getElementById("ohmResult");
 
-            } else {
 
-                message.innerHTML =
-                    "✕ Not quite. Think about the relationship I = V/R.";
+    let filled = 0;
 
-                message.style.color = "#ff6b6b";
+    if(!isNaN(V)) filled++;
+    if(!isNaN(I)) filled++;
+    if(!isNaN(R)) filled++;
 
-            }
 
+    if(filled !== 2){
+
+        result.innerHTML =
+            "Enter exactly 2 values";
+
+        result.style.color = "#ef4444";
+
+        return;
+    }
+
+
+    /* Find Current */
+
+    if(isNaN(I)){
+
+        if(R === 0){
+
+            result.innerHTML = "Invalid R";
+
+            return;
         }
 
-    </script>
+        const answer = V / R;
 
+        document.getElementById("current").value =
+            answer.toFixed(4);
+
+        result.innerHTML =
+            answer.toFixed(4) + " A";
+
+    }
+
+
+    /* Find Voltage */
+
+    else if(isNaN(V)){
+
+        const answer = I * R;
+
+        document.getElementById("voltage").value =
+            answer.toFixed(4);
+
+        result.innerHTML =
+            answer.toFixed(4) + " V";
+
+    }
+
+
+    /* Find Resistance */
+
+    else if(isNaN(R)){
+
+        if(I === 0){
+
+            result.innerHTML = "Invalid I";
+
+            return;
+        }
+
+        const answer = V / I;
+
+        document.getElementById("resistance").value =
+            answer.toFixed(4);
+
+        result.innerHTML =
+            answer.toFixed(4) + " Ω";
+
+    }
+
+
+    result.style.color = "#21d4fd";
+}
+
+
+/* =========================================================
+   CHALLENGE SYSTEM
+   ========================================================= */
+
+function checkAnswer(button,isCorrect){
+
+    const feedback =
+        document.getElementById("feedback");
+
+
+    if(isCorrect){
+
+        feedback.innerHTML =
+            "✓ Correct! Using I = V / R → I = 12 / 6 = 2 A.";
+
+        feedback.style.color =
+            "#22c55e";
+
+    }else{
+
+        feedback.innerHTML =
+            "✗ Not quite. Try using Ohm's Law: I = V / R.";
+
+        feedback.style.color =
+            "#ef4444";
+
+    }
+
+}
+
+</script>
 
 </body>
-
 </html>
