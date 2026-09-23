@@ -6,35 +6,12 @@
 <title>VoltLab | Where Electricity Comes Alive</title>
 
 <style>
-:root{
---bg:#050816;
---panel:#0b1429;
---panel2:#101c36;
---line:#1d3157;
---text:#eef6ff;
---muted:#91a5c5;
---cyan:#21d4fd;
---blue:#3b82f6;
---purple:#8b5cf6;
---green:#22c55e;
---orange:#f59e0b;
---red:#ef4444;
---glow:0 0 25px rgba(33,212,253,.20)
-}
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-scroll-behavior:smooth
-}
+:root{--bg:#050816;--panel:#0b1429;--panel2:#101c36;--line:#1d3157;--text:#eef6ff;--muted:#91a5c5;--cyan:#21d4fd;--blue:#3b82f6;--purple:#8b5cf6;--green:#22c55e;--orange:#f59e0b;--red:#ef4444;--glow:0 0 25px rgba(33,212,253,.20)}
+*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth}
 
 body{
 font-family:Arial,Helvetica,sans-serif;
-background:
-radial-gradient(circle at 20% 10%,rgba(33,212,253,.08),transparent 30%),
-radial-gradient(circle at 80% 30%,rgba(139,92,246,.08),transparent 30%),
-var(--bg);
+background:radial-gradient(circle at 20% 10%,rgba(33,212,253,.08),transparent 30%),radial-gradient(circle at 80% 30%,rgba(139,92,246,.08),transparent 30%),var(--bg);
 color:var(--text);
 line-height:1.6;
 overflow-x:hidden
@@ -46,9 +23,7 @@ position:fixed;
 inset:0;
 pointer-events:none;
 opacity:.18;
-background-image:
-linear-gradient(rgba(33,212,253,.05) 1px,transparent 1px),
-linear-gradient(90deg,rgba(33,212,253,.05) 1px,transparent 1px);
+background-image:linear-gradient(rgba(33,212,253,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(33,212,253,.05) 1px,transparent 1px);
 background-size:50px 50px;
 mask-image:linear-gradient(to bottom,black,transparent 85%)
 }
@@ -208,11 +183,7 @@ max-width:470px;
 height:300px;
 border:1px solid rgba(33,212,253,.18);
 border-radius:25px;
-background:linear-gradient(
-145deg,
-rgba(16,28,54,.85),
-rgba(7,14,30,.9)
-);
+background:linear-gradient(145deg,rgba(16,28,54,.85),rgba(7,14,30,.9));
 box-shadow:var(--glow);
 position:relative;
 overflow:hidden
@@ -236,13 +207,8 @@ box-shadow:0 0 15px var(--cyan);
 animation:moveEnergy 3s linear infinite
 }
 
-.energy:nth-child(2){
-animation-delay:1s
-}
-
-.energy:nth-child(3){
-animation-delay:2s
-}
+.energy:nth-child(2){animation-delay:1s}
+.energy:nth-child(3){animation-delay:2s}
 
 @keyframes moveEnergy{
 0%{left:30px;top:65px}
@@ -289,33 +255,10 @@ background:var(--cyan);
 box-shadow:0 0 8px rgba(33,212,253,.4)
 }
 
-.w1{
-width:280px;
-height:3px;
-left:82px;
-top:65px
-}
-
-.w2{
-width:280px;
-height:3px;
-left:82px;
-top:230px
-}
-
-.w3{
-width:3px;
-height:165px;
-left:82px;
-top:65px
-}
-
-.w4{
-width:3px;
-height:165px;
-right:65px;
-top:65px
-}
+.w1{width:280px;height:3px;left:82px;top:65px}
+.w2{width:280px;height:3px;left:82px;top:230px}
+.w3{width:3px;height:165px;left:82px;top:65px}
+.w4{width:3px;height:165px;right:65px;top:65px}
 
 .cards{
 display:grid;
@@ -323,16 +266,8 @@ grid-template-columns:repeat(3,1fr);
 gap:20px
 }
 
-.card,
-.lab-panel,
-.law-card,
-.about-box,
-.team-card{
-background:linear-gradient(
-145deg,
-rgba(16,28,54,.88),
-rgba(8,16,32,.94)
-);
+.card,.lab-panel,.law-card,.about-box,.team-card{
+background:linear-gradient(145deg,rgba(16,28,54,.88),rgba(8,16,32,.94));
 border:1px solid var(--line);
 border-radius:18px
 }
@@ -342,13 +277,10 @@ padding:25px;
 transition:.3s
 }
 
-.card:hover,
-.team-card:hover{
+.card:hover,.team-card:hover{
 transform:translateY(-5px);
 border-color:rgba(33,212,253,.55);
-box-shadow:
-0 15px 40px rgba(0,0,0,.3),
-0 0 25px rgba(33,212,253,.08)
+box-shadow:0 15px 40px rgba(0,0,0,.3),0 0 25px rgba(33,212,253,.08)
 }
 
 .icon{
@@ -364,12 +296,9 @@ font-size:25px;
 margin-bottom:18px
 }
 
-.card h3{
-margin-bottom:9px
-}
+.card h3{margin-bottom:9px}
 
-.card p,
-.about-box p{
+.card p,.about-box p{
 color:var(--muted);
 font-size:14px
 }
@@ -382,13 +311,7 @@ font-weight:bold
 }
 
 .lab-section{
-background:
-linear-gradient(
-180deg,
-transparent,
-rgba(33,212,253,.025),
-transparent
-)
+background:linear-gradient(180deg,transparent,rgba(33,212,253,.025),transparent)
 }
 
 .lab-wrapper{
@@ -402,8 +325,7 @@ padding:30px;
 box-shadow:var(--glow)
 }
 
-.lab-panel h3,
-.law-card h3{
+.lab-panel h3,.law-card h3{
 font-size:22px;
 margin-bottom:8px
 }
@@ -455,11 +377,7 @@ width:100%;
 border:none;
 padding:14px;
 border-radius:10px;
-background:linear-gradient(
-90deg,
-var(--cyan),
-var(--blue)
-);
+background:linear-gradient(90deg,var(--cyan),var(--blue));
 color:#03101c;
 font-weight:bold;
 cursor:pointer;
@@ -641,18 +559,14 @@ color:var(--muted);
 font-size:14px
 }
 
+.explain-box strong{color:#fff}
+
 .circuit-stage{
 position:relative;
 min-height:260px;
 border:1px solid #1b3154;
 border-radius:18px;
-background:
-radial-gradient(
-circle at center,
-rgba(33,212,253,.06),
-transparent 58%
-),
-#030914;
+background:radial-gradient(circle at center,rgba(33,212,253,.06),transparent 58%),#030914;
 overflow:hidden;
 padding:25px
 }
@@ -700,156 +614,59 @@ font-weight:bold;
 background:#081126
 }
 
-/* SERIES */
+.series .sw1{left:7%;top:85px;width:16%;height:3px}
+.series .sw2{left:23%;top:85px;width:9%;height:3px}
+.series .sw3{left:41%;top:85px;width:8%;height:3px}
+.series .sw4{left:57%;top:85px;width:8%;height:3px}
+.series .sw5{left:73%;top:85px;width:9%;height:3px}
+.series .sw6{left:84%;top:85px;width:9%;height:3px}
+.series .sr1{left:31%;top:68px}
+.series .sr2{left:48%;top:68px}
+.series .sr3{left:65%;top:68px}
+.series .sn1{left:6%;top:80px}
+.series .sn2{right:6%;top:80px}
 
-.series .sw1{
-left:7%;
-top:85px;
-width:16%;
-height:3px
-}
-
-.series .sw2{
-left:23%;
-top:85px;
-width:9%;
-height:3px
-}
-
-.series .sw3{
-left:41%;
-top:85px;
-width:8%;
-height:3px
-}
-
-.series .sw4{
-left:57%;
-top:85px;
-width:8%;
-height:3px
-}
-
-.series .sw5{
-left:73%;
-top:85px;
-width:9%;
-height:3px
-}
-
-.series .sw6{
-left:84%;
-top:85px;
-width:9%;
-height:3px
-}
-
-.series .sr1{
-left:31%;
-top:68px
-}
-
-.series .sr2{
-left:48%;
-top:68px
-}
-
-.series .sr3{
-left:65%;
-top:68px
-}
-
-.series .sn1{
-left:6%;
-top:80px
-}
-
-.series .sn2{
-right:6%;
-top:80px
-}
-
-/* PARALLEL */
-
-.parallel .pwtop,
-.parallel .pwbottom{
+.parallel .pwtop,.parallel .pwbottom{
 left:18%;
 width:64%;
 height:3px
 }
 
-.parallel .pwtop{
-top:28px
-}
+.parallel .pwtop{top:28px}
+.parallel .pwbottom{top:172px}
 
-.parallel .pwbottom{
-top:172px
-}
-
-.parallel .pwl,
-.parallel .pwr{
+.parallel .pwl,.parallel .pwr{
 top:28px;
 width:3px;
 height:144px
 }
 
-.parallel .pwl{
-left:18%
-}
+.parallel .pwl{left:18%}
+.parallel .pwr{right:18%}
 
-.parallel .pwr{
-right:18%
-}
+.parallel .pr1{left:42%;top:12px}
+.parallel .pr2{left:42%;top:70px}
+.parallel .pr3{left:42%;top:128px}
 
-.parallel .pr1{
-left:42%;
-top:12px
-}
-
-.parallel .pr2{
-left:42%;
-top:70px
-}
-
-.parallel .pr3{
-left:42%;
-top:128px
-}
-
-.parallel .pn1{
-left:17%;
-top:23px
-}
-
-.parallel .pn2{
-right:17%;
-top:23px
-}
-
-.parallel .pn3{
-left:17%;
-top:167px
-}
-
-.parallel .pn4{
-right:17%;
-top:167px
-}
+.parallel .pn1{left:17%;top:22px}
+.parallel .pn2{left:17%;top:166px}
+.parallel .pn3{right:17%;top:22px}
+.parallel .pn4{right:17%;top:166px}
 
 .flow-dot{
 position:absolute;
-width:7px;
-height:7px;
+width:8px;
+height:8px;
 border-radius:50%;
-background:var(--cyan);
-box-shadow:0 0 12px var(--cyan);
+background:var(--green);
+box-shadow:0 0 12px var(--green);
 animation:flow 1.8s linear infinite
 }
 
 @keyframes flow{
-0%{opacity:.15;transform:scale(.7)}
-50%{opacity:1;transform:scale(1.2)}
-100%{opacity:.15;transform:scale(.7)}
+0%{transform:translateX(0);opacity:.3}
+50%{opacity:1}
+100%{transform:translateX(80px);opacity:.3}
 }
 
 .metric-grid{
@@ -880,8 +697,6 @@ font-size:19px;
 margin-top:4px
 }
 
-/* KCL / KVL */
-
 .kirch-grid{
 display:grid;
 grid-template-columns:1fr 1fr;
@@ -899,8 +714,7 @@ font-size:14px;
 margin-bottom:18px
 }
 
-.node-diagram,
-.loop-diagram{
+.node-diagram,.loop-diagram{
 height:150px;
 border:1px solid #1b3154;
 border-radius:16px;
@@ -962,28 +776,12 @@ color:var(--muted);
 font-size:12px
 }
 
-.ain{
-left:8%;
-top:52px
-}
+.ain{left:8%;top:52px}
+.aout{right:8%;top:52px}
+.ain2{left:53%;top:12px}
+.aout2{left:53%;bottom:8px}
 
-.aout{
-right:8%;
-top:52px
-}
-
-.ain2{
-left:53%;
-top:12px
-}
-
-.aout2{
-left:53%;
-bottom:8px
-}
-
-.kcl-status,
-.kvl-status{
+.kcl-status,.kvl-status{
 margin-top:14px;
 font-size:13px;
 min-height:20px
@@ -1021,8 +819,6 @@ bottom:10px;
 color:var(--green);
 font-size:12px
 }
-
-/* LED */
 
 .led-stat-grid{
 display:grid;
@@ -1091,8 +887,6 @@ color:var(--muted);
 letter-spacing:.5px
 }
 
-/* VIRTUAL LAB */
-
 .virtual-lab{
 display:grid;
 grid-template-columns:1.4fr .9fr;
@@ -1157,8 +951,6 @@ background:rgba(34,197,94,.06);
 color:#6ee7a0
 }
 
-/* CHALLENGE */
-
 .challenge{
 max-width:850px;
 margin:auto
@@ -1191,8 +983,6 @@ margin-top:18px;
 font-weight:bold;
 min-height:24px
 }
-
-/* TEAM */
 
 .team-grid{
 display:grid;
@@ -1265,109 +1055,475 @@ footer strong{
 color:#fff
 }
 
-@media(max-width:900px){
-
-.hero-grid,
-.lab-wrapper,
-.kirch-grid,
-.virtual-lab{
-grid-template-columns:1fr
+.builder-layout{
+display:grid;
+grid-template-columns:220px 1fr;
+gap:22px
 }
 
+.builder-palette,.builder-workbench{
+background:linear-gradient(145deg,rgba(16,28,54,.88),rgba(8,16,32,.94));
+border:1px solid var(--line);
+border-radius:18px;
+box-shadow:var(--glow)
+}
+
+.builder-palette{
+padding:20px
+}
+
+.builder-palette h3,.builder-workbench h3{
+margin-bottom:8px
+}
+
+.palette-note{
+color:var(--muted);
+font-size:13px;
+margin-bottom:16px
+}
+
+.palette-item{
+padding:13px;
+margin:10px 0;
+border:1px solid #29466e;
+border-radius:12px;
+background:#071126;
+cursor:grab;
+display:flex;
+align-items:center;
+gap:10px;
+color:#dbeafe;
+transition:.25s
+}
+
+.palette-item:hover{
+border-color:var(--cyan);
+transform:translateX(3px);
+box-shadow:0 0 18px rgba(33,212,253,.1)
+}
+
+.palette-item:active{
+cursor:grabbing
+}
+
+.palette-icon{
+font-size:22px
+}
+
+.builder-workbench{
+padding:20px
+}
+
+.builder-toolbar{
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+margin-bottom:14px
+}
+
+.builder-btn{
+border:1px solid #29466e;
+background:#071126;
+color:#cbd8ea;
+padding:10px 14px;
+border-radius:10px;
+cursor:pointer;
+font-weight:bold
+}
+
+.builder-btn.primary{
+background:linear-gradient(90deg,var(--cyan),var(--blue));
+color:#03101c;
+border:none
+}
+
+.builder-btn.danger{
+border-color:rgba(239,68,68,.4);
+color:#fecaca
+}
+
+.builder-status{
+margin-left:auto;
+color:var(--cyan);
+font-size:13px;
+align-self:center
+}
+
+.builder-board{
+height:430px;
+position:relative;
+border:1px dashed rgba(33,212,253,.28);
+border-radius:16px;
+background:radial-gradient(circle at center,rgba(33,212,253,.055),transparent 58%),#030914;
+overflow:hidden
+}
+
+.builder-board.drag-over{
+border-color:var(--cyan);
+box-shadow:inset 0 0 35px rgba(33,212,253,.08)
+}
+
+.builder-grid{
+position:absolute;
+inset:0;
+background-image:linear-gradient(rgba(33,212,253,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(33,212,253,.045) 1px,transparent 1px);
+background-size:28px 28px;
+pointer-events:none
+}
+
+.builder-wires{
+position:absolute;
+inset:0;
+width:100%;
+height:100%;
+pointer-events:none
+}
+
+.builder-wire{
+stroke:var(--cyan);
+stroke-width:3;
+filter:drop-shadow(0 0 5px rgba(33,212,253,.65))
+}
+
+.builder-component{
+position:absolute;
+width:120px;
+min-height:76px;
+border:1px solid #36547e;
+border-radius:14px;
+background:linear-gradient(145deg,#0d1b35,#071126);
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+cursor:move;
+user-select:none;
+box-shadow:0 8px 25px rgba(0,0,0,.25);
+z-index:5
+}
+
+.builder-component.selected{
+border-color:var(--cyan);
+box-shadow:0 0 22px rgba(33,212,253,.22)
+}
+
+.builder-component .bc-icon{
+font-size:25px;
+line-height:1
+}
+
+.builder-component .bc-name{
+font-size:12px;
+color:#dbeafe;
+margin-top:5px
+}
+
+.builder-port{
+position:absolute;
+width:13px;
+height:13px;
+border-radius:50%;
+background:#0a1529;
+border:2px solid var(--cyan);
+top:50%;
+transform:translateY(-50%);
+cursor:crosshair;
+z-index:8
+}
+
+.builder-port.left{left:-7px}
+.builder-port.right{right:-7px}
+
+.builder-port.active{
+background:var(--cyan);
+box-shadow:0 0 15px var(--cyan)
+}
+
+.builder-properties{
+margin-top:16px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px
+}
+
+.property-panel{
+padding:17px;
+border:1px solid #1b3154;
+border-radius:14px;
+background:rgba(3,9,20,.75)
+}
+
+.property-panel h4{
+margin-bottom:8px
+}
+
+.property-panel p{
+color:var(--muted);
+font-size:13px
+}
+
+.builder-input{
+width:100%;
+margin-top:10px;
+padding:11px;
+border-radius:9px;
+border:1px solid #22385f;
+background:#060d1c;
+color:#fff;
+outline:none
+}
+
+.builder-input:focus{
+border-color:var(--cyan)
+}
+
+.builder-results{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:12px;
+margin-top:16px
+}
+
+.builder-metric{
+padding:14px;
+border:1px solid #1b3154;
+border-radius:12px;
+background:rgba(33,212,253,.035);
+text-align:center
+}
+
+.builder-metric small{
+display:block;
+color:var(--muted);
+font-size:11px
+}
+
+.builder-metric strong{
+display:block;
+color:var(--cyan);
+font-size:20px;
+margin-top:3px
+}
+
+.builder-help{
+margin-top:14px;
+color:var(--muted);
+font-size:13px
+}
+
+.switch-state{
+color:var(--green);
+font-weight:bold
+}
+
+.switch-state.off{
+color:var(--red)
+}
+
+.builder-modal{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.72);
+backdrop-filter:blur(8px);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:2000;
+padding:20px
+}
+
+.builder-modal.open{
+display:flex
+}
+
+.builder-modal-card{
+max-width:700px;
+width:100%;
+max-height:85vh;
+overflow:auto;
+background:linear-gradient(145deg,#101c36,#070e1e);
+border:1px solid var(--cyan);
+border-radius:20px;
+padding:28px;
+box-shadow:0 0 50px rgba(33,212,253,.18)
+}
+
+.builder-modal-card h2{
+margin-bottom:12px
+}
+
+.builder-modal-card p{
+color:var(--muted);
+margin:10px 0
+}
+
+.bio-link{
+background:linear-gradient(90deg,var(--cyan),var(--blue),var(--green));
+-webkit-background-clip:text;
+color:transparent;
+font-weight:800;
+text-decoration:none
+}
+
+.bio-link:hover{
+text-shadow:0 0 14px rgba(33,212,253,.45)
+}
+
+@media(max-width:900px){
+.hero-grid,.lab-wrapper,.kirch-grid,.virtual-lab,.builder-layout{
+grid-template-columns:1fr
+}
 .cards{
 grid-template-columns:1fr 1fr
 }
-
 .team-grid{
 grid-template-columns:1fr 1fr
 }
-
 .nav-links{
 gap:12px
 }
-
 .nav-container{
 align-items:flex-start
 }
-
 .components{
 margin:55px 0
 }
-
 .flow-line{
 width:30px
 }
-
+.builder-properties{
+grid-template-columns:1fr
+}
 }
 
 @media(max-width:600px){
-
 section{
 padding:75px 0
 }
-
 .container{
 padding:0 16px
 }
-
 .section-title h2{
 font-size:30px
 }
-
-.cards,
-.team-grid,
-.options{
+.cards,.team-grid,.options{
 grid-template-columns:1fr
 }
-
 .hero-grid{
 gap:25px
 }
-
 .hero h1{
 font-size:48px
 }
-
 .nav-container{
 flex-direction:column;
 gap:10px
 }
-
 .nav-links{
 font-size:12px;
 gap:9px
 }
-
-.lab-panel,
-.law-card,
-.team-card{
+.lab-panel,.law-card,.team-card{
 padding:20px
 }
-
-.metric-grid,
-.led-stat-grid{
+.metric-grid,.led-stat-grid,.builder-results{
 grid-template-columns:1fr
 }
-
 .components{
 gap:7px
 }
-
 .component{
 width:90px;
 height:100px
 }
-
 .flow-line{
 width:18px
 }
-
 .screen-title{
 font-size:12px
 }
+.builder-board{
+height:520px
+}
+.builder-component{
+width:105px
+}
+.builder-toolbar{
+flex-direction:column
+}
+.builder-status{
+margin-left:0
+}
+}
 
+</style>
+
+<style id="voltlab-telemetry-style">
+.telemetry{
+position:fixed;
+right:18px;
+bottom:18px;
+z-index:900;
+background:rgba(5,8,22,.88);
+backdrop-filter:blur(14px);
+border:1px solid rgba(33,212,253,.25);
+border-radius:14px;
+padding:10px 13px;
+box-shadow:0 0 25px rgba(33,212,253,.10);
+font-size:11px;
+color:#91a5c5;
+min-width:180px
+}
+
+.telemetry-top{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:12px
+}
+
+.telemetry-dot{
+width:7px;
+height:7px;
+border-radius:50%;
+background:var(--green);
+box-shadow:0 0 10px var(--green);
+display:inline-block;
+margin-right:6px
+}
+
+.telemetry strong{
+color:#eef6ff
+}
+
+.telemetry-bar{
+height:4px;
+background:#13233f;
+border-radius:10px;
+margin-top:8px;
+overflow:hidden
+}
+
+.telemetry-fill{
+height:100%;
+width:35%;
+background:linear-gradient(90deg,var(--cyan),var(--blue),var(--purple));
+border-radius:10px;
+transition:width .5s ease
+}
+
+@media(max-width:700px){
+.telemetry{
+right:10px;
+bottom:10px;
+min-width:155px
+}
+.telemetry{
+font-size:10px
+}
 }
 </style>
+
 </head>
 
 <body>
@@ -1375,9 +1531,7 @@ font-size:12px
 <nav>
 <div class="nav-container">
 
-<div class="logo">
-⚡ Volt<span>Lab</span>
-</div>
+<div class="logo">⚡ Volt<span>Lab</span></div>
 
 <ul class="nav-links">
 <li><a href="#home">Home</a></li>
@@ -1386,6 +1540,7 @@ font-size:12px
 <li><a href="#series-parallel">Series/Parallel</a></li>
 <li><a href="#kcl-kvl">KCL/KVL</a></li>
 <li><a href="#led-sim">LED Brightness</a></li>
+<li><a href="#builder">Circuit Builder</a></li>
 <li><a href="#virtual">Virtual Lab</a></li>
 <li><a href="#challenge">Challenge</a></li>
 <li><a href="#team">Team</a></li>
@@ -1412,8 +1567,7 @@ Where <span class="gradient-text">Electricity</span> Comes Alive.
 </h1>
 
 <p>
-Learn electrical concepts through interactive calculations,
-visual circuits, experiments and challenges — not just static notes.
+Learn electrical concepts through interactive calculations, visual circuits, experiments and challenges — not just static notes.
 </p>
 
 <a href="#learn" class="btn btn-primary">
@@ -1448,6 +1602,7 @@ Open Lab
 </div>
 
 </div>
+
 </div>
 
 </section>
@@ -1481,8 +1636,7 @@ Build your electrical foundation before entering the laboratory.
 <h3>Voltage</h3>
 
 <p>
-Understand potential difference and how voltage drives current
-through a circuit.
+Understand potential difference and how voltage drives current through a circuit.
 </p>
 
 </div>
@@ -1499,8 +1653,7 @@ through a circuit.
 <h3>Current</h3>
 
 <p>
-Learn how electric charge moves and how current is measured
-in amperes.
+Learn how electric charge moves and how current is measured in amperes.
 </p>
 
 </div>
@@ -1517,8 +1670,7 @@ in amperes.
 <h3>Resistance</h3>
 
 <p>
-Explore how resistance opposes current and affects circuit
-behaviour.
+Explore how resistance opposes current and affects circuit behaviour.
 </p>
 
 </div>
@@ -1569,13 +1721,13 @@ Learn how components behave when connected in series or parallel.
 <h3>KCL &amp; KVL</h3>
 
 <p>
-Explore Kirchhoff's Current and Voltage Laws through practical
-circuits.
+Explore Kirchhoff's Current and Voltage Laws through practical circuits.
 </p>
 
 </div>
 
 </div>
+
 </div>
 
 </section>
@@ -1597,6 +1749,7 @@ Enter any two values and VoltLab calculates the missing quantity.
 
 
 <div class="lab-wrapper">
+
 
 <div class="lab-panel">
 
@@ -1655,10 +1808,7 @@ step="any"
 </div>
 
 
-<button
-class="calculate-btn"
-onclick="calculateOhm()"
->
+<button class="calculate-btn" onclick="calculateOhm()">
 CALCULATE ⚡
 </button>
 
@@ -1669,10 +1819,7 @@ CALCULATE ⚡
 CALCULATED RESULT
 </div>
 
-<div
-class="result-value"
-id="ohmResult"
->
+<div class="result-value" id="ohmResult">
 —
 </div>
 
@@ -1703,10 +1850,8 @@ CURRENT FLOW →
 
 </div>
 
-
 <div class="formula">
-Ohm's Law:
-<strong>V = I × R</strong>
+Ohm's Law: <strong>V = I × R</strong>
 </div>
 
 </div>
@@ -1724,9 +1869,7 @@ Ohm's Law:
 
 <div class="section-title">
 
-<h2>
-🔌 Series &amp; Parallel Circuit Lab
-</h2>
+<h2>🔌 Series &amp; Parallel Circuit Lab</h2>
 
 <p>
 Choose a topology, enter your own values and analyze the circuit.
@@ -1740,9 +1883,7 @@ Choose a topology, enter your own values and analyze the circuit.
 
 <div class="lab-panel">
 
-<h3>
-Circuit Configuration
-</h3>
+<h3>Circuit Configuration</h3>
 
 <p class="lab-description">
 No values are pre-filled. The examples inside the fields are only guides.
@@ -1754,16 +1895,14 @@ No values are pre-filled. The examples inside the fields are only guides.
 <button
 class="mode-btn active"
 id="seriesMode"
-onclick="setCircuitMode('series')"
->
+onclick="setCircuitMode('series')">
 SERIES
 </button>
 
 <button
 class="mode-btn"
 id="parallelMode"
-onclick="setCircuitMode('parallel')"
->
+onclick="setCircuitMode('parallel')">
 PARALLEL
 </button>
 
@@ -1840,16 +1979,12 @@ step="any"
 
 <button
 class="calculate-btn"
-onclick="calculateSeriesParallel()"
->
+onclick="calculateSeriesParallel()">
 ANALYZE CIRCUIT ⚡
 </button>
 
 
-<div
-class="explain-box"
-id="spFormula"
->
+<div class="explain-box" id="spFormula">
 Enter your values and analyze the circuit to see the calculation.
 </div>
 
@@ -1858,25 +1993,19 @@ Enter your values and analyze the circuit to see the calculation.
 
 <div class="lab-panel">
 
-<h3>
-Live Circuit Analysis
-</h3>
-
+<h3>Live Circuit Analysis</h3>
 
 <div class="circuit-stage">
 
 <div
 class="stage-label"
-id="spStageLabel"
->
+id="spStageLabel">
 SERIES TOPOLOGY • READY
 </div>
 
-
 <div
 class="circuit-drawing series"
-id="circuitDrawing"
->
+id="circuitDrawing">
 </div>
 
 </div>
@@ -1927,10 +2056,8 @@ TOTAL POWER
 
 <div
 class="explain-box"
-id="spExplanation"
->
-Choose Series or Parallel, enter the values,
-then analyze the circuit.
+id="spExplanation">
+Choose Series or Parallel, enter the values, then analyze the circuit.
 </div>
 
 </div>
@@ -1948,9 +2075,7 @@ then analyze the circuit.
 
 <div class="section-title">
 
-<h2>
-⚖️ Kirchhoff's Laws Lab
-</h2>
+<h2>⚖️ Kirchhoff's Laws Lab</h2>
 
 <p>
 Use a node and a closed loop to see why KCL and KVL work.
@@ -1961,8 +2086,6 @@ Use a node and a closed loop to see why KCL and KVL work.
 
 <div class="kirch-grid">
 
-
-<!-- KCL -->
 
 <div class="law-card">
 
@@ -2053,8 +2176,7 @@ step="any"
 
 <button
 class="calculate-btn"
-onclick="calculateKCL()"
->
+onclick="calculateKCL()">
 SOLVE NODE ⚡
 </button>
 
@@ -2067,8 +2189,7 @@ REQUIRED OUTGOING CURRENT I₄
 
 <div
 class="result-value"
-id="kclResult"
->
+id="kclResult">
 —
 </div>
 
@@ -2077,14 +2198,11 @@ id="kclResult"
 
 <div
 class="kcl-status"
-id="kclStatus"
->
+id="kclStatus">
 </div>
 
 </div>
 
-
-<!-- KVL -->
 
 <div class="law-card">
 
@@ -2164,8 +2282,7 @@ step="any"
 
 <button
 class="calculate-btn"
-onclick="calculateKVL()"
->
+onclick="calculateKVL()">
 SOLVE LOOP ⚡
 </button>
 
@@ -2178,8 +2295,7 @@ REMAINING VOLTAGE DROP V₃
 
 <div
 class="result-value"
-id="kvlResult"
->
+id="kvlResult">
 —
 </div>
 
@@ -2188,8 +2304,7 @@ id="kvlResult"
 
 <div
 class="kvl-status"
-id="kvlStatus"
->
+id="kvlStatus">
 </div>
 
 </div>
@@ -2223,23 +2338,17 @@ Adjust voltage and resistance to see current, power and visual brightness respon
 
 <div class="lab-panel">
 
-<h3>
-LED Circuit Controls
-</h3>
+<h3>LED Circuit Controls</h3>
 
 <p class="lab-description">
-This educational model uses a simplified LED forward-voltage assumption
-to demonstrate current limiting.
+This educational model uses a simplified LED forward-voltage assumption to demonstrate current limiting.
 </p>
 
 
 <div class="input-group">
 
 <label>
-Supply Voltage
-<span id="ledVoltVal">
-5.0 V
-</span>
+Supply Voltage <span id="ledVoltVal">5.0 V</span>
 </label>
 
 <input
@@ -2258,10 +2367,7 @@ oninput="updateLED()"
 <div class="input-group">
 
 <label>
-Current-Limiting Resistor
-<span id="ledResVal">
-220 Ω
-</span>
+Current-Limiting Resistor <span id="ledResVal">220 Ω</span>
 </label>
 
 <input
@@ -2281,11 +2387,8 @@ oninput="updateLED()"
 
 Model:
 V<sub>F</sub> ≈ 2.0 V.
-
 Approximate current is
-
 I ≈ (V − V<sub>F</sub>) / R
-
 when V &gt; V<sub>F</sub>.
 
 </div>
@@ -2294,41 +2397,18 @@ when V &gt; V<sub>F</sub>.
 <div class="led-stat-grid">
 
 <div class="led-stat">
-
-<small>
-LED CURRENT
-</small>
-
-<strong id="ledCurrent">
-—
-</strong>
-
+<small>LED CURRENT</small>
+<strong id="ledCurrent">—</strong>
 </div>
 
-
 <div class="led-stat">
-
-<small>
-LED POWER
-</small>
-
-<strong id="ledPower">
-—
-</strong>
-
+<small>LED POWER</small>
+<strong id="ledPower">—</strong>
 </div>
 
-
 <div class="led-stat">
-
-<small>
-RESISTOR POWER
-</small>
-
-<strong id="ledResPower">
-—
-</strong>
-
+<small>RESISTOR POWER</small>
+<strong id="ledResPower">—</strong>
 </div>
 
 </div>
@@ -2338,28 +2418,260 @@ RESISTOR POWER
 
 <div class="lab-panel led-box">
 
-<h3>
-Visual Response
-</h3>
+<h3>Visual Response</h3>
 
 <div class="led-stage">
 
 <div
 class="led-glow"
-id="ledBulb"
->
+id="ledBulb">
 </div>
 
 <div class="led-base"></div>
 
 </div>
 
-
 <div
 class="led-status"
-id="ledStatus"
->
+id="ledStatus">
 READY
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section id="builder" class="lab-section">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>
+🧩 Drag &amp; Drop Circuit Builder
+</h2>
+
+<p>
+Build your own circuit, connect components and run a live electrical check.
+</p>
+
+</div>
+
+
+<div class="builder-layout">
+
+
+<div class="builder-palette">
+
+<h3>Component Palette</h3>
+
+<p class="palette-note">
+Drag a component onto the workbench. Nothing is pre-calculated.
+</p>
+
+
+<div
+class="palette-item"
+draggable="true"
+data-type="battery">
+
+<span class="palette-icon">🔋</span>
+<span>Battery</span>
+
+</div>
+
+
+<div
+class="palette-item"
+draggable="true"
+data-type="resistor">
+
+<span class="palette-icon">〰️</span>
+<span>Resistor</span>
+
+</div>
+
+
+<div
+class="palette-item"
+draggable="true"
+data-type="lamp">
+
+<span class="palette-icon">💡</span>
+<span>Lamp / Load</span>
+
+</div>
+
+
+<div
+class="palette-item"
+draggable="true"
+data-type="switch">
+
+<span class="palette-icon">⏻</span>
+<span>Switch</span>
+
+</div>
+
+
+<div class="builder-help">
+
+Tip: connect two ports by clicking them one after another. Drag placed components to reposition them.
+
+</div>
+
+</div>
+
+
+<div class="builder-workbench">
+
+<div class="builder-toolbar">
+
+<button
+class="builder-btn primary"
+onclick="runBuilderSimulation()">
+RUN CIRCUIT ⚡
+</button>
+
+<button
+class="builder-btn"
+onclick="toggleBuilderSwitch()">
+TOGGLE SWITCH
+</button>
+
+<button
+class="builder-btn danger"
+onclick="clearBuilder()">
+CLEAR BOARD
+</button>
+
+<span
+class="builder-status"
+id="builderStatus">
+READY • DROP COMPONENTS TO BEGIN
+</span>
+
+</div>
+
+
+<div
+class="builder-board"
+id="builderBoard">
+
+<div class="builder-grid"></div>
+
+<svg
+class="builder-wires"
+id="builderWires">
+</svg>
+
+</div>
+
+
+<div class="builder-properties">
+
+
+<div class="property-panel">
+
+<h4>
+Selected Component
+</h4>
+
+<p id="selectedComponentText">
+Select a placed component to edit its value.
+</p>
+
+<input
+class="builder-input"
+id="builderValue"
+type="number"
+step="any"
+placeholder="Enter value after selecting a component"
+style="display:none"
+>
+
+<button
+class="builder-btn"
+id="saveBuilderValue"
+onclick="saveBuilderValue()"
+style="display:none;margin-top:10px">
+SAVE VALUE
+</button>
+
+</div>
+
+
+<div class="property-panel">
+
+<h4>
+Simulation Logic
+</h4>
+
+<p>
+For this learning model, a closed path with a battery, at least one resistor and a load is required. Resistors are treated as a series chain for the calculation.
+</p>
+
+<div
+id="builderSwitchText"
+style="margin-top:8px">
+
+Switch:
+<span class="switch-state off">
+OFF
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="builder-results">
+
+<div class="builder-metric">
+
+<small>
+TOTAL RESISTANCE
+</small>
+
+<strong id="builderResistance">
+—
+</strong>
+
+</div>
+
+
+<div class="builder-metric">
+
+<small>
+CIRCUIT CURRENT
+</small>
+
+<strong id="builderCurrent">
+—
+</strong>
+
+</div>
+
+
+<div class="builder-metric">
+
+<small>
+CIRCUIT POWER
+</small>
+
+<strong id="builderPower">
+—
+</strong>
+
+</div>
+
 </div>
 
 </div>
@@ -2402,9 +2714,7 @@ VOLTLAB / EXPERIMENT_01
 
 <div class="component">
 
-<div class="symbol">
-🔋
-</div>
+<div class="symbol">🔋</div>
 
 <small>
 POWER SOURCE
@@ -2418,9 +2728,7 @@ POWER SOURCE
 
 <div class="component">
 
-<div class="symbol">
-〰️
-</div>
+<div class="symbol">〰️</div>
 
 <small>
 RESISTOR
@@ -2434,9 +2742,7 @@ RESISTOR
 
 <div class="component">
 
-<div class="symbol">
-💡
-</div>
+<div class="symbol">💡</div>
 
 <small>
 LOAD
@@ -2461,13 +2767,7 @@ What happens here?
 </h3>
 
 <p class="lab-description">
-
-A real electrical circuit needs a source,
-a conducting path and a load.
-
-Voltage provides the potential difference while
-current represents the movement of charge.
-
+A real electrical circuit needs a source, a conducting path and a load. Voltage provides the potential difference while current represents the movement of charge.
 </p>
 
 
@@ -2478,9 +2778,7 @@ Coming Next
 </h3>
 
 <p>
-Interactive circuit construction,
-component connections and practical
-troubleshooting experiments.
+Interactive circuit construction, component connections and practical troubleshooting experiments.
 </p>
 
 </div>
@@ -2515,9 +2813,7 @@ Think like an electrical engineer.
 
 <div class="question">
 
-A circuit has a voltage of 12 V
-and resistance of 6 Ω.
-What is the current?
+A circuit has a voltage of 12 V and resistance of 6 Ω. What is the current?
 
 </div>
 
@@ -2526,32 +2822,25 @@ What is the current?
 
 <button
 class="option"
-onclick="checkAnswer(this,false)"
->
+onclick="checkAnswer(this,false)">
 A. 0.5 A
 </button>
 
-
 <button
 class="option"
-onclick="checkAnswer(this,true)"
->
+onclick="checkAnswer(this,true)">
 B. 2 A
 </button>
 
-
 <button
 class="option"
-onclick="checkAnswer(this,false)"
->
+onclick="checkAnswer(this,false)">
 C. 6 A
 </button>
 
-
 <button
 class="option"
-onclick="checkAnswer(this,false)"
->
+onclick="checkAnswer(this,false)">
 D. 72 A
 </button>
 
@@ -2560,8 +2849,7 @@ D. 72 A
 
 <div
 class="feedback"
-id="feedback"
->
+id="feedback">
 </div>
 
 </div>
@@ -2582,8 +2870,7 @@ id="feedback"
 </h2>
 
 <p>
-Designed and developed by CSE students
-of Jamalpur Science and Technology University.
+Designed and developed by CSE students of Jamalpur Science and Technology University.
 </p>
 
 </div>
@@ -2598,18 +2885,30 @@ of Jamalpur Science and Technology University.
 
 <img
 src="tahmid.jpg"
-alt="Md. Tahmid Siddique"
->
+alt="Md. Tahmid Siddique">
 
 </div>
 
+
 <h3>
+
+<a
+class="bio-link"
+href="bio.html"
+target="_blank"
+rel="noopener">
+
 Md. Tahmid Siddique
+
+</a>
+
 </h3>
+
 
 <div class="role">
 Website Builder / Project Lead
 </div>
+
 
 <div class="team-info">
 
@@ -2711,20 +3010,15 @@ About VoltLab
 <div class="about-box">
 
 <p>
-<strong>VoltLab</strong> is an interactive educational website
-designed to make Basic Electricity easier to understand through
-visualization, calculation and experimentation.
+<strong>VoltLab</strong> is an interactive educational website designed to make Basic Electricity easier to understand through visualization, calculation and experimentation.
 </p>
 
 <p>
-Instead of presenting electricity only as formulas and theoretical
-notes, VoltLab aims to create a virtual laboratory where students
-can interact with electrical concepts.
+Instead of presenting electricity only as formulas and theoretical notes, VoltLab aims to create a virtual laboratory where students can interact with electrical concepts.
 </p>
 
 <p>
-The project combines web technology, interactive simulations
-and engineering concepts to create a more engaging learning experience.
+The project combines web technology, interactive simulations and engineering concepts to create a more engaging learning experience.
 </p>
 
 </div>
@@ -2754,22 +3048,15 @@ Turning electrical theory into an interactive experience.
 <div class="about-box">
 
 <p>
-VoltLab demonstrates how modern web technology can transform
-traditional electrical concepts into a more visual, interactive
-and engaging learning experience.
+VoltLab demonstrates how modern web technology can transform traditional electrical concepts into a more visual, interactive and engaging learning experience.
 </p>
 
 <p>
-Through interactive calculations, virtual experiments,
-circuit challenges and future simulation tools, the platform
-is designed to help students understand not only the formulas,
-but also what actually happens inside an electrical circuit.
+Through interactive calculations, virtual experiments, circuit challenges and future simulation tools, the platform is designed to help students understand not only the formulas, but also what actually happens inside an electrical circuit.
 </p>
 
 <p>
-This project represents the collaborative work, creativity
-and technical learning of CSE students at Jamalpur Science
-and Technology University.
+This project represents the collaborative work, creativity and technical learning of CSE students at Jamalpur Science and Technology University.
 </p>
 
 </div>
@@ -2783,7 +3070,7 @@ and Technology University.
 
 <div class="container">
 
-⚡ <strong>VoltLab</strong>
+⚡ <strong class="bio-link">VoltLab</strong>
 — Where Electricity Comes Alive.
 
 <br><br>
@@ -2793,14 +3080,34 @@ CSE Students • Jamalpur Science and Technology University
 <br><br>
 
 Developed by
+
+<a
+class="bio-link"
+href="bio.html"
+target="_blank"
+rel="noopener">
+
 <strong>Md. Tahmid Siddique</strong>
+
+</a>
+
 and his teammates.
 
 <br>
 
 © 2026
-<strong>Trustin Univers</strong>.
-All Rights Reserved.
+
+<a
+class="bio-link"
+href="https://trustinunivers.wordpress.com"
+target="_blank"
+rel="noopener">
+
+<strong>Trustin Univers</strong>
+
+</a>
+
+. All Rights Reserved.
 
 </div>
 
@@ -2811,45 +3118,37 @@ All Rights Reserved.
 
 function calculateOhm(){
 
-const V=parseFloat(document.getElementById("voltage").value);
-const I=parseFloat(document.getElementById("current").value);
-const R=parseFloat(document.getElementById("resistance").value);
-
-const out=document.getElementById("ohmResult");
-
-const n=[V,I,R].filter(v=>!Number.isNaN(v)).length;
+const V=parseFloat(voltage.value),
+I=parseFloat(current.value),
+R=parseFloat(resistance.value),
+out=ohmResult,
+n=[V,I,R].filter(v=>!Number.isNaN(v)).length;
 
 if(n!==2){
-
 out.textContent="Enter exactly 2 values";
 out.style.color="var(--red)";
-return;
-
+return
 }
 
 if([V,I,R].some(v=>v<0)){
-
 out.textContent="Use non-negative values";
 out.style.color="var(--red)";
-return;
-
+return
 }
 
 if(Number.isNaN(I)){
 
 if(R<=0){
-
 out.textContent="Resistance must be greater than 0";
 out.style.color="var(--red)";
-return;
-
+return
 }
 
 const x=V/R;
 
-document.getElementById("current").value=x.toFixed(4);
+current.value=x.toFixed(4);
 
-out.textContent=x.toFixed(4)+" A";
+out.textContent=x.toFixed(4)+" A"
 
 }
 
@@ -2857,36 +3156,32 @@ else if(Number.isNaN(V)){
 
 const x=I*R;
 
-document.getElementById("voltage").value=x.toFixed(4);
+voltage.value=x.toFixed(4);
 
-out.textContent=x.toFixed(4)+" V";
+out.textContent=x.toFixed(4)+" V"
 
 }
 
 else{
 
 if(I<=0){
-
 out.textContent="Current must be greater than 0";
 out.style.color="var(--red)";
-return;
-
+return
 }
 
 const x=V/I;
 
-document.getElementById("resistance").value=x.toFixed(4);
+resistance.value=x.toFixed(4);
 
-out.textContent=x.toFixed(4)+" Ω";
-
-}
-
-out.style.color="var(--cyan)";
+out.textContent=x.toFixed(4)+" Ω"
 
 }
 
+out.style.color="var(--cyan)"
 
-/* SERIES / PARALLEL */
+}
+
 
 let circuitMode="series";
 
@@ -2895,529 +3190,1301 @@ function setCircuitMode(mode){
 
 circuitMode=mode;
 
-document
-.getElementById("seriesMode")
-.classList
-.toggle("active",mode==="series");
+seriesMode.classList.toggle(
+"active",
+mode==="series"
+);
 
-document
-.getElementById("parallelMode")
-.classList
-.toggle("active",mode==="parallel");
+parallelMode.classList.toggle(
+"active",
+mode==="parallel"
+);
 
-
-const drawing=document.getElementById("circuitDrawing");
-
+const d=circuitDrawing;
 
 if(mode==="series"){
 
-document.getElementById("spStageLabel").textContent=
-"SERIES TOPOLOGY • READY";
+spStageLabel.textContent="SERIES TOPOLOGY • READY";
 
-document.getElementById("spFormula").innerHTML=
+spFormula.innerHTML=
 "Series: R<sub>T</sub> = R<sub>1</sub> + R<sub>2</sub> + R<sub>3</sub>";
 
-document.getElementById("spExplanation").textContent=
+spExplanation.textContent=
 "In series, the same current flows through each resistor and the resistances add together.";
 
-drawing.className="circuit-drawing series";
+d.className="circuit-drawing series";
 
-drawing.innerHTML=`
-
-<div class="c-wire sw1"></div>
-<div class="c-wire sw2"></div>
-<div class="c-wire sw3"></div>
-<div class="c-wire sw4"></div>
-<div class="c-wire sw5"></div>
-<div class="c-wire sw6"></div>
-
-<div class="c-res sr1">R1</div>
-<div class="c-res sr2">R2</div>
-<div class="c-res sr3">R3</div>
-
-<div class="c-node sn1"></div>
-<div class="c-node sn2"></div>
-
-<div class="flow-dot"
-style="left:15%;top:81px">
-</div>
-
-<div class="flow-dot"
-style="left:37%;top:81px;animation-delay:.35s">
-</div>
-
-<div class="flow-dot"
-style="left:54%;top:81px;animation-delay:.7s">
-</div>
-
-<div class="flow-dot"
-style="left:78%;top:81px;animation-delay:1.05s">
-</div>
-
-`;
+d.innerHTML=
+'<div class="c-wire sw1"></div>'+
+'<div class="c-wire sw2"></div>'+
+'<div class="c-wire sw3"></div>'+
+'<div class="c-wire sw4"></div>'+
+'<div class="c-wire sw5"></div>'+
+'<div class="c-wire sw6"></div>'+
+'<div class="c-res sr1">R1</div>'+
+'<div class="c-res sr2">R2</div>'+
+'<div class="c-res sr3">R3</div>'+
+'<div class="c-node sn1"></div>'+
+'<div class="c-node sn2"></div>'+
+'<div class="flow-dot" style="left:15%;top:81px"></div>'+
+'<div class="flow-dot" style="left:37%;top:81px;animation-delay:.35s"></div>'+
+'<div class="flow-dot" style="left:54%;top:81px;animation-delay:.7s"></div>'+
+'<div class="flow-dot" style="left:78%;top:81px;animation-delay:1.05s"></div>';
 
 }
 
 else{
 
-document.getElementById("spStageLabel").textContent=
-"PARALLEL TOPOLOGY • READY";
+spStageLabel.textContent="PARALLEL TOPOLOGY • READY";
 
-document.getElementById("spFormula").innerHTML=
+spFormula.innerHTML=
 "Parallel: 1/R<sub>T</sub> = 1/R<sub>1</sub> + 1/R<sub>2</sub> + 1/R<sub>3</sub>";
 
-document.getElementById("spExplanation").textContent=
+spExplanation.textContent=
 "In parallel, each branch has the same supply voltage while total current is the sum of branch currents.";
 
-drawing.className="circuit-drawing parallel";
+d.className="circuit-drawing parallel";
 
-drawing.innerHTML=`
-
-<div class="c-wire pwtop"></div>
-<div class="c-wire pwbottom"></div>
-<div class="c-wire pwl"></div>
-<div class="c-wire pwr"></div>
-
-<div class="c-res pr1">R1</div>
-<div class="c-res pr2">R2</div>
-<div class="c-res pr3">R3</div>
-
-<div class="c-node pn1"></div>
-<div class="c-node pn2"></div>
-<div class="c-node pn3"></div>
-<div class="c-node pn4"></div>
-
-<div class="flow-dot"
-style="left:30%;top:27px">
-</div>
-
-<div class="flow-dot"
-style="left:50%;top:27px;animation-delay:.3s">
-</div>
-
-<div class="flow-dot"
-style="left:68%;top:27px;animation-delay:.6s">
-</div>
-
-`;
+d.innerHTML=
+'<div class="c-wire pwtop"></div>'+
+'<div class="c-wire pwbottom"></div>'+
+'<div class="c-wire pwl"></div>'+
+'<div class="c-wire pwr"></div>'+
+'<div class="c-res pr1">R1</div>'+
+'<div class="c-res pr2">R2</div>'+
+'<div class="c-res pr3">R3</div>'+
+'<div class="c-node pn1"></div>'+
+'<div class="c-node pn2"></div>'+
+'<div class="c-node pn3"></div>'+
+'<div class="c-node pn4"></div>'+
+'<div class="flow-dot" style="left:30%;top:27px"></div>'+
+'<div class="flow-dot" style="left:50%;top:27px;animation-delay:.3s"></div>'+
+'<div class="flow-dot" style="left:68%;top:27px;animation-delay:.6s"></div>';
 
 }
 
-
-/* IMPORTANT:
-   Switching mode does not calculate anything.
-   Results remain empty until user presses ANALYZE.
-*/
-
-document.getElementById("reqResult").textContent="—";
-document.getElementById("totCurrentResult").textContent="—";
-document.getElementById("powerResult").textContent="—";
+reqResult.textContent=
+totCurrentResult.textContent=
+powerResult.textContent="—"
 
 }
 
-
-/* SERIES / PARALLEL CALCULATION */
 
 function calculateSeriesParallel(){
 
-const V=parseFloat(
-document.getElementById("spVoltage").value
-);
-
-const r1=parseFloat(
-document.getElementById("r1").value
-);
-
-const r2=parseFloat(
-document.getElementById("r2").value
-);
-
-const r3=parseFloat(
-document.getElementById("r3").value
-);
-
-const req=document.getElementById("reqResult");
-const current=document.getElementById("totCurrentResult");
-const power=document.getElementById("powerResult");
+const V=parseFloat(spVoltage.value),
+r1=parseFloat(document.getElementById("r1").value),
+r2=parseFloat(document.getElementById("r2").value),
+r3=parseFloat(document.getElementById("r3").value);
 
 if(
-Number.isNaN(V) ||
-Number.isNaN(r1) ||
-Number.isNaN(r2) ||
-Number.isNaN(r3) ||
-V<0 ||
-r1<=0 ||
-r2<=0 ||
+[V,r1,r2,r3].some(Number.isNaN)||
+V<0||
+r1<=0||
+r2<=0||
 r3<=0
 ){
 
-req.textContent="—";
-current.textContent="—";
-power.textContent="—";
+reqResult.textContent=
+totCurrentResult.textContent=
+powerResult.textContent="—";
 
-document.getElementById("spStageLabel").textContent=
-"CHECK INPUTS • READY";
+spStageLabel.textContent="CHECK INPUTS • READY";
 
-return;
-
+return
 }
 
+const eq=
+circuitMode==="series"
+?r1+r2+r3
+:1/(1/r1+1/r2+1/r3);
 
-let equivalent;
+const I=V/eq,
+P=V*I;
 
-if(circuitMode==="series"){
+reqResult.textContent=
+eq.toFixed(2)+" Ω";
 
-equivalent=r1+r2+r3;
+totCurrentResult.textContent=
+I.toFixed(4)+" A";
 
-}
-else{
+powerResult.textContent=
+P.toFixed(3)+" W";
 
-equivalent=
-1/
-(
-(1/r1)+
-(1/r2)+
-(1/r3)
-);
-
-}
-
-
-const totalCurrent=V/equivalent;
-
-const totalPower=V*totalCurrent;
-
-
-req.textContent=
-equivalent.toFixed(2)+" Ω";
-
-current.textContent=
-totalCurrent.toFixed(4)+" A";
-
-power.textContent=
-totalPower.toFixed(3)+" W";
-
-
-document.getElementById("spStageLabel").textContent=
+spStageLabel.textContent=
 (circuitMode==="series"?"SERIES":"PARALLEL")
-+
-" TOPOLOGY • ANALYZED";
++" TOPOLOGY • ANALYZED"
 
 }
 
-
-/* KCL */
 
 function calculateKCL(){
 
-const i1=parseFloat(
-document.getElementById("kclI1").value
-);
-
-const i2=parseFloat(
-document.getElementById("kclI2").value
-);
-
-const i3=parseFloat(
-document.getElementById("kclI3").value
-);
-
-const result=document.getElementById("kclResult");
-const status=document.getElementById("kclStatus");
-
+const a=parseFloat(kclI1.value),
+b=parseFloat(kclI2.value),
+c=parseFloat(kclI3.value);
 
 if(
-Number.isNaN(i1) ||
-Number.isNaN(i2) ||
-Number.isNaN(i3) ||
-i1<0 ||
-i2<0 ||
-i3<0
+[a,b,c].some(Number.isNaN)||
+[a,b,c].some(v=>v<0)
 ){
 
-result.textContent="Enter valid currents";
-result.style.color="var(--red)";
-status.textContent="";
+kclResult.textContent="Enter valid currents";
+kclResult.style.color="var(--red)";
+kclStatus.textContent="";
 
-return;
-
+return
 }
 
+const d=a+b-c;
 
-const i4=i1+i2-i3;
+if(d<0){
 
+kclResult.textContent=d.toFixed(4)+" A";
+kclResult.style.color="var(--red)";
 
-if(i4<0){
-
-result.textContent=i4.toFixed(4)+" A";
-
-result.style.color="var(--red)";
-
-status.textContent=
+kclStatus.textContent=
 "✗ The selected currents cannot satisfy this direction assumption.";
 
-status.style.color="var(--red)";
+kclStatus.style.color="var(--red)"
 
 }
 
 else{
 
-result.textContent=i4.toFixed(4)+" A";
+kclResult.textContent=d.toFixed(4)+" A";
+kclResult.style.color="var(--cyan)";
 
-result.style.color="var(--cyan)";
-
-status.textContent=
+kclStatus.textContent=
 "✓ Balanced node: I₁ + I₂ = I₃ + I₄";
 
-status.style.color="var(--green)";
+kclStatus.style.color="var(--green)"
 
 }
 
 }
 
-
-/* KVL */
 
 function calculateKVL(){
 
-const vs=parseFloat(
-document.getElementById("kvlVs").value
-);
-
-const v1=parseFloat(
-document.getElementById("kvlV1").value
-);
-
-const v2=parseFloat(
-document.getElementById("kvlV2").value
-);
-
-const result=document.getElementById("kvlResult");
-const status=document.getElementById("kvlStatus");
-
+const s=parseFloat(kvlVs.value),
+a=parseFloat(kvlV1.value),
+b=parseFloat(kvlV2.value);
 
 if(
-Number.isNaN(vs) ||
-Number.isNaN(v1) ||
-Number.isNaN(v2) ||
-vs<0 ||
-v1<0 ||
-v2<0
+[s,a,b].some(Number.isNaN)||
+[s,a,b].some(v=>v<0)
 ){
 
-result.textContent="Enter valid voltages";
-result.style.color="var(--red)";
-status.textContent="";
+kvlResult.textContent="Enter valid voltages";
+kvlResult.style.color="var(--red)";
+kvlStatus.textContent="";
 
-return;
-
+return
 }
 
+const c=s-a-b;
 
-const v3=vs-v1-v2;
+if(c<0){
 
+kvlResult.textContent=c.toFixed(4)+" V";
+kvlResult.style.color="var(--red)";
 
-if(v3<0){
-
-result.textContent=v3.toFixed(4)+" V";
-
-result.style.color="var(--red)";
-
-status.textContent=
+kvlStatus.textContent=
 "✗ Voltage drops exceed the source voltage.";
 
-status.style.color="var(--red)";
+kvlStatus.style.color="var(--red)"
 
 }
 
 else{
 
-result.textContent=v3.toFixed(4)+" V";
+kvlResult.textContent=c.toFixed(4)+" V";
+kvlResult.style.color="var(--cyan)";
 
-result.style.color="var(--cyan)";
-
-status.textContent=
+kvlStatus.textContent=
 "✓ Closed-loop balance: Vₛ = V₁ + V₂ + V₃";
 
-status.style.color="var(--green)";
+kvlStatus.style.color="var(--green)"
 
 }
 
 }
 
-
-/* LED SIMULATOR */
 
 function updateLED(){
 
-const V=
-parseFloat(document.getElementById("ledVolt").value);
+const V=+ledVolt.value,
+R=+ledRes.value;
 
-const R=
-parseFloat(document.getElementById("ledRes").value);
-
-
-document.getElementById("ledVoltVal").textContent=
+ledVoltVal.textContent=
 V.toFixed(1)+" V";
 
-document.getElementById("ledResVal").textContent=
+ledResVal.textContent=
 R+" Ω";
 
+const vf=2,
+I=V>vf?(V-vf)/R:0,
+m=I*1000,
+P=I*vf,
+PR=I*I*R;
 
-const vf=2;
+ledCurrent.textContent=
+m.toFixed(1)+" mA";
 
-const currentA=
-V>vf
-?
-(V-vf)/R
-:
-0;
+ledPower.textContent=
+P.toFixed(3)+" W";
 
-const currentmA=
-currentA*1000;
+ledResPower.textContent=
+PR.toFixed(3)+" W";
 
-const ledPower=
-currentA*vf;
-
-const resistorPower=
-currentA*currentA*R;
-
-
-document.getElementById("ledCurrent").textContent=
-currentmA.toFixed(1)+" mA";
-
-document.getElementById("ledPower").textContent=
-ledPower.toFixed(3)+" W";
-
-document.getElementById("ledResPower").textContent=
-resistorPower.toFixed(3)+" W";
-
-
-const bulb=
-document.getElementById("ledBulb");
-
-const status=
-document.getElementById("ledStatus");
-
-const glow=
-Math.min(1,currentmA/20);
-
+const g=Math.min(1,m/20);
 
 if(V<=vf){
 
-bulb.style.background="#162238";
+ledBulb.style.background="#162238";
+ledBulb.style.borderColor="#526783";
+ledBulb.style.boxShadow="none";
 
-bulb.style.borderColor="#526783";
-
-bulb.style.boxShadow="none";
-
-status.textContent=
+ledStatus.textContent=
 "● OFF — BELOW FORWARD VOLTAGE";
 
-status.style.color="var(--muted)";
+ledStatus.style.color="var(--muted)"
 
 }
 
-else if(currentmA>30){
+else if(m>30){
 
-bulb.style.background="#ff5964";
+ledBulb.style.background="#ff5964";
+ledBulb.style.borderColor="#ff5964";
 
-bulb.style.borderColor="#ff5964";
-
-bulb.style.boxShadow=
+ledBulb.style.boxShadow=
 "0 0 30px rgba(239,68,68,.8),0 0 70px rgba(239,68,68,.45)";
 
-status.textContent=
+ledStatus.textContent=
 "⚠ HIGH CURRENT — LED STRESS";
 
-status.style.color="var(--red)";
+ledStatus.style.color="var(--red)"
 
 }
 
 else{
 
-bulb.style.background=
-"rgba(33,212,253,"+
-(0.18+glow*.82)+")";
+ledBulb.style.background=
+"rgba(33,212,253,"+(0.18+g*.82)+")";
 
-bulb.style.borderColor="var(--cyan)";
+ledBulb.style.borderColor="var(--cyan)";
 
-bulb.style.boxShadow=
-"0 0 "+
-(15+glow*45)+
-"px rgba(33,212,253,.8),0 0 "+
-(35+glow*80)+
-"px rgba(33,212,253,.35)";
+ledBulb.style.boxShadow=
+"0 0 "+(15+g*45)+"px rgba(33,212,253,.8),0 0 "+(35+g*80)+"px rgba(33,212,253,.35)";
 
-status.textContent=
-currentmA<5
-?
-"● DIM GLOW"
-:
-currentmA<15
-?
-"● NORMAL OPERATION"
-:
-"● BRIGHT OPERATION";
+ledStatus.textContent=
+m<5
+?"● DIM GLOW"
+:m<15
+?"● NORMAL OPERATION"
+:"● BRIGHT OPERATION";
 
-status.style.color="var(--green)";
+ledStatus.style.color="var(--green)"
 
 }
 
 }
 
 
-/* CHALLENGE */
+const builderState={
+items:[],
+connections:[],
+selected:null,
+dragType:null,
+switchOn:false,
+nextId:1
+};
 
-function checkAnswer(button,isCorrect){
 
-const feedback=
-document.getElementById("feedback");
+const builderMeta={
+battery:{icon:'🔋',name:'BATTERY'},
+resistor:{icon:'〰️',name:'RESISTOR'},
+lamp:{icon:'💡',name:'LOAD'},
+switch:{icon:'⏻',name:'SWITCH'}
+};
 
-document
-.querySelectorAll(".option")
-.forEach(
-b=>b.style.borderColor="var(--line)"
+
+function setupBuilder(){
+
+document.querySelectorAll('.palette-item').forEach(item=>{
+
+item.addEventListener('dragstart',e=>{
+
+builderState.dragType=item.dataset.type;
+
+e.dataTransfer.setData(
+'text/plain',
+builderState.dragType
+);
+
+})
+
+});
+
+
+const board=
+document.getElementById('builderBoard');
+
+board.addEventListener(
+'dragover',
+e=>{
+e.preventDefault();
+board.classList.add('drag-over')
+}
+);
+
+board.addEventListener(
+'dragleave',
+()=>{
+board.classList.remove('drag-over')
+}
+);
+
+board.addEventListener(
+'drop',
+e=>{
+
+e.preventDefault();
+
+board.classList.remove('drag-over');
+
+const type=
+e.dataTransfer.getData('text/plain')||
+builderState.dragType;
+
+if(type)
+addBuilderComponent(
+type,
+e.offsetX,
+e.offsetY
+)
+
+}
+)
+
+}
+
+
+function addBuilderComponent(type,x,y){
+
+const board=
+document.getElementById('builderBoard');
+
+const id=
+'bc'+builderState.nextId++;
+
+const el=
+document.createElement('div');
+
+el.className=
+'builder-component';
+
+el.id=id;
+
+el.dataset.type=type;
+
+el.innerHTML=
+'<div class="builder-port left" data-side="left"></div>'+
+'<div class="bc-icon">'+builderMeta[type].icon+'</div>'+
+'<div class="bc-name">'+builderMeta[type].name+'</div>'+
+'<div class="builder-port right" data-side="right"></div>';
+
+const left=
+Math.max(
+8,
+Math.min(
+x-60,
+board.clientWidth-128
+)
+);
+
+const top=
+Math.max(
+8,
+Math.min(
+y-38,
+board.clientHeight-90
+)
+);
+
+el.style.left=
+left+'px';
+
+el.style.top=
+top+'px';
+
+board.appendChild(el);
+
+builderState.items.push({
+id,
+type,
+value:null,
+element:el
+});
+
+attachBuilderEvents(el);
+
+selectBuilderComponent(id);
+
+updateBuilderStatus(
+'COMPONENT ADDED • CONNECT PORTS TO BUILD'
+);
+
+}
+
+
+function attachBuilderEvents(el){
+
+let moving=false,
+ox=0,
+oy=0;
+
+el.addEventListener(
+'pointerdown',
+e=>{
+
+if(
+e.target.classList.contains('builder-port')
+)
+return;
+
+moving=true;
+
+el.setPointerCapture(e.pointerId);
+
+const r=
+el.getBoundingClientRect();
+
+ox=
+e.clientX-r.left;
+
+oy=
+e.clientY-r.top;
+
+selectBuilderComponent(el.id);
+
+e.preventDefault()
+
+}
 );
 
 
-if(isCorrect){
+el.addEventListener(
+'pointermove',
+e=>{
 
-button.style.borderColor="var(--green)";
+if(!moving)
+return;
+
+const b=
+document.getElementById('builderBoard')
+.getBoundingClientRect();
+
+const left=
+Math.max(
+4,
+Math.min(
+e.clientX-b.left-ox,
+b.width-el.offsetWidth-4
+)
+);
+
+const top=
+Math.max(
+4,
+Math.min(
+e.clientY-b.top-oy,
+b.height-el.offsetHeight-4
+)
+);
+
+el.style.left=
+left+'px';
+
+el.style.top=
+top+'px';
+
+drawBuilderWires()
+
+}
+);
+
+
+el.addEventListener(
+'pointerup',
+()=>moving=false
+);
+
+
+el.querySelectorAll(
+'.builder-port'
+).forEach(port=>{
+
+port.addEventListener(
+'click',
+e=>{
+
+e.stopPropagation();
+
+connectBuilderPort(
+el.id,
+port.dataset.side
+)
+
+}
+)
+
+})
+
+}
+
+
+let pendingPort=null;
+
+
+function connectBuilderPort(id,side){
+
+if(!pendingPort){
+
+pendingPort={
+id,
+side
+};
+
+document.querySelector(
+'#'+id+
+' .builder-port.'+
+side
+).classList.add('active');
+
+updateBuilderStatus(
+'PORT SELECTED • CHOOSE A SECOND PORT'
+);
+
+return
+
+}
+
+
+if(
+pendingPort.id===id&&
+pendingPort.side===side
+){
+
+clearPendingPort();
+
+return
+
+}
+
+
+const exists=
+builderState.connections.some(
+c=>
+(
+c.a.id===pendingPort.id&&
+c.a.side===pendingPort.side&&
+c.b.id===id&&
+c.b.side===side
+)
+||
+(
+c.b.id===pendingPort.id&&
+c.b.side===pendingPort.side&&
+c.a.id===id&&
+c.a.side===side
+)
+);
+
+
+if(!exists){
+
+builderState.connections.push({
+
+a:{
+id:pendingPort.id,
+side:pendingPort.side
+},
+
+b:{
+id,
+side
+}
+
+});
+
+updateBuilderStatus(
+'CONNECTION CREATED • BUILD FURTHER OR RUN'
+);
+
+}
+
+clearPendingPort();
+
+drawBuilderWires();
+
+}
+
+
+function clearPendingPort(){
+
+if(pendingPort){
+
+const p=
+document.querySelector(
+'#'+pendingPort.id+
+' .builder-port.'+
+pendingPort.side
+);
+
+if(p)
+p.classList.remove('active');
+
+}
+
+pendingPort=null;
+
+}
+
+
+function portPoint(id,side){
+
+const el=
+document.getElementById(id),
+
+board=
+document.getElementById('builderBoard')
+.getBoundingClientRect(),
+
+r=
+el.getBoundingClientRect();
+
+return{
+
+x:
+(side==='left'?r.left:r.right)-board.left,
+
+y:
+r.top+r.height/2-board.top
+
+};
+
+}
+
+
+function drawBuilderWires(){
+
+const svg=
+document.getElementById('builderWires');
+
+svg.innerHTML='';
+
+builderState.connections.forEach(c=>{
+
+const a=
+portPoint(
+c.a.id,
+c.a.side
+);
+
+const b=
+portPoint(
+c.b.id,
+c.b.side
+);
+
+const line=
+document.createElementNS(
+'http://www.w3.org/2000/svg',
+'line'
+);
+
+line.setAttribute(
+'x1',
+a.x
+);
+
+line.setAttribute(
+'y1',
+a.y
+);
+
+line.setAttribute(
+'x2',
+b.x
+);
+
+line.setAttribute(
+'y2',
+b.y
+);
+
+line.setAttribute(
+'class',
+'builder-wire'
+);
+
+svg.appendChild(line);
+
+})
+
+}
+
+
+function selectBuilderComponent(id){
+
+builderState.selected=id;
+
+document.querySelectorAll(
+'.builder-component'
+).forEach(
+x=>
+x.classList.toggle(
+'selected',
+x.id===id
+)
+);
+
+const item=
+builderState.items.find(
+x=>x.id===id
+);
+
+const txt=
+document.getElementById(
+'selectedComponentText'
+);
+
+const input=
+document.getElementById(
+'builderValue'
+);
+
+const save=
+document.getElementById(
+'saveBuilderValue'
+);
+
+if(!item)
+return;
+
+txt.textContent=
+item.type==='battery'
+?
+'Battery selected — enter the supply voltage.'
+:
+item.type==='resistor'
+?
+'Resistor selected — enter its resistance.'
+:
+item.type==='switch'
+?
+'Switch selected — use Toggle Switch to change state.'
+:
+'Load selected — no numeric value required.';
+
+if(
+item.type==='battery'||
+item.type==='resistor'
+){
+
+input.style.display='block';
+
+save.style.display='inline-block';
+
+input.value=
+item.value??'';
+
+input.placeholder=
+item.type==='battery'
+?
+'Example: 12'
+:
+'Example: 100';
+
+}
+
+else{
+
+input.style.display='none';
+
+save.style.display='none';
+
+}
+
+}
+
+
+function saveBuilderValue(){
+
+const item=
+builderState.items.find(
+x=>x.id===builderState.selected
+);
+
+const input=
+document.getElementById(
+'builderValue'
+);
+
+if(!item)
+return;
+
+const v=
+parseFloat(input.value);
+
+if(
+!Number.isFinite(v)||
+v<=0
+){
+
+updateBuilderStatus(
+'ENTER A POSITIVE VALUE'
+);
+
+return
+
+}
+
+item.value=v;
+
+updateBuilderStatus(
+'VALUE SAVED • RUN CIRCUIT WHEN READY'
+);
+
+}
+
+
+function toggleBuilderSwitch(){
+
+builderState.switchOn=
+!builderState.switchOn;
+
+document.getElementById(
+'builderSwitchText'
+).innerHTML=
+'Switch: <span class="switch-state '+
+(builderState.switchOn?'':'off')+
+'">'+
+(builderState.switchOn?'ON':'OFF')+
+'</span>';
+
+updateBuilderStatus(
+'SWITCH '+
+(builderState.switchOn?'ON':'OFF')
+);
+
+}
+
+
+function graphIsConnected(){
+
+const ids=
+builderState.items.map(
+x=>x.id
+);
+
+if(ids.length<2)
+return false;
+
+const adj={};
+
+ids.forEach(
+id=>adj[id]=[]
+);
+
+builderState.connections.forEach(
+c=>{
+
+adj[c.a.id].push(
+c.b.id
+);
+
+adj[c.b.id].push(
+c.a.id
+);
+
+}
+);
+
+const seen=
+new Set([ids[0]]);
+
+const q=
+[ids[0]];
+
+while(q.length){
+
+const u=
+q.shift();
+
+adj[u].forEach(
+v=>{
+
+if(!seen.has(v)){
+
+seen.add(v);
+
+q.push(v);
+
+}
+
+}
+);
+
+}
+
+return seen.size===ids.length;
+
+}
+
+
+function runBuilderSimulation(){
+
+const battery=
+builderState.items.find(
+x=>x.type==='battery'
+);
+
+const resistors=
+builderState.items.filter(
+x=>x.type==='resistor'
+);
+
+const load=
+builderState.items.find(
+x=>x.type==='lamp'
+);
+
+const outR=
+document.getElementById(
+'builderResistance'
+);
+
+const outI=
+document.getElementById(
+'builderCurrent'
+);
+
+const outP=
+document.getElementById(
+'builderPower'
+);
+
+
+if(
+!battery||
+!load||
+!resistors.length
+){
+
+outR.textContent=
+outI.textContent=
+outP.textContent='—';
+
+updateBuilderStatus(
+'INCOMPLETE • NEED BATTERY + RESISTOR + LOAD'
+);
+
+return
+
+}
+
+
+if(
+!battery.value||
+resistors.some(
+r=>!r.value
+)
+){
+
+outR.textContent=
+outI.textContent=
+outP.textContent='—';
+
+updateBuilderStatus(
+'MISSING VALUES • SELECT COMPONENTS AND ENTER VALUES'
+);
+
+return
+
+}
+
+
+if(
+!graphIsConnected()||
+builderState.connections.length<3
+){
+
+outR.textContent=
+outI.textContent=
+outP.textContent='—';
+
+updateBuilderStatus(
+'INCOMPLETE PATH • CONNECT THE COMPONENTS'
+);
+
+return
+
+}
+
+
+if(
+!builderState.switchOn&&
+builderState.items.some(
+x=>x.type==='switch'
+)
+){
+
+outR.textContent=
+outI.textContent=
+outP.textContent='—';
+
+updateBuilderStatus(
+'OPEN SWITCH • TURN THE SWITCH ON'
+);
+
+return
+
+}
+
+
+const R=
+resistors.reduce(
+(sum,r)=>sum+r.value,
+0
+);
+
+const I=
+battery.value/R;
+
+const P=
+battery.value*I;
+
+outR.textContent=
+R.toFixed(2)+' Ω';
+
+outI.textContent=
+I.toFixed(4)+' A';
+
+outP.textContent=
+P.toFixed(3)+' W';
+
+updateBuilderStatus(
+'CIRCUIT ACTIVE • CALCULATION COMPLETE'
+);
+
+}
+
+
+function updateBuilderStatus(msg){
+
+const s=
+document.getElementById(
+'builderStatus'
+);
+
+if(s)
+s.textContent=msg;
+
+}
+
+
+function clearBuilder(){
+
+builderState.items.forEach(
+x=>x.element.remove()
+);
+
+builderState.items=[];
+
+builderState.connections=[];
+
+builderState.selected=null;
+
+builderState.nextId=1;
+
+builderState.switchOn=false;
+
+clearPendingPort();
+
+document.getElementById(
+'builderWires'
+).innerHTML='';
+
+document.getElementById(
+'builderResistance'
+).textContent=
+document.getElementById(
+'builderCurrent'
+).textContent=
+document.getElementById(
+'builderPower'
+).textContent='—';
+
+document.getElementById(
+'builderSwitchText'
+).innerHTML=
+'Switch: <span class="switch-state off">OFF</span>';
+
+document.getElementById(
+'selectedComponentText'
+).textContent=
+'Select a placed component to edit its value.';
+
+document.getElementById(
+'builderValue'
+).style.display=
+document.getElementById(
+'saveBuilderValue'
+).style.display='none';
+
+updateBuilderStatus(
+'BOARD CLEARED • READY'
+);
+
+}
+
+
+function checkAnswer(btn,ok){
+
+document.querySelectorAll(
+".option"
+).forEach(
+b=>
+b.style.borderColor="var(--line)"
+);
+
+if(ok){
+
+btn.style.borderColor=
+"var(--green)";
 
 feedback.innerHTML=
 "✓ Correct! Using I = V / R → I = 12 / 6 = 2 A.";
 
-feedback.style.color="var(--green)";
+feedback.style.color=
+"var(--green)";
 
 }
 
 else{
 
-button.style.borderColor="var(--red)";
+btn.style.borderColor=
+"var(--red)";
 
 feedback.innerHTML=
 "✗ Not quite. Try using Ohm's Law: I = V / R.";
 
-feedback.style.color="var(--red)";
+feedback.style.color=
+"var(--red)";
 
 }
 
 }
 
-
-/* INITIAL UI ONLY
-   No Series/Parallel/KCL/KVL calculations
-   are performed automatically.
-*/
 
 setCircuitMode("series");
 
-/* LED simulator may start with its slider values,
-   because its controls are intentionally visual.
-*/
-
 updateLED();
+
+setupBuilder();
+
+</script>
+
+
+<!-- EXTRA EXTRAORDINARY LIVE SYSTEM STATUS -->
+
+<div
+class="telemetry"
+aria-label="VoltLab live system status">
+
+<div class="telemetry-top">
+
+<span>
+
+<span class="telemetry-dot"></span>
+
+<strong>
+VOLTLAB LIVE
+</strong>
+
+</span>
+
+<span id="telemetryMode">
+IDLE
+</span>
+
+</div>
+
+
+<div class="telemetry-bar">
+
+<div
+class="telemetry-fill"
+id="telemetryFill">
+</div>
+
+</div>
+
+</div>
+
+
+<script id="voltlab-telemetry-script">
+
+(function(){
+
+const fill=
+document.getElementById(
+'telemetryFill'
+);
+
+const mode=
+document.getElementById(
+'telemetryMode'
+);
+
+if(!fill||!mode)
+return;
+
+let t=0;
+
+setInterval(
+function(){
+
+t++;
+
+const v=
+25+
+Math.round(
+(Math.sin(t/3)+1)*22
+);
+
+fill.style.width=
+v+'%';
+
+mode.textContent=
+v>55
+?
+'ACTIVE'
+:
+v>35
+?
+'MONITORING'
+:
+'IDLE';
+
+},
+1200
+);
+
+})();
 
 </script>
 
