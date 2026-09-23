@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Md. Tahmid Siddique | Biography</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:#050816;
+  color:#eaf6ff;
+  min-height:100vh;
+}
+
+body:before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-2;
+  background:
+    radial-gradient(circle at 15% 20%,rgba(33,212,253,.12),transparent 28%),
+    radial-gradient(circle at 85% 75%,rgba(139,92,246,.13),transparent 30%),
+    linear-gradient(135deg,#050816,#071126 55%,#050816);
+}
+
+.grid{
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  opacity:.18;
+  background-image:
+    linear-gradient(rgba(33,212,253,.12) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(33,212,253,.12) 1px,transparent 1px);
+  background-size:45px 45px;
+}
+
+.container{
+  width:min(1050px,92%);
+  margin:auto;
+}
+
+header{
+  padding:55px 0 30px;
+  text-align:center;
+}
+
+.badge{
+  display:inline-block;
+  padding:8px 16px;
+  border:1px solid #21d4fd;
+  border-radius:999px;
+  color:#21d4fd;
+  font-size:13px;
+  letter-spacing:1px;
+  background:rgba(33,212,253,.06);
+}
+
+h1{
+  margin:18px 0 10px;
+  font-size:clamp(36px,6vw,64px);
+  background:linear-gradient(90deg,#21d4fd,#3b82f6,#8b5cf6);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+
+.subtitle{
+  color:#a9bdd0;
+  font-size:18px;
+}
+
+.profile{
+  margin:25px auto 35px;
+  max-width:920px;
+  display:grid;
+  grid-template-columns:260px 1fr;
+  gap:28px;
+  background:rgba(9,18,38,.78);
+  border:1px solid rgba(33,212,253,.25);
+  border-radius:24px;
+  padding:28px;
+  box-shadow:0 0 35px rgba(33,212,253,.08);
+}
+
+.photo{
+  min-height:310px;
+  border-radius:18px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid rgba(33,212,253,.3);
+  background:linear-gradient(145deg,#0a1830,#081020);
+  overflow:hidden;
+}
+
+.photo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.photo .fallback{
+  color:#647b91;
+  text-align:center;
+  padding:20px;
+}
+
+.content h2{
+  color:#21d4fd;
+  margin-bottom:12px;
+  font-size:27px;
+}
+
+.content p{
+  color:#c9d7e5;
+  line-height:1.8;
+  margin-bottom:15px;
+}
+
+.info{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+  margin-top:20px;
+}
+
+.info div{
+  padding:14px;
+  border-radius:12px;
+  background:rgba(255,255,255,.025);
+  border:1px solid rgba(255,255,255,.08);
+}
+
+.label{
+  display:block;
+  color:#6f91aa;
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  margin-bottom:5px;
+}
+
+.value{
+  color:#edf8ff;
+  font-weight:600;
+}
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+  margin-bottom:35px;
+}
+
+.card{
+  background:rgba(9,18,38,.72);
+  border:1px solid rgba(255,255,255,.09);
+  border-radius:18px;
+  padding:22px;
+}
+
+.card h3{
+  color:#8b5cf6;
+  margin-bottom:10px;
+}
+
+.card p,
+.card li{
+  color:#b8c9d8;
+  line-height:1.7;
+}
+
+.card ul{
+  padding-left:20px;
+}
+
+.links{
+  text-align:center;
+  margin:10px 0 45px;
+}
+
+a{
+  color:#21d4fd;
+  text-decoration:none;
+  font-weight:700;
+}
+
+.btn{
+  display:inline-block;
+  margin:6px;
+  padding:12px 18px;
+  border-radius:12px;
+  border:1px solid rgba(33,212,253,.35);
+  background:rgba(33,212,253,.06);
+}
+
+footer{
+  text-align:center;
+  padding:25px;
+  border-top:1px solid rgba(255,255,255,.08);
+  color:#70879b;
+  font-size:13px;
+  line-height:1.8;
+}
+
+@media(max-width:750px){
+  .profile{
+    grid-template-columns:1fr;
+  }
+
+  .photo{
+    min-height:260px;
+  }
+
+  .cards{
+    grid-template-columns:1fr;
+  }
+
+  .info{
+    grid-template-columns:1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="grid"></div>
+
+<div class="container">
+
+<header>
+  <span class="badge">DIGITAL BIOGRAPHY • VOLTLAB</span>
+
+  <h1>Md. Tahmid Siddique</h1>
+
+  <p class="subtitle">
+    CSE Student • Project Lead • Technology Enthusiast
+  </p>
+</header>
+
+
+<section class="profile">
+
+  <div class="photo">
+
+    <img
+      src="tahmid.jpg"
+      alt="Md. Tahmid Siddique"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='block';"
+    >
+
+    <div class="fallback" style="display:none">
+      <strong>Md. Tahmid Siddique</strong>
+      <br><br>
+      Add <b>tahmid.jpg</b> to the same GitHub repository folder
+      as this bio.html file.
+    </div>
+
+  </div>
+
+
+  <div class="content">
+
+    <h2>About Me</h2>
+
+    <p>
+      I am <strong>Md. Tahmid Siddique</strong>, a Computer Science &
+      Engineering student at Jamalpur Science and Technology University.
+      I am interested in programming, software engineering, artificial
+      intelligence, cybersecurity, electronics, research and application
+      development.
+    </p>
+
+    <p>
+      I enjoy learning through practical projects and turning technical
+      ideas into useful, interactive experiences. VoltLab is one of my
+      academic projects, created to make basic electrical concepts easier
+      to understand through interactive learning and virtual experiments.
+    </p>
+
+
+    <div class="info">
+
+      <div>
+        <span class="label">University</span>
+        <span class="value">
+          Jamalpur Science and Technology University
+        </span>
+      </div>
+
+      <div>
+        <span class="label">Department</span>
+        <span class="value">
+          Computer Science &amp; Engineering
+        </span>
+      </div>
+
+      <div>
+        <span class="label">Academic Status</span>
+        <span class="value">
+          CSE Student
+        </span>
+      </div>
+
+      <div>
+        <span class="label">Online Name</span>
+        <span class="value">
+          Tahmid Trustin
+        </span>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="cards">
+
+  <div class="card">
+
+    <h3>Interests</h3>
+
+    <ul>
+      <li>Programming &amp; Software Engineering</li>
+      <li>Artificial Intelligence</li>
+      <li>Cybersecurity</li>
+      <li>Electronics &amp; Digital Systems</li>
+      <li>Research &amp; App Development</li>
+    </ul>
+
+  </div>
+
+
+  <div class="card">
+
+    <h3>Trustin Univers</h3>
+
+    <p>
+      Trustin Univers is my digital platform and creative initiative,
+      developed around technology, creativity, learning and
+      community-oriented content.
+    </p>
+
+  </div>
+
+
+  <div class="card">
+
+    <h3>Project Role</h3>
+
+    <p>
+      For VoltLab, I work as the website builder and project lead,
+      focusing on the interactive web experience, presentation and
+      integration of learning features.
+    </p>
+
+  </div>
+
+</section>
+
+
+<div class="links">
+
+  <a
+    class="btn"
+    href="https://tahmidtrustin.github.io/voltlab/"
+    target="_blank"
+    rel="noopener"
+  >
+    ⚡ Back to VoltLab
+  </a>
+
+  <a
+    class="btn"
+    href="https://trustinunivers.wordpress.com"
+    target="_blank"
+    rel="noopener"
+  >
+    🌐 Trustin Univers
+  </a>
+
+</div>
+
+</div>
+
+
+<footer>
+
+  Md. Tahmid Siddique • CSE Student •
+  Jamalpur Science and Technology University
+
+  <br>
+
+  © 2026 Trustin Univers. All Rights Reserved.
+
+</footer>
+
+</body>
+</html>
