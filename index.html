@@ -1,3 +1,5 @@
+1-6 step
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,74 +10,1531 @@
 <style>
 :root{--bg:#050816;--panel:#0b1429;--panel2:#101c36;--line:#1d3157;--text:#eef6ff;--muted:#91a5c5;--cyan:#21d4fd;--blue:#3b82f6;--purple:#8b5cf6;--green:#22c55e;--orange:#f59e0b;--red:#ef4444;--glow:0 0 25px rgba(33,212,253,.20)}
 *{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth}
-body{font-family:Arial,Helvetica,sans-serif;background:radial-gradient(circle at 20% 10%,rgba(33,212,253,.08),transparent 30%),radial-gradient(circle at 80% 30%,rgba(139,92,246,.08),transparent 30%),var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
-body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;background-image:linear-gradient(rgba(33,212,253,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(33,212,253,.05) 1px,transparent 1px);background-size:50px 50px;mask-image:linear-gradient(to bottom,black,transparent 85%)}
-nav{position:fixed;top:0;width:100%;z-index:1000;background:rgba(5,8,22,.82);backdrop-filter:blur(15px);border-bottom:1px solid rgba(33,212,253,.12)}
-.nav-container{max-width:1200px;margin:auto;padding:15px 25px;display:flex;justify-content:space-between;align-items:center}
-.logo{font-size:25px;font-weight:800;letter-spacing:1px;color:#fff}.logo span{color:var(--cyan);text-shadow:0 0 15px rgba(33,212,253,.7)}
-.nav-links{display:flex;gap:20px;list-style:none;flex-wrap:wrap;justify-content:center}.nav-links a{color:#b8c7dd;text-decoration:none;font-size:14px;transition:.25s}.nav-links a:hover{color:var(--cyan);text-shadow:0 0 10px rgba(33,212,253,.6)}
-.container{max-width:1200px;margin:auto;padding:0 25px}section{padding:95px 0}.section-title{text-align:center;margin-bottom:50px}.section-title h2{font-size:38px;margin-bottom:10px}.section-title p{color:var(--muted)}
-.hero{min-height:100vh;display:flex;align-items:center;position:relative;padding-top:90px}.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:center}
-.badge{display:inline-block;padding:7px 14px;border:1px solid rgba(33,212,253,.35);border-radius:30px;color:var(--cyan);background:rgba(33,212,253,.06);font-size:13px;margin-bottom:20px}
-.hero h1{font-size:clamp(45px,7vw,78px);line-height:1;margin-bottom:20px}.gradient-text{background:linear-gradient(90deg,var(--cyan),#60a5fa,var(--purple));-webkit-background-clip:text;color:transparent}
-.hero p{color:var(--muted);font-size:18px;max-width:650px;margin-bottom:30px}.btn{display:inline-block;text-decoration:none;padding:13px 22px;border-radius:10px;margin-right:10px;font-weight:700;transition:.25s}
-.btn-primary{background:linear-gradient(90deg,var(--cyan),var(--blue));color:#03101c;box-shadow:0 0 25px rgba(33,212,253,.2)}.btn-secondary{border:1px solid var(--line);color:#fff;background:rgba(255,255,255,.03)}
-.hero-circuit{min-height:360px;display:flex;align-items:center;justify-content:center}.circuit-box{width:100%;max-width:470px;height:300px;border:1px solid rgba(33,212,253,.18);border-radius:25px;background:linear-gradient(145deg,rgba(16,28,54,.85),rgba(7,14,30,.9));box-shadow:var(--glow);position:relative;overflow:hidden}
-.circuit-box:before{content:"";position:absolute;inset:20px;border:1px dashed rgba(33,212,253,.12);border-radius:18px}.energy{position:absolute;width:10px;height:10px;background:var(--cyan);border-radius:50%;box-shadow:0 0 15px var(--cyan);animation:moveEnergy 3s linear infinite}.energy:nth-child(2){animation-delay:1s}.energy:nth-child(3){animation-delay:2s}
-@keyframes moveEnergy{0%{left:30px;top:65px}25%{left:calc(100% - 40px);top:65px}50%{left:calc(100% - 40px);top:230px}75%{left:30px;top:230px}100%{left:30px;top:65px}}
-.battery{position:absolute;left:55px;top:120px;width:55px;height:65px;border:3px solid var(--cyan);border-radius:7px;box-shadow:0 0 18px rgba(33,212,253,.3)}.battery:before{content:"+";position:absolute;top:-28px;left:17px;color:var(--cyan);font-size:20px}
-.resistor{position:absolute;right:65px;top:130px;width:90px;height:45px;border:3px solid var(--orange);transform:skew(-20deg);box-shadow:0 0 18px rgba(245,158,11,.25)}
-.wire{position:absolute;background:var(--cyan);box-shadow:0 0 8px rgba(33,212,253,.4)}.w1{width:280px;height:3px;left:82px;top:65px}.w2{width:280px;height:3px;left:82px;top:230px}.w3{width:3px;height:165px;left:82px;top:65px}.w4{width:3px;height:165px;right:65px;top:65px}
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.card,.lab-panel,.law-card,.about-box,.team-card{background:linear-gradient(145deg,rgba(16,28,54,.88),rgba(8,16,32,.94));border:1px solid var(--line);border-radius:18px}
-.card{padding:25px;transition:.3s}.card:hover,.team-card:hover{transform:translateY(-5px);border-color:rgba(33,212,253,.55);box-shadow:0 15px 40px rgba(0,0,0,.3),0 0 25px rgba(33,212,253,.08)}
-.icon{width:50px;height:50px;border-radius:14px;display:flex;align-items:center;justify-content:center;background:rgba(33,212,253,.08);color:var(--cyan);font-size:25px;margin-bottom:18px}.card h3{margin-bottom:9px}.card p,.about-box p{color:var(--muted);font-size:14px}.lesson-number{color:var(--cyan);font-size:13px;margin-bottom:7px;font-weight:bold}
-.lab-section{background:linear-gradient(180deg,transparent,rgba(33,212,253,.025),transparent)}.lab-wrapper{display:grid;grid-template-columns:1fr 1fr;gap:30px}.lab-panel{padding:30px;box-shadow:var(--glow)}.lab-panel h3,.law-card h3{font-size:22px;margin-bottom:8px}.lab-description{color:var(--muted);font-size:14px;margin-bottom:25px}
-.input-group{margin-bottom:18px}.input-group label{display:flex;justify-content:space-between;margin-bottom:7px;color:#cbd8ea;font-size:14px}.input-group span{color:var(--cyan)}.input-group input{width:100%;padding:13px 14px;background:#060d1c;border:1px solid #22385f;border-radius:10px;outline:none;color:#fff;font-size:16px}.input-group input:focus{border-color:var(--cyan);box-shadow:0 0 15px rgba(33,212,253,.1)}.input-group input::placeholder{color:#536987}
-.calculate-btn{width:100%;border:none;padding:14px;border-radius:10px;background:linear-gradient(90deg,var(--cyan),var(--blue));color:#03101c;font-weight:bold;cursor:pointer;font-size:15px;margin-top:5px}.calculate-btn:hover{filter:brightness(1.08);transform:translateY(-1px)}
-.result-box{margin-top:20px;padding:20px;border-radius:14px;background:rgba(33,212,253,.06);border:1px solid rgba(33,212,253,.2);text-align:center}.result-label{color:var(--muted);font-size:13px}.result-value{font-size:28px;font-weight:800;color:var(--cyan);margin-top:3px}.formula{text-align:center;margin-top:15px;color:var(--muted)}.formula strong{color:#fff;font-size:20px}
-.ohm-visual{min-height:330px;display:flex;align-items:center;justify-content:center;flex-direction:column}.visual-circuit{width:90%;height:180px;position:relative}.v-wire{position:absolute;background:#29466e}.v-top{width:80%;height:3px;top:25px;left:10%}.v-bottom{width:80%;height:3px;bottom:25px;left:10%}.v-left{height:140px;width:3px;top:25px;left:10%}.v-right{height:140px;width:3px;top:25px;right:10%}.v-battery{position:absolute;left:5%;top:70px;width:40px;height:55px;border:3px solid var(--cyan);border-radius:5px}.v-battery:after{content:"12V";position:absolute;left:-3px;top:62px;color:var(--cyan);font-size:12px}.v-resistor{position:absolute;right:17%;top:72px;width:80px;height:45px;border:3px solid var(--orange);transform:skew(-15deg)}.v-current{position:absolute;top:2px;left:42%;color:var(--green);font-size:13px}.current-dot{position:absolute;width:9px;height:9px;background:var(--green);border-radius:50%;box-shadow:0 0 15px var(--green);animation:currentMove 2s linear infinite}
-@keyframes currentMove{0%{left:12%;top:20px}25%{left:86%;top:20px}50%{left:86%;top:150px}75%{left:12%;top:150px}100%{left:12%;top:20px}}
-.mode-switch{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:22px}.mode-btn{padding:12px;border:1px solid #29466e;border-radius:10px;background:#071126;color:#b8c7dd;font-weight:bold;cursor:pointer;transition:.25s}.mode-btn.active{border-color:var(--cyan);color:var(--cyan);background:rgba(33,212,253,.08);box-shadow:0 0 18px rgba(33,212,253,.1)}
-.explain-box{margin-top:18px;padding:16px;border:1px solid rgba(33,212,253,.18);border-radius:12px;background:rgba(33,212,253,.045);color:var(--muted);font-size:14px}.explain-box strong{color:#fff}
-.circuit-stage{position:relative;min-height:260px;border:1px solid #1b3154;border-radius:18px;background:radial-gradient(circle at center,rgba(33,212,253,.06),transparent 58%),#030914;overflow:hidden;padding:25px}.stage-label{font-size:12px;letter-spacing:1px;color:var(--cyan)}.circuit-drawing{height:190px;position:relative;margin-top:5px}.c-wire{position:absolute;background:#2c4d78;box-shadow:0 0 7px rgba(33,212,253,.15)}.c-node{position:absolute;width:10px;height:10px;border-radius:50%;background:var(--cyan);box-shadow:0 0 12px var(--cyan)}.c-res{position:absolute;width:72px;height:34px;border:3px solid var(--orange);border-radius:4px;transform:skew(-15deg);display:flex;align-items:center;justify-content:center;color:var(--orange);font-size:12px;font-weight:bold;background:#081126}
-.series .sw1{left:7%;top:85px;width:16%;height:3px}.series .sw2{left:23%;top:85px;width:9%;height:3px}.series .sw3{left:41%;top:85px;width:8%;height:3px}.series .sw4{left:57%;top:85px;width:8%;height:3px}.series .sw5{left:73%;top:85px;width:9%;height:3px}.series .sw6{left:84%;top:85px;width:9%;height:3px}.series .sr1{left:31%;top:68px}.series .sr2{left:48%;top:68px}.series .sr3{left:65%;top:68px}.series .sn1{left:6%;top:80px}.series .sn2{right:6%;top:80px}
-.parallel .pwtop,.parallel .pwbottom{left:18%;width:64%;height:3px}.parallel .pwtop{top:28px}.parallel .pwbottom{top:172px}.parallel .pwl,.parallel .pwr{top:28px;width:3px;height:144px}.parallel .pwl{left:18%}.parallel .pwr{right:18%}.parallel .pr1{left:42%;top:12px}.parallel .pr2{left:42%;top:70px}.parallel .pr3{left:42%;top:128px}.parallel .pn1{left:17%;top:22px}.parallel .pn2{left:17%;top:166px}.parallel .pn3{right:17%;top:22px}.parallel .pn4{right:17%;top:166px}
-.flow-dot{position:absolute;width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 12px var(--green);animation:flow 1.8s linear infinite}@keyframes flow{0%{transform:translateX(0);opacity:.3}50%{opacity:1}100%{transform:translateX(80px);opacity:.3}}
-.metric-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}.metric{padding:14px;border:1px solid #1b3154;border-radius:12px;background:#071126;text-align:center}.metric small{display:block;color:var(--muted);font-size:10px}.metric strong{display:block;color:var(--cyan);font-size:19px;margin-top:4px}
-.kirch-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px}.law-card{padding:30px;box-shadow:var(--glow)}.law-card>p{color:var(--muted);font-size:14px;margin-bottom:18px}
-.node-diagram,.loop-diagram{height:150px;border:1px solid #1b3154;border-radius:16px;background:#030914;position:relative;margin-bottom:22px;overflow:hidden}.node{position:absolute;left:50%;top:50%;width:28px;height:28px;border-radius:50%;background:var(--cyan);box-shadow:0 0 25px var(--cyan);transform:translate(-50%,-50%)}.nwire{position:absolute;background:#2c4d78;box-shadow:0 0 7px rgba(33,212,253,.2)}.nin1{left:5%;top:73px;width:43%;height:3px}.nout1{left:52%;top:73px;width:43%;height:3px}.nin2{left:50%;top:8px;width:3px;height:42%}.nout2{left:50%;top:53%;width:3px;height:42%}.arrow-label{position:absolute;color:var(--muted);font-size:12px}.ain{left:8%;top:52px}.aout{right:8%;top:52px}.ain2{left:53%;top:12px}.aout2{left:53%;bottom:8px}.kcl-status,.kvl-status{margin-top:14px;font-size:13px;min-height:20px}
-.loop{position:absolute;inset:22px 28%;border:3px solid #2c4d78;border-radius:50%}.loop-res{position:absolute;right:29%;top:12px;color:var(--orange);font-size:12px}.loop-source{position:absolute;left:24%;top:53px;width:30px;height:45px;border:3px solid var(--cyan);border-radius:5px}.loop-arrow{position:absolute;left:40%;bottom:10px;color:var(--green);font-size:12px}
-.led-stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}.led-stat{padding:14px;border:1px solid #1b3154;border-radius:12px;text-align:center;background:#071126}.led-stat small{display:block;color:var(--muted);font-size:10px}.led-stat strong{color:var(--cyan);font-size:18px}.led-box{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:350px}.led-stage{height:190px;width:100%;display:flex;align-items:center;justify-content:center;position:relative}.led-glow{width:95px;height:95px;border-radius:50%;background:#162238;border:3px solid #526783;transition:.25s}.led-base{position:absolute;bottom:24px;width:55px;height:10px;border-radius:10px;background:#273955}.led-status{font-weight:700;color:var(--muted);letter-spacing:.5px}
-.virtual-lab{display:grid;grid-template-columns:1.4fr .9fr;gap:30px}.lab-screen{background:#030914;border:1px solid #24436f;border-radius:22px;padding:32px;box-shadow:var(--glow);min-height:430px}.screen-title{color:var(--cyan);letter-spacing:1px}.components{display:flex;align-items:center;justify-content:center;gap:18px;margin:85px 0}.component{width:125px;height:120px;border:1px solid #29466e;border-radius:15px;background:#081126;display:flex;flex-direction:column;align-items:center;justify-content:center}.symbol{font-size:30px;margin-bottom:8px}.component small{color:#b8c7dd}.flow-line{height:3px;width:55px;background:var(--cyan);box-shadow:0 0 10px var(--cyan)}.lab-status{padding:14px;border-radius:10px;border:1px solid rgba(34,197,94,.25);background:rgba(34,197,94,.06);color:#6ee7a0}
-.challenge{max-width:850px;margin:auto}.question{font-size:20px;font-weight:bold;margin-bottom:25px}.options{display:grid;grid-template-columns:1fr 1fr;gap:12px}.option{padding:14px;border:1px solid var(--line);background:#071126;color:#dbe8f8;border-radius:10px;cursor:pointer;text-align:left}.feedback{margin-top:18px;font-weight:bold;min-height:24px}
-.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}.team-card{text-align:center;padding:25px}.member-photo{width:110px;height:110px;margin:0 auto 18px;border-radius:50%;overflow:hidden;border:2px solid rgba(33,212,253,.45);box-shadow:0 0 25px rgba(33,212,253,.12);display:flex;align-items:center;justify-content:center;background:#071126;color:var(--cyan);font-weight:bold}.member-photo img{width:100%;height:100%;object-fit:cover}.role{color:var(--cyan);font-size:13px;margin:6px 0 12px}.team-info{color:var(--muted);font-size:12px}
-.about-box{padding:30px;max-width:900px;margin:auto}.about-box p{margin-bottom:16px;font-size:15px}.about-box p:last-child{margin-bottom:0}footer{padding:45px 0;text-align:center;color:var(--muted);border-top:1px solid rgba(33,212,253,.1);font-size:13px}footer strong{color:#fff}
-.builder-layout{display:grid;grid-template-columns:220px 1fr;gap:22px}.builder-palette,.builder-workbench{background:linear-gradient(145deg,rgba(16,28,54,.88),rgba(8,16,32,.94));border:1px solid var(--line);border-radius:18px;box-shadow:var(--glow)}.builder-palette{padding:20px}.builder-palette h3,.builder-workbench h3{margin-bottom:8px}.palette-note{color:var(--muted);font-size:13px;margin-bottom:16px}.palette-item{padding:13px;margin:10px 0;border:1px solid #29466e;border-radius:12px;background:#071126;cursor:grab;display:flex;align-items:center;gap:10px;color:#dbeafe;transition:.25s}.palette-item:hover{border-color:var(--cyan);transform:translateX(3px);box-shadow:0 0 18px rgba(33,212,253,.1)}.palette-item:active{cursor:grabbing}.palette-icon{font-size:22px}.builder-workbench{padding:20px}.builder-toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}.builder-btn{border:1px solid #29466e;background:#071126;color:#cbd8ea;padding:10px 14px;border-radius:10px;cursor:pointer;font-weight:bold}.builder-btn.primary{background:linear-gradient(90deg,var(--cyan),var(--blue));color:#03101c;border:none}.builder-btn.danger{border-color:rgba(239,68,68,.4);color:#fecaca}.builder-status{margin-left:auto;color:var(--cyan);font-size:13px;align-self:center}
-.builder-board{height:430px;position:relative;border:1px dashed rgba(33,212,253,.28);border-radius:16px;background:radial-gradient(circle at center,rgba(33,212,253,.055),transparent 58%),#030914;overflow:hidden}.builder-board.drag-over{border-color:var(--cyan);box-shadow:inset 0 0 35px rgba(33,212,253,.08)}.builder-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(33,212,253,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(33,212,253,.045) 1px,transparent 1px);background-size:28px 28px;pointer-events:none}.builder-wires{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}.builder-wire{stroke:var(--cyan);stroke-width:3;filter:drop-shadow(0 0 5px rgba(33,212,253,.65))}
-.builder-component{position:absolute;width:120px;min-height:76px;border:1px solid #36547e;border-radius:14px;background:linear-gradient(145deg,#0d1b35,#071126);display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:move;user-select:none;box-shadow:0 8px 25px rgba(0,0,0,.25);z-index:5}.builder-component.selected{border-color:var(--cyan);box-shadow:0 0 22px rgba(33,212,253,.22)}.builder-component .bc-icon{font-size:25px;line-height:1}.builder-component .bc-name{font-size:12px;color:#dbeafe;margin-top:5px}.builder-port{position:absolute;width:13px;height:13px;border-radius:50%;background:#0a1529;border:2px solid var(--cyan);top:50%;transform:translateY(-50%);cursor:crosshair;z-index:8}.builder-port.left{left:-7px}.builder-port.right{right:-7px}.builder-port.active{background:var(--cyan);box-shadow:0 0 15px var(--cyan)}
-.builder-properties{margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:18px}.property-panel{padding:17px;border:1px solid #1b3154;border-radius:14px;background:rgba(3,9,20,.75)}.property-panel h4{margin-bottom:8px}.property-panel p{color:var(--muted);font-size:13px}.builder-input{width:100%;margin-top:10px;padding:11px;border-radius:9px;border:1px solid #22385f;background:#060d1c;color:#fff;outline:none}.builder-input:focus{border-color:var(--cyan)}
-.builder-results{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}.builder-metric{padding:14px;border:1px solid #1b3154;border-radius:12px;background:rgba(33,212,253,.035);text-align:center}.builder-metric small{display:block;color:var(--muted);font-size:11px}.builder-metric strong{display:block;color:var(--cyan);font-size:20px;margin-top:3px}.builder-help{margin-top:14px;color:var(--muted);font-size:13px}.switch-state{color:var(--green);font-weight:bold}.switch-state.off{color:var(--red)}
-.builder-modal{position:fixed;inset:0;background:rgba(0,0,0,.72);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;z-index:2000;padding:20px}.builder-modal.open{display:flex}.builder-modal-card{max-width:700px;width:100%;max-height:85vh;overflow:auto;background:linear-gradient(145deg,#101c36,#070e1e);border:1px solid var(--cyan);border-radius:20px;padding:28px;box-shadow:0 0 50px rgba(33,212,253,.18)}.builder-modal-card h2{margin-bottom:12px}.builder-modal-card p{color:var(--muted);margin:10px 0}
-.bio-link{background:linear-gradient(90deg,var(--cyan),var(--blue),var(--green));-webkit-background-clip:text;color:transparent;font-weight:800;text-decoration:none}.bio-link:hover{text-shadow:0 0 14px rgba(33,212,253,.45)}
 
-.detective-layout{display:grid;grid-template-columns:1.05fr .95fr;gap:24px}.detective-card{background:linear-gradient(145deg,rgba(16,28,54,.88),rgba(8,16,32,.94));border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:var(--glow)}.detective-casebar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}.detective-case{padding:9px 13px;border:1px solid #29466e;border-radius:9px;background:#071126;color:#b8c7dd;cursor:pointer}.detective-case.active{border-color:var(--cyan);color:var(--cyan);background:rgba(33,212,253,.07)}.fault-board{min-height:310px;border:1px solid #1b3154;border-radius:16px;background:#030914;position:relative;overflow:hidden}.fault-label{position:absolute;top:14px;left:15px;color:var(--cyan);font-size:11px;letter-spacing:1px}.fault-wire{position:absolute;background:#2c4d78}.fw1{left:12%;right:12%;top:82px;height:3px}.fw2{left:12%;top:82px;width:3px;height:150px}.fw3{right:12%;top:82px;width:3px;height:150px}.fw4{left:12%;right:12%;bottom:78px;height:3px}.fd-battery{position:absolute;left:18%;top:118px;width:42px;height:70px;border:3px solid var(--cyan);border-radius:5px}.fd-resistor{position:absolute;left:47%;top:65px;width:85px;height:42px;border:3px solid var(--orange);transform:skew(-15deg);display:flex;align-items:center;justify-content:center;color:var(--orange);font-size:11px}.fd-lamp{position:absolute;right:18%;top:137px;font-size:35px}.fd-switch{position:absolute;left:45%;bottom:43px;color:var(--muted);font-size:12px}.fd-alert{position:absolute;bottom:15px;left:50%;transform:translateX(-50%);font-size:11px;color:var(--red)}.symptom{padding:14px;border:1px solid #1b3154;border-radius:12px;background:#071126;color:var(--muted)}.symptom strong{color:#fff}.detective-question{font-size:19px;font-weight:700;margin:18px 0 13px}.fault-options{display:grid;grid-template-columns:1fr 1fr;gap:10px}.fault-option{padding:13px;border:1px solid var(--line);border-radius:10px;background:#071126;color:#dbe8f8;text-align:left;cursor:pointer;transition:.2s}.fault-option:hover{border-color:var(--cyan);transform:translateY(-1px)}.fault-option.correct{border-color:var(--green);background:rgba(34,197,94,.08)}.fault-option.wrong{border-color:var(--red);background:rgba(239,68,68,.07)}.detective-feedback{margin-top:15px;min-height:60px;padding:13px;border-radius:11px;background:rgba(33,212,253,.045);border:1px solid rgba(33,212,253,.15);color:var(--muted);font-size:14px}.detective-score{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px}.detective-metric{padding:13px;border:1px solid #1b3154;border-radius:12px;text-align:center;background:#071126}.detective-metric small{display:block;color:var(--muted);font-size:10px}.detective-metric strong{display:block;color:var(--cyan);font-size:20px;margin-top:3px}.reset-detective{margin-top:14px;width:100%}
+body{
+font-family:Arial,Helvetica,sans-serif;
+background:radial-gradient(circle at 20% 10%,rgba(33,212,253,.08),transparent 30%),radial-gradient(circle at 80% 30%,rgba(139,92,246,.08),transparent 30%),var(--bg);
+color:var(--text);
+line-height:1.6;
+overflow-x:hidden
+}
 
-.progress-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}.progress-card{background:linear-gradient(145deg,rgba(16,28,54,.88),rgba(8,16,32,.94));border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:var(--glow)}.progress-card h3{margin-bottom:5px}.progress-sub{color:var(--muted);font-size:13px;margin-bottom:18px}.progress-metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.progress-metric{padding:14px 8px;border:1px solid #1b3154;border-radius:13px;background:#071126;text-align:center}.progress-metric small{display:block;color:var(--muted);font-size:9px}.progress-metric strong{display:block;color:var(--cyan);font-size:21px;margin-top:3px}.progress-track{height:8px;background:#13233f;border-radius:10px;overflow:hidden;margin-top:12px}.progress-fill{height:100%;width:0;background:linear-gradient(90deg,var(--cyan),var(--blue),var(--purple));border-radius:10px;transition:width .6s ease}.badge-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}.achievement{padding:14px 8px;border:1px solid #1b3154;border-radius:13px;background:#071126;text-align:center;opacity:.42;filter:grayscale(.9);transition:.3s}.achievement.unlocked{opacity:1;filter:none;border-color:rgba(33,212,253,.5);box-shadow:0 0 20px rgba(33,212,253,.08);transform:translateY(-2px)}.achievement-icon{font-size:25px}.achievement strong{display:block;font-size:12px;margin-top:7px}.achievement small{display:block;color:var(--muted);font-size:9px;margin-top:3px}
-.mission-list{display:grid;gap:10px}.mission{display:flex;align-items:center;gap:12px;padding:13px;border:1px solid #1b3154;border-radius:12px;background:#071126}.mission-icon{width:35px;height:35px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:rgba(33,212,253,.07);font-size:18px}.mission-copy{flex:1}.mission-copy strong{font-size:13px}.mission-copy small{display:block;color:var(--muted);font-size:10px}.mission-state{font-size:12px;color:var(--muted)}.mission.done{border-color:rgba(34,197,94,.35)}.mission.done .mission-state{color:var(--green);font-weight:700}
-.log-list{max-height:245px;overflow:auto;display:grid;gap:8px}.log-entry{padding:10px 12px;border-left:2px solid var(--cyan);background:#071126;border-radius:0 9px 9px 0;font-size:11px}.log-entry strong{color:#fff}.log-entry span{color:var(--muted);display:block;font-size:10px}.certificate{position:relative;overflow:hidden;border:1px solid rgba(33,212,253,.3);border-radius:18px;padding:28px;background:radial-gradient(circle at 50% 0%,rgba(33,212,253,.12),transparent 48%),linear-gradient(145deg,rgba(13,26,51,.96),rgba(5,12,27,.98));text-align:center}.certificate:before{content:"";position:absolute;inset:10px;border:1px dashed rgba(33,212,253,.18);border-radius:12px;pointer-events:none}.certificate-kicker{color:var(--cyan);font-size:11px;letter-spacing:2px}.certificate h3{font-size:28px;margin:6px 0}.certificate p{color:var(--muted);font-size:12px}.certificate-name{color:#fff;font-size:20px;font-weight:800;margin:15px 0 5px}.certificate-progress{font-size:14px;color:var(--cyan);font-weight:700;margin:14px 0}.certificate-seal{font-size:34px;margin-top:8px}
-.toast{position:fixed;left:50%;bottom:25px;transform:translate(-50%,20px);opacity:0;pointer-events:none;z-index:3000;background:rgba(5,8,22,.94);border:1px solid rgba(33,212,253,.35);box-shadow:0 0 30px rgba(33,212,253,.15);border-radius:12px;padding:12px 18px;color:#eef6ff;font-size:13px;transition:.3s}.toast.show{opacity:1;transform:translate(-50%,0)}
-.telemetry{position:fixed;right:18px;bottom:18px;z-index:900;background:rgba(5,8,22,.88);backdrop-filter:blur(14px);border:1px solid rgba(33,212,253,.25);border-radius:14px;padding:10px 13px;box-shadow:0 0 25px rgba(33,212,253,.10);font-size:11px;color:#91a5c5;min-width:180px}.telemetry-top{display:flex;align-items:center;justify-content:space-between;gap:12px}.telemetry-dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green);display:inline-block;margin-right:6px}.telemetry strong{color:#eef6ff}.telemetry-bar{height:4px;background:#13233f;border-radius:10px;margin-top:8px;overflow:hidden}.telemetry-fill{height:100%;width:35%;background:linear-gradient(90deg,var(--cyan),var(--blue),var(--purple));border-radius:10px;transition:width .5s ease}
+body:before{
+content:"";
+position:fixed;
+inset:0;
+pointer-events:none;
+opacity:.18;
+background-image:linear-gradient(rgba(33,212,253,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(33,212,253,.05) 1px,transparent 1px);
+background-size:50px 50px;
+mask-image:linear-gradient(to bottom,black,transparent 85%)
+}
 
-@media(max-width:900px){.hero-grid,.lab-wrapper,.kirch-grid,.virtual-lab,.builder-layout,.detective-layout,.progress-grid{grid-template-columns:1fr}.cards{grid-template-columns:1fr 1fr}.team-grid{grid-template-columns:1fr 1fr}.nav-links{gap:12px}.nav-container{align-items:flex-start}.components{margin:55px 0}.flow-line{width:30px}.builder-properties{grid-template-columns:1fr}.badge-grid{grid-template-columns:repeat(3,1fr)}.progress-metrics{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:600px){section{padding:75px 0}.container{padding:0 16px}.section-title h2{font-size:30px}.cards,.team-grid,.options{grid-template-columns:1fr}.hero-grid{gap:25px}.hero h1{font-size:48px}.nav-container{flex-direction:column;gap:10px}.nav-links{font-size:12px;gap:9px}.lab-panel,.law-card,.team-card{padding:20px}.metric-grid,.led-stat-grid,.builder-results{grid-template-columns:1fr}.components{gap:7px}.component{width:90px;height:100px}.flow-line{width:18px}.screen-title{font-size:12px}.builder-board{height:520px}.builder-component{width:105px}.builder-toolbar{flex-direction:column}.builder-status{margin-left:0}.fault-options{grid-template-columns:1fr}.detective-score{grid-template-columns:1fr}.badge-grid{grid-template-columns:1fr 1fr}.progress-metrics{grid-template-columns:1fr 1fr}.telemetry{right:10px;bottom:10px;min-width:165px}.certificate h3{font-size:24px}}
+nav{
+position:fixed;
+top:0;
+width:100%;
+z-index:1000;
+background:rgba(5,8,22,.82);
+backdrop-filter:blur(15px);
+border-bottom:1px solid rgba(33,212,253,.12)
+}
+
+.nav-container{
+max-width:1200px;
+margin:auto;
+padding:15px 25px;
+display:flex;
+justify-content:space-between;
+align-items:center
+}
+
+.logo{
+font-size:25px;
+font-weight:800;
+letter-spacing:1px;
+color:#fff
+}
+
+.logo span{
+color:var(--cyan);
+text-shadow:0 0 15px rgba(33,212,253,.7)
+}
+
+.nav-links{
+display:flex;
+gap:20px;
+list-style:none;
+flex-wrap:wrap;
+justify-content:center
+}
+
+.nav-links a{
+color:#b8c7dd;
+text-decoration:none;
+font-size:14px;
+transition:.25s
+}
+
+.nav-links a:hover{
+color:var(--cyan);
+text-shadow:0 0 10px rgba(33,212,253,.6)
+}
+
+.container{
+max-width:1200px;
+margin:auto;
+padding:0 25px
+}
+
+section{
+padding:95px 0
+}
+
+.section-title{
+text-align:center;
+margin-bottom:50px
+}
+
+.section-title h2{
+font-size:38px;
+margin-bottom:10px
+}
+
+.section-title p{
+color:var(--muted)
+}
+
+.hero{
+min-height:100vh;
+display:flex;
+align-items:center;
+position:relative;
+padding-top:90px
+}
+
+.hero-grid{
+display:grid;
+grid-template-columns:1.05fr .95fr;
+gap:60px;
+align-items:center
+}
+
+.badge{
+display:inline-block;
+padding:7px 14px;
+border:1px solid rgba(33,212,253,.35);
+border-radius:30px;
+color:var(--cyan);
+background:rgba(33,212,253,.06);
+font-size:13px;
+margin-bottom:20px
+}
+
+.hero h1{
+font-size:clamp(45px,7vw,78px);
+line-height:1;
+margin-bottom:20px
+}
+
+.gradient-text{
+background:linear-gradient(90deg,var(--cyan),#60a5fa,var(--purple));
+-webkit-background-clip:text;
+color:transparent
+}
+
+.hero p{
+color:var(--muted);
+font-size:18px;
+max-width:650px;
+margin-bottom:30px
+}
+
+.btn{
+display:inline-block;
+text-decoration:none;
+padding:13px 22px;
+border-radius:10px;
+margin-right:10px;
+font-weight:700;
+transition:.25s
+}
+
+.btn-primary{
+background:linear-gradient(90deg,var(--cyan),var(--blue));
+color:#03101c;
+box-shadow:0 0 25px rgba(33,212,253,.2)
+}
+
+.btn-secondary{
+border:1px solid var(--line);
+color:#fff;
+background:rgba(255,255,255,.03)
+}
+
+.hero-circuit{
+min-height:360px;
+display:flex;
+align-items:center;
+justify-content:center
+}
+
+.circuit-box{
+width:100%;
+max-width:470px;
+height:300px;
+border:1px solid rgba(33,212,253,.18);
+border-radius:25px;
+background:linear-gradient(145deg,rgba(16,28,54,.85),rgba(7,14,30,.9));
+box-shadow:var(--glow);
+position:relative;
+overflow:hidden
+}
+
+.circuit-box:before{
+content:"";
+position:absolute;
+inset:20px;
+border:1px dashed rgba(33,212,253,.12);
+border-radius:18px
+}
+
+.energy{
+position:absolute;
+width:10px;
+height:10px;
+background:var(--cyan);
+border-radius:50%;
+box-shadow:0 0 15px var(--cyan);
+animation:moveEnergy 3s linear infinite
+}
+
+.energy:nth-child(2){animation-delay:1s}
+.energy:nth-child(3){animation-delay:2s}
+
+@keyframes moveEnergy{
+0%{left:30px;top:65px}
+25%{left:calc(100% - 40px);top:65px}
+50%{left:calc(100% - 40px);top:230px}
+75%{left:30px;top:230px}
+100%{left:30px;top:65px}
+}
+
+.battery{
+position:absolute;
+left:55px;
+top:120px;
+width:55px;
+height:65px;
+border:3px solid var(--cyan);
+border-radius:7px;
+box-shadow:0 0 18px rgba(33,212,253,.3)
+}
+
+.battery:before{
+content:"+";
+position:absolute;
+top:-28px;
+left:17px;
+color:var(--cyan);
+font-size:20px
+}
+
+.resistor{
+position:absolute;
+right:65px;
+top:130px;
+width:90px;
+height:45px;
+border:3px solid var(--orange);
+transform:skew(-20deg);
+box-shadow:0 0 18px rgba(245,158,11,.25)
+}
+
+.wire{
+position:absolute;
+background:var(--cyan);
+box-shadow:0 0 8px rgba(33,212,253,.4)
+}
+
+.w1{width:280px;height:3px;left:82px;top:65px}
+.w2{width:280px;height:3px;left:82px;top:230px}
+.w3{width:3px;height:165px;left:82px;top:65px}
+.w4{width:3px;height:165px;right:65px;top:65px}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:20px
+}
+
+.card,.lab-panel,.law-card,.about-box,.team-card{
+background:linear-gradient(145deg,rgba(16,28,54,.88),rgba(8,16,32,.94));
+border:1px solid var(--line);
+border-radius:18px
+}
+
+.card{
+padding:25px;
+transition:.3s
+}
+
+.card:hover,.team-card:hover{
+transform:translateY(-5px);
+border-color:rgba(33,212,253,.55);
+box-shadow:0 15px 40px rgba(0,0,0,.3),0 0 25px rgba(33,212,253,.08)
+}
+
+.icon{
+width:50px;
+height:50px;
+border-radius:14px;
+display:flex;
+align-items:center;
+justify-content:center;
+background:rgba(33,212,253,.08);
+color:var(--cyan);
+font-size:25px;
+margin-bottom:18px
+}
+
+.card h3{margin-bottom:9px}
+
+.card p,.about-box p{
+color:var(--muted);
+font-size:14px
+}
+
+.lesson-number{
+color:var(--cyan);
+font-size:13px;
+margin-bottom:7px;
+font-weight:bold
+}
+
+.lab-section{
+background:linear-gradient(180deg,transparent,rgba(33,212,253,.025),transparent)
+}
+
+.lab-wrapper{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:30px
+}
+
+.lab-panel{
+padding:30px;
+box-shadow:var(--glow)
+}
+
+.lab-panel h3,.law-card h3{
+font-size:22px;
+margin-bottom:8px
+}
+
+.lab-description{
+color:var(--muted);
+font-size:14px;
+margin-bottom:25px
+}
+
+.input-group{
+margin-bottom:18px
+}
+
+.input-group label{
+display:flex;
+justify-content:space-between;
+margin-bottom:7px;
+color:#cbd8ea;
+font-size:14px
+}
+
+.input-group span{
+color:var(--cyan)
+}
+
+.input-group input{
+width:100%;
+padding:13px 14px;
+background:#060d1c;
+border:1px solid #22385f;
+border-radius:10px;
+outline:none;
+color:#fff;
+font-size:16px
+}
+
+.input-group input:focus{
+border-color:var(--cyan);
+box-shadow:0 0 15px rgba(33,212,253,.1)
+}
+
+.input-group input::placeholder{
+color:#536987
+}
+
+.calculate-btn{
+width:100%;
+border:none;
+padding:14px;
+border-radius:10px;
+background:linear-gradient(90deg,var(--cyan),var(--blue));
+color:#03101c;
+font-weight:bold;
+cursor:pointer;
+font-size:15px;
+margin-top:5px
+}
+
+.calculate-btn:hover{
+filter:brightness(1.08);
+transform:translateY(-1px)
+}
+
+.result-box{
+margin-top:20px;
+padding:20px;
+border-radius:14px;
+background:rgba(33,212,253,.06);
+border:1px solid rgba(33,212,253,.2);
+text-align:center
+}
+
+.result-label{
+color:var(--muted);
+font-size:13px
+}
+
+.result-value{
+font-size:28px;
+font-weight:800;
+color:var(--cyan);
+margin-top:3px
+}
+
+.formula{
+text-align:center;
+margin-top:15px;
+color:var(--muted)
+}
+
+.formula strong{
+color:#fff;
+font-size:20px
+}
+
+.ohm-visual{
+min-height:330px;
+display:flex;
+align-items:center;
+justify-content:center;
+flex-direction:column
+}
+
+.visual-circuit{
+width:90%;
+height:180px;
+position:relative
+}
+
+.v-wire{
+position:absolute;
+background:#29466e
+}
+
+.v-top{
+width:80%;
+height:3px;
+top:25px;
+left:10%
+}
+
+.v-bottom{
+width:80%;
+height:3px;
+bottom:25px;
+left:10%
+}
+
+.v-left{
+height:140px;
+width:3px;
+top:25px;
+left:10%
+}
+
+.v-right{
+height:140px;
+width:3px;
+top:25px;
+right:10%
+}
+
+.v-battery{
+position:absolute;
+left:5%;
+top:70px;
+width:40px;
+height:55px;
+border:3px solid var(--cyan);
+border-radius:5px
+}
+
+.v-battery:after{
+content:"12V";
+position:absolute;
+left:-3px;
+top:62px;
+color:var(--cyan);
+font-size:12px
+}
+
+.v-resistor{
+position:absolute;
+right:17%;
+top:72px;
+width:80px;
+height:45px;
+border:3px solid var(--orange);
+transform:skew(-15deg)
+}
+
+.v-current{
+position:absolute;
+top:2px;
+left:42%;
+color:var(--green);
+font-size:13px
+}
+
+.current-dot{
+position:absolute;
+width:9px;
+height:9px;
+background:var(--green);
+border-radius:50%;
+box-shadow:0 0 15px var(--green);
+animation:currentMove 2s linear infinite
+}
+
+@keyframes currentMove{
+0%{left:12%;top:20px}
+25%{left:86%;top:20px}
+50%{left:86%;top:150px}
+75%{left:12%;top:150px}
+100%{left:12%;top:20px}
+}
+
+.mode-switch{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+margin-bottom:22px
+}
+
+.mode-btn{
+padding:12px;
+border:1px solid #29466e;
+border-radius:10px;
+background:#071126;
+color:#b8c7dd;
+font-weight:bold;
+cursor:pointer;
+transition:.25s
+}
+
+.mode-btn.active{
+border-color:var(--cyan);
+color:var(--cyan);
+background:rgba(33,212,253,.08);
+box-shadow:0 0 18px rgba(33,212,253,.1)
+}
+
+.explain-box{
+margin-top:18px;
+padding:16px;
+border:1px solid rgba(33,212,253,.18);
+border-radius:12px;
+background:rgba(33,212,253,.045);
+color:var(--muted);
+font-size:14px
+}
+
+.explain-box strong{color:#fff}
+
+.circuit-stage{
+position:relative;
+min-height:260px;
+border:1px solid #1b3154;
+border-radius:18px;
+background:radial-gradient(circle at center,rgba(33,212,253,.06),transparent 58%),#030914;
+overflow:hidden;
+padding:25px
+}
+
+.stage-label{
+font-size:12px;
+letter-spacing:1px;
+color:var(--cyan)
+}
+
+.circuit-drawing{
+height:190px;
+position:relative;
+margin-top:5px
+}
+
+.c-wire{
+position:absolute;
+background:#2c4d78;
+box-shadow:0 0 7px rgba(33,212,253,.15)
+}
+
+.c-node{
+position:absolute;
+width:10px;
+height:10px;
+border-radius:50%;
+background:var(--cyan);
+box-shadow:0 0 12px var(--cyan)
+}
+
+.c-res{
+position:absolute;
+width:72px;
+height:34px;
+border:3px solid var(--orange);
+border-radius:4px;
+transform:skew(-15deg);
+display:flex;
+align-items:center;
+justify-content:center;
+color:var(--orange);
+font-size:12px;
+font-weight:bold;
+background:#081126
+}
+
+.series .sw1{left:7%;top:85px;width:16%;height:3px}
+.series .sw2{left:23%;top:85px;width:9%;height:3px}
+.series .sw3{left:41%;top:85px;width:8%;height:3px}
+.series .sw4{left:57%;top:85px;width:8%;height:3px}
+.series .sw5{left:73%;top:85px;width:9%;height:3px}
+.series .sw6{left:84%;top:85px;width:9%;height:3px}
+.series .sr1{left:31%;top:68px}
+.series .sr2{left:48%;top:68px}
+.series .sr3{left:65%;top:68px}
+.series .sn1{left:6%;top:80px}
+.series .sn2{right:6%;top:80px}
+
+.parallel .pwtop,.parallel .pwbottom{
+left:18%;
+width:64%;
+height:3px
+}
+
+.parallel .pwtop{top:28px}
+.parallel .pwbottom{top:172px}
+
+.parallel .pwl,.parallel .pwr{
+top:28px;
+width:3px;
+height:144px
+}
+
+.parallel .pwl{left:18%}
+.parallel .pwr{right:18%}
+
+.parallel .pr1{left:42%;top:12px}
+.parallel .pr2{left:42%;top:70px}
+.parallel .pr3{left:42%;top:128px}
+
+.parallel .pn1{left:17%;top:22px}
+.parallel .pn2{left:17%;top:166px}
+.parallel .pn3{right:17%;top:22px}
+.parallel .pn4{right:17%;top:166px}
+
+.flow-dot{
+position:absolute;
+width:8px;
+height:8px;
+border-radius:50%;
+background:var(--green);
+box-shadow:0 0 12px var(--green);
+animation:flow 1.8s linear infinite
+}
+
+@keyframes flow{
+0%{transform:translateX(0);opacity:.3}
+50%{opacity:1}
+100%{transform:translateX(80px);opacity:.3}
+}
+
+.metric-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:10px;
+margin-top:18px
+}
+
+.metric{
+padding:14px;
+border:1px solid #1b3154;
+border-radius:12px;
+background:#071126;
+text-align:center
+}
+
+.metric small{
+display:block;
+color:var(--muted);
+font-size:10px
+}
+
+.metric strong{
+display:block;
+color:var(--cyan);
+font-size:19px;
+margin-top:4px
+}
+
+.kirch-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:30px
+}
+
+.law-card{
+padding:30px;
+box-shadow:var(--glow)
+}
+
+.law-card>p{
+color:var(--muted);
+font-size:14px;
+margin-bottom:18px
+}
+
+.node-diagram,.loop-diagram{
+height:150px;
+border:1px solid #1b3154;
+border-radius:16px;
+background:#030914;
+position:relative;
+margin-bottom:22px;
+overflow:hidden
+}
+
+.node{
+position:absolute;
+left:50%;
+top:50%;
+width:28px;
+height:28px;
+border-radius:50%;
+background:var(--cyan);
+box-shadow:0 0 25px var(--cyan);
+transform:translate(-50%,-50%)
+}
+
+.nwire{
+position:absolute;
+background:#2c4d78;
+box-shadow:0 0 7px rgba(33,212,253,.2)
+}
+
+.nin1{
+left:5%;
+top:73px;
+width:43%;
+height:3px
+}
+
+.nout1{
+left:52%;
+top:73px;
+width:43%;
+height:3px
+}
+
+.nin2{
+left:50%;
+top:8px;
+width:3px;
+height:42%
+}
+
+.nout2{
+left:50%;
+top:53%;
+width:3px;
+height:42%
+}
+
+.arrow-label{
+position:absolute;
+color:var(--muted);
+font-size:12px
+}
+
+.ain{left:8%;top:52px}
+.aout{right:8%;top:52px}
+.ain2{left:53%;top:12px}
+.aout2{left:53%;bottom:8px}
+
+.kcl-status,.kvl-status{
+margin-top:14px;
+font-size:13px;
+min-height:20px
+}
+
+.loop{
+position:absolute;
+inset:22px 28%;
+border:3px solid #2c4d78;
+border-radius:50%
+}
+
+.loop-res{
+position:absolute;
+right:29%;
+top:12px;
+color:var(--orange);
+font-size:12px
+}
+
+.loop-source{
+position:absolute;
+left:24%;
+top:53px;
+width:30px;
+height:45px;
+border:3px solid var(--cyan);
+border-radius:5px
+}
+
+.loop-arrow{
+position:absolute;
+left:40%;
+bottom:10px;
+color:var(--green);
+font-size:12px
+}
+
+.led-stat-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:10px;
+margin-top:18px
+}
+
+.led-stat{
+padding:14px;
+border:1px solid #1b3154;
+border-radius:12px;
+text-align:center;
+background:#071126
+}
+
+.led-stat small{
+display:block;
+color:var(--muted);
+font-size:10px
+}
+
+.led-stat strong{
+color:var(--cyan);
+font-size:18px
+}
+
+.led-box{
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+min-height:350px
+}
+
+.led-stage{
+height:190px;
+width:100%;
+display:flex;
+align-items:center;
+justify-content:center;
+position:relative
+}
+
+.led-glow{
+width:95px;
+height:95px;
+border-radius:50%;
+background:#162238;
+border:3px solid #526783;
+transition:.25s
+}
+
+.led-base{
+position:absolute;
+bottom:24px;
+width:55px;
+height:10px;
+border-radius:10px;
+background:#273955
+}
+
+.led-status{
+font-weight:700;
+color:var(--muted);
+letter-spacing:.5px
+}
+
+.virtual-lab{
+display:grid;
+grid-template-columns:1.4fr .9fr;
+gap:30px
+}
+
+.lab-screen{
+background:#030914;
+border:1px solid #24436f;
+border-radius:22px;
+padding:32px;
+box-shadow:var(--glow);
+min-height:430px
+}
+
+.screen-title{
+color:var(--cyan);
+letter-spacing:1px
+}
+
+.components{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:18px;
+margin:85px 0
+}
+
+.component{
+width:125px;
+height:120px;
+border:1px solid #29466e;
+border-radius:15px;
+background:#081126;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center
+}
+
+.symbol{
+font-size:30px;
+margin-bottom:8px
+}
+
+.component small{
+color:#b8c7dd
+}
+
+.flow-line{
+height:3px;
+width:55px;
+background:var(--cyan);
+box-shadow:0 0 10px var(--cyan)
+}
+
+.lab-status{
+padding:14px;
+border-radius:10px;
+border:1px solid rgba(34,197,94,.25);
+background:rgba(34,197,94,.06);
+color:#6ee7a0
+}
+
+.challenge{
+max-width:850px;
+margin:auto
+}
+
+.question{
+font-size:20px;
+font-weight:bold;
+margin-bottom:25px
+}
+
+.options{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:12px
+}
+
+.option{
+padding:14px;
+border:1px solid var(--line);
+background:#071126;
+color:#dbe8f8;
+border-radius:10px;
+cursor:pointer;
+text-align:left
+}
+
+.feedback{
+margin-top:18px;
+font-weight:bold;
+min-height:24px
+}
+
+.team-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:20px
+}
+
+.team-card{
+text-align:center;
+padding:25px
+}
+
+.member-photo{
+width:110px;
+height:110px;
+margin:0 auto 18px;
+border-radius:50%;
+overflow:hidden;
+border:2px solid rgba(33,212,253,.45);
+box-shadow:0 0 25px rgba(33,212,253,.12);
+display:flex;
+align-items:center;
+justify-content:center;
+background:#071126;
+color:var(--cyan);
+font-weight:bold
+}
+
+.member-photo img{
+width:100%;
+height:100%;
+object-fit:cover
+}
+
+.role{
+color:var(--cyan);
+font-size:13px;
+margin:6px 0 12px
+}
+
+.team-info{
+color:var(--muted);
+font-size:12px
+}
+
+.about-box{
+padding:30px;
+max-width:900px;
+margin:auto
+}
+
+.about-box p{
+margin-bottom:16px;
+font-size:15px
+}
+
+.about-box p:last-child{
+margin-bottom:0
+}
+
+footer{
+padding:45px 0;
+text-align:center;
+color:var(--muted);
+border-top:1px solid rgba(33,212,253,.1);
+font-size:13px
+}
+
+footer strong{
+color:#fff
+}
+
+.builder-layout{
+display:grid;
+grid-template-columns:220px 1fr;
+gap:22px
+}
+
+.builder-palette,.builder-workbench{
+background:linear-gradient(145deg,rgba(16,28,54,.88),rgba(8,16,32,.94));
+border:1px solid var(--line);
+border-radius:18px;
+box-shadow:var(--glow)
+}
+
+.builder-palette{
+padding:20px
+}
+
+.builder-palette h3,.builder-workbench h3{
+margin-bottom:8px
+}
+
+.palette-note{
+color:var(--muted);
+font-size:13px;
+margin-bottom:16px
+}
+
+.palette-item{
+padding:13px;
+margin:10px 0;
+border:1px solid #29466e;
+border-radius:12px;
+background:#071126;
+cursor:grab;
+display:flex;
+align-items:center;
+gap:10px;
+color:#dbeafe;
+transition:.25s
+}
+
+.palette-item:hover{
+border-color:var(--cyan);
+transform:translateX(3px);
+box-shadow:0 0 18px rgba(33,212,253,.1)
+}
+
+.palette-item:active{
+cursor:grabbing
+}
+
+.palette-icon{
+font-size:22px
+}
+
+.builder-workbench{
+padding:20px
+}
+
+.builder-toolbar{
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+margin-bottom:14px
+}
+
+.builder-btn{
+border:1px solid #29466e;
+background:#071126;
+color:#cbd8ea;
+padding:10px 14px;
+border-radius:10px;
+cursor:pointer;
+font-weight:bold
+}
+
+.builder-btn.primary{
+background:linear-gradient(90deg,var(--cyan),var(--blue));
+color:#03101c;
+border:none
+}
+
+.builder-btn.danger{
+border-color:rgba(239,68,68,.4);
+color:#fecaca
+}
+
+.builder-status{
+margin-left:auto;
+color:var(--cyan);
+font-size:13px;
+align-self:center
+}
+
+.builder-board{
+height:430px;
+position:relative;
+border:1px dashed rgba(33,212,253,.28);
+border-radius:16px;
+background:radial-gradient(circle at center,rgba(33,212,253,.055),transparent 58%),#030914;
+overflow:hidden
+}
+
+.builder-board.drag-over{
+border-color:var(--cyan);
+box-shadow:inset 0 0 35px rgba(33,212,253,.08)
+}
+
+.builder-grid{
+position:absolute;
+inset:0;
+background-image:linear-gradient(rgba(33,212,253,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(33,212,253,.045) 1px,transparent 1px);
+background-size:28px 28px;
+pointer-events:none
+}
+
+.builder-wires{
+position:absolute;
+inset:0;
+width:100%;
+height:100%;
+pointer-events:none
+}
+
+.builder-wire{
+stroke:var(--cyan);
+stroke-width:3;
+filter:drop-shadow(0 0 5px rgba(33,212,253,.65))
+}
+
+.builder-component{
+position:absolute;
+width:120px;
+min-height:76px;
+border:1px solid #36547e;
+border-radius:14px;
+background:linear-gradient(145deg,#0d1b35,#071126);
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+cursor:move;
+user-select:none;
+box-shadow:0 8px 25px rgba(0,0,0,.25);
+z-index:5
+}
+
+.builder-component.selected{
+border-color:var(--cyan);
+box-shadow:0 0 22px rgba(33,212,253,.22)
+}
+
+.builder-component .bc-icon{
+font-size:25px;
+line-height:1
+}
+
+.builder-component .bc-name{
+font-size:12px;
+color:#dbeafe;
+margin-top:5px
+}
+
+.builder-port{
+position:absolute;
+width:13px;
+height:13px;
+border-radius:50%;
+background:#0a1529;
+border:2px solid var(--cyan);
+top:50%;
+transform:translateY(-50%);
+cursor:crosshair;
+z-index:8
+}
+
+.builder-port.left{left:-7px}
+.builder-port.right{right:-7px}
+
+.builder-port.active{
+background:var(--cyan);
+box-shadow:0 0 15px var(--cyan)
+}
+
+.builder-properties{
+margin-top:16px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px
+}
+
+.property-panel{
+padding:17px;
+border:1px solid #1b3154;
+border-radius:14px;
+background:rgba(3,9,20,.75)
+}
+
+.property-panel h4{
+margin-bottom:8px
+}
+
+.property-panel p{
+color:var(--muted);
+font-size:13px
+}
+
+.builder-input{
+width:100%;
+margin-top:10px;
+padding:11px;
+border-radius:9px;
+border:1px solid #22385f;
+background:#060d1c;
+color:#fff;
+outline:none
+}
+
+.builder-input:focus{
+border-color:var(--cyan)
+}
+
+.builder-results{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:12px;
+margin-top:16px
+}
+
+.builder-metric{
+padding:14px;
+border:1px solid #1b3154;
+border-radius:12px;
+background:rgba(33,212,253,.035);
+text-align:center
+}
+
+.builder-metric small{
+display:block;
+color:var(--muted);
+font-size:11px
+}
+
+.builder-metric strong{
+display:block;
+color:var(--cyan);
+font-size:20px;
+margin-top:3px
+}
+
+.builder-help{
+margin-top:14px;
+color:var(--muted);
+font-size:13px
+}
+
+.switch-state{
+color:var(--green);
+font-weight:bold
+}
+
+.switch-state.off{
+color:var(--red)
+}
+
+.builder-modal{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.72);
+backdrop-filter:blur(8px);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:2000;
+padding:20px
+}
+
+.builder-modal.open{
+display:flex
+}
+
+.builder-modal-card{
+max-width:700px;
+width:100%;
+max-height:85vh;
+overflow:auto;
+background:linear-gradient(145deg,#101c36,#070e1e);
+border:1px solid var(--cyan);
+border-radius:20px;
+padding:28px;
+box-shadow:0 0 50px rgba(33,212,253,.18)
+}
+
+.builder-modal-card h2{
+margin-bottom:12px
+}
+
+.builder-modal-card p{
+color:var(--muted);
+margin:10px 0
+}
+
+.bio-link{
+background:linear-gradient(90deg,var(--cyan),var(--blue),var(--green));
+-webkit-background-clip:text;
+color:transparent;
+font-weight:800;
+text-decoration:none
+}
+
+.bio-link:hover{
+text-shadow:0 0 14px rgba(33,212,253,.45)
+}
+
+@media(max-width:900px){
+.hero-grid,.lab-wrapper,.kirch-grid,.virtual-lab,.builder-layout{
+grid-template-columns:1fr
+}
+.cards{
+grid-template-columns:1fr 1fr
+}
+.team-grid{
+grid-template-columns:1fr 1fr
+}
+.nav-links{
+gap:12px
+}
+.nav-container{
+align-items:flex-start
+}
+.components{
+margin:55px 0
+}
+.flow-line{
+width:30px
+}
+.builder-properties{
+grid-template-columns:1fr
+}
+}
+
+@media(max-width:600px){
+section{
+padding:75px 0
+}
+.container{
+padding:0 16px
+}
+.section-title h2{
+font-size:30px
+}
+.cards,.team-grid,.options{
+grid-template-columns:1fr
+}
+.hero-grid{
+gap:25px
+}
+.hero h1{
+font-size:48px
+}
+.nav-container{
+flex-direction:column;
+gap:10px
+}
+.nav-links{
+font-size:12px;
+gap:9px
+}
+.lab-panel,.law-card,.team-card{
+padding:20px
+}
+.metric-grid,.led-stat-grid,.builder-results{
+grid-template-columns:1fr
+}
+.components{
+gap:7px
+}
+.component{
+width:90px;
+height:100px
+}
+.flow-line{
+width:18px
+}
+.screen-title{
+font-size:12px
+}
+.builder-board{
+height:520px
+}
+.builder-component{
+width:105px
+}
+.builder-toolbar{
+flex-direction:column
+}
+.builder-status{
+margin-left:0
+}
+}
+
 </style>
+
+<style id="voltlab-telemetry-style">
+.telemetry{
+position:fixed;
+right:18px;
+bottom:18px;
+z-index:900;
+background:rgba(5,8,22,.88);
+backdrop-filter:blur(14px);
+border:1px solid rgba(33,212,253,.25);
+border-radius:14px;
+padding:10px 13px;
+box-shadow:0 0 25px rgba(33,212,253,.10);
+font-size:11px;
+color:#91a5c5;
+min-width:180px
+}
+
+.telemetry-top{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:12px
+}
+
+.telemetry-dot{
+width:7px;
+height:7px;
+border-radius:50%;
+background:var(--green);
+box-shadow:0 0 10px var(--green);
+display:inline-block;
+margin-right:6px
+}
+
+.telemetry strong{
+color:#eef6ff
+}
+
+.telemetry-bar{
+height:4px;
+background:#13233f;
+border-radius:10px;
+margin-top:8px;
+overflow:hidden
+}
+
+.telemetry-fill{
+height:100%;
+width:35%;
+background:linear-gradient(90deg,var(--cyan),var(--blue),var(--purple));
+border-radius:10px;
+transition:width .5s ease
+}
+
+@media(max-width:700px){
+.telemetry{
+right:10px;
+bottom:10px;
+min-width:155px
+}
+.telemetry{
+font-size:10px
+}
+}
+</style>
+
 </head>
 
 <body>
 
 <nav>
 <div class="nav-container">
+
 <div class="logo">⚡ Volt<span>Lab</span></div>
+
 <ul class="nav-links">
 <li><a href="#home">Home</a></li>
 <li><a href="#learn">Learn</a></li>
@@ -84,809 +1543,2951 @@ nav{position:fixed;top:0;width:100%;z-index:1000;background:rgba(5,8,22,.82);bac
 <li><a href="#kcl-kvl">KCL/KVL</a></li>
 <li><a href="#led-sim">LED Brightness</a></li>
 <li><a href="#builder">Circuit Builder</a></li>
-<li><a href="#detective">Circuit Detective</a></li>
-<li><a href="#progress">Progress</a></li>
 <li><a href="#virtual">Virtual Lab</a></li>
 <li><a href="#challenge">Challenge</a></li>
 <li><a href="#team">Team</a></li>
 </ul>
+
 </div>
 </nav>
 
+
 <section id="home" class="hero">
-<div class="container"><div class="hero-grid"><div>
-<div class="badge">INTERACTIVE ELECTRICAL LABORATORY</div>
-<h1>Where <span class="gradient-text">Electricity</span> Comes Alive.</h1>
-<p>Learn electrical concepts through interactive calculations, visual circuits, experiments and challenges — not just static notes.</p>
-<a href="#learn" class="btn btn-primary">Explore VoltLab ⚡</a>
-<a href="#ohm" class="btn btn-secondary">Open Lab</a>
+
+<div class="container">
+
+<div class="hero-grid">
+
+<div>
+
+<div class="badge">
+INTERACTIVE ELECTRICAL LABORATORY
 </div>
-<div class="hero-circuit"><div class="circuit-box">
-<div class="energy"></div><div class="energy"></div><div class="energy"></div>
-<div class="wire w1"></div><div class="wire w2"></div><div class="wire w3"></div><div class="wire w4"></div>
-<div class="battery"></div><div class="resistor"></div>
-</div></div>
-</div></div>
+
+<h1>
+Where <span class="gradient-text">Electricity</span> Comes Alive.
+</h1>
+
+<p>
+Learn electrical concepts through interactive calculations, visual circuits, experiments and challenges — not just static notes.
+</p>
+
+<a href="#learn" class="btn btn-primary">
+Explore VoltLab ⚡
+</a>
+
+<a href="#ohm" class="btn btn-secondary">
+Open Lab
+</a>
+
+</div>
+
+
+<div class="hero-circuit">
+
+<div class="circuit-box">
+
+<div class="energy"></div>
+<div class="energy"></div>
+<div class="energy"></div>
+
+<div class="wire w1"></div>
+<div class="wire w2"></div>
+<div class="wire w3"></div>
+<div class="wire w4"></div>
+
+<div class="battery"></div>
+<div class="resistor"></div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
 </section>
+
 
 <section id="learn">
+
 <div class="container">
-<div class="section-title"><h2>Learn Fundamentals</h2><p>Build your electrical foundation before entering the laboratory.</p></div>
+
+<div class="section-title">
+
+<h2>Learn Fundamentals</h2>
+
+<p>
+Build your electrical foundation before entering the laboratory.
+</p>
+
+</div>
+
+
 <div class="cards">
-<div class="card"><div class="icon">⚡</div><div class="lesson-number">01 — FUNDAMENTAL</div><h3>Voltage</h3><p>Understand potential difference and how voltage drives current through a circuit.</p></div>
-<div class="card"><div class="icon">〰️</div><div class="lesson-number">02 — FUNDAMENTAL</div><h3>Current</h3><p>Learn how electric charge moves and how current is measured in amperes.</p></div>
-<div class="card"><div class="icon">Ω</div><div class="lesson-number">03 — FUNDAMENTAL</div><h3>Resistance</h3><p>Explore how resistance opposes current and affects circuit behaviour.</p></div>
-<div class="card"><div class="icon">📐</div><div class="lesson-number">04 — LAW</div><h3>Ohm's Law</h3><p>Connect voltage, current and resistance using V = I × R.</p></div>
-<div class="card"><div class="icon">🔌</div><div class="lesson-number">05 — CIRCUITS</div><h3>Series &amp; Parallel</h3><p>Learn how components behave when connected in series or parallel.</p></div>
-<div class="card"><div class="icon">⚖️</div><div class="lesson-number">06 — LAWS</div><h3>KCL &amp; KVL</h3><p>Explore Kirchhoff's Current and Voltage Laws through practical circuits.</p></div>
-</div></div>
+
+<div class="card">
+
+<div class="icon">⚡</div>
+
+<div class="lesson-number">
+01 — FUNDAMENTAL
+</div>
+
+<h3>Voltage</h3>
+
+<p>
+Understand potential difference and how voltage drives current through a circuit.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">〰️</div>
+
+<div class="lesson-number">
+02 — FUNDAMENTAL
+</div>
+
+<h3>Current</h3>
+
+<p>
+Learn how electric charge moves and how current is measured in amperes.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">Ω</div>
+
+<div class="lesson-number">
+03 — FUNDAMENTAL
+</div>
+
+<h3>Resistance</h3>
+
+<p>
+Explore how resistance opposes current and affects circuit behaviour.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">📐</div>
+
+<div class="lesson-number">
+04 — LAW
+</div>
+
+<h3>Ohm's Law</h3>
+
+<p>
+Connect voltage, current and resistance using V = I × R.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">🔌</div>
+
+<div class="lesson-number">
+05 — CIRCUITS
+</div>
+
+<h3>Series &amp; Parallel</h3>
+
+<p>
+Learn how components behave when connected in series or parallel.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">⚖️</div>
+
+<div class="lesson-number">
+06 — LAWS
+</div>
+
+<h3>KCL &amp; KVL</h3>
+
+<p>
+Explore Kirchhoff's Current and Voltage Laws through practical circuits.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
 </section>
+
 
 <section id="ohm" class="lab-section">
+
 <div class="container">
-<div class="section-title"><h2>⚡ Ohm's Law Interactive Lab</h2><p>Enter any two values and VoltLab calculates the missing quantity.</p></div>
+
+<div class="section-title">
+
+<h2>⚡ Ohm's Law Interactive Lab</h2>
+
+<p>
+Enter any two values and VoltLab calculates the missing quantity.
+</p>
+
+</div>
+
+
 <div class="lab-wrapper">
+
+
 <div class="lab-panel">
+
 <h3>Input Parameters</h3>
-<p class="lab-description">Leave exactly one field empty. The other two values are used to solve it.</p>
-<div class="input-group"><label>Voltage <span>V</span></label><input type="number" id="voltage" placeholder="Example: 12" step="any"></div>
-<div class="input-group"><label>Current <span>A</span></label><input type="number" id="current" placeholder="Example: 2" step="any"></div>
-<div class="input-group"><label>Resistance <span>Ω</span></label><input type="number" id="resistance" placeholder="Example: 6" step="any"></div>
-<button class="calculate-btn" onclick="calculateOhm()">CALCULATE ⚡</button>
-<div class="result-box"><div class="result-label">CALCULATED RESULT</div><div class="result-value" id="ohmResult">—</div></div>
+
+<p class="lab-description">
+Leave exactly one field empty. The other two values are used to solve it.
+</p>
+
+
+<div class="input-group">
+
+<label>
+Voltage <span>V</span>
+</label>
+
+<input
+type="number"
+id="voltage"
+placeholder="Example: 12"
+step="any"
+>
+
 </div>
+
+
+<div class="input-group">
+
+<label>
+Current <span>A</span>
+</label>
+
+<input
+type="number"
+id="current"
+placeholder="Example: 2"
+step="any"
+>
+
+</div>
+
+
+<div class="input-group">
+
+<label>
+Resistance <span>Ω</span>
+</label>
+
+<input
+type="number"
+id="resistance"
+placeholder="Example: 6"
+step="any"
+>
+
+</div>
+
+
+<button class="calculate-btn" onclick="calculateOhm()">
+CALCULATE ⚡
+</button>
+
+
+<div class="result-box">
+
+<div class="result-label">
+CALCULATED RESULT
+</div>
+
+<div class="result-value" id="ohmResult">
+—
+</div>
+
+</div>
+
+</div>
+
+
 <div class="lab-panel ohm-visual">
+
 <h3>Live Circuit View</h3>
+
 <div class="visual-circuit">
-<div class="v-wire v-top"></div><div class="v-wire v-bottom"></div><div class="v-wire v-left"></div><div class="v-wire v-right"></div>
-<div class="v-battery"></div><div class="v-resistor"></div><div class="current-dot"></div><div class="v-current">CURRENT FLOW →</div>
+
+<div class="v-wire v-top"></div>
+<div class="v-wire v-bottom"></div>
+<div class="v-wire v-left"></div>
+<div class="v-wire v-right"></div>
+
+<div class="v-battery"></div>
+<div class="v-resistor"></div>
+
+<div class="current-dot"></div>
+
+<div class="v-current">
+CURRENT FLOW →
 </div>
-<div class="formula">Ohm's Law: <strong>V = I × R</strong></div>
+
 </div>
-</div></div>
+
+<div class="formula">
+Ohm's Law: <strong>V = I × R</strong>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
 </section>
+
 
 <section id="series-parallel" class="lab-section">
+
 <div class="container">
-<div class="section-title"><h2>🔌 Series &amp; Parallel Circuit Lab</h2><p>Choose a topology, enter your own values and analyze the circuit.</p></div>
+
+<div class="section-title">
+
+<h2>🔌 Series &amp; Parallel Circuit Lab</h2>
+
+<p>
+Choose a topology, enter your own values and analyze the circuit.
+</p>
+
+</div>
+
+
 <div class="lab-wrapper">
+
+
 <div class="lab-panel">
+
 <h3>Circuit Configuration</h3>
-<p class="lab-description">No values are pre-filled. The examples inside the fields are only guides.</p>
+
+<p class="lab-description">
+No values are pre-filled. The examples inside the fields are only guides.
+</p>
+
+
 <div class="mode-switch">
-<button class="mode-btn active" id="seriesMode" onclick="setCircuitMode('series')">SERIES</button>
-<button class="mode-btn" id="parallelMode" onclick="setCircuitMode('parallel')">PARALLEL</button>
+
+<button
+class="mode-btn active"
+id="seriesMode"
+onclick="setCircuitMode('series')">
+SERIES
+</button>
+
+<button
+class="mode-btn"
+id="parallelMode"
+onclick="setCircuitMode('parallel')">
+PARALLEL
+</button>
+
 </div>
-<div class="input-group"><label>Supply Voltage <span>V</span></label><input type="number" id="spVoltage" placeholder="Example: 12" min="0" step="any"></div>
-<div class="input-group"><label>Resistor 1 (R1) <span>Ω</span></label><input type="number" id="r1" placeholder="Example: 10" min="0.01" step="any"></div>
-<div class="input-group"><label>Resistor 2 (R2) <span>Ω</span></label><input type="number" id="r2" placeholder="Example: 20" min="0.01" step="any"></div>
-<div class="input-group"><label>Resistor 3 (R3) <span>Ω</span></label><input type="number" id="r3" placeholder="Example: 30" min="0.01" step="any"></div>
-<button class="calculate-btn" onclick="calculateSeriesParallel()">ANALYZE CIRCUIT ⚡</button>
-<div class="explain-box" id="spFormula">Enter your values and analyze the circuit to see the calculation.</div>
+
+
+<div class="input-group">
+
+<label>
+Supply Voltage <span>V</span>
+</label>
+
+<input
+type="number"
+id="spVoltage"
+placeholder="Example: 12"
+min="0"
+step="any"
+>
+
 </div>
+
+
+<div class="input-group">
+
+<label>
+Resistor 1 (R1) <span>Ω</span>
+</label>
+
+<input
+type="number"
+id="r1"
+placeholder="Example: 10"
+min="0.01"
+step="any"
+>
+
+</div>
+
+
+<div class="input-group">
+
+<label>
+Resistor 2 (R2) <span>Ω</span>
+</label>
+
+<input
+type="number"
+id="r2"
+placeholder="Example: 20"
+min="0.01"
+step="any"
+>
+
+</div>
+
+
+<div class="input-group">
+
+<label>
+Resistor 3 (R3) <span>Ω</span>
+</label>
+
+<input
+type="number"
+id="r3"
+placeholder="Example: 30"
+min="0.01"
+step="any"
+>
+
+</div>
+
+
+<button
+class="calculate-btn"
+onclick="calculateSeriesParallel()">
+ANALYZE CIRCUIT ⚡
+</button>
+
+
+<div class="explain-box" id="spFormula">
+Enter your values and analyze the circuit to see the calculation.
+</div>
+
+</div>
+
+
 <div class="lab-panel">
+
 <h3>Live Circuit Analysis</h3>
+
 <div class="circuit-stage">
-<div class="stage-label" id="spStageLabel">SERIES TOPOLOGY • READY</div>
-<div class="circuit-drawing series" id="circuitDrawing"></div>
+
+<div
+class="stage-label"
+id="spStageLabel">
+SERIES TOPOLOGY • READY
 </div>
+
+<div
+class="circuit-drawing series"
+id="circuitDrawing">
+</div>
+
+</div>
+
+
 <div class="metric-grid">
-<div class="metric"><small>EQUIVALENT RESISTANCE</small><strong id="reqResult">—</strong></div>
-<div class="metric"><small>TOTAL CURRENT</small><strong id="totCurrentResult">—</strong></div>
-<div class="metric"><small>TOTAL POWER</small><strong id="powerResult">—</strong></div>
+
+<div class="metric">
+
+<small>
+EQUIVALENT RESISTANCE
+</small>
+
+<strong id="reqResult">
+—
+</strong>
+
 </div>
-<div class="explain-box" id="spExplanation">Choose Series or Parallel, enter the values, then analyze the circuit.</div>
+
+
+<div class="metric">
+
+<small>
+TOTAL CURRENT
+</small>
+
+<strong id="totCurrentResult">
+—
+</strong>
+
 </div>
-</div></div>
+
+
+<div class="metric">
+
+<small>
+TOTAL POWER
+</small>
+
+<strong id="powerResult">
+—
+</strong>
+
+</div>
+
+</div>
+
+
+<div
+class="explain-box"
+id="spExplanation">
+Choose Series or Parallel, enter the values, then analyze the circuit.
+</div>
+
+</div>
+
+</div>
+
+</div>
+
 </section>
+
 
 <section id="kcl-kvl" class="lab-section">
+
 <div class="container">
-<div class="section-title"><h2>⚖️ Kirchhoff's Laws Lab</h2><p>Use a node and a closed loop to see why KCL and KVL work.</p></div>
+
+<div class="section-title">
+
+<h2>⚖️ Kirchhoff's Laws Lab</h2>
+
+<p>
+Use a node and a closed loop to see why KCL and KVL work.
+</p>
+
+</div>
+
+
 <div class="kirch-grid">
 
+
 <div class="law-card">
-<h3>Kirchhoff's Current Law — KCL</h3>
-<p>At a junction, the total current entering equals the total current leaving.</p>
+
+<h3>
+Kirchhoff's Current Law — KCL
+</h3>
+
+<p>
+At a junction, the total current entering equals the total current leaving.
+</p>
+
 
 <div class="node-diagram">
-<div class="nwire nin1"></div><div class="nwire nout1"></div><div class="nwire nin2"></div><div class="nwire nout2"></div>
+
+<div class="nwire nin1"></div>
+<div class="nwire nout1"></div>
+<div class="nwire nin2"></div>
+<div class="nwire nout2"></div>
+
 <div class="node"></div>
-<div class="arrow-label ain">I₁ →</div><div class="arrow-label aout">→ I₃</div><div class="arrow-label ain2">I₂ ↓</div><div class="arrow-label aout2">↓ I₄</div>
+
+<div class="arrow-label ain">
+I₁ →
 </div>
 
-<div class="input-group"><label>Incoming current I₁ <span>A</span></label><input id="kclI1" type="number" placeholder="Example: 5" step="any"></div>
-<div class="input-group"><label>Incoming current I₂ <span>A</span></label><input id="kclI2" type="number" placeholder="Example: 3" step="any"></div>
-<div class="input-group"><label>Outgoing current I₃ <span>A</span></label><input id="kclI3" type="number" placeholder="Example: 4" step="any"></div>
-<button class="calculate-btn" onclick="calculateKCL()">SOLVE NODE ⚡</button>
-<div class="result-box"><div class="result-label">REQUIRED OUTGOING CURRENT I₄</div><div class="result-value" id="kclResult">—</div></div>
-<div class="kcl-status" id="kclStatus"></div>
+<div class="arrow-label aout">
+→ I₃
 </div>
+
+<div class="arrow-label ain2">
+I₂ ↓
+</div>
+
+<div class="arrow-label aout2">
+↓ I₄
+</div>
+
+</div>
+
+
+<div class="input-group">
+
+<label>
+Incoming current I₁ <span>A</span>
+</label>
+
+<input
+id="kclI1"
+type="number"
+placeholder="Example: 5"
+step="any"
+>
+
+</div>
+
+
+<div class="input-group">
+
+<label>
+Incoming current I₂ <span>A</span>
+</label>
+
+<input
+id="kclI2"
+type="number"
+placeholder="Example: 3"
+step="any"
+>
+
+</div>
+
+
+<div class="input-group">
+
+<label>
+Outgoing current I₃ <span>A</span>
+</label>
+
+<input
+id="kclI3"
+type="number"
+placeholder="Example: 4"
+step="any"
+>
+
+</div>
+
+
+<button
+class="calculate-btn"
+onclick="calculateKCL()">
+SOLVE NODE ⚡
+</button>
+
+
+<div class="result-box">
+
+<div class="result-label">
+REQUIRED OUTGOING CURRENT I₄
+</div>
+
+<div
+class="result-value"
+id="kclResult">
+—
+</div>
+
+</div>
+
+
+<div
+class="kcl-status"
+id="kclStatus">
+</div>
+
+</div>
+
 
 <div class="law-card">
-<h3>Kirchhoff's Voltage Law — KVL</h3>
-<p>Across a closed loop, the source voltage equals the sum of voltage drops.</p>
+
+<h3>
+Kirchhoff's Voltage Law — KVL
+</h3>
+
+<p>
+Across a closed loop, the source voltage equals the sum of voltage drops.
+</p>
+
 
 <div class="loop-diagram">
-<div class="loop"></div><div class="loop-res">V₁ + V₂ + V₃</div><div class="loop-source"></div><div class="loop-arrow">↻ LOOP</div>
+
+<div class="loop"></div>
+
+<div class="loop-res">
+V₁ + V₂ + V₃
 </div>
 
-<div class="input-group"><label>Source voltage V<sub>S</sub> <span>V</span></label><input id="kvlVs" type="number" placeholder="Example: 24" step="any"></div>
-<div class="input-group"><label>Voltage drop V₁ <span>V</span></label><input id="kvlV1" type="number" placeholder="Example: 10" step="any"></div>
-<div class="input-group"><label>Voltage drop V₂ <span>V</span></label><input id="kvlV2" type="number" placeholder="Example: 8" step="any"></div>
-<button class="calculate-btn" onclick="calculateKVL()">SOLVE LOOP ⚡</button>
-<div class="result-box"><div class="result-label">REMAINING VOLTAGE DROP V₃</div><div class="result-value" id="kvlResult">—</div></div>
-<div class="kvl-status" id="kvlStatus"></div>
+<div class="loop-source"></div>
+
+<div class="loop-arrow">
+↻ LOOP
 </div>
 
-</div></div>
+</div>
+
+
+<div class="input-group">
+
+<label>
+Source voltage V<sub>S</sub> <span>V</span>
+</label>
+
+<input
+id="kvlVs"
+type="number"
+placeholder="Example: 24"
+step="any"
+>
+
+</div>
+
+
+<div class="input-group">
+
+<label>
+Voltage drop V₁ <span>V</span>
+</label>
+
+<input
+id="kvlV1"
+type="number"
+placeholder="Example: 10"
+step="any"
+>
+
+</div>
+
+
+<div class="input-group">
+
+<label>
+Voltage drop V₂ <span>V</span>
+</label>
+
+<input
+id="kvlV2"
+type="number"
+placeholder="Example: 8"
+step="any"
+>
+
+</div>
+
+
+<button
+class="calculate-btn"
+onclick="calculateKVL()">
+SOLVE LOOP ⚡
+</button>
+
+
+<div class="result-box">
+
+<div class="result-label">
+REMAINING VOLTAGE DROP V₃
+</div>
+
+<div
+class="result-value"
+id="kvlResult">
+—
+</div>
+
+</div>
+
+
+<div
+class="kvl-status"
+id="kvlStatus">
+</div>
+
+</div>
+
+</div>
+
+</div>
+
 </section>
+
 
 <section id="led-sim" class="lab-section">
+
 <div class="container">
-<div class="section-title"><h2>💡 LED Brightness &amp; Power Simulator</h2><p>Adjust voltage and resistance to see current, power and visual brightness response.</p></div>
+
+<div class="section-title">
+
+<h2>
+💡 LED Brightness &amp; Power Simulator
+</h2>
+
+<p>
+Adjust voltage and resistance to see current, power and visual brightness response.
+</p>
+
+</div>
+
+
 <div class="lab-wrapper">
+
+
 <div class="lab-panel">
+
 <h3>LED Circuit Controls</h3>
-<p class="lab-description">This educational model uses a simplified LED forward-voltage assumption to demonstrate current limiting.</p>
-<div class="input-group"><label>Supply Voltage <span id="ledVoltVal">5.0 V</span></label><input type="range" id="ledVolt" min="0" max="12" value="5" step="0.1" oninput="updateLED()"></div>
-<div class="input-group"><label>Current-Limiting Resistor <span id="ledResVal">220 Ω</span></label><input type="range" id="ledRes" min="50" max="1000" value="220" step="10" oninput="updateLED()"></div>
-<div class="explain-box">Model: V<sub>F</sub> ≈ 2.0 V. Approximate current is I ≈ (V − V<sub>F</sub>) / R when V &gt; V<sub>F</sub>.</div>
-<div class="led-stat-grid"><div class="led-stat"><small>LED CURRENT</small><strong id="ledCurrent">—</strong></div><div class="led-stat"><small>LED POWER</small><strong id="ledPower">—</strong></div><div class="led-stat"><small>RESISTOR POWER</small><strong id="ledResPower">—</strong></div></div>
+
+<p class="lab-description">
+This educational model uses a simplified LED forward-voltage assumption to demonstrate current limiting.
+</p>
+
+
+<div class="input-group">
+
+<label>
+Supply Voltage <span id="ledVoltVal">5.0 V</span>
+</label>
+
+<input
+type="range"
+id="ledVolt"
+min="0"
+max="12"
+value="5"
+step="0.1"
+oninput="updateLED()"
+>
+
 </div>
+
+
+<div class="input-group">
+
+<label>
+Current-Limiting Resistor <span id="ledResVal">220 Ω</span>
+</label>
+
+<input
+type="range"
+id="ledRes"
+min="50"
+max="1000"
+value="220"
+step="10"
+oninput="updateLED()"
+>
+
+</div>
+
+
+<div class="explain-box">
+
+Model:
+V<sub>F</sub> ≈ 2.0 V.
+Approximate current is
+I ≈ (V − V<sub>F</sub>) / R
+when V &gt; V<sub>F</sub>.
+
+</div>
+
+
+<div class="led-stat-grid">
+
+<div class="led-stat">
+<small>LED CURRENT</small>
+<strong id="ledCurrent">—</strong>
+</div>
+
+<div class="led-stat">
+<small>LED POWER</small>
+<strong id="ledPower">—</strong>
+</div>
+
+<div class="led-stat">
+<small>RESISTOR POWER</small>
+<strong id="ledResPower">—</strong>
+</div>
+
+</div>
+
+</div>
+
+
 <div class="lab-panel led-box">
+
 <h3>Visual Response</h3>
-<div class="led-stage"><div class="led-glow" id="ledBulb"></div><div class="led-base"></div></div>
-<div class="led-status" id="ledStatus">READY</div>
+
+<div class="led-stage">
+
+<div
+class="led-glow"
+id="ledBulb">
 </div>
-</div></div>
+
+<div class="led-base"></div>
+
+</div>
+
+<div
+class="led-status"
+id="ledStatus">
+READY
+</div>
+
+</div>
+
+</div>
+
+</div>
+
 </section>
+
 
 <section id="builder" class="lab-section">
+
 <div class="container">
-<div class="section-title"><h2>🧩 Drag &amp; Drop Circuit Builder</h2><p>Build your own circuit, connect components and run a live electrical check.</p></div>
+
+<div class="section-title">
+
+<h2>
+🧩 Drag &amp; Drop Circuit Builder
+</h2>
+
+<p>
+Build your own circuit, connect components and run a live electrical check.
+</p>
+
+</div>
+
+
 <div class="builder-layout">
+
+
 <div class="builder-palette">
+
 <h3>Component Palette</h3>
-<p class="palette-note">Drag a component onto the workbench. Nothing is pre-calculated.</p>
-<div class="palette-item" draggable="true" data-type="battery"><span class="palette-icon">🔋</span><span>Battery</span></div>
-<div class="palette-item" draggable="true" data-type="resistor"><span class="palette-icon">〰️</span><span>Resistor</span></div>
-<div class="palette-item" draggable="true" data-type="lamp"><span class="palette-icon">💡</span><span>Lamp / Load</span></div>
-<div class="palette-item" draggable="true" data-type="switch"><span class="palette-icon">⏻</span><span>Switch</span></div>
-<div class="builder-help">Tip: connect two ports by clicking them one after another. Drag placed components to reposition them.</div>
+
+<p class="palette-note">
+Drag a component onto the workbench. Nothing is pre-calculated.
+</p>
+
+
+<div
+class="palette-item"
+draggable="true"
+data-type="battery">
+
+<span class="palette-icon">🔋</span>
+<span>Battery</span>
+
 </div>
+
+
+<div
+class="palette-item"
+draggable="true"
+data-type="resistor">
+
+<span class="palette-icon">〰️</span>
+<span>Resistor</span>
+
+</div>
+
+
+<div
+class="palette-item"
+draggable="true"
+data-type="lamp">
+
+<span class="palette-icon">💡</span>
+<span>Lamp / Load</span>
+
+</div>
+
+
+<div
+class="palette-item"
+draggable="true"
+data-type="switch">
+
+<span class="palette-icon">⏻</span>
+<span>Switch</span>
+
+</div>
+
+
+<div class="builder-help">
+
+Tip: connect two ports by clicking them one after another. Drag placed components to reposition them.
+
+</div>
+
+</div>
+
+
 <div class="builder-workbench">
+
 <div class="builder-toolbar">
-<button class="builder-btn primary" onclick="runBuilderSimulation()">RUN CIRCUIT ⚡</button>
-<button class="builder-btn" onclick="toggleBuilderSwitch()">TOGGLE SWITCH</button>
-<button class="builder-btn danger" onclick="clearBuilder()">CLEAR BOARD</button>
-<span class="builder-status" id="builderStatus">READY • DROP COMPONENTS TO BEGIN</span>
+
+<button
+class="builder-btn primary"
+onclick="runBuilderSimulation()">
+RUN CIRCUIT ⚡
+</button>
+
+<button
+class="builder-btn"
+onclick="toggleBuilderSwitch()">
+TOGGLE SWITCH
+</button>
+
+<button
+class="builder-btn danger"
+onclick="clearBuilder()">
+CLEAR BOARD
+</button>
+
+<span
+class="builder-status"
+id="builderStatus">
+READY • DROP COMPONENTS TO BEGIN
+</span>
+
 </div>
-<div class="builder-board" id="builderBoard"><div class="builder-grid"></div><svg class="builder-wires" id="builderWires"></svg></div>
+
+
+<div
+class="builder-board"
+id="builderBoard">
+
+<div class="builder-grid"></div>
+
+<svg
+class="builder-wires"
+id="builderWires">
+</svg>
+
+</div>
+
+
 <div class="builder-properties">
+
+
 <div class="property-panel">
-<h4>Selected Component</h4>
-<p id="selectedComponentText">Select a placed component to edit its value.</p>
-<input class="builder-input" id="builderValue" type="number" step="any" placeholder="Enter value after selecting a component" style="display:none">
-<button class="builder-btn" id="saveBuilderValue" onclick="saveBuilderValue()" style="display:none;margin-top:10px">SAVE VALUE</button>
+
+<h4>
+Selected Component
+</h4>
+
+<p id="selectedComponentText">
+Select a placed component to edit its value.
+</p>
+
+<input
+class="builder-input"
+id="builderValue"
+type="number"
+step="any"
+placeholder="Enter value after selecting a component"
+style="display:none"
+>
+
+<button
+class="builder-btn"
+id="saveBuilderValue"
+onclick="saveBuilderValue()"
+style="display:none;margin-top:10px">
+SAVE VALUE
+</button>
+
 </div>
+
+
 <div class="property-panel">
-<h4>Simulation Logic</h4>
-<p>For this learning model, a closed path with a battery, at least one resistor and a load is required. Resistors are treated as a series chain for the calculation.</p>
-<div id="builderSwitchText" style="margin-top:8px">Switch: <span class="switch-state off">OFF</span></div>
+
+<h4>
+Simulation Logic
+</h4>
+
+<p>
+For this learning model, a closed path with a battery, at least one resistor and a load is required. Resistors are treated as a series chain for the calculation.
+</p>
+
+<div
+id="builderSwitchText"
+style="margin-top:8px">
+
+Switch:
+<span class="switch-state off">
+OFF
+</span>
+
 </div>
+
 </div>
+
+</div>
+
+
 <div class="builder-results">
-<div class="builder-metric"><small>TOTAL RESISTANCE</small><strong id="builderResistance">—</strong></div>
-<div class="builder-metric"><small>CIRCUIT CURRENT</small><strong id="builderCurrent">—</strong></div>
-<div class="builder-metric"><small>CIRCUIT POWER</small><strong id="builderPower">—</strong></div>
+
+<div class="builder-metric">
+
+<small>
+TOTAL RESISTANCE
+</small>
+
+<strong id="builderResistance">
+—
+</strong>
+
 </div>
+
+
+<div class="builder-metric">
+
+<small>
+CIRCUIT CURRENT
+</small>
+
+<strong id="builderCurrent">
+—
+</strong>
+
 </div>
+
+
+<div class="builder-metric">
+
+<small>
+CIRCUIT POWER
+</small>
+
+<strong id="builderPower">
+—
+</strong>
+
 </div>
+
 </div>
+
+</div>
+
+</div>
+
+</div>
+
 </section>
 
-<!-- STEP 7 -->
-<section id="detective" class="lab-section">
-<div class="container">
-<div class="section-title">
-<h2>🕵️ Circuit Detective</h2>
-<p>Find the fault. Understand the cause. Restore the circuit.</p>
-</div>
-
-<div class="detective-casebar">
-<button class="detective-case active" id="caseBtn0" onclick="loadDetectiveCase(0)">CASE 01</button>
-<button class="detective-case" id="caseBtn1" onclick="loadDetectiveCase(1)">CASE 02</button>
-<button class="detective-case" id="caseBtn2" onclick="loadDetectiveCase(2)">CASE 03</button>
-<button class="detective-case" id="caseBtn3" onclick="loadDetectiveCase(3)">CASE 04</button>
-<button class="detective-case" id="caseBtn4" onclick="loadDetectiveCase(4)">CASE 05</button>
-</div>
-
-<div class="detective-layout">
-<div class="detective-card">
-<div class="fault-label" id="detectiveCaseLabel">FAULT SCAN / CASE 01</div>
-<div class="fault-board">
-<div class="fault-wire fw1"></div>
-<div class="fault-wire fw2"></div>
-<div class="fault-wire fw3"></div>
-<div class="fault-wire fw4"></div>
-<div class="fd-battery"></div>
-<div class="fd-resistor" id="detectiveResistor">220Ω</div>
-<div class="fd-lamp">💡</div>
-<div class="fd-switch" id="detectiveSwitch">SWITCH: CLOSED</div>
-<div class="fd-alert" id="detectiveAlert">● FAULT DETECTED</div>
-</div>
-<div class="detective-status" id="detectiveStatus">System report loading...</div>
-</div>
-
-<div class="detective-card">
-<div class="symptom"><strong>Observed symptom</strong><p id="detectiveSymptom"></p></div>
-<div class="detective-question">What is the most likely fault?</div>
-<div class="fault-options" id="detectiveOptions"></div>
-<div class="detective-feedback" id="detectiveFeedback">Select a diagnosis to investigate the circuit.</div>
-<div class="detective-score">
-<div class="detective-metric"><small>SOLVED</small><strong id="detectiveSolved">0</strong></div>
-<div class="detective-metric"><small>CASE</small><strong id="detectiveCaseNumber">1/5</strong></div>
-<div class="detective-metric"><small>SCORE</small><strong id="detectiveScore">0</strong></div>
-</div>
-<button class="builder-btn reset-detective" onclick="nextDetectiveCase()">NEXT CASE →</button>
-<button class="builder-btn reset-detective" onclick="resetDetective()">RESET DETECTIVE</button>
-</div>
-</div>
-</div>
-</section>
-
-<!-- PROGRESS CENTER -->
-<section id="progress" class="lab-section">
-<div class="container">
-<div class="section-title">
-<h2>🏆 VoltLab Progress Center</h2>
-<p>Your laboratory journey, achievements and missions — saved locally in this browser.</p>
-</div>
-
-<div class="progress-grid">
-
-<div class="progress-card">
-<h3>📊 Live Lab Statistics</h3>
-<p class="progress-sub">Your activity is stored locally. No account or server is required.</p>
-
-<div class="progress-metrics">
-<div class="progress-metric"><small>LABS COMPLETED</small><strong id="labsCompleted">0</strong></div>
-<div class="progress-metric"><small>CASES SOLVED</small><strong id="casesCompleted">0</strong></div>
-<div class="progress-metric"><small>ACTIONS</small><strong id="actionsCompleted">0</strong></div>
-<div class="progress-metric"><small>OVERALL</small><strong id="overallPercent">0%</strong></div>
-</div>
-
-<div class="progress-track"><div class="progress-fill" id="overallFill"></div></div>
-</div>
-
-<div class="progress-card">
-<h3>🏆 Achievement Badges</h3>
-<p class="progress-sub">Explore the laboratory to unlock them.</p>
-
-<div class="badge-grid">
-<div class="achievement" id="badgeFirstCircuit"><div class="achievement-icon">🔌</div><strong>First Circuit</strong><small>Run a working circuit</small></div>
-<div class="achievement" id="badgeOhm"><div class="achievement-icon">⚡</div><strong>Ohm Master</strong><small>Solve Ohm's Law</small></div>
-<div class="achievement" id="badgeKcl"><div class="achievement-icon">⚖️</div><strong>Kirchhoff Solver</strong><small>Solve KCL</small></div>
-<div class="achievement" id="badgeDetective"><div class="achievement-icon">🕵️</div><strong>Circuit Detective</strong><small>Solve a fault</small></div>
-<div class="achievement" id="badgeExplorer"><div class="achievement-icon">🧪</div><strong>Lab Explorer</strong><small>Explore multiple labs</small></div>
-</div>
-</div>
-
-<div class="progress-card">
-<h3>🔭 Lab Missions</h3>
-<p class="progress-sub">Four practical missions connect directly to the existing labs.</p>
-
-<div class="mission-list">
-<div class="mission" id="missionOhm"><div class="mission-icon">⚡</div><div class="mission-copy"><strong>Solve Ohm's Law</strong><small>Calculate a missing electrical quantity.</small></div><div class="mission-state" id="missionOhmState">LOCKED</div></div>
-<div class="mission" id="missionBuild"><div class="mission-icon">🔌</div><div class="mission-copy"><strong>Build a Working Circuit</strong><small>Create a valid battery–resistor–load path.</small></div><div class="mission-state" id="missionBuildState">LOCKED</div></div>
-<div class="mission" id="missionKcl"><div class="mission-icon">⚖️</div><div class="mission-copy"><strong>Solve a KCL Node</strong><small>Balance the current entering and leaving a node.</small></div><div class="mission-state" id="missionKclState">LOCKED</div></div>
-<div class="mission" id="missionFault"><div class="mission-icon">🕵️</div><div class="mission-copy"><strong>Detect a Circuit Fault</strong><small>Correctly diagnose one detective case.</small></div><div class="mission-state" id="missionFaultState">LOCKED</div></div>
-</div>
-</div>
-
-<div class="progress-card">
-<h3>🧪 Experiment Log</h3>
-<p class="progress-sub">Recent VoltLab experiments completed in this browser.</p>
-<div class="log-list" id="experimentLog"><div class="log-entry">No experiments recorded yet.<span>Run one of the interactive labs to begin.</span></div></div>
-<button class="builder-btn reset-detective" onclick="resetVoltLabProgress()">CLEAR LOCAL PROGRESS</button>
-</div>
-
-</div>
-
-<div style="margin-top:24px">
-<div class="certificate">
-<div class="certificate-kicker">VOLTLAB LEARNING JOURNEY</div>
-<h3>Completion Panel</h3>
-<p>Certificate-style progress display</p>
-<div class="certificate-name">Md. Tahmid Siddique</div>
-<p>Interactive Electrical Laboratory</p>
-<div class="certificate-progress" id="certificateProgress">0% COMPLETE</div>
-<div class="progress-track"><div class="progress-fill" id="certificateFill"></div></div>
-<div class="certificate-seal">⚡</div>
-<p style="margin-top:8px">Complete the missions and explore the labs to fill your VoltLab journey.</p>
-</div>
-</div>
-
-</div>
-</section>
 
 <section id="virtual">
+
 <div class="container">
-<div class="section-title"><h2>🧪 Virtual Electrical Lab</h2><p>A preview of the interactive laboratory environment.</p></div>
+
+<div class="section-title">
+
+<h2>
+🧪 Virtual Electrical Lab
+</h2>
+
+<p>
+A preview of the interactive laboratory environment.
+</p>
+
+</div>
+
+
 <div class="virtual-lab">
+
+
 <div class="lab-screen">
-<div class="screen-title">VOLTLAB / EXPERIMENT_01</div>
+
+<div class="screen-title">
+VOLTLAB / EXPERIMENT_01
+</div>
+
+
 <div class="components">
-<div class="component"><div class="symbol">🔋</div><small>POWER SOURCE</small></div>
-<div class="flow-line"></div>
-<div class="component"><div class="symbol">〰️</div><small>RESISTOR</small></div>
-<div class="flow-line"></div>
-<div class="component"><div class="symbol">💡</div><small>LOAD</small></div>
+
+<div class="component">
+
+<div class="symbol">🔋</div>
+
+<small>
+POWER SOURCE
+</small>
+
 </div>
-<div class="lab-status">● CIRCUIT STATUS: ACTIVE — ELECTRICAL PATH COMPLETE</div>
+
+
+<div class="flow-line"></div>
+
+
+<div class="component">
+
+<div class="symbol">〰️</div>
+
+<small>
+RESISTOR
+</small>
+
 </div>
+
+
+<div class="flow-line"></div>
+
+
+<div class="component">
+
+<div class="symbol">💡</div>
+
+<small>
+LOAD
+</small>
+
+</div>
+
+</div>
+
+
+<div class="lab-status">
+● CIRCUIT STATUS: ACTIVE — ELECTRICAL PATH COMPLETE
+</div>
+
+</div>
+
+
 <div class="lab-panel">
-<h3>What happens here?</h3>
-<p class="lab-description">A real electrical circuit needs a source, a conducting path and a load. Voltage provides the potential difference while current represents the movement of charge.</p>
-<div class="card"><h3>Coming Next</h3><p>Interactive circuit construction, component connections and practical troubleshooting experiments.</p></div>
+
+<h3>
+What happens here?
+</h3>
+
+<p class="lab-description">
+A real electrical circuit needs a source, a conducting path and a load. Voltage provides the potential difference while current represents the movement of charge.
+</p>
+
+
+<div class="card">
+
+<h3>
+Coming Next
+</h3>
+
+<p>
+Interactive circuit construction, component connections and practical troubleshooting experiments.
+</p>
+
 </div>
+
 </div>
+
 </div>
+
+</div>
+
 </section>
+
 
 <section id="challenge">
+
 <div class="container">
-<div class="section-title"><h2>🎯 Circuit Challenge</h2><p>Think like an electrical engineer.</p></div>
+
+<div class="section-title">
+
+<h2>
+🎯 Circuit Challenge
+</h2>
+
+<p>
+Think like an electrical engineer.
+</p>
+
+</div>
+
+
 <div class="challenge card">
-<div class="question">A circuit has a voltage of 12 V and resistance of 6 Ω. What is the current?</div>
+
+<div class="question">
+
+A circuit has a voltage of 12 V and resistance of 6 Ω. What is the current?
+
+</div>
+
+
 <div class="options">
-<button class="option" onclick="checkAnswer(this,false)">A. 0.5 A</button>
-<button class="option" onclick="checkAnswer(this,true)">B. 2 A</button>
-<button class="option" onclick="checkAnswer(this,false)">C. 6 A</button>
-<button class="option" onclick="checkAnswer(this,false)">D. 72 A</button>
+
+<button
+class="option"
+onclick="checkAnswer(this,false)">
+A. 0.5 A
+</button>
+
+<button
+class="option"
+onclick="checkAnswer(this,true)">
+B. 2 A
+</button>
+
+<button
+class="option"
+onclick="checkAnswer(this,false)">
+C. 6 A
+</button>
+
+<button
+class="option"
+onclick="checkAnswer(this,false)">
+D. 72 A
+</button>
+
 </div>
-<div class="feedback" id="feedback"></div>
+
+
+<div
+class="feedback"
+id="feedback">
 </div>
+
 </div>
+
+</div>
+
 </section>
+
 
 <section id="team">
+
 <div class="container">
-<div class="section-title"><h2>👨‍💻 Project Team</h2><p>Designed and developed by CSE students of Jamalpur Science and Technology University.</p></div>
+
+<div class="section-title">
+
+<h2>
+👨‍💻 Project Team
+</h2>
+
+<p>
+Designed and developed by CSE students of Jamalpur Science and Technology University.
+</p>
+
+</div>
+
+
 <div class="team-grid">
 
+
 <div class="team-card">
-<div class="member-photo"><img src="tahmid.jpg" alt="Md. Tahmid Siddique"></div>
-<h3><a class="bio-link" href="bio.html" target="_blank" rel="noopener">Md. Tahmid Siddique</a></h3>
-<div class="role">Website Builder / Project Lead</div>
-<div class="team-info">Jamalpur Science and Technology University<br>Department of Computer Science &amp; Engineering<br>trustinunivers@gmail.com</div>
-</div>
 
-<div class="team-card"><div class="member-photo">02</div><h3>Team Member 02</h3><div class="role">Team Member</div><div class="team-info">Name to be added</div></div>
-<div class="team-card"><div class="member-photo">03</div><h3>Team Member 03</h3><div class="role">Team Member</div><div class="team-info">Name to be added</div></div>
-<div class="team-card"><div class="member-photo">04</div><h3>Team Member 04</h3><div class="role">Team Member</div><div class="team-info">Name to be added</div></div>
+<div class="member-photo">
+
+<img
+src="tahmid.jpg"
+alt="Md. Tahmid Siddique">
 
 </div>
+
+
+<h3>
+
+<a
+class="bio-link"
+href="bio.html"
+target="_blank"
+rel="noopener">
+
+Md. Tahmid Siddique
+
+</a>
+
+</h3>
+
+
+<div class="role">
+Website Builder / Project Lead
 </div>
+
+
+<div class="team-info">
+
+Jamalpur Science and Technology University
+<br>
+
+Department of Computer Science &amp; Engineering
+<br>
+
+trustinunivers@gmail.com
+
+</div>
+
+</div>
+
+
+<div class="team-card">
+
+<div class="member-photo">
+02
+</div>
+
+<h3>
+Team Member 02
+</h3>
+
+<div class="role">
+Team Member
+</div>
+
+<div class="team-info">
+Name to be added
+</div>
+
+</div>
+
+
+<div class="team-card">
+
+<div class="member-photo">
+03
+</div>
+
+<h3>
+Team Member 03
+</h3>
+
+<div class="role">
+Team Member
+</div>
+
+<div class="team-info">
+Name to be added
+</div>
+
+</div>
+
+
+<div class="team-card">
+
+<div class="member-photo">
+04
+</div>
+
+<h3>
+Team Member 04
+</h3>
+
+<div class="role">
+Team Member
+</div>
+
+<div class="team-info">
+Name to be added
+</div>
+
+</div>
+
+</div>
+
+</div>
+
 </section>
+
 
 <section>
+
 <div class="container">
-<div class="section-title"><h2>About VoltLab</h2></div>
+
+<div class="section-title">
+
+<h2>
+About VoltLab
+</h2>
+
+</div>
+
+
 <div class="about-box">
-<p><strong>VoltLab</strong> is an interactive educational website designed to make Basic Electricity easier to understand through visualization, calculation and experimentation.</p>
-<p>Instead of presenting electricity only as formulas and theoretical notes, VoltLab aims to create a virtual laboratory where students can interact with electrical concepts.</p>
-<p>The project combines web technology, interactive simulations and engineering concepts to create a more engaging learning experience.</p>
+
+<p>
+<strong>VoltLab</strong> is an interactive educational website designed to make Basic Electricity easier to understand through visualization, calculation and experimentation.
+</p>
+
+<p>
+Instead of presenting electricity only as formulas and theoretical notes, VoltLab aims to create a virtual laboratory where students can interact with electrical concepts.
+</p>
+
+<p>
+The project combines web technology, interactive simulations and engineering concepts to create a more engaging learning experience.
+</p>
+
 </div>
+
 </div>
+
 </section>
 
+
 <section>
+
 <div class="container">
-<div class="section-title"><h2>Conclusion</h2><p>Turning electrical theory into an interactive experience.</p></div>
+
+<div class="section-title">
+
+<h2>
+Conclusion
+</h2>
+
+<p>
+Turning electrical theory into an interactive experience.
+</p>
+
+</div>
+
+
 <div class="about-box">
-<p>VoltLab demonstrates how modern web technology can transform traditional electrical concepts into a more visual, interactive and engaging learning experience.</p>
-<p>Through interactive calculations, virtual experiments, circuit challenges and future simulation tools, the platform is designed to help students understand not only the formulas, but also what actually happens inside an electrical circuit.</p>
-<p>This project represents the collaborative work, creativity and technical learning of CSE students at Jamalpur Science and Technology University.</p>
+
+<p>
+VoltLab demonstrates how modern web technology can transform traditional electrical concepts into a more visual, interactive and engaging learning experience.
+</p>
+
+<p>
+Through interactive calculations, virtual experiments, circuit challenges and future simulation tools, the platform is designed to help students understand not only the formulas, but also what actually happens inside an electrical circuit.
+</p>
+
+<p>
+This project represents the collaborative work, creativity and technical learning of CSE students at Jamalpur Science and Technology University.
+</p>
+
 </div>
+
 </div>
+
 </section>
+
 
 <footer>
+
 <div class="container">
-⚡ <strong class="bio-link">VoltLab</strong> — Where Electricity Comes Alive.
+
+⚡ <strong class="bio-link">VoltLab</strong>
+— Where Electricity Comes Alive.
+
 <br><br>
+
 CSE Students • Jamalpur Science and Technology University
+
 <br><br>
-Developed by <a class="bio-link" href="bio.html" target="_blank" rel="noopener"><strong>Md. Tahmid Siddique</strong></a> and his teammates.
+
+Developed by
+
+<a
+class="bio-link"
+href="bio.html"
+target="_blank"
+rel="noopener">
+
+<strong>Md. Tahmid Siddique</strong>
+
+</a>
+
+and his teammates.
+
 <br>
-© 2026 <a class="bio-link" href="https://trustinunivers.wordpress.com" target="_blank" rel="noopener"><strong>Trustin Univers</strong></a>. All Rights Reserved.
+
+© 2026
+
+<a
+class="bio-link"
+href="https://trustinunivers.wordpress.com"
+target="_blank"
+rel="noopener">
+
+<strong>Trustin Univers</strong>
+
+</a>
+
+. All Rights Reserved.
+
 </div>
+
 </footer>
 
-<div class="toast" id="vlToast"></div>
-
-<div class="telemetry" aria-label="VoltLab live system status">
-<div class="telemetry-top">
-<span><span class="telemetry-dot"></span><strong>VOLTLAB LIVE</strong></span>
-<span id="telemetryMode">IDLE</span>
-</div>
-<div class="telemetry-bar"><div class="telemetry-fill" id="telemetryFill"></div></div>
-</div>
 
 <script>
+
 function calculateOhm(){
-const V=parseFloat(voltage.value),I=parseFloat(current.value),R=parseFloat(resistance.value),out=ohmResult,n=[V,I,R].filter(v=>!Number.isNaN(v)).length;
-if(n!==2){out.textContent="Enter exactly 2 values";out.style.color="var(--red)";return}
-if([V,I,R].some(v=>v<0)){out.textContent="Use non-negative values";out.style.color="var(--red)";return}
-if(Number.isNaN(I)){if(R<=0){out.textContent="Resistance must be greater than 0";out.style.color="var(--red)";return}const x=V/R;current.value=x.toFixed(4);out.textContent=x.toFixed(4)+" A"}
-else if(Number.isNaN(V)){const x=I*R;voltage.value=x.toFixed(4);out.textContent=x.toFixed(4)+" V"}
-else{if(I<=0){out.textContent="Current must be greater than 0";out.style.color="var(--red)";return}const x=V/I;resistance.value=x.toFixed(4);out.textContent=x.toFixed(4)+" Ω"}
-out.style.color="var(--cyan)";
-completeLab("ohm","Ohm's Law Lab","Missing value calculated successfully");
-missionDone("ohm","missionOhm","missionOhmState");
-unlockBadge("badgeOhm","Ohm Master");
+
+const V=parseFloat(voltage.value),
+I=parseFloat(current.value),
+R=parseFloat(resistance.value),
+out=ohmResult,
+n=[V,I,R].filter(v=>!Number.isNaN(v)).length;
+
+if(n!==2){
+out.textContent="Enter exactly 2 values";
+out.style.color="var(--red)";
+return
 }
+
+if([V,I,R].some(v=>v<0)){
+out.textContent="Use non-negative values";
+out.style.color="var(--red)";
+return
+}
+
+if(Number.isNaN(I)){
+
+if(R<=0){
+out.textContent="Resistance must be greater than 0";
+out.style.color="var(--red)";
+return
+}
+
+const x=V/R;
+
+current.value=x.toFixed(4);
+
+out.textContent=x.toFixed(4)+" A"
+
+}
+
+else if(Number.isNaN(V)){
+
+const x=I*R;
+
+voltage.value=x.toFixed(4);
+
+out.textContent=x.toFixed(4)+" V"
+
+}
+
+else{
+
+if(I<=0){
+out.textContent="Current must be greater than 0";
+out.style.color="var(--red)";
+return
+}
+
+const x=V/I;
+
+resistance.value=x.toFixed(4);
+
+out.textContent=x.toFixed(4)+" Ω"
+
+}
+
+out.style.color="var(--cyan)"
+
+}
+
 
 let circuitMode="series";
 
+
 function setCircuitMode(mode){
+
 circuitMode=mode;
-seriesMode.classList.toggle("active",mode==="series");
-parallelMode.classList.toggle("active",mode==="parallel");
+
+seriesMode.classList.toggle(
+"active",
+mode==="series"
+);
+
+parallelMode.classList.toggle(
+"active",
+mode==="parallel"
+);
+
 const d=circuitDrawing;
+
 if(mode==="series"){
+
 spStageLabel.textContent="SERIES TOPOLOGY • READY";
-spFormula.innerHTML="Series: R<sub>T</sub> = R<sub>1</sub> + R<sub>2</sub> + R<sub>3</sub>";
-spExplanation.textContent="In series, the same current flows through each resistor and the resistances add together.";
+
+spFormula.innerHTML=
+"Series: R<sub>T</sub> = R<sub>1</sub> + R<sub>2</sub> + R<sub>3</sub>";
+
+spExplanation.textContent=
+"In series, the same current flows through each resistor and the resistances add together.";
+
 d.className="circuit-drawing series";
-d.innerHTML='<div class="c-wire sw1"></div><div class="c-wire sw2"></div><div class="c-wire sw3"></div><div class="c-wire sw4"></div><div class="c-wire sw5"></div><div class="c-wire sw6"></div><div class="c-res sr1">R1</div><div class="c-res sr2">R2</div><div class="c-res sr3">R3</div><div class="c-node sn1"></div><div class="c-node sn2"></div><div class="flow-dot" style="left:15%;top:81px"></div><div class="flow-dot" style="left:37%;top:81px;animation-delay:.35s"></div><div class="flow-dot" style="left:54%;top:81px;animation-delay:.7s"></div><div class="flow-dot" style="left:78%;top:81px;animation-delay:1.05s"></div>';
-}else{
+
+d.innerHTML=
+'<div class="c-wire sw1"></div>'+
+'<div class="c-wire sw2"></div>'+
+'<div class="c-wire sw3"></div>'+
+'<div class="c-wire sw4"></div>'+
+'<div class="c-wire sw5"></div>'+
+'<div class="c-wire sw6"></div>'+
+'<div class="c-res sr1">R1</div>'+
+'<div class="c-res sr2">R2</div>'+
+'<div class="c-res sr3">R3</div>'+
+'<div class="c-node sn1"></div>'+
+'<div class="c-node sn2"></div>'+
+'<div class="flow-dot" style="left:15%;top:81px"></div>'+
+'<div class="flow-dot" style="left:37%;top:81px;animation-delay:.35s"></div>'+
+'<div class="flow-dot" style="left:54%;top:81px;animation-delay:.7s"></div>'+
+'<div class="flow-dot" style="left:78%;top:81px;animation-delay:1.05s"></div>';
+
+}
+
+else{
+
 spStageLabel.textContent="PARALLEL TOPOLOGY • READY";
-spFormula.innerHTML="Parallel: 1/R<sub>T</sub> = 1/R<sub>1</sub> + 1/R<sub>2</sub> + 1/R<sub>3</sub>";
-spExplanation.textContent="In parallel, each branch has the same supply voltage while total current is the sum of branch currents.";
+
+spFormula.innerHTML=
+"Parallel: 1/R<sub>T</sub> = 1/R<sub>1</sub> + 1/R<sub>2</sub> + 1/R<sub>3</sub>";
+
+spExplanation.textContent=
+"In parallel, each branch has the same supply voltage while total current is the sum of branch currents.";
+
 d.className="circuit-drawing parallel";
-d.innerHTML='<div class="c-wire pwtop"></div><div class="c-wire pwbottom"></div><div class="c-wire pwl"></div><div class="c-wire pwr"></div><div class="c-res pr1">R1</div><div class="c-res pr2">R2</div><div class="c-res pr3">R3</div><div class="c-node pn1"></div><div class="c-node pn2"></div><div class="c-node pn3"></div><div class="c-node pn4"></div><div class="flow-dot" style="left:30%;top:27px"></div><div class="flow-dot" style="left:50%;top:27px;animation-delay:.3s"></div><div class="flow-dot" style="left:68%;top:27px;animation-delay:.6s"></div>';
+
+d.innerHTML=
+'<div class="c-wire pwtop"></div>'+
+'<div class="c-wire pwbottom"></div>'+
+'<div class="c-wire pwl"></div>'+
+'<div class="c-wire pwr"></div>'+
+'<div class="c-res pr1">R1</div>'+
+'<div class="c-res pr2">R2</div>'+
+'<div class="c-res pr3">R3</div>'+
+'<div class="c-node pn1"></div>'+
+'<div class="c-node pn2"></div>'+
+'<div class="c-node pn3"></div>'+
+'<div class="c-node pn4"></div>'+
+'<div class="flow-dot" style="left:30%;top:27px"></div>'+
+'<div class="flow-dot" style="left:50%;top:27px;animation-delay:.3s"></div>'+
+'<div class="flow-dot" style="left:68%;top:27px;animation-delay:.6s"></div>';
+
 }
-reqResult.textContent=totCurrentResult.textContent=powerResult.textContent="—";
+
+reqResult.textContent=
+totCurrentResult.textContent=
+powerResult.textContent="—"
+
 }
+
 
 function calculateSeriesParallel(){
-const V=parseFloat(spVoltage.value),r1=parseFloat(document.getElementById("r1").value),r2=parseFloat(document.getElementById("r2").value),r3=parseFloat(document.getElementById("r3").value);
-if([V,r1,r2,r3].some(Number.isNaN)||V<0||r1<=0||r2<=0||r3<=0){reqResult.textContent=totCurrentResult.textContent=powerResult.textContent="—";spStageLabel.textContent="CHECK INPUTS • READY";return}
-const eq=circuitMode==="series"?r1+r2+r3:1/(1/r1+1/r2+1/r3),I=V/eq,P=V*I;
-reqResult.textContent=eq.toFixed(2)+" Ω";totCurrentResult.textContent=I.toFixed(4)+" A";powerResult.textContent=P.toFixed(3)+" W";spStageLabel.textContent=(circuitMode==="series"?"SERIES":"PARALLEL")+" TOPOLOGY • ANALYZED";
-completeLab("seriesParallel","Series / Parallel Lab","Circuit analysis completed");
+
+const V=parseFloat(spVoltage.value),
+r1=parseFloat(document.getElementById("r1").value),
+r2=parseFloat(document.getElementById("r2").value),
+r3=parseFloat(document.getElementById("r3").value);
+
+if(
+[V,r1,r2,r3].some(Number.isNaN)||
+V<0||
+r1<=0||
+r2<=0||
+r3<=0
+){
+
+reqResult.textContent=
+totCurrentResult.textContent=
+powerResult.textContent="—";
+
+spStageLabel.textContent="CHECK INPUTS • READY";
+
+return
 }
+
+const eq=
+circuitMode==="series"
+?r1+r2+r3
+:1/(1/r1+1/r2+1/r3);
+
+const I=V/eq,
+P=V*I;
+
+reqResult.textContent=
+eq.toFixed(2)+" Ω";
+
+totCurrentResult.textContent=
+I.toFixed(4)+" A";
+
+powerResult.textContent=
+P.toFixed(3)+" W";
+
+spStageLabel.textContent=
+(circuitMode==="series"?"SERIES":"PARALLEL")
++" TOPOLOGY • ANALYZED"
+
+}
+
 
 function calculateKCL(){
-const a=parseFloat(kclI1.value),b=parseFloat(kclI2.value),c=parseFloat(kclI3.value);
-if([a,b,c].some(Number.isNaN)||[a,b,c].some(v=>v<0)){kclResult.textContent="Enter valid currents";kclResult.style.color="var(--red)";kclStatus.textContent="";return}
-const d=a+b-c;
-if(d<0){kclResult.textContent=d.toFixed(4)+" A";kclResult.style.color="var(--red)";kclStatus.textContent="✗ The selected currents cannot satisfy this direction assumption.";kclStatus.style.color="var(--red")}
-else{kclResult.textContent=d.toFixed(4)+" A";kclResult.style.color="var(--cyan)";kclStatus.textContent="✓ Balanced node: I₁ + I₂ = I₃ + I₄";kclStatus.style.color="var(--green)";completeLab("kcl","KCL Lab","Node balance solved successfully");missionDone("kcl","missionKcl","missionKclState");unlockBadge("badgeKcl","Kirchhoff Solver")}
+
+const a=parseFloat(kclI1.value),
+b=parseFloat(kclI2.value),
+c=parseFloat(kclI3.value);
+
+if(
+[a,b,c].some(Number.isNaN)||
+[a,b,c].some(v=>v<0)
+){
+
+kclResult.textContent="Enter valid currents";
+kclResult.style.color="var(--red)";
+kclStatus.textContent="";
+
+return
 }
+
+const d=a+b-c;
+
+if(d<0){
+
+kclResult.textContent=d.toFixed(4)+" A";
+kclResult.style.color="var(--red)";
+
+kclStatus.textContent=
+"✗ The selected currents cannot satisfy this direction assumption.";
+
+kclStatus.style.color="var(--red)"
+
+}
+
+else{
+
+kclResult.textContent=d.toFixed(4)+" A";
+kclResult.style.color="var(--cyan)";
+
+kclStatus.textContent=
+"✓ Balanced node: I₁ + I₂ = I₃ + I₄";
+
+kclStatus.style.color="var(--green)"
+
+}
+
+}
+
 
 function calculateKVL(){
-const s=parseFloat(kvlVs.value),a=parseFloat(kvlV1.value),b=parseFloat(kvlV2.value);
-if([s,a,b].some(Number.isNaN)||[s,a,b].some(v=>v<0)){kvlResult.textContent="Enter valid voltages";kvlResult.style.color="var(--red)";kvlStatus.textContent="";return}
-const c=s-a-b;
-if(c<0){kvlResult.textContent=c.toFixed(4)+" V";kvlResult.style.color="var(--red)";kvlStatus.textContent="✗ Voltage drops exceed the source voltage.";kvlStatus.style.color="var(--red")}
-else{kvlResult.textContent=c.toFixed(4)+" V";kvlResult.style.color="var(--cyan)";kvlStatus.textContent="✓ Closed-loop balance: Vₛ = V₁ + V₂ + V₃";kvlStatus.style.color="var(--green)";completeLab("kvl","KVL Lab","Loop balance solved successfully")}
+
+const s=parseFloat(kvlVs.value),
+a=parseFloat(kvlV1.value),
+b=parseFloat(kvlV2.value);
+
+if(
+[s,a,b].some(Number.isNaN)||
+[s,a,b].some(v=>v<0)
+){
+
+kvlResult.textContent="Enter valid voltages";
+kvlResult.style.color="var(--red)";
+kvlStatus.textContent="";
+
+return
 }
+
+const c=s-a-b;
+
+if(c<0){
+
+kvlResult.textContent=c.toFixed(4)+" V";
+kvlResult.style.color="var(--red)";
+
+kvlStatus.textContent=
+"✗ Voltage drops exceed the source voltage.";
+
+kvlStatus.style.color="var(--red)"
+
+}
+
+else{
+
+kvlResult.textContent=c.toFixed(4)+" V";
+kvlResult.style.color="var(--cyan)";
+
+kvlStatus.textContent=
+"✓ Closed-loop balance: Vₛ = V₁ + V₂ + V₃";
+
+kvlStatus.style.color="var(--green)"
+
+}
+
+}
+
 
 function updateLED(){
-const V=+ledVolt.value,R=+ledRes.value;
-ledVoltVal.textContent=V.toFixed(1)+" V";ledResVal.textContent=R+" Ω";
-const vf=2,I=V>vf?(V-vf)/R:0,m=I*1000,P=I*vf,PR=I*I*R;
-ledCurrent.textContent=m.toFixed(1)+" mA";ledPower.textContent=P.toFixed(3)+" W";ledResPower.textContent=PR.toFixed(3)+" W";
+
+const V=+ledVolt.value,
+R=+ledRes.value;
+
+ledVoltVal.textContent=
+V.toFixed(1)+" V";
+
+ledResVal.textContent=
+R+" Ω";
+
+const vf=2,
+I=V>vf?(V-vf)/R:0,
+m=I*1000,
+P=I*vf,
+PR=I*I*R;
+
+ledCurrent.textContent=
+m.toFixed(1)+" mA";
+
+ledPower.textContent=
+P.toFixed(3)+" W";
+
+ledResPower.textContent=
+PR.toFixed(3)+" W";
+
 const g=Math.min(1,m/20);
-if(V<=vf){ledBulb.style.background="#162238";ledBulb.style.borderColor="#526783";ledBulb.style.boxShadow="none";ledStatus.textContent="● OFF — BELOW FORWARD VOLTAGE";ledStatus.style.color="var(--muted)"}
-else if(m>30){ledBulb.style.background="#ff5964";ledBulb.style.borderColor="#ff5964";ledBulb.style.boxShadow="0 0 30px rgba(239,68,68,.8),0 0 70px rgba(239,68,68,.45)";ledStatus.textContent="⚠ HIGH CURRENT — LED STRESS";ledStatus.style.color="var(--red)"}
-else{ledBulb.style.background="rgba(33,212,253,"+(0.18+g*.82)+")";ledBulb.style.borderColor="var(--cyan)";ledBulb.style.boxShadow="0 0 "+(15+g*45)+"px rgba(33,212,253,.8),0 0 "+(35+g*80)+"px rgba(33,212,253,.35)";ledStatus.textContent=m<5?"● DIM GLOW":m<15?"● NORMAL OPERATION":"● BRIGHT OPERATION";ledStatus.style.color="var(--green)"}
+
+if(V<=vf){
+
+ledBulb.style.background="#162238";
+ledBulb.style.borderColor="#526783";
+ledBulb.style.boxShadow="none";
+
+ledStatus.textContent=
+"● OFF — BELOW FORWARD VOLTAGE";
+
+ledStatus.style.color="var(--muted)"
+
 }
 
-const builderState={items:[],connections:[],selected:null,dragType:null,switchOn:false,nextId:1};
-const builderMeta={battery:{icon:'🔋',name:'BATTERY'},resistor:{icon:'〰️',name:'RESISTOR'},lamp:{icon:'💡',name:'LOAD'},switch:{icon:'⏻',name:'SWITCH'}};
+else if(m>30){
+
+ledBulb.style.background="#ff5964";
+ledBulb.style.borderColor="#ff5964";
+
+ledBulb.style.boxShadow=
+"0 0 30px rgba(239,68,68,.8),0 0 70px rgba(239,68,68,.45)";
+
+ledStatus.textContent=
+"⚠ HIGH CURRENT — LED STRESS";
+
+ledStatus.style.color="var(--red)"
+
+}
+
+else{
+
+ledBulb.style.background=
+"rgba(33,212,253,"+(0.18+g*.82)+")";
+
+ledBulb.style.borderColor="var(--cyan)";
+
+ledBulb.style.boxShadow=
+"0 0 "+(15+g*45)+"px rgba(33,212,253,.8),0 0 "+(35+g*80)+"px rgba(33,212,253,.35)";
+
+ledStatus.textContent=
+m<5
+?"● DIM GLOW"
+:m<15
+?"● NORMAL OPERATION"
+:"● BRIGHT OPERATION";
+
+ledStatus.style.color="var(--green)"
+
+}
+
+}
+
+
+const builderState={
+items:[],
+connections:[],
+selected:null,
+dragType:null,
+switchOn:false,
+nextId:1
+};
+
+
+const builderMeta={
+battery:{icon:'🔋',name:'BATTERY'},
+resistor:{icon:'〰️',name:'RESISTOR'},
+lamp:{icon:'💡',name:'LOAD'},
+switch:{icon:'⏻',name:'SWITCH'}
+};
+
 
 function setupBuilder(){
+
 document.querySelectorAll('.palette-item').forEach(item=>{
-item.addEventListener('dragstart',e=>{builderState.dragType=item.dataset.type;e.dataTransfer.setData('text/plain',builderState.dragType)})
+
+item.addEventListener('dragstart',e=>{
+
+builderState.dragType=item.dataset.type;
+
+e.dataTransfer.setData(
+'text/plain',
+builderState.dragType
+);
+
+})
+
 });
-const board=document.getElementById('builderBoard');
-board.addEventListener('dragover',e=>{e.preventDefault();board.classList.add('drag-over')});
-board.addEventListener('dragleave',()=>board.classList.remove('drag-over'));
-board.addEventListener('drop',e=>{e.preventDefault();board.classList.remove('drag-over');const type=e.dataTransfer.getData('text/plain')||builderState.dragType;if(type)addBuilderComponent(type,e.offsetX,e.offsetY)})
+
+
+const board=
+document.getElementById('builderBoard');
+
+board.addEventListener(
+'dragover',
+e=>{
+e.preventDefault();
+board.classList.add('drag-over')
 }
+);
+
+board.addEventListener(
+'dragleave',
+()=>{
+board.classList.remove('drag-over')
+}
+);
+
+board.addEventListener(
+'drop',
+e=>{
+
+e.preventDefault();
+
+board.classList.remove('drag-over');
+
+const type=
+e.dataTransfer.getData('text/plain')||
+builderState.dragType;
+
+if(type)
+addBuilderComponent(
+type,
+e.offsetX,
+e.offsetY
+)
+
+}
+)
+
+}
+
 
 function addBuilderComponent(type,x,y){
-const board=document.getElementById('builderBoard'),id='bc'+builderState.nextId++,el=document.createElement('div');
-el.className='builder-component';el.id=id;el.dataset.type=type;
-el.innerHTML='<div class="builder-port left" data-side="left"></div><div class="bc-icon">'+builderMeta[type].icon+'</div><div class="bc-name">'+builderMeta[type].name+'</div><div class="builder-port right" data-side="right"></div>';
-const left=Math.max(8,Math.min(x-60,board.clientWidth-128)),top=Math.max(8,Math.min(y-38,board.clientHeight-90));
-el.style.left=left+'px';el.style.top=top+'px';board.appendChild(el);
-builderState.items.push({id,type,value:null,element:el});attachBuilderEvents(el);selectBuilderComponent(id);
-updateBuilderStatus('COMPONENT ADDED • CONNECT PORTS TO BUILD');
+
+const board=
+document.getElementById('builderBoard');
+
+const id=
+'bc'+builderState.nextId++;
+
+const el=
+document.createElement('div');
+
+el.className=
+'builder-component';
+
+el.id=id;
+
+el.dataset.type=type;
+
+el.innerHTML=
+'<div class="builder-port left" data-side="left"></div>'+
+'<div class="bc-icon">'+builderMeta[type].icon+'</div>'+
+'<div class="bc-name">'+builderMeta[type].name+'</div>'+
+'<div class="builder-port right" data-side="right"></div>';
+
+const left=
+Math.max(
+8,
+Math.min(
+x-60,
+board.clientWidth-128
+)
+);
+
+const top=
+Math.max(
+8,
+Math.min(
+y-38,
+board.clientHeight-90
+)
+);
+
+el.style.left=
+left+'px';
+
+el.style.top=
+top+'px';
+
+board.appendChild(el);
+
+builderState.items.push({
+id,
+type,
+value:null,
+element:el
+});
+
+attachBuilderEvents(el);
+
+selectBuilderComponent(id);
+
+updateBuilderStatus(
+'COMPONENT ADDED • CONNECT PORTS TO BUILD'
+);
+
 }
+
 
 function attachBuilderEvents(el){
-let moving=false,ox=0,oy=0;
-el.addEventListener('pointerdown',e=>{
-if(e.target.classList.contains('builder-port'))return;
-moving=true;el.setPointerCapture(e.pointerId);const r=el.getBoundingClientRect();ox=e.clientX-r.left;oy=e.clientY-r.top;selectBuilderComponent(el.id);e.preventDefault()
-});
-el.addEventListener('pointermove',e=>{
-if(!moving)return;
-const b=document.getElementById('builderBoard').getBoundingClientRect();
-const left=Math.max(4,Math.min(e.clientX-b.left-ox,b.width-el.offsetWidth-4)),top=Math.max(4,Math.min(e.clientY-b.top-oy,b.height-el.offsetHeight-4));
-el.style.left=left+'px';el.style.top=top+'px';drawBuilderWires()
-});
-el.addEventListener('pointerup',()=>moving=false);
-el.querySelectorAll('.builder-port').forEach(port=>port.addEventListener('click',e=>{e.stopPropagation();connectBuilderPort(el.id,port.dataset.side)}))
+
+let moving=false,
+ox=0,
+oy=0;
+
+el.addEventListener(
+'pointerdown',
+e=>{
+
+if(
+e.target.classList.contains('builder-port')
+)
+return;
+
+moving=true;
+
+el.setPointerCapture(e.pointerId);
+
+const r=
+el.getBoundingClientRect();
+
+ox=
+e.clientX-r.left;
+
+oy=
+e.clientY-r.top;
+
+selectBuilderComponent(el.id);
+
+e.preventDefault()
+
 }
+);
+
+
+el.addEventListener(
+'pointermove',
+e=>{
+
+if(!moving)
+return;
+
+const b=
+document.getElementById('builderBoard')
+.getBoundingClientRect();
+
+const left=
+Math.max(
+4,
+Math.min(
+e.clientX-b.left-ox,
+b.width-el.offsetWidth-4
+)
+);
+
+const top=
+Math.max(
+4,
+Math.min(
+e.clientY-b.top-oy,
+b.height-el.offsetHeight-4
+)
+);
+
+el.style.left=
+left+'px';
+
+el.style.top=
+top+'px';
+
+drawBuilderWires()
+
+}
+);
+
+
+el.addEventListener(
+'pointerup',
+()=>moving=false
+);
+
+
+el.querySelectorAll(
+'.builder-port'
+).forEach(port=>{
+
+port.addEventListener(
+'click',
+e=>{
+
+e.stopPropagation();
+
+connectBuilderPort(
+el.id,
+port.dataset.side
+)
+
+}
+)
+
+})
+
+}
+
 
 let pendingPort=null;
+
+
 function connectBuilderPort(id,side){
-if(!pendingPort){pendingPort={id,side};document.querySelector('#'+id+' .builder-port.'+side).classList.add('active');updateBuilderStatus('PORT SELECTED • CHOOSE A SECOND PORT');return}
-if(pendingPort.id===id&&pendingPort.side===side){clearPendingPort();return}
-const exists=builderState.connections.some(c=>(c.a.id===pendingPort.id&&c.a.side===pendingPort.side&&c.b.id===id&&c.b.side===side)||(c.b.id===pendingPort.id&&c.b.side===pendingPort.side&&c.a.id===id&&c.a.side===side));
-if(!exists){builderState.connections.push({a:{id:pendingPort.id,side:pendingPort.side},b:{id,side}});updateBuilderStatus('CONNECTION CREATED • BUILD FURTHER OR RUN')}
-clearPendingPort();drawBuilderWires()
-}
-function clearPendingPort(){if(pendingPort){const p=document.querySelector('#'+pendingPort.id+' .builder-port.'+pendingPort.side);if(p)p.classList.remove('active')}pendingPort=null}
-function portPoint(id,side){const el=document.getElementById(id),board=document.getElementById('builderBoard').getBoundingClientRect(),r=el.getBoundingClientRect();return{x:(side==='left'?r.left:r.right)-board.left,y:r.top+r.height/2-board.top}}
-function drawBuilderWires(){
-const svg=document.getElementById('builderWires');svg.innerHTML='';
-builderState.connections.forEach(c=>{const a=portPoint(c.a.id,c.a.side),b=portPoint(c.b.id,c.b.side),line=document.createElementNS('http://www.w3.org/2000/svg','line');line.setAttribute('x1',a.x);line.setAttribute('y1',a.y);line.setAttribute('x2',b.x);line.setAttribute('y2',b.y);line.setAttribute('class','builder-wire');svg.appendChild(line)})
-}
-function selectBuilderComponent(id){
-builderState.selected=id;
-document.querySelectorAll('.builder-component').forEach(x=>x.classList.toggle('selected',x.id===id));
-const item=builderState.items.find(x=>x.id===id),txt=document.getElementById('selectedComponentText'),input=document.getElementById('builderValue'),save=document.getElementById('saveBuilderValue');
-if(!item)return;
-txt.textContent=item.type==='battery'?'Battery selected — enter the supply voltage.':item.type==='resistor'?'Resistor selected — enter its resistance.':item.type==='switch'?'Switch selected — use Toggle Switch to change state.':'Load selected — no numeric value required.';
-if(item.type==='battery'||item.type==='resistor'){input.style.display='block';save.style.display='inline-block';input.value=item.value??'';input.placeholder=item.type==='battery'?'Example: 12':'Example: 100'}else{input.style.display='none';save.style.display='none'}
-}
-function saveBuilderValue(){
-const item=builderState.items.find(x=>x.id===builderState.selected),input=document.getElementById('builderValue');if(!item)return;
-const v=parseFloat(input.value);if(!Number.isFinite(v)||v<=0){updateBuilderStatus('ENTER A POSITIVE VALUE');return}
-item.value=v;updateBuilderStatus('VALUE SAVED • RUN CIRCUIT WHEN READY')
-}
-function toggleBuilderSwitch(){builderState.switchOn=!builderState.switchOn;document.getElementById('builderSwitchText').innerHTML='Switch: <span class="switch-state '+(builderState.switchOn?'':'off')+'">'+(builderState.switchOn?'ON':'OFF')+'</span>';updateBuilderStatus('SWITCH '+(builderState.switchOn?'ON':'OFF'))}
-function graphIsConnected(){
-const ids=builderState.items.map(x=>x.id);if(ids.length<2)return false;const adj={};ids.forEach(id=>adj[id]=[]);
-builderState.connections.forEach(c=>{adj[c.a.id].push(c.b.id);adj[c.b.id].push(c.a.id)});
-const seen=new Set([ids[0]]),q=[ids[0]];while(q.length){const u=q.shift();adj[u].forEach(v=>{if(!seen.has(v)){seen.add(v);q.push(v)}})}return seen.size===ids.length
-}
-function runBuilderSimulation(){
-const battery=builderState.items.find(x=>x.type==='battery'),resistors=builderState.items.filter(x=>x.type==='resistor'),load=builderState.items.find(x=>x.type==='lamp'),outR=document.getElementById('builderResistance'),outI=document.getElementById('builderCurrent'),outP=document.getElementById('builderPower');
-if(!battery||!load||!resistors.length){outR.textContent=outI.textContent=outP.textContent='—';updateBuilderStatus('INCOMPLETE • NEED BATTERY + RESISTOR + LOAD');return}
-if(!battery.value||resistors.some(r=>!r.value)){outR.textContent=outI.textContent=outP.textContent='—';updateBuilderStatus('MISSING VALUES • SELECT COMPONENTS AND ENTER VALUES');return}
-if(!graphIsConnected()||builderState.connections.length<3){outR.textContent=outI.textContent=outP.textContent='—';updateBuilderStatus('INCOMPLETE PATH • CONNECT THE COMPONENTS');return}
-if(!builderState.switchOn&&builderState.items.some(x=>x.type==='switch')){outR.textContent=outI.textContent=outP.textContent='—';updateBuilderStatus('OPEN SWITCH • TURN THE SWITCH ON');return}
-const R=resistors.reduce((sum,r)=>sum+r.value,0),I=battery.value/R,P=battery.value*I;
-outR.textContent=R.toFixed(2)+' Ω';outI.textContent=I.toFixed(4)+' A';outP.textContent=P.toFixed(3)+' W';updateBuilderStatus('CIRCUIT ACTIVE • CALCULATION COMPLETE');
-completeLab("builder","Circuit Builder","Working circuit simulation completed");missionDone("build","missionBuild","missionBuildState");unlockBadge("badgeFirstCircuit","First Circuit")
-}
-function updateBuilderStatus(msg){const s=document.getElementById('builderStatus');if(s)s.textContent=msg}
-function clearBuilder(){
-builderState.items.forEach(x=>x.element.remove());builderState.items=[];builderState.connections=[];builderState.selected=null;builderState.nextId=1;builderState.switchOn=false;clearPendingPort();document.getElementById('builderWires').innerHTML='';
-document.getElementById('builderResistance').textContent=document.getElementById('builderCurrent').textContent=document.getElementById('builderPower').textContent='—';
-document.getElementById('builderSwitchText').innerHTML='Switch: <span class="switch-state off">OFF</span>';document.getElementById('selectedComponentText').textContent='Select a placed component to edit its value.';
-document.getElementById('builderValue').style.display=document.getElementById('saveBuilderValue').style.display='none';updateBuilderStatus('BOARD CLEARED • READY')
+
+if(!pendingPort){
+
+pendingPort={
+id,
+side
+};
+
+document.querySelector(
+'#'+id+
+' .builder-port.'+
+side
+).classList.add('active');
+
+updateBuilderStatus(
+'PORT SELECTED • CHOOSE A SECOND PORT'
+);
+
+return
+
 }
 
-function checkAnswer(btn,ok){
-document.querySelectorAll(".option").forEach(b=>b.style.borderColor="var(--line)");
-if(ok){btn.style.borderColor="var(--green)";feedback.innerHTML="✓ Correct! Using I = V / R → I = 12 / 6 = 2 A.";feedback.style.color="var(--green)";setQuizScore(100)}
-else{btn.style.borderColor="var(--red)";feedback.innerHTML="✗ Not quite. Try using Ohm's Law: I = V / R.";feedback.style.color="var(--red)"}
+
+if(
+pendingPort.id===id&&
+pendingPort.side===side
+){
+
+clearPendingPort();
+
+return
+
 }
 
-/* ---------------- STEP 7 : CIRCUIT DETECTIVE ---------------- */
 
-const detectiveCases=[
-{label:"OPEN CIRCUIT",symptom:"The lamp does not light even though the source voltage is available.",answer:"Open Circuit",cause:"The conducting path is interrupted, so current cannot complete the circuit.",fix:"Check the switch and all conducting connections."},
-{label:"SHORT CIRCUIT",symptom:"The current rises to an unsafe level and the load is bypassed.",answer:"Short Circuit",cause:"A very low-resistance path is bypassing the intended load.",fix:"Remove the unintended low-resistance path and restore the load connection."},
-{label:"WRONG RESISTANCE",symptom:"The circuit works, but the current is much higher than the intended value.",answer:"Wrong Resistance",cause:"The current-limiting resistance is too small for the selected source voltage.",fix:"Use an appropriate resistance to limit current."},
-{label:"BROKEN CONNECTION",symptom:"One part of the circuit is physically disconnected from the rest of the path.",answer:"Broken Connection",cause:"A conductor or component connection is not electrically continuous.",fix:"Reconnect the disconnected node or wire."},
-{label:"OVERCURRENT",symptom:"The circuit is active but the current exceeds the safe operating level.",answer:"Overcurrent",cause:"The circuit is drawing more current than the component/load should receive.",fix:"Increase appropriate resistance or reduce the applied voltage."}
-];
+const exists=
+builderState.connections.some(
+c=>
+(
+c.a.id===pendingPort.id&&
+c.a.side===pendingPort.side&&
+c.b.id===id&&
+c.b.side===side
+)
+||
+(
+c.b.id===pendingPort.id&&
+c.b.side===pendingPort.side&&
+c.a.id===id&&
+c.a.side===side
+)
+);
 
-let detectiveIndex=0,detectiveSolved=0,detectiveScore=0,detectiveAnswered=false;
 
-function loadDetectiveCase(index){
-detectiveIndex=index;detectiveAnswered=false;
-document.querySelectorAll(".detective-case").forEach((b,i)=>b.classList.toggle("active",i===index));
-const c=detectiveCases[index];
-document.getElementById("detectiveCaseLabel").textContent="FAULT SCAN / CASE "+String(index+1).padStart(2,"0");
-document.getElementById("detectiveSymptom").textContent=c.symptom;
-document.getElementById("detectiveCaseNumber").textContent=(index+1)+"/5";
-document.getElementById("detectiveFeedback").textContent="Select a diagnosis to investigate the circuit.";
-document.getElementById("detectiveStatus").textContent="System report: "+c.label+" condition detected.";
-document.getElementById("detectiveSwitch").textContent=index===0?"SWITCH: OPEN":index===1?"LOW-RESISTANCE BYPASS":index===2?"RESISTOR: TOO LOW":index===3?"CONNECTION: BROKEN":"CURRENT: TOO HIGH";
-document.getElementById("detectiveResistor").textContent=index===2?"20Ω":index===4?"50Ω":"220Ω";
-const options=["Open Circuit","Short Circuit","Wrong Resistance","Broken Connection","Overcurrent"].sort(()=>Math.random()-.5);
-document.getElementById("detectiveOptions").innerHTML=options.map(o=>'<button class="fault-option" onclick="checkDetectiveAnswer(this,\''+o.replace(/'/g,"\\'")+'\')">'+o+"</button>").join("");
+if(!exists){
+
+builderState.connections.push({
+
+a:{
+id:pendingPort.id,
+side:pendingPort.side
+},
+
+b:{
+id,
+side
 }
 
-function checkDetectiveAnswer(btn,answer){
-if(detectiveAnswered)return;
-const c=detectiveCases[detectiveIndex];
-if(answer===c.answer){
-detectiveAnswered=true;btn.classList.add("correct");detectiveCorrect=1;detectiveSolved++;
-if(!vlData.detectiveCases.includes(detectiveIndex)){vlData.detectiveCases.push(detectiveIndex);saveVLData()}
-detectiveScore++;document.getElementById("detectiveScore").textContent=detectiveScore;
-document.getElementById("detectiveSolved").textContent=detectiveSolved;
-document.getElementById("detectiveFeedback").innerHTML="✓ Correct diagnosis. <strong>"+c.cause+"</strong><br>Recommended action: "+c.fix;
-document.getElementById("detectiveFeedback").style.color="var(--green)";
-missionDone("fault","missionFault","missionFaultState");
-completeLab("detective","Circuit Detective","Correct diagnosis: Case "+(detectiveIndex+1));
-unlockBadge("badgeDetective","Circuit Detective");
-vlToast("🏆 Circuit Detective badge progress updated");
-}else{
-btn.classList.add("wrong");
-document.getElementById("detectiveFeedback").textContent="✗ That diagnosis does not match the observed symptom. Investigate again.";
-document.getElementById("detectiveFeedback").style.color="var(--red)";
-}
-refreshVoltLabProgress();
-}
-
-function nextDetectiveCase(){loadDetectiveCase((detectiveIndex+1)%detectiveCases.length)}
-function resetDetective(){detectiveSolved=0;detectiveScore=0;vlData.detectiveCases=[];saveVLData();document.getElementById("detectiveSolved").textContent="0";document.getElementById("detectiveScore").textContent="0";loadDetectiveCase(0);refreshVoltLabProgress()}
-
-/* ---------------- VOLTLAB PROGRESS SYSTEM ---------------- */
-
-const VL_KEY="voltlab_progress_v1";
-const vlDefault={completedLabs:[],detectiveCases:[],quizScore:null,actions:0,log:[],missions:{ohm:false,build:false,kcl:false,fault:false}};
-let vlData=loadVLData();
-
-function loadVLData(){
-try{
-const raw=localStorage.getItem(VL_KEY);
-if(!raw)return JSON.parse(JSON.stringify(vlDefault));
-const d=JSON.parse(raw);
-return {...vlDefault,...d,completedLabs:Array.isArray(d.completedLabs)?d.completedLabs:[],detectiveCases:Array.isArray(d.detectiveCases)?d.detectiveCases:[],log:Array.isArray(d.log)?d.log:[],missions:{...vlDefault.missions,...(d.missions||{})}}
-}catch(e){return JSON.parse(JSON.stringify(vlDefault))}
-}
-
-function saveVLData(){try{localStorage.setItem(VL_KEY,JSON.stringify(vlData))}catch(e){}}
-
-function vlToast(message){
-const t=document.getElementById("vlToast");if(!t)return;
-t.textContent=message;t.classList.add("show");clearTimeout(window.vlToastTimer);
-window.vlToastTimer=setTimeout(()=>t.classList.remove("show"),2600);
-}
-
-function vlLog(title,detail){
-vlData.log.unshift({title,detail,time:new Date().toLocaleString()});
-vlData.log=vlData.log.slice(0,25);vlData.actions++;
-saveVLData();renderVLLog();
-}
-
-function completeLab(key,title,detail){
-if(!vlData.completedLabs.includes(key)){
-vlData.completedLabs.push(key);
-vlLog(title,detail);
-vlToast("⚡ Lab completed: "+title);
-}else{
-vlData.actions++;
-saveVLData();
-}
-refreshVoltLabProgress();
-}
-
-function unlockBadge(id,name){
-const el=document.getElementById(id);
-if(!el)return;
-if(!el.classList.contains("unlocked")){
-el.classList.add("unlocked");
-vlToast("🏆 Achievement unlocked: "+name);
-}
-}
-
-function missionDone(key,id,stateId){
-if(vlData.missions[key])return;
-vlData.missions[key]=true;
-saveVLData();
-const el=document.getElementById(id),st=document.getElementById(stateId);
-if(el)el.classList.add("done");
-if(st)st.textContent="✓ COMPLETE";
-vlToast("🔭 Mission complete");
-refreshVoltLabProgress();
-}
-
-function setQuizScore(score){
-if(vlData.quizScore!==score){
-vlData.quizScore=score;
-vlLog("Circuit Challenge","Correct answer recorded — score: "+score+"%");
-}
-refreshVoltLabProgress();
-}
-
-function renderVLLog(){
-const box=document.getElementById("experimentLog");if(!box)return;
-if(!vlData.log.length){box.innerHTML='<div class="log-entry">No experiments recorded yet.<span>Run one of the interactive labs to begin.</span></div>';return}
-box.innerHTML=vlData.log.map(x=>'<div class="log-entry"><strong>'+x.title+'</strong> — '+x.detail+'<span>'+x.time+'</span></div>').join("");
-}
-
-function refreshVoltLabProgress(){
-const labs=vlData.completedLabs.length,cases=vlData.detectiveCases.length;
-document.getElementById("labsCompleted").textContent=labs;
-document.getElementById("casesCompleted").textContent=cases;
-document.getElementById("actionsCompleted").textContent=vlData.actions;
-const missionCount=Object.values(vlData.missions).filter(Boolean).length;
-const badgeCount=document.querySelectorAll(".achievement.unlocked").length;
-const totalUnits=4+5;
-const doneUnits=missionCount+badgeCount;
-const pct=Math.min(100,Math.round(doneUnits/totalUnits*100));
-document.getElementById("overallPercent").textContent=pct+"%";
-document.getElementById("overallFill").style.width=pct+"%";
-document.getElementById("certificateProgress").textContent=pct+"% COMPLETE";
-document.getElementById("certificateFill").style.width=pct+"%";
-if(labs>=2)unlockBadge("badgeExplorer","Lab Explorer");
-if(vlData.missions.ohm)missionDone("ohm","missionOhm","missionOhmState");
-if(vlData.missions.build)missionDone("build","missionBuild","missionBuildState");
-if(vlData.missions.kcl)missionDone("kcl","missionKcl","missionKclState");
-if(vlData.missions.fault)missionDone("fault","missionFault","missionFaultState");
-renderVLLog();
-}
-
-function resetVoltLabProgress(){
-if(!confirm("Clear all saved VoltLab progress from this browser?"))return;
-localStorage.removeItem(VL_KEY);
-vlData=JSON.parse(JSON.stringify(vlDefault));
-document.querySelectorAll(".achievement").forEach(x=>x.classList.remove("unlocked"));
-document.querySelectorAll(".mission").forEach(x=>x.classList.remove("done"));
-document.querySelectorAll(".mission-state").forEach(x=>x.textContent="LOCKED");
-detectiveSolved=0;detectiveScore=0;
-document.getElementById("detectiveSolved").textContent="0";
-document.getElementById("detectiveScore").textContent="0";
-renderVLLog();refreshVoltLabProgress();vlToast("Progress reset");
-}
-
-/* Restore saved achievements */
-function restoreAchievements(){
-if(vlData.completedLabs.includes("builder"))document.getElementById("badgeFirstCircuit").classList.add("unlocked");
-if(vlData.completedLabs.includes("ohm"))document.getElementById("badgeOhm").classList.add("unlocked");
-if(vlData.completedLabs.includes("kcl"))document.getElementById("badgeKcl").classList.add("unlocked");
-if(vlData.completedLabs.includes("detective"))document.getElementById("badgeDetective").classList.add("unlocked");
-if(vlData.completedLabs.length>=2)document.getElementById("badgeExplorer").classList.add("unlocked");
-if(vlData.missions.ohm)missionDone("ohm","missionOhm","missionOhmState");
-if(vlData.missions.build)missionDone("build","missionBuild","missionBuildState");
-if(vlData.missions.kcl)missionDone("kcl","missionKcl","missionKclState");
-if(vlData.missions.fault)missionDone("fault","missionFault","missionFaultState");
-}
-
-/* Live telemetry responds to user activity */
-function vlTelemetry(mode,message){
-const el=document.getElementById("telemetryMode");
-const fill=document.getElementById("telemetryFill");
-if(!el||!fill)return;
-el.textContent=mode;
-fill.style.width=mode==="ACTIVE"?"88%":mode==="MONITORING"?"58%":"28%";
-if(message)el.title=message;
-}
-
-document.addEventListener("click",e=>{
-if(e.target.closest("button,.btn,.palette-item,.nav-links a"))vlTelemetry("MONITORING","VoltLab interaction detected");
 });
 
-setInterval(()=>{
-const active=document.querySelector(":hover");
-if(active&&active.closest(".lab-panel,.law-card,.detective-card,.progress-card,.builder-workbench"))vlTelemetry("ACTIVE","Laboratory activity detected");
-else vlTelemetry("MONITORING","System monitoring");
-},1800);
+updateBuilderStatus(
+'CONNECTION CREATED • BUILD FURTHER OR RUN'
+);
+
+}
+
+clearPendingPort();
+
+drawBuilderWires();
+
+}
+
+
+function clearPendingPort(){
+
+if(pendingPort){
+
+const p=
+document.querySelector(
+'#'+pendingPort.id+
+' .builder-port.'+
+pendingPort.side
+);
+
+if(p)
+p.classList.remove('active');
+
+}
+
+pendingPort=null;
+
+}
+
+
+function portPoint(id,side){
+
+const el=
+document.getElementById(id),
+
+board=
+document.getElementById('builderBoard')
+.getBoundingClientRect(),
+
+r=
+el.getBoundingClientRect();
+
+return{
+
+x:
+(side==='left'?r.left:r.right)-board.left,
+
+y:
+r.top+r.height/2-board.top
+
+};
+
+}
+
+
+function drawBuilderWires(){
+
+const svg=
+document.getElementById('builderWires');
+
+svg.innerHTML='';
+
+builderState.connections.forEach(c=>{
+
+const a=
+portPoint(
+c.a.id,
+c.a.side
+);
+
+const b=
+portPoint(
+c.b.id,
+c.b.side
+);
+
+const line=
+document.createElementNS(
+'http://www.w3.org/2000/svg',
+'line'
+);
+
+line.setAttribute(
+'x1',
+a.x
+);
+
+line.setAttribute(
+'y1',
+a.y
+);
+
+line.setAttribute(
+'x2',
+b.x
+);
+
+line.setAttribute(
+'y2',
+b.y
+);
+
+line.setAttribute(
+'class',
+'builder-wire'
+);
+
+svg.appendChild(line);
+
+})
+
+}
+
+
+function selectBuilderComponent(id){
+
+builderState.selected=id;
+
+document.querySelectorAll(
+'.builder-component'
+).forEach(
+x=>
+x.classList.toggle(
+'selected',
+x.id===id
+)
+);
+
+const item=
+builderState.items.find(
+x=>x.id===id
+);
+
+const txt=
+document.getElementById(
+'selectedComponentText'
+);
+
+const input=
+document.getElementById(
+'builderValue'
+);
+
+const save=
+document.getElementById(
+'saveBuilderValue'
+);
+
+if(!item)
+return;
+
+txt.textContent=
+item.type==='battery'
+?
+'Battery selected — enter the supply voltage.'
+:
+item.type==='resistor'
+?
+'Resistor selected — enter its resistance.'
+:
+item.type==='switch'
+?
+'Switch selected — use Toggle Switch to change state.'
+:
+'Load selected — no numeric value required.';
+
+if(
+item.type==='battery'||
+item.type==='resistor'
+){
+
+input.style.display='block';
+
+save.style.display='inline-block';
+
+input.value=
+item.value??'';
+
+input.placeholder=
+item.type==='battery'
+?
+'Example: 12'
+:
+'Example: 100';
+
+}
+
+else{
+
+input.style.display='none';
+
+save.style.display='none';
+
+}
+
+}
+
+
+function saveBuilderValue(){
+
+const item=
+builderState.items.find(
+x=>x.id===builderState.selected
+);
+
+const input=
+document.getElementById(
+'builderValue'
+);
+
+if(!item)
+return;
+
+const v=
+parseFloat(input.value);
+
+if(
+!Number.isFinite(v)||
+v<=0
+){
+
+updateBuilderStatus(
+'ENTER A POSITIVE VALUE'
+);
+
+return
+
+}
+
+item.value=v;
+
+updateBuilderStatus(
+'VALUE SAVED • RUN CIRCUIT WHEN READY'
+);
+
+}
+
+
+function toggleBuilderSwitch(){
+
+builderState.switchOn=
+!builderState.switchOn;
+
+document.getElementById(
+'builderSwitchText'
+).innerHTML=
+'Switch: <span class="switch-state '+
+(builderState.switchOn?'':'off')+
+'">'+
+(builderState.switchOn?'ON':'OFF')+
+'</span>';
+
+updateBuilderStatus(
+'SWITCH '+
+(builderState.switchOn?'ON':'OFF')
+);
+
+}
+
+
+function graphIsConnected(){
+
+const ids=
+builderState.items.map(
+x=>x.id
+);
+
+if(ids.length<2)
+return false;
+
+const adj={};
+
+ids.forEach(
+id=>adj[id]=[]
+);
+
+builderState.connections.forEach(
+c=>{
+
+adj[c.a.id].push(
+c.b.id
+);
+
+adj[c.b.id].push(
+c.a.id
+);
+
+}
+);
+
+const seen=
+new Set([ids[0]]);
+
+const q=
+[ids[0]];
+
+while(q.length){
+
+const u=
+q.shift();
+
+adj[u].forEach(
+v=>{
+
+if(!seen.has(v)){
+
+seen.add(v);
+
+q.push(v);
+
+}
+
+}
+);
+
+}
+
+return seen.size===ids.length;
+
+}
+
+
+function runBuilderSimulation(){
+
+const battery=
+builderState.items.find(
+x=>x.type==='battery'
+);
+
+const resistors=
+builderState.items.filter(
+x=>x.type==='resistor'
+);
+
+const load=
+builderState.items.find(
+x=>x.type==='lamp'
+);
+
+const outR=
+document.getElementById(
+'builderResistance'
+);
+
+const outI=
+document.getElementById(
+'builderCurrent'
+);
+
+const outP=
+document.getElementById(
+'builderPower'
+);
+
+
+if(
+!battery||
+!load||
+!resistors.length
+){
+
+outR.textContent=
+outI.textContent=
+outP.textContent='—';
+
+updateBuilderStatus(
+'INCOMPLETE • NEED BATTERY + RESISTOR + LOAD'
+);
+
+return
+
+}
+
+
+if(
+!battery.value||
+resistors.some(
+r=>!r.value
+)
+){
+
+outR.textContent=
+outI.textContent=
+outP.textContent='—';
+
+updateBuilderStatus(
+'MISSING VALUES • SELECT COMPONENTS AND ENTER VALUES'
+);
+
+return
+
+}
+
+
+if(
+!graphIsConnected()||
+builderState.connections.length<3
+){
+
+outR.textContent=
+outI.textContent=
+outP.textContent='—';
+
+updateBuilderStatus(
+'INCOMPLETE PATH • CONNECT THE COMPONENTS'
+);
+
+return
+
+}
+
+
+if(
+!builderState.switchOn&&
+builderState.items.some(
+x=>x.type==='switch'
+)
+){
+
+outR.textContent=
+outI.textContent=
+outP.textContent='—';
+
+updateBuilderStatus(
+'OPEN SWITCH • TURN THE SWITCH ON'
+);
+
+return
+
+}
+
+
+const R=
+resistors.reduce(
+(sum,r)=>sum+r.value,
+0
+);
+
+const I=
+battery.value/R;
+
+const P=
+battery.value*I;
+
+outR.textContent=
+R.toFixed(2)+' Ω';
+
+outI.textContent=
+I.toFixed(4)+' A';
+
+outP.textContent=
+P.toFixed(3)+' W';
+
+updateBuilderStatus(
+'CIRCUIT ACTIVE • CALCULATION COMPLETE'
+);
+
+}
+
+
+function updateBuilderStatus(msg){
+
+const s=
+document.getElementById(
+'builderStatus'
+);
+
+if(s)
+s.textContent=msg;
+
+}
+
+
+function clearBuilder(){
+
+builderState.items.forEach(
+x=>x.element.remove()
+);
+
+builderState.items=[];
+
+builderState.connections=[];
+
+builderState.selected=null;
+
+builderState.nextId=1;
+
+builderState.switchOn=false;
+
+clearPendingPort();
+
+document.getElementById(
+'builderWires'
+).innerHTML='';
+
+document.getElementById(
+'builderResistance'
+).textContent=
+document.getElementById(
+'builderCurrent'
+).textContent=
+document.getElementById(
+'builderPower'
+).textContent='—';
+
+document.getElementById(
+'builderSwitchText'
+).innerHTML=
+'Switch: <span class="switch-state off">OFF</span>';
+
+document.getElementById(
+'selectedComponentText'
+).textContent=
+'Select a placed component to edit its value.';
+
+document.getElementById(
+'builderValue'
+).style.display=
+document.getElementById(
+'saveBuilderValue'
+).style.display='none';
+
+updateBuilderStatus(
+'BOARD CLEARED • READY'
+);
+
+}
+
+
+function checkAnswer(btn,ok){
+
+document.querySelectorAll(
+".option"
+).forEach(
+b=>
+b.style.borderColor="var(--line)"
+);
+
+if(ok){
+
+btn.style.borderColor=
+"var(--green)";
+
+feedback.innerHTML=
+"✓ Correct! Using I = V / R → I = 12 / 6 = 2 A.";
+
+feedback.style.color=
+"var(--green)";
+
+}
+
+else{
+
+btn.style.borderColor=
+"var(--red)";
+
+feedback.innerHTML=
+"✗ Not quite. Try using Ohm's Law: I = V / R.";
+
+feedback.style.color=
+"var(--red)";
+
+}
+
+}
+
 
 setCircuitMode("series");
+
 updateLED();
+
 setupBuilder();
-restoreAchievements();
-detectiveSolved=vlData.detectiveCases.length;
-document.getElementById("detectiveSolved").textContent=detectiveSolved;
-loadDetectiveCase(0);
-refreshVoltLabProgress();
-vlTelemetry("IDLE","VoltLab ready");
+
+</script>
+
+
+<!-- EXTRA EXTRAORDINARY LIVE SYSTEM STATUS -->
+
+<div
+class="telemetry"
+aria-label="VoltLab live system status">
+
+<div class="telemetry-top">
+
+<span>
+
+<span class="telemetry-dot"></span>
+
+<strong>
+VOLTLAB LIVE
+</strong>
+
+</span>
+
+<span id="telemetryMode">
+IDLE
+</span>
+
+</div>
+
+
+<div class="telemetry-bar">
+
+<div
+class="telemetry-fill"
+id="telemetryFill">
+</div>
+
+</div>
+
+</div>
+
+
+<script id="voltlab-telemetry-script">
+
+(function(){
+
+const fill=
+document.getElementById(
+'telemetryFill'
+);
+
+const mode=
+document.getElementById(
+'telemetryMode'
+);
+
+if(!fill||!mode)
+return;
+
+let t=0;
+
+setInterval(
+function(){
+
+t++;
+
+const v=
+25+
+Math.round(
+(Math.sin(t/3)+1)*22
+);
+
+fill.style.width=
+v+'%';
+
+mode.textContent=
+v>55
+?
+'ACTIVE'
+:
+v>35
+?
+'MONITORING'
+:
+'IDLE';
+
+},
+1200
+);
+
+})();
+
 </script>
 
 </body>
