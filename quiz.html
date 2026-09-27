@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>VoltLab | Quiz & Score</title>
+
+<style>
+:root{
+--bg:#050816;
+--panel:#0b1429;
+--panel2:#101c36;
+--line:#1d3157;
+--text:#eef6ff;
+--muted:#91a5c5;
+--cyan:#21d4fd;
+--blue:#3b82f6;
+--purple:#8b5cf6;
+--green:#22c55e;
+--orange:#f59e0b;
+--red:#ef4444;
+--glow:0 0 25px rgba(33,212,253,.20)
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth
+}
+
+body{
+font-family:Arial,Helvetica,sans-serif;
+background:
+radial-gradient(circle at 20% 10%,rgba(33,212,253,.08),transparent 30%),
+radial-gradient(circle at 80% 30%,rgba(139,92,246,.08),transparent 30%),
+var(--bg);
+color:var(--text);
+line-height:1.6;
+overflow-x:hidden
+}
+
+body:before{
+content:"";
+position:fixed;
+inset:0;
+pointer-events:none;
+opacity:.18;
+background-image:
+linear-gradient(rgba(33,212,253,.05) 1px,transparent 1px),
+linear-gradient(90deg,rgba(33,212,253,.05) 1px,transparent 1px);
+background-size:50px 50px;
+mask-image:linear-gradient(to bottom,black,transparent 85%)
+}
+
+nav{
+position:fixed;
+top:0;
+width:100%;
+z-index:1000;
+background:rgba(5,8,22,.82);
+backdrop-filter:blur(15px);
+border-bottom:1px solid rgba(33,212,253,.12)
+}
+
+.nav-container{
+max-width:1200px;
+margin:auto;
+padding:15px 25px;
+display:flex;
+justify-content:space-between;
+align-items:center
+}
+
+.logo{
+font-size:25px;
+font-weight:800;
+letter-spacing:1px;
+color:#fff
+}
+
+.logo span{
+color:var(--cyan);
+text-shadow:0 0 15px rgba(33,212,253,.7)
+}
+
+.nav-links{
+display:flex;
+gap:20px;
+list-style:none;
+flex-wrap:wrap;
+justify-content:center
+}
+
+.nav-links a{
+color:#b8c7dd;
+text-decoration:none;
+font-size:14px;
+transition:.25s
+}
+
+.nav-links a:hover{
+color:var(--cyan);
+text-shadow:0 0 10px rgba(33,212,253,.6)
+}
+
+.container{
+max-width:1050px;
+margin:auto;
+padding:0 25px
+}
+
+.hero{
+min-height:45vh;
+display:flex;
+align-items:center;
+padding-top:90px;
+text-align:center
+}
+
+.hero-content{
+width:100%
+}
+
+.badge{
+display:inline-block;
+padding:7px 15px;
+border:1px solid rgba(33,212,253,.35);
+border-radius:30px;
+color:var(--cyan);
+background:rgba(33,212,253,.06);
+font-size:13px;
+margin-bottom:20px
+}
+
+.hero h1{
+font-size:clamp(45px,7vw,72px);
+line-height:1.05;
+margin-bottom:20px
+}
+
+.gradient-text{
+background:linear-gradient(90deg,var(--cyan),#60a5fa,var(--purple));
+-webkit-background-clip:text;
+color:transparent
+}
+
+.hero p{
+color:var(--muted);
+font-size:18px;
+max-width:700px;
+margin:auto
+}
+
+section{
+padding:60px 0
+}
+
+.quiz-card{
+max-width:850px;
+margin:auto;
+background:linear-gradient(145deg,rgba(16,28,54,.92),rgba(8,16,32,.96));
+border:1px solid var(--line);
+border-radius:22px;
+padding:35px;
+box-shadow:var(--glow)
+}
+
+.quiz-top{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:20px;
+margin-bottom:25px
+}
+
+.question-number{
+color:var(--cyan);
+font-weight:bold;
+letter-spacing:.5px
+}
+
+.score-display{
+padding:8px 15px;
+border:1px solid rgba(33,212,253,.2);
+border-radius:10px;
+background:rgba(33,212,253,.05);
+color:var(--cyan);
+font-weight:bold
+}
+
+.progress{
+height:7px;
+background:#071126;
+border-radius:20px;
+overflow:hidden;
+margin-bottom:35px;
+border:1px solid #1b3154
+}
+
+.progress-fill{
+height:100%;
+width:0%;
+background:linear-gradient(90deg,var(--cyan),var(--blue),var(--purple));
+transition:.4s
+}
+
+.question{
+font-size:25px;
+font-weight:bold;
+line-height:1.4;
+margin-bottom:25px
+}
+
+.options{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:14px
+}
+
+.option{
+padding:17px;
+border:1px solid #29466e;
+background:#071126;
+color:#dbe8f8;
+border-radius:12px;
+cursor:pointer;
+text-align:left;
+font-size:15px;
+transition:.25s
+}
+
+.option:hover{
+border-color:var(--cyan);
+background:rgba(33,212,253,.06);
+transform:translateY(-2px)
+}
+
+.option.correct{
+border-color:var(--green);
+background:rgba(34,197,94,.12);
+color:#86efac
+}
+
+.option.wrong{
+border-color:var(--red);
+background:rgba(239,68,68,.12);
+color:#fca5a5
+}
+
+.option:disabled{
+cursor:default
+}
+
+.feedback{
+margin-top:22px;
+padding:15px;
+border-radius:12px;
+min-height:50px;
+background:rgba(33,212,253,.04);
+border:1px solid rgba(33,212,253,.12);
+color:var(--muted);
+display:none
+}
+
+.feedback.show{
+display:block
+}
+
+.feedback strong{
+color:#fff
+}
+
+.next-area{
+text-align:right;
+margin-top:25px
+}
+
+.next-btn,
+.start-btn,
+.retry-btn{
+border:none;
+padding:13px 24px;
+border-radius:10px;
+background:linear-gradient(90deg,var(--cyan),var(--blue));
+color:#03101c;
+font-weight:bold;
+cursor:pointer;
+font-size:15px;
+transition:.25s
+}
+
+.next-btn:hover,
+.start-btn:hover,
+.retry-btn:hover{
+transform:translateY(-2px);
+filter:brightness(1.08)
+}
+
+.next-btn{
+display:none
+}
+
+.start-screen{
+text-align:center
+}
+
+.start-icon{
+font-size:65px;
+margin-bottom:15px
+}
+
+.start-screen h2{
+font-size:35px;
+margin-bottom:12px
+}
+
+.start-screen p{
+color:var(--muted);
+max-width:650px;
+margin:0 auto 25px
+}
+
+.quiz-info{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:12px;
+margin:25px 0
+}
+
+.info-box{
+padding:16px;
+border:1px solid #1b3154;
+border-radius:12px;
+background:#071126
+}
+
+.info-box strong{
+display:block;
+font-size:21px;
+color:var(--cyan)
+}
+
+.info-box span{
+font-size:12px;
+color:var(--muted)
+}
+
+.result{
+display:none;
+text-align:center
+}
+
+.result.show{
+display:block
+}
+
+.result-icon{
+font-size:70px;
+margin-bottom:10px
+}
+
+.result h2{
+font-size:38px;
+color:var(--cyan);
+margin-bottom:10px
+}
+
+.result p{
+color:var(--muted);
+margin-bottom:25px
+}
+
+.final-score{
+font-size:60px;
+font-weight:900;
+background:linear-gradient(90deg,var(--cyan),var(--blue),var(--purple));
+-webkit-background-clip:text;
+color:transparent;
+margin-bottom:10px
+}
+
+.result-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:12px;
+margin:25px 0
+}
+
+.result-box{
+padding:18px;
+border:1px solid #1b3154;
+border-radius:12px;
+background:#071126
+}
+
+.result-box strong{
+display:block;
+font-size:25px;
+color:var(--cyan)
+}
+
+.result-box span{
+font-size:12px;
+color:var(--muted)
+}
+
+footer{
+padding:40px 0;
+border-top:1px solid rgba(33,212,253,.12);
+text-align:center;
+color:var(--muted);
+font-size:13px;
+line-height:1.8;
+margin-top:40px
+}
+
+footer strong{
+color:var(--text)
+}
+
+@media(max-width:700px){
+
+.nav-container{
+align-items:flex-start;
+flex-direction:column;
+gap:10px
+}
+
+.nav-links{
+gap:12px
+}
+
+.quiz-card{
+padding:22px
+}
+
+.options{
+grid-template-columns:1fr
+}
+
+.quiz-info,
+.result-grid{
+grid-template-columns:1fr
+}
+
+.question{
+font-size:21px
+}
+
+.quiz-top{
+align-items:flex-start;
+flex-direction:column
+}
+
+.hero{
+min-height:40vh
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav>
+<div class="nav-container">
+
+<div class="logo">
+⚡ Volt<span>Lab</span>
+</div>
+
+<ul class="nav-links">
+
+<li>
+<a href="index.html">← Main VoltLab</a>
+</li>
+
+<li>
+<a href="index.html#detective">Circuit Detective</a>
+</li>
+
+<li>
+<a href="#quiz">Quiz &amp; Score</a>
+</li>
+
+</ul>
+
+</div>
+</nav>
+
+
+<!-- HERO -->
+<section class="hero">
+
+<div class="container">
+
+<div class="hero-content">
+
+<div class="badge">
+⚡ KNOWLEDGE TESTING LAB
+</div>
+
+<h1>
+VoltLab <span class="gradient-text">Quiz</span>
+</h1>
+
+<p>
+Test your understanding of voltage, current, resistance,
+Ohm's Law, series and parallel circuits, KCL, KVL and
+fundamental electrical concepts.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- QUIZ -->
+<section id="quiz">
+
+<div class="container">
+
+<div class="quiz-card">
+
+
+<!-- START SCREEN -->
+<div class="start-screen" id="startScreen">
+
+<div class="start-icon">
+🧠
+</div>
+
+<h2>
+Ready to Test Your Circuit Knowledge?
+</h2>
+
+<p>
+This quiz contains 10 questions.
+Read each question carefully, choose your answer,
+and see how well you understand the electrical concepts
+covered in VoltLab.
+</p>
+
+<div class="quiz-info">
+
+<div class="info-box">
+<strong>10</strong>
+<span>Questions</span>
+</div>
+
+<div class="info-box">
+<strong>10</strong>
+<span>Points Available</span>
+</div>
+
+<div class="info-box">
+<strong>⚡</strong>
+<span>Electrical Concepts</span>
+</div>
+
+</div>
+
+<button class="start-btn" onclick="startQuiz()">
+Start Quiz ⚡
+</button>
+
+</div>
+
+
+<!-- QUIZ PLAY -->
+<div id="quizPlay" style="display:none">
+
+<div class="quiz-top">
+
+<div class="question-number" id="questionNumber">
+QUESTION 01 / 10
+</div>
+
+<div class="score-display">
+SCORE: <span id="score">0</span>
+</div>
+
+</div>
+
+<div class="progress">
+
+<div class="progress-fill" id="progressFill">
+</div>
+
+</div>
+
+<div class="question" id="question">
+</div>
+
+<div class="options" id="options">
+</div>
+
+<div class="feedback" id="feedback">
+</div>
+
+<div class="next-area">
+
+<button class="next-btn" id="nextBtn" onclick="nextQuestion()">
+Next Question →
+</button>
+
+</div>
+
+</div>
+
+
+<!-- RESULT -->
+<div class="result" id="result">
+
+<div class="result-icon">
+🏆
+</div>
+
+<h2>
+Quiz Complete!
+</h2>
+
+<div class="final-score" id="finalScore">
+0%
+</div>
+
+<p id="resultMessage">
+</p>
+
+<div class="result-grid">
+
+<div class="result-box">
+<strong id="correctAnswers">
+0
+</strong>
+<span>Correct Answers</span>
+</div>
+
+<div class="result-box">
+<strong id="wrongAnswers">
+0
+</strong>
+<span>Wrong Answers</span>
+</div>
+
+<div class="result-box">
+<strong id="finalPoints">
+0 / 10
+</strong>
+<span>Final Score</span>
+</div>
+
+</div>
+
+<button class="retry-btn" onclick="restartQuiz()">
+Try Again ⚡
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<footer>
+
+⚡ <strong>VoltLab</strong> — Where Electricity Comes Alive.
+<br><br>
+
+CSE Students • Jamalpur Science and Technology University
+
+<br><br>
+
+Developed by
+<strong>Md. Tahmid Siddique</strong>
+and his teammates.
+
+<br><br>
+
+© 2026 <strong>Trustin Univers</strong>. All Rights Reserved.
+
+</footer>
+
+
+<script>
+
+const questions=[
+
+{
+q:"A circuit has a voltage of 12 V and resistance of 6 Ω. What is the current?",
+options:[
+"0.5 A",
+"2 A",
+"6 A",
+"72 A"
+],
+answer:1,
+explanation:"Using Ohm's Law, I = V/R = 12/6 = 2 A."
+},
+
+{
+q:"Which quantity is measured in volts (V)?",
+options:[
+"Current",
+"Resistance",
+"Voltage",
+"Power"
+],
+answer:2,
+explanation:"Voltage is measured in volts (V)."
+},
+
+{
+q:"Which quantity is measured in amperes (A)?",
+options:[
+"Current",
+"Voltage",
+"Resistance",
+"Energy"
+],
+answer:0,
+explanation:"Electric current is measured in amperes (A)."
+},
+
+{
+q:"What happens to total resistance when resistors are connected in series?",
+options:[
+"It becomes zero",
+"It decreases below every resistor",
+"It adds together",
+"It becomes infinite"
+],
+answer:2,
+explanation:"For series resistors, Rt = R1 + R2 + R3 + ... ."
+},
+
+{
+q:"In an ideal parallel circuit, what is the same across each branch?",
+options:[
+"Current",
+"Resistance",
+"Voltage",
+"Power"
+],
+answer:2,
+explanation:"The voltage across ideal parallel branches is the same."
+},
+
+{
+q:"What does Kirchhoff's Current Law (KCL) state?",
+options:[
+"Voltage always equals current",
+"Current entering a junction equals current leaving it",
+"Resistance is always constant",
+"Power is always zero"
+],
+answer:1,
+explanation:"KCL follows conservation of electric charge: total current entering a junction equals total current leaving it."
+},
+
+{
+q:"What does Kirchhoff's Voltage Law (KVL) state?",
+options:[
+"Current is always constant",
+"Resistance equals voltage",
+"The algebraic sum of voltage changes around a closed loop is zero",
+"Power equals resistance"
+],
+answer:2,
+explanation:"KVL follows conservation of energy around a closed electrical loop."
+},
+
+{
+q:"If resistance stays constant and voltage increases, what happens to current?",
+options:[
+"Current decreases",
+"Current increases",
+"Current becomes zero",
+"Nothing changes"
+],
+answer:1,
+explanation:"From I = V/R, increasing voltage while resistance stays constant increases current."
+},
+
+{
+q:"Which formula represents electrical power?",
+options:[
+"P = VI",
+"P = V + I",
+"P = R/I",
+"P = V - I"
+],
+answer:0,
+explanation:"Electrical power can be calculated using P = VI."
+},
+
+{
+q:"What is the main characteristic of an open circuit?",
+options:[
+"It has a very low resistance path",
+"It has a complete conducting path",
+"Its conducting path is interrupted",
+"It always produces maximum current"
+],
+answer:2,
+explanation:"An open circuit has an incomplete or interrupted conducting path, so current cannot normally flow through the open path."
+}
+
+];
+
+let currentQuestion=0;
+let score=0;
+let answered=false;
+
+function startQuiz(){
+
+currentQuestion=0;
+score=0;
+answered=false;
+
+document.getElementById("startScreen").style.display="none";
+document.getElementById("result").classList.remove("show");
+document.getElementById("quizPlay").style.display="block";
+
+showQuestion();
+
+}
+
+function showQuestion(){
+
+const q=questions[currentQuestion];
+
+answered=false;
+
+document.getElementById("questionNumber").textContent=
+"QUESTION "+
+String(currentQuestion+1).padStart(2,"0")+
+" / "+
+String(questions.length).padStart(2,"0");
+
+document.getElementById("score").textContent=score;
+
+document.getElementById("progressFill").style.width=
+((currentQuestion)/questions.length)*100+"%";
+
+document.getElementById("question").textContent=q.q;
+
+const options=document.getElementById("options");
+
+options.innerHTML="";
+
+q.options.forEach((option,index)=>{
+
+const button=document.createElement("button");
+
+button.className="option";
+button.textContent=
+String.fromCharCode(65+index)+". "+option;
+
+button.onclick=()=>selectAnswer(index,button);
+
+options.appendChild(button);
+
+});
+
+document.getElementById("feedback").classList.remove("show");
+document.getElementById("feedback").innerHTML="";
+
+document.getElementById("nextBtn").style.display="none";
+
+}
+
+function selectAnswer(index,button){
+
+if(answered) return;
+
+answered=true;
+
+const q=questions[currentQuestion];
+
+const buttons=document.querySelectorAll(".option");
+
+buttons.forEach(btn=>{
+btn.disabled=true;
+});
+
+if(index===q.answer){
+
+score++;
+
+button.classList.add("correct");
+
+document.getElementById("feedback").innerHTML=
+"<strong style='color:var(--green)'>✓ Correct!</strong> "+
+q.explanation;
+
+}else{
+
+button.classList.add("wrong");
+
+buttons[q.answer].classList.add("correct");
+
+document.getElementById("feedback").innerHTML=
+"<strong style='color:var(--red)'>✗ Incorrect.</strong> "+
+q.explanation;
+
+}
+
+document.getElementById("score").textContent=score;
+
+document.getElementById("feedback").classList.add("show");
+
+document.getElementById("nextBtn").style.display="inline-block";
+
+}
+
+function nextQuestion(){
+
+if(!answered) return;
+
+if(currentQuestion<questions.length-1){
+
+currentQuestion++;
+
+showQuestion();
+
+}else{
+
+finishQuiz();
+
+}
+
+}
+
+function finishQuiz(){
+
+document.getElementById("quizPlay").style.display="none";
+
+document.getElementById("result").classList.add("show");
+
+const percentage=Math.round((score/questions.length)*100);
+
+document.getElementById("finalScore").textContent=
+percentage+"%";
+
+document.getElementById("correctAnswers").textContent=
+score;
+
+document.getElementById("wrongAnswers").textContent=
+questions.length-score;
+
+document.getElementById("finalPoints").textContent=
+score+" / "+questions.length;
+
+let message="";
+
+if(percentage>=90){
+
+message="Excellent circuit knowledge! ⚡ You have a strong understanding of the concepts.";
+
+}else if(percentage>=70){
+
+message="Great work! ⚡ You have a solid understanding of the electrical fundamentals.";
+
+}else if(percentage>=50){
+
+message="Good start! Review the concepts and try the quiz again to improve your score.";
+
+}else{
+
+message="Keep learning! ⚡ Review the VoltLab experiments and try the quiz again.";
+
+}
+
+document.getElementById("resultMessage").textContent=message;
+
+document.getElementById("progressFill").style.width="100%";
+
+}
+
+function restartQuiz(){
+
+document.getElementById("result").classList.remove("show");
+
+document.getElementById("quizPlay").style.display="none";
+
+document.getElementById("startScreen").style.display="block";
+
+}
+
+</script>
+
+</body>
+</html>
