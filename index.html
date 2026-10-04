@@ -2591,49 +2591,6 @@ document.addEventListener(
 
 </script>
 
-<script id="voltlab-ask-volt-script">
-/* ================= ASK VOLT AI ================= */
-const ASK_VOLT_WORKER='https://voltlab-ask-volt.trustinunivers.workers.dev/';
-let askVoltMessages=[];
-let askVoltBusy=false;
-function askVoltEscape(text){return String(text).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;')}
-function askVoltRender(){
- const chat=document.getElementById('askVoltChat');
- if(!chat)return;
- const welcome='<div class="ask-welcome"><strong>Hi, I\'m Ask Volt.</strong><br>I can help with Electrical Engineering, Physics, Mathematics, Chemistry, Biology, CSE, Programming, AI and more. I also know about VoltLab and its interactive learning tools.</div>';
- const prompts='<div class="ask-prompts"><button class="ask-prompt" type="button" onclick="askVoltPrompt(\'Explain Ohm\\'s Law with a simple example.\')">Ohm\'s Law</button><button class="ask-prompt" type="button" onclick="askVoltPrompt(\'Explain Kirchhoff\\'s Voltage Law step by step.\')">KVL</button><button class="ask-prompt" type="button" onclick="askVoltPrompt(\'Write a simple C program to calculate factorial.\')">C Programming</button><button class="ask-prompt" type="button" onclick="askVoltPrompt(\'Explain Newton\\'s second law simply.\')">Physics</button></div>';
- let html=welcome+prompts;
- askVoltMessages.forEach(m=>{html+='<div class="ask-msg '+(m.role==='user'?'user':'ai')+'"><div><div class="ask-label">'+(m.role==='user'?'YOU':'ASK VOLT')+'</div><div class="ask-bubble">'+askVoltEscape(m.content)+'</div></div></div>'});
- html+='<div class="ask-typing" id="askVoltTyping">⚡ Ask Volt is thinking...</div>';
- chat.innerHTML=html;chat.scrollTop=chat.scrollHeight;
-}
-function askVoltPrompt(text){const input=document.getElementById('askVoltInput');if(!input)return;input.value=text;input.focus();sendAskVolt()}
-async function sendAskVolt(){
- if(askVoltBusy)return;
- const input=document.getElementById('askVoltInput');
- const text=(input.value||'').trim();
- if(!text)return;
- askVoltMessages.push({role:'user',content:text});
- input.value='';
- askVoltBusy=true;
- document.getElementById('askVoltSend').disabled=true;
- askVoltRender();
- const typing=document.getElementById('askVoltTyping');if(typing)typing.classList.add('show');
- try{
-  const res=await fetch(ASK_VOLT_WORKER,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:askVoltMessages.slice(-20)})});
-  const data=await res.json();
-  if(!res.ok||!data.ok)throw new Error(data.error||'AI request failed');
-  askVoltMessages.push({role:'assistant',content:data.response||'I could not generate a response right now.'});
- }catch(err){
-  askVoltMessages.push({role:'assistant',content:'I could not connect to the Ask Volt AI backend right now. Please check the Worker deployment and try again.'});
- }
- askVoltBusy=false;
- document.getElementById('askVoltSend').disabled=false;
- askVoltRender();
-}
-function clearAskVolt(){askVoltMessages=[];askVoltRender();document.getElementById('askVoltInput').focus()}
-document.addEventListener('DOMContentLoaded',function(){const input=document.getElementById('askVoltInput');if(input){input.addEventListener('keydown',function(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendAskVolt()}})}});
-</script>
 <script id="voltlab-quiz-script">
 /* ================= QUIZ + SCORE SYSTEM ================= */
 const voltQuizBank=[
