@@ -1,1 +1,592 @@
 
+.virtual-lab-section{
+  padding:100px 0;
+  position:relative;
+}
+
+.virtual-lab-section .section-title{
+  text-align:center;
+  margin-bottom:35px;
+}
+
+.virtual-lab-section .section-title span{
+  color:var(--cyan);
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:2px;
+}
+
+.virtual-lab-section .section-title h2{
+  margin:8px 0 10px;
+}
+
+
+/* =========================================================
+   MAIN LAB PANEL
+   ========================================================= */
+
+.virtual-lab-panel{
+  background:
+    linear-gradient(
+      145deg,
+      rgba(16,28,54,.92),
+      rgba(5,12,27,.97)
+    );
+  border:1px solid rgba(33,212,253,.18);
+  border-radius:24px;
+  padding:24px;
+  box-shadow:
+    0 0 45px rgba(33,212,253,.08),
+    inset 0 0 40px rgba(33,212,253,.018);
+  overflow:hidden;
+}
+
+
+/* =========================================================
+   LAB HEADER
+   ========================================================= */
+
+.virtual-lab-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  padding-bottom:22px;
+  margin-bottom:22px;
+  border-bottom:1px solid rgba(33,212,253,.10);
+}
+
+.virtual-lab-header h3{
+  margin:8px 0 6px;
+  font-size:22px;
+}
+
+.virtual-lab-header p{
+  color:var(--muted);
+  font-size:13px;
+  margin:0;
+}
+
+.lab-status{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  color:var(--muted);
+  font-size:10px;
+  letter-spacing:1.5px;
+  font-weight:800;
+}
+
+.lab-status-dot{
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:var(--muted);
+  box-shadow:0 0 8px rgba(145,165,197,.3);
+}
+
+.virtual-power{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.virtual-power > span{
+  color:var(--muted);
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:1px;
+}
+
+#virtualPowerBtn{
+  min-width:70px;
+  padding:10px 15px;
+  border:1px solid rgba(239,68,68,.35);
+  border-radius:10px;
+  background:rgba(239,68,68,.08);
+  color:var(--red);
+  font-weight:800;
+  cursor:pointer;
+  transition:.25s ease;
+}
+
+#virtualPowerBtn:hover{
+  box-shadow:0 0 18px rgba(239,68,68,.2);
+}
+
+#virtualPowerBtn.power-on{
+  border-color:rgba(34,197,94,.5);
+  background:rgba(34,197,94,.10);
+  color:var(--green);
+  box-shadow:0 0 20px rgba(34,197,94,.15);
+}
+
+
+/* =========================================================
+   WORKSPACE
+   ========================================================= */
+
+.virtual-workspace{
+  display:grid;
+  grid-template-columns:220px 1fr;
+  gap:18px;
+}
+
+
+/* =========================================================
+   COMPONENT PANEL
+   ========================================================= */
+
+.virtual-components{
+  background:rgba(5,14,30,.72);
+  border:1px solid rgba(33,212,253,.12);
+  border-radius:18px;
+  padding:15px;
+}
+
+.virtual-panel-title{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:3px 5px 13px;
+  margin-bottom:5px;
+  border-bottom:1px solid rgba(33,212,253,.08);
+}
+
+.virtual-panel-title span{
+  color:#eef6ff;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:1px;
+}
+
+.virtual-panel-title small{
+  color:var(--cyan);
+  font-size:8px;
+  letter-spacing:1px;
+}
+
+.virtual-component{
+  width:100%;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:11px;
+  margin-top:7px;
+  border:1px solid rgba(29,49,87,.9);
+  border-radius:11px;
+  background:#071126;
+  color:#dbe8f8;
+  text-align:left;
+  cursor:pointer;
+  transition:.22s ease;
+}
+
+.virtual-component:hover{
+  transform:translateX(3px);
+  border-color:rgba(33,212,253,.5);
+  box-shadow:0 0 17px rgba(33,212,253,.10);
+}
+
+.virtual-component:active{
+  transform:scale(.98);
+}
+
+.component-icon{
+  width:34px;
+  height:34px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
+  border-radius:9px;
+  background:rgba(33,212,253,.06);
+  font-size:18px;
+}
+
+.virtual-component strong{
+  display:block;
+  font-size:12px;
+}
+
+.virtual-component small{
+  display:block;
+  color:var(--muted);
+  font-size:9px;
+  margin-top:2px;
+}
+
+
+/* =========================================================
+   CIRCUIT BOARD AREA
+   ========================================================= */
+
+.virtual-board-area{
+  min-width:0;
+}
+
+.virtual-board-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+  margin-bottom:10px;
+}
+
+.virtual-board-top > div{
+  display:flex;
+  flex-direction:column;
+  gap:3px;
+}
+
+.board-label{
+  color:var(--cyan);
+  font-size:9px;
+  letter-spacing:1.5px;
+  font-weight:800;
+}
+
+#virtualCircuitName{
+  color:#eef6ff;
+  font-size:13px;
+}
+
+#virtualResetBtn{
+  padding:8px 13px;
+  border:1px solid #29466e;
+  border-radius:9px;
+  background:#071126;
+  color:#dbe8f8;
+  cursor:pointer;
+  font-weight:700;
+  transition:.2s ease;
+}
+
+#virtualResetBtn:hover{
+  border-color:var(--cyan);
+  color:var(--cyan);
+}
+
+
+/* =========================================================
+   CIRCUIT BOARD
+   ========================================================= */
+
+.virtual-circuit-board{
+  position:relative;
+  min-height:430px;
+  overflow:hidden;
+  border:1px solid rgba(33,212,253,.18);
+  border-radius:17px;
+  background:
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(33,212,253,.055),
+      transparent 45%
+    ),
+    #040b19;
+  box-shadow:
+    inset 0 0 40px rgba(0,0,0,.35);
+}
+
+.virtual-grid{
+  position:absolute;
+  inset:0;
+  opacity:.42;
+  background-image:
+    linear-gradient(
+      rgba(33,212,253,.055) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(33,212,253,.055) 1px,
+      transparent 1px
+    );
+  background-size:25px 25px;
+  pointer-events:none;
+}
+
+.virtual-empty-state{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  text-align:center;
+  padding:25px;
+  pointer-events:none;
+}
+
+.empty-icon{
+  width:64px;
+  height:64px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid rgba(33,212,253,.22);
+  border-radius:50%;
+  background:rgba(33,212,253,.045);
+  font-size:28px;
+  margin-bottom:15px;
+  box-shadow:0 0 25px rgba(33,212,253,.08);
+}
+
+.virtual-empty-state h4{
+  margin-bottom:6px;
+  font-size:17px;
+}
+
+.virtual-empty-state p{
+  color:var(--muted);
+  font-size:12px;
+  max-width:350px;
+  line-height:1.6;
+}
+
+
+/* =========================================================
+   MEASUREMENTS
+   ========================================================= */
+
+.virtual-measurements{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:9px;
+  margin-top:10px;
+}
+
+.virtual-measurement{
+  padding:13px;
+  border:1px solid rgba(29,49,87,.9);
+  border-radius:11px;
+  background:#071126;
+  text-align:center;
+}
+
+.virtual-measurement small{
+  display:block;
+  color:var(--muted);
+  font-size:8px;
+  letter-spacing:1px;
+}
+
+.virtual-measurement strong{
+  color:var(--cyan);
+  font-size:21px;
+  margin-top:4px;
+}
+
+.virtual-measurement span{
+  color:var(--muted);
+  font-size:10px;
+  margin-left:2px;
+}
+
+
+/* =========================================================
+   LAB MESSAGE
+   ========================================================= */
+
+.virtual-lab-message{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-top:18px;
+  padding:14px 16px;
+  border:1px solid rgba(33,212,253,.13);
+  border-radius:12px;
+  background:rgba(33,212,253,.035);
+}
+
+.virtual-lab-message > span{
+  width:34px;
+  height:34px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:9px;
+  background:rgba(33,212,253,.08);
+  color:var(--cyan);
+}
+
+.virtual-lab-message strong{
+  font-size:12px;
+}
+
+.virtual-lab-message p{
+  color:var(--muted);
+  font-size:11px;
+  margin:3px 0 0;
+}
+
+
+/* =========================================================
+   CONTROLS
+   ========================================================= */
+
+.virtual-experiment-controls{
+  display:flex;
+  flex-wrap:wrap;
+  gap:9px;
+  margin-top:15px;
+}
+
+.virtual-action{
+  padding:11px 16px;
+  border:1px solid #29466e;
+  border-radius:10px;
+  background:#071126;
+  color:#dbe8f8;
+  cursor:pointer;
+  font-size:12px;
+  font-weight:800;
+  transition:.22s ease;
+}
+
+.virtual-action:hover{
+  border-color:var(--cyan);
+  color:var(--cyan);
+  transform:translateY(-1px);
+}
+
+.virtual-action.primary{
+  border:none;
+  color:#03101c;
+  background:linear-gradient(
+    90deg,
+    var(--cyan),
+    var(--blue)
+  );
+}
+
+
+/* =========================================================
+   ACTIVE STATE
+   ========================================================= */
+
+.virtual-lab-panel.lab-active{
+  border-color:rgba(34,197,94,.28);
+  box-shadow:
+    0 0 45px rgba(34,197,94,.07),
+    inset 0 0 40px rgba(34,197,94,.015);
+}
+
+.virtual-lab-panel.lab-active .lab-status-dot{
+  background:var(--green);
+  box-shadow:
+    0 0 8px var(--green),
+    0 0 16px rgba(34,197,94,.45);
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media(max-width:900px){
+
+  .virtual-workspace{
+    grid-template-columns:1fr;
+  }
+
+  .virtual-components{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:7px;
+  }
+
+  .virtual-panel-title{
+    grid-column:1/-1;
+  }
+
+  .virtual-component{
+    margin-top:0;
+  }
+
+  .virtual-circuit-board{
+    min-height:400px;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media(max-width:600px){
+
+  .virtual-lab-section{
+    padding:75px 0;
+  }
+
+  .virtual-lab-panel{
+    padding:15px;
+    border-radius:18px;
+  }
+
+  .virtual-lab-header{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+
+  .virtual-lab-header h3{
+    font-size:19px;
+  }
+
+  .virtual-power{
+    width:100%;
+    justify-content:space-between;
+  }
+
+  .virtual-components{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .virtual-component{
+    padding:9px;
+    gap:8px;
+  }
+
+  .component-icon{
+    width:30px;
+    height:30px;
+    font-size:16px;
+  }
+
+  .virtual-component strong{
+    font-size:11px;
+  }
+
+  .virtual-component small{
+    font-size:8px;
+  }
+
+  .virtual-board-top{
+    align-items:flex-start;
+  }
+
+  .virtual-circuit-board{
+    min-height:360px;
+  }
+
+  .virtual-measurements{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .virtual-lab-message{
+    align-items:flex-start;
+  }
+
+  .virtual-experiment-controls{
+    display:grid;
+    grid-template-columns:1fr;
+  }
+
+  .virtual-action{
+    width:100%;
+  }
+
+}
