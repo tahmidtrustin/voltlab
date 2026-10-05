@@ -284,118 +284,587 @@ let askVoltMode='Electrical Engineering';
 let askVoltQuestions=0;
 let askVoltResponses=0;
 
+/* ================= SAFE TEXT ESCAPE ================= */
 function askVoltEscape(text){
  return String(text)
- .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
- .replace(/"/g,'&quot;').replace(/'/g,'&#039;');
+ .replace(/&/g,'&amp;')
+ .replace(/</g,'&lt;')
+ .replace(/>/g,'&gt;')
+ .replace(/"/g,'&quot;')
+ .replace(/'/g,'&#039;');
 }
+
+/* ================= AI RESPONSE FORMATTER =================
+   IMPORTANT:
+   Do NOT convert LaTeX into HTML here.
+   MathJax must receive the original LaTeX syntax.
+=========================================================== */
 function askVoltFormat(text){
  let s=askVoltEscape(text);
- s=s.replace(/\$\$([\s\S]*?)\$\$/g,'<span class="av-formula">$1</span>');
- s=s.replace(/\\\[([\s\S]*?)\\\]/g,'<span class="av-formula">$1</span>');
+
+ /* Headings */
  s=s.replace(/^### (.+)$/gm,'<h4>$1</h4>');
  s=s.replace(/^## (.+)$/gm,'<h4>$1</h4>');
+
+ /* Bold */
  s=s.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>');
+
+ /* Inline code */
  s=s.replace(/`([^`]+)`/g,'<code>$1</code>');
+
+ /* Simple markdown bullets */
  s=s.replace(/^\s*[-*]\s+(.+)$/gm,'• $1');
+
+ /* Preserve normal line breaks */
  s=s.replace(/\n/g,'<br>');
+
  return s;
 }
+
+/* ================= MATHJAX RENDER ================= */
+function askVoltTypeset(){
+ const chat=document.getElementById('avChat');
+ if(!chat)return;
+
+ if(window.MathJax && typeof MathJax.typesetPromise==='function'){
+   MathJax.typesetClear?.([chat]);
+
+   MathJax.typesetPromise([chat]).catch(()=>{});
+ }
+}
+
+/* If MathJax loads after Ask Volt has already rendered */
+function askVoltWaitForMathJax(){
+ if(window.MathJax && typeof MathJax.typesetPromise==='function'){
+   askVoltTypeset();
+   return;
+ }
+
+ let tries=0;
+ const timer=setInterval(()=>{
+   tries++;
+
+   if(window.MathJax && typeof MathJax.typesetPromise==='function'){
+     clearInterval(timer);
+     askVoltTypeset();
+   }
+
+   if(tries>=30){
+     clearInterval(timer);
+   }
+ },300);
+}
+
+/* ================= FOLLOW-UP SUGGESTIONS ================= */
 function askVoltFollowUps(text){
  const low=String(text).toLowerCase();
- if(/series|parallel/.test(low))return ['Show me a series vs parallel example.','Calculate equivalent resistance.'];
- if(/kcl|kvl|kirchhoff/.test(low))return ['Give me a numerical KCL example.','Explain KVL step by step.'];
- if(/ohm|voltage|current|resistance/.test(low))return ['Give me a practical example.','Give me a calculation problem.'];
- if(/led|diode/.test(low))return ['Why does an LED need a resistor?','Help me troubleshoot an LED circuit.'];
- if(/physics|math|chemistry|biology|programming|code|cse|ai/.test(low))return ['Explain it more simply.','Give me an example.'];
- return ['Explain that with an example.','Ask me a practice question.'];
+
+ if(/series|parallel/.test(low))
+   return [
+     'Show me a series vs parallel example.',
+     'Calculate equivalent resistance.'
+   ];
+
+ if(/kcl|kvl|kirchhoff/.test(low))
+   return [
+     'Give me a numerical KCL example.',
+     'Explain KVL step by step.'
+   ];
+
+ if(/ohm|voltage|current|resistance/.test(low))
+   return [
+     'Give me a practical example.',
+     'Give me a calculation problem.'
+   ];
+
+ if(/led|diode/.test(low))
+   return [
+     'Why does an LED need a resistor?',
+     'Help me troubleshoot an LED circuit.'
+   ];
+
+ if(/physics|math|chemistry|biology|programming|code|cse|ai/.test(low))
+   return [
+     'Explain it more simply.',
+     'Give me an example.'
+   ];
+
+ return [
+   'Explain that with an example.',
+   'Ask me a practice question.'
+ ];
 }
+
+/* ================= STATS ================= */
 function askVoltUpdateStats(){
- const q=document.getElementById('avQuestions'),r=document.getElementById('avResponses'),m=document.getElementById('avMemory');
+ const q=document.getElementById('avQuestions');
+ const r=document.getElementById('avResponses');
+ const m=document.getElementById('avMemory');
+
  if(q)q.textContent=askVoltQuestions;
  if(r)r.textContent=askVoltResponses;
- if(m)m.textContent=askVoltBusy?'AI is generating a response…':(askVoltMessages.length?'Conversation active':'Ready for a conversation');
+
+ if(m){
+   m.textContent=askVoltBusy
+     ? 'AI is generating a response…'
+     : (askVoltMessages.length
+       ? 'Conversation active'
+       : 'Ready for a conversation');
+ }
 }
+
+/* ================= TOPIC ================= */
 function askVoltSetTopic(topic){
- const el=document.getElementById('avTopic');if(el)el.textContent=topic;
- const result=document.getElementById('avCalcBox');if(result)result.textContent='Active learning mode: '+topic;
+ const el=document.getElementById('avTopic');
+ if(el)el.textContent=topic;
+
+ const result=document.getElementById('avCalcBox');
+ if(result)result.textContent='Active learning mode: '+topic;
 }
+
+/* ================= TYPING ================= */
 function askVoltTyping(show){
- const el=document.getElementById('avTyping');if(el)el.classList.toggle('show',show);
+ const el=document.getElementById('avTyping');
+ if(el)el.classList.toggle('show',show);
 }
+
+/* ================= COPY ================= */
 function askVoltCopy(btn,text){
- navigator.clipboard.writeText(text).then(()=>{const old=btn.textContent;btn.textContent='COPIED ✓';setTimeout(()=>btn.textContent=old,1000)}).catch(()=>{});
+ if(!navigator.clipboard){
+   return;
+ }
+
+ navigator.clipboard.writeText(text)
+ .then(()=>{
+   const old=btn.textContent;
+   btn.textContent='COPIED ✓';
+
+   setTimeout(()=>{
+     btn.textContent=old;
+   },1000);
+ })
+ .catch(()=>{});
 }
-function askVoltUseFollowUp(text){const i=document.getElementById('avInput');if(!i)return;i.value=text;i.focus();sendAskVolt();}
+
+/* ================= FOLLOW-UP ================= */
+function askVoltUseFollowUp(text){
+ const i=document.getElementById('avInput');
+ if(!i)return;
+
+ i.value=text;
+ i.focus();
+ sendAskVolt();
+}
+
+/* ================= RENDER CHAT ================= */
 function askVoltRender(){
- const chat=document.getElementById('avChat');if(!chat)return;
- let html='<div class="av-welcome"><strong>⚡ Ask Volt is ready.</strong><br>Electrical Engineering is the primary mode. You can also switch to Physics, Mathematics, C Programming, AI/CSE, Chemistry, Biology, Quiz Me, Challenge Mode, VoltLab Help or Ask Anything.</div>';
+ const chat=document.getElementById('avChat');
+ if(!chat)return;
+
+ let html=
+ '<div class="av-welcome">'+
+ '<strong>⚡ Ask Volt is ready.</strong><br>'+
+ 'Electrical Engineering is the primary mode. You can also switch to Physics, Mathematics, C Programming, AI/CSE, Chemistry, Biology, Quiz Me, Challenge Mode, VoltLab Help or Ask Anything.'+
+ '</div>';
+
  askVoltMessages.forEach((m,index)=>{
    const isUser=m.role==='user';
    const follow=!isUser && index===askVoltMessages.length-1;
-   html+='<div class="av-msg '+(isUser?'user':'bot')+'"><div class="av-avatar">'+(isUser?'YOU':'⚡')+'</div><div><div style="font-size:11px;color:var(--muted);margin-bottom:4px;font-weight:700">'+(isUser?'YOU':'ASK VOLT')+'</div><div class="av-bubble">'+askVoltFormat(m.content)+'</div>';
-   if(!isUser)html+='<div class="av-actions"><button class="av-action" onclick=\'askVoltCopy(this,'+JSON.stringify(m.content)+')\'>COPY</button><button class="av-action" onclick="askVoltRegenerate()">REGENERATE</button></div>';
-   if(follow)html+='<div class="av-followups">'+askVoltFollowUps(m.content).map(x=>'<button class="av-followup" onclick=\'askVoltUseFollowUp('+JSON.stringify(x)+')\'>'+askVoltEscape(x)+'</button>').join('')+'</div>';
+
+   html+=
+   '<div class="av-msg '+(isUser?'user':'bot')+'">'+
+     '<div class="av-avatar">'+
+       (isUser?'YOU':'⚡')+
+     '</div>'+
+     '<div>'+
+       '<div style="font-size:11px;color:var(--muted);margin-bottom:4px;font-weight:700">'+
+         (isUser?'YOU':'ASK VOLT')+
+       '</div>'+
+       '<div class="av-bubble">'+
+         askVoltFormat(m.content)+
+       '</div>';
+
+   if(!isUser){
+     html+=
+       '<div class="av-actions">'+
+         '<button class="av-action" onclick=\'askVoltCopy(this,'+
+         JSON.stringify(m.content)+
+         ')\'>COPY</button>'+
+         '<button class="av-action" onclick="askVoltRegenerate()">REGENERATE</button>'+
+       '</div>';
+   }
+
+   if(follow){
+     html+=
+       '<div class="av-followups">'+
+       askVoltFollowUps(m.content)
+       .map(x=>
+         '<button class="av-followup" onclick=\'askVoltUseFollowUp('+
+         JSON.stringify(x)+
+         ')\'>'+
+         askVoltEscape(x)+
+         '</button>'
+       )
+       .join('')+
+       '</div>';
+   }
+
    html+='</div></div>';
  });
- chat.innerHTML=html;chat.scrollTop=chat.scrollHeight;askVoltUpdateStats();
+
+ chat.innerHTML=html;
+ chat.scrollTop=chat.scrollHeight;
+
+ askVoltUpdateStats();
+
+ /* IMPORTANT:
+    AI messages are dynamically inserted with innerHTML.
+    Therefore MathJax must be called AFTER rendering.
+ */
+ askVoltWaitForMathJax();
 }
-function askVoltPrompt(text){const i=document.getElementById('avInput');if(!i)return;i.value=text;i.focus();sendAskVolt();}
-function askVoltSelectMode(btn){
- document.querySelectorAll('#askVoltModes .av-mode').forEach(b=>b.classList.remove('active'));
- btn.classList.add('active');
- askVoltMode=btn.dataset.mode||'Electrical Engineering';
- document.getElementById('avActiveMode').textContent=askVoltMode;
- askVoltSetTopic(askVoltMode);
- const i=document.getElementById('avInput');if(i){i.value=btn.dataset.prompt||'';i.focus();}
-}
-async function sendAskVolt(){
- if(askVoltBusy)return;
- const input=document.getElementById('avInput');if(!input)return;
- const raw=input.value.trim();if(!raw)return;
- const modeInstruction='Current Ask Volt learning mode: '+askVoltMode+'. Answer according to this mode while staying accurate. For electrical questions, prefer clear step-by-step reasoning, formulas, units, assumptions and practical interpretation.';
- const userContent=modeInstruction+'\nUser question: '+raw;
- askVoltMessages.push({role:'user',content:raw});
- askVoltQuestions++;
- input.value='';askVoltBusy=true;
- const send=document.getElementById('avSend');if(send)send.disabled=true;
- askVoltTyping(true);askVoltRender();
- try{
-   const apiMessages=[{role:'system',content:'You are Ask Volt, the educational AI tutor inside VoltLab. Electrical Engineering is your primary expertise. You also help with Physics, Mathematics, C Programming, AI/CSE, Chemistry, Biology and general questions. Explain clearly for students. Show formulas and units when relevant. Never claim to physically operate a circuit. Keep answers useful and reasonably concise.'},
-     ...askVoltMessages.slice(-20).map((m,i)=>({role:m.role==='assistant'?'assistant':'user',content:i===askVoltMessages.slice(-20).length-1&&m.role==='user'?userContent:m.content}))];
-   const res=await fetch(ASK_VOLT_WORKER,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:apiMessages})});
-   const data=await res.json();
-   if(!res.ok||!data.ok)throw new Error(data.error||'AI request failed');
-   askVoltMessages.push({role:'assistant',content:data.response||'I could not generate a response right now.'});
-   askVoltResponses++;
- }catch(err){
-   askVoltMessages.push({role:'assistant',content:'⚠️ I could not connect to the Ask Volt AI backend right now. Please try again in a moment.'});
-   askVoltResponses++;
- }
- askVoltBusy=false;askVoltTyping(false);if(send)send.disabled=false;askVoltRender();
-}
-async function askVoltRegenerate(){
- if(askVoltBusy||!askVoltMessages.length)return;
- const lastUser=[...askVoltMessages].reverse().find(m=>m.role==='user');if(!lastUser)return;
- askVoltMessages=askVoltMessages.slice(0,askVoltMessages.lastIndexOf(lastUser)+1);
- const i=document.getElementById('avInput');if(i)i.value=lastUser.content;
- askVoltMessages.pop();askVoltQuestions=Math.max(0,askVoltQuestions-1);
+
+/* ================= QUICK PROMPT ================= */
+function askVoltPrompt(text){
+ const i=document.getElementById('avInput');
+ if(!i)return;
+
+ i.value=text;
+ i.focus();
  sendAskVolt();
 }
-function clearAskVolt(){if(askVoltBusy)return;askVoltMessages=[];askVoltQuestions=0;askVoltResponses=0;askVoltTyping(false);askVoltRender();}
-async function askVoltCheckBackend(){
- const status=document.getElementById('askVoltStatus');if(!status)return;
- try{
-   const res=await fetch(ASK_VOLT_WORKER,{method:'GET',cache:'no-store'});
-   const data=await res.json();
-   if(res.ok&&data.ok){status.textContent='● AI BACKEND ONLINE';status.style.color='var(--green)';}
-   else throw new Error('offline');
- }catch(e){status.textContent='● AI BACKEND OFFLINE';status.style.color='var(--red)';}
+
+/* ================= MODE ================= */
+function askVoltSelectMode(btn){
+ document
+ .querySelectorAll('#askVoltModes .av-mode')
+ .forEach(b=>b.classList.remove('active'));
+
+ btn.classList.add('active');
+
+ askVoltMode=btn.dataset.mode||'Electrical Engineering';
+
+ const active=document.getElementById('avActiveMode');
+ if(active)active.textContent=askVoltMode;
+
+ askVoltSetTopic(askVoltMode);
+
+ const i=document.getElementById('avInput');
+
+ if(i){
+   i.value=btn.dataset.prompt||'';
+   i.focus();
+ }
 }
-document.addEventListener('DOMContentLoaded',()=>{
+
+/* ================= SEND ASK VOLT ================= */
+async function sendAskVolt(){
+
+ if(askVoltBusy)return;
+
  const input=document.getElementById('avInput');
- if(input)input.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendAskVolt();}});
- askVoltSetTopic('Electrical Engineering');askVoltRender();askVoltCheckBackend();
+ if(!input)return;
+
+ const raw=input.value.trim();
+ if(!raw)return;
+
+ const modeInstruction=
+ 'Current Ask Volt learning mode: '+askVoltMode+
+ '. Answer according to this mode while staying accurate. '+
+ 'For electrical questions, prefer clear step-by-step reasoning, '+
+ 'formulas, units, assumptions and practical interpretation. '+
+ 'Use standard LaTeX for mathematical expressions. '+
+ 'Use inline math such as $V=IR$ and display math such as $$I=V/R$$ when useful.';
+
+ const userContent=
+ modeInstruction+
+ '\nUser question: '+
+ raw;
+
+ /* Store only the actual user question in the visible conversation */
+ askVoltMessages.push({
+   role:'user',
+   content:raw
+ });
+
+ askVoltQuestions++;
+
+ input.value='';
+ askVoltBusy=true;
+
+ const send=document.getElementById('avSend');
+ if(send)send.disabled=true;
+
+ askVoltTyping(true);
+ askVoltRender();
+
+ try{
+
+   /* =====================================================
+      IMPORTANT BACKEND FIX
+
+      Do not send the entire conversation every time.
+      Keep only the latest 8 messages = 4 user/assistant turns.
+      This keeps the Worker request smaller and more stable.
+   ===================================================== */
+
+   const recentMessages=askVoltMessages.slice(-8);
+
+   const apiMessages=[
+     {
+       role:'system',
+       content:
+       'You are Ask Volt, the educational AI tutor inside VoltLab. '+
+       'Electrical Engineering is your primary expertise. '+
+       'You also help with Physics, Mathematics, C Programming, AI/CSE, '+
+       'Chemistry, Biology and general questions. '+
+       'Explain clearly for students. '+
+       'Show formulas and units when relevant. '+
+       'Use valid LaTeX for mathematical expressions. '+
+       'Never claim to physically operate a circuit. '+
+       'Keep answers useful and reasonably concise.'
+     }
+   ];
+
+   recentMessages.forEach((m,index)=>{
+
+     const isLast=
+       index===recentMessages.length-1 &&
+       m.role==='user';
+
+     apiMessages.push({
+       role:m.role==='assistant'?'assistant':'user',
+       content:isLast?userContent:m.content
+     });
+
+   });
+
+   /* ================= REQUEST ================= */
+   const controller=new AbortController();
+
+   /* Prevent a permanently hanging request */
+   const timeout=setTimeout(()=>{
+     controller.abort();
+   },30000);
+
+   let res;
+
+   try{
+     res=await fetch(ASK_VOLT_WORKER,{
+       method:'POST',
+       headers:{
+         'Content-Type':'application/json',
+         'Accept':'application/json'
+       },
+       cache:'no-store',
+       signal:controller.signal,
+       body:JSON.stringify({
+         messages:apiMessages
+       })
+     });
+   }finally{
+     clearTimeout(timeout);
+   }
+
+   /* ================= RESPONSE ================= */
+
+   const contentType=res.headers.get('content-type')||'';
+
+   let data;
+
+   if(contentType.includes('application/json')){
+     data=await res.json();
+   }else{
+     const text=await res.text();
+     throw new Error(
+       'Backend returned a non-JSON response: '+
+       text.slice(0,200)
+     );
+   }
+
+   if(!res.ok || !data || !data.ok){
+     throw new Error(
+       data && data.error
+       ? data.error
+       : 'AI request failed'
+     );
+   }
+
+   const responseText=
+     typeof data.response==='string'
+     ? data.response.trim()
+     : '';
+
+   if(!responseText){
+     throw new Error('Empty AI response');
+   }
+
+   askVoltMessages.push({
+     role:'assistant',
+     content:responseText
+   });
+
+   askVoltResponses++;
+
+ }catch(err){
+
+   console.error('Ask Volt error:',err);
+
+   let errorMessage=
+     '⚠️ I could not connect to the Ask Volt AI backend right now. Please try again in a moment.';
+
+   if(err && err.name==='AbortError'){
+     errorMessage=
+       '⚠️ Ask Volt took too long to respond. Please try the question again.';
+   }
+
+   askVoltMessages.push({
+     role:'assistant',
+     content:errorMessage
+   });
+
+   askVoltResponses++;
+
+ }finally{
+
+   /* ALWAYS restore UI state */
+   askVoltBusy=false;
+   askVoltTyping(false);
+
+   if(send)send.disabled=false;
+
+   askVoltRender();
+ }
+}
+
+/* ================= REGENERATE ================= */
+async function askVoltRegenerate(){
+
+ if(askVoltBusy || !askVoltMessages.length)return;
+
+ const lastUser=
+   [...askVoltMessages]
+   .reverse()
+   .find(m=>m.role==='user');
+
+ if(!lastUser)return;
+
+ const lastIndex=askVoltMessages.lastIndexOf(lastUser);
+
+ if(lastIndex<0)return;
+
+ askVoltMessages=
+   askVoltMessages.slice(0,lastIndex+1);
+
+ const i=document.getElementById('avInput');
+
+ if(i){
+   i.value=lastUser.content;
+   i.focus();
+ }
+
+ askVoltMessages.pop();
+
+ askVoltQuestions=
+   Math.max(0,askVoltQuestions-1);
+
+ sendAskVolt();
+}
+
+/* ================= CLEAR ================= */
+function clearAskVolt(){
+
+ if(askVoltBusy)return;
+
+ askVoltMessages=[];
+ askVoltQuestions=0;
+ askVoltResponses=0;
+
+ askVoltTyping(false);
+ askVoltRender();
+}
+
+/* ================= BACKEND STATUS ================= */
+async function askVoltCheckBackend(){
+
+ const status=document.getElementById('askVoltStatus');
+ if(!status)return;
+
+ try{
+
+   const controller=new AbortController();
+
+   const timeout=setTimeout(()=>{
+     controller.abort();
+   },10000);
+
+   let res;
+
+   try{
+     res=await fetch(ASK_VOLT_WORKER,{
+       method:'GET',
+       cache:'no-store',
+       headers:{
+         'Accept':'application/json'
+       },
+       signal:controller.signal
+     });
+   }finally{
+     clearTimeout(timeout);
+   }
+
+   const contentType=res.headers.get('content-type')||'';
+
+   if(!contentType.includes('application/json')){
+     throw new Error('Invalid backend response');
+   }
+
+   const data=await res.json();
+
+   if(res.ok && data && data.ok){
+
+     status.textContent='● AI BACKEND ONLINE';
+     status.style.color='var(--green)';
+
+   }else{
+     throw new Error('offline');
+   }
+
+ }catch(e){
+
+   status.textContent='● AI BACKEND OFFLINE';
+   status.style.color='var(--red)';
+
+ }
+}
+
+/* ================= INITIALIZATION ================= */
+document.addEventListener('DOMContentLoaded',()=>{
+
+ const input=document.getElementById('avInput');
+
+ if(input){
+
+   input.addEventListener('keydown',e=>{
+
+     if(e.key==='Enter' && !e.shiftKey){
+
+       e.preventDefault();
+       sendAskVolt();
+
+     }
+
+   });
+
+ }
+
+ askVoltSetTopic('Electrical Engineering');
+ askVoltRender();
+ askVoltCheckBackend();
+
+ /* MathJax may load slightly later than the page */
+ askVoltWaitForMathJax();
+
 });
 </script>
 
