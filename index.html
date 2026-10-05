@@ -76,14 +76,35 @@ nav{position:fixed;top:0;width:100%;z-index:1000;background:rgba(5,8,22,.82);bac
 .telemetry{position:fixed;right:18px;bottom:18px;z-index:900;background:rgba(5,8,22,.88);backdrop-filter:blur(14px);border:1px solid rgba(33,212,253,.25);border-radius:14px;padding:10px 13px;box-shadow:0 0 25px rgba(33,212,253,.10);font-size:11px;color:#91a5c5;min-width:180px}.telemetry-top{display:flex;align-items:center;justify-content:space-between;gap:12px}.telemetry-dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green);display:inline-block;margin-right:6px}.telemetry strong{color:#eef6ff}.telemetry-bar{height:4px;background:#13233f;border-radius:10px;margin-top:8px;overflow:hidden}.telemetry-fill{height:100%;width:35%;background:linear-gradient(90deg,var(--cyan),var(--blue),var(--purple));border-radius:10px;transition:width .5s ease}@media(max-width:700px){.telemetry{right:10px;bottom:10px;min-width:155px}.telemetry{font-size:10px}}
 </style>
 
-<style id="ask-volt-style">
-.ask-volt-wrap{max-width:1050px;margin:auto;background:linear-gradient(145deg,rgba(16,28,54,.88),rgba(8,16,32,.94));border:1px solid var(--line);border-radius:20px;box-shadow:var(--glow);overflow:hidden}
-.ask-volt-head{padding:24px 26px;border-bottom:1px solid #1b3154;display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}
-.ask-volt-title{display:flex;align-items:center;gap:12px}.ask-volt-icon{width:46px;height:46px;border-radius:13px;display:flex;align-items:center;justify-content:center;background:rgba(33,212,253,.08);border:1px solid rgba(33,212,253,.25);color:var(--cyan);font-size:24px;box-shadow:0 0 20px rgba(33,212,253,.08)}
-.ask-volt-title h3{font-size:22px}.ask-volt-title p{color:var(--muted);font-size:12px;margin-top:2px}.ask-volt-status{color:var(--green);font-size:12px;font-weight:bold;white-space:nowrap}.ask-volt-status span{display:inline-block;width:7px;height:7px;background:var(--green);border-radius:50%;box-shadow:0 0 10px var(--green);margin-right:6px}
-.ask-volt-chat{height:500px;overflow-y:auto;padding:24px;background:radial-gradient(circle at center,rgba(33,212,253,.035),transparent 55%),#030914}.ask-msg{display:flex;margin-bottom:18px}.ask-msg.user{justify-content:flex-end}.ask-bubble{max-width:78%;padding:13px 16px;border-radius:15px;border:1px solid #1b3154;background:#071126;color:#dbe8f8;font-size:14px;white-space:pre-wrap;overflow-wrap:anywhere}.ask-msg.ai .ask-bubble{border-color:rgba(33,212,253,.18);box-shadow:0 0 18px rgba(33,212,253,.04)}.ask-msg.user .ask-bubble{border-color:rgba(59,130,246,.35);background:rgba(59,130,246,.08)}.ask-label{font-size:10px;color:var(--muted);margin-bottom:5px;letter-spacing:.5px}.ask-msg.user .ask-label{text-align:right}.ask-welcome{padding:16px;border:1px solid rgba(33,212,253,.16);border-radius:14px;background:rgba(33,212,253,.04);color:var(--muted);font-size:13px;margin-bottom:18px}.ask-welcome strong{color:#fff}.ask-prompts{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 16px}.ask-prompt{padding:8px 11px;border:1px solid #29466e;border-radius:10px;background:#071126;color:#b8c7dd;font-size:12px;cursor:pointer}.ask-prompt:hover{border-color:var(--cyan);color:var(--cyan)}.ask-typing{display:none;color:var(--muted);font-size:12px;margin:0 0 12px}.ask-typing.show{display:block}.ask-volt-compose{padding:18px;border-top:1px solid #1b3154;background:rgba(5,8,22,.65)}.ask-input-row{display:flex;gap:10px}.ask-input{flex:1;min-height:48px;max-height:130px;resize:vertical;padding:13px 14px;background:#060d1c;border:1px solid #22385f;border-radius:10px;outline:none;color:#fff;font:inherit;font-size:14px}.ask-input:focus{border-color:var(--cyan);box-shadow:0 0 15px rgba(33,212,253,.1)}.ask-input::placeholder{color:#536987}.ask-send{min-width:105px;border:none;border-radius:10px;background:linear-gradient(90deg,var(--cyan),var(--blue));color:#03101c;font-weight:bold;cursor:pointer;padding:0 18px}.ask-send:disabled{opacity:.55;cursor:not-allowed}.ask-tools{display:flex;justify-content:space-between;align-items:center;margin-top:9px;gap:10px}.ask-tools small{color:var(--muted);font-size:11px}.ask-clear{border:0;background:transparent;color:#91a5c5;cursor:pointer;font-size:11px}.ask-clear:hover{color:var(--cyan)}
-@media(max-width:700px){.ask-volt-chat{height:470px;padding:16px}.ask-bubble{max-width:90%}.ask-input-row{align-items:stretch}.ask-send{min-width:82px}.ask-volt-head{padding:18px}.ask-volt-compose{padding:14px}}
+
+<style id="voltlab-ask-volt-2-style">
+/* ================= ASK VOLT 2.0 — MERGED / READABILITY ================= */
+.askvolt-shell{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(300px,.65fr);gap:22px}
+.askvolt-card{background:linear-gradient(145deg,rgba(16,28,54,.92),rgba(7,14,29,.97));border:1px solid var(--line);border-radius:20px;box-shadow:var(--glow);overflow:hidden}
+.askvolt-head{padding:22px 24px;border-bottom:1px solid rgba(33,212,253,.12);display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap}
+.askvolt-brand{display:flex;align-items:center;gap:12px}.askvolt-orb{width:46px;height:46px;border-radius:14px;display:flex;align-items:center;justify-content:center;background:rgba(33,212,253,.08);border:1px solid rgba(33,212,253,.25);box-shadow:0 0 22px rgba(33,212,253,.12);font-size:24px}.askvolt-brand h3{font-size:22px}.askvolt-brand p{font-size:12px;color:var(--muted);margin-top:2px}.askvolt-status{font-size:12px;color:var(--green);border:1px solid rgba(34,197,94,.25);padding:7px 10px;border-radius:20px;background:rgba(34,197,94,.05)}
+.av-command-board{padding:18px 20px;border-bottom:1px solid rgba(33,212,253,.10);background:rgba(3,9,20,.32)}
+.av-command-title{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:12px}.av-command-title strong{font-size:15px}.av-command-title small{color:var(--muted);font-size:11px}
+.av-mode-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.av-mode{min-height:64px;padding:9px 10px;text-align:left;border:1px solid #29466e;background:#071126;color:#b9c9df;border-radius:11px;cursor:pointer;transition:.2s}
+.av-mode:hover{border-color:var(--red);color:var(--red);font-weight:800;box-shadow:0 0 16px rgba(239,68,68,.12);transform:translateY(-1px)}
+.av-mode.active{border-color:var(--red);color:var(--red);font-weight:800;background:rgba(239,68,68,.07);box-shadow:0 0 18px rgba(239,68,68,.16)}
+.av-mode-icon{display:inline-block;font-size:16px;margin-right:5px}.av-mode-name{font-size:13px;font-weight:700}.av-mode-desc{display:block;color:#8195b3;font-size:10px;line-height:1.3;margin-top:3px}.av-mode:hover .av-mode-desc,.av-mode.active .av-mode-desc{color:#e7a3a3}
+.askvolt-chat{height:470px;overflow:auto;padding:22px;background:radial-gradient(circle at 50% 0,rgba(33,212,253,.035),transparent 45%)}
+.av-welcome{padding:15px 17px;margin-bottom:17px;border:1px solid rgba(33,212,253,.16);background:rgba(33,212,253,.035);border-radius:14px;color:#cbd8ea;font-size:14px;line-height:1.7}.av-welcome strong{color:#fff;font-size:16px}
+.av-msg{display:flex;gap:10px;margin-bottom:17px;max-width:90%;animation:avIn .25s ease}.av-msg.user{margin-left:auto;flex-direction:row-reverse}.av-avatar{width:34px;height:34px;flex:0 0 34px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:#071126;border:1px solid #29466e;font-size:15px}.av-msg.bot .av-avatar{color:var(--cyan);border-color:rgba(33,212,253,.25)}.av-msg.user .av-avatar{color:var(--purple);border-color:rgba(139,92,246,.3)}
+.av-bubble{padding:13px 15px;border:1px solid #1b3154;background:#071126;border-radius:14px;color:#dbe8f8;font-size:14px;line-height:1.72;overflow-wrap:anywhere}.av-msg.user .av-bubble{background:rgba(139,92,246,.07);border-color:rgba(139,92,246,.22)}.av-bubble strong{color:#fff}.av-bubble code{color:var(--cyan);background:#030914;padding:2px 5px;border-radius:5px}.av-bubble ul,.av-bubble ol{margin:8px 0 5px 20px}.av-bubble li{margin:4px 0}.av-bubble h4{font-size:16px;color:#fff;margin:8px 0}.av-bubble .av-formula{display:block;margin:10px 0;padding:10px 12px;border-left:3px solid var(--cyan);background:rgba(33,212,253,.045);color:#fff;font-weight:700;font-size:14px;white-space:pre-wrap}
+.av-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}.av-action{border:1px solid #29466e;background:#071126;color:#bfe7f7;padding:7px 10px;border-radius:8px;cursor:pointer;font-size:11px}.av-action:hover{border-color:var(--cyan);color:var(--cyan)}
+.av-followups{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}.av-followup{border:1px solid rgba(33,212,253,.22);background:rgba(33,212,253,.035);color:#9fdff0;padding:7px 9px;border-radius:18px;cursor:pointer;font-size:11px}.av-followup:hover{border-color:var(--cyan);color:var(--cyan)}
+.av-typing{display:none;align-items:center;gap:4px;padding:11px 14px;margin:0 0 13px 44px;width:max-content;border:1px solid #1b3154;background:#071126;border-radius:12px}.av-typing.show{display:flex}.av-typing span{width:6px;height:6px;border-radius:50%;background:var(--cyan);animation:avDot 1s infinite}.av-typing span:nth-child(2){animation-delay:.15s}.av-typing span:nth-child(3){animation-delay:.3s}@keyframes avDot{0%,80%,100%{opacity:.25;transform:translateY(0)}40%{opacity:1;transform:translateY(-3px)}}@keyframes avIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+.askvolt-composer{padding:15px;border-top:1px solid rgba(33,212,253,.12);background:rgba(3,9,20,.55)}.av-chips{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:10px}.av-chip{border:1px solid #29466e;background:#071126;color:#b9c9df;padding:8px 11px;border-radius:20px;cursor:pointer;font-size:12px}.av-chip:hover{border-color:var(--cyan);color:var(--cyan)}
+.av-input-row{display:flex;gap:9px}.av-input{flex:1;min-width:0;padding:14px;border-radius:11px;border:1px solid #29466e;background:#030914;color:#fff;outline:none;font-size:15px;line-height:1.5}.av-input:focus{border-color:var(--cyan);box-shadow:0 0 15px rgba(33,212,253,.08)}.av-input::placeholder{color:#617592}.av-send{border:0;border-radius:11px;padding:0 18px;background:linear-gradient(90deg,var(--cyan),var(--blue));color:#03101c;font-weight:800;cursor:pointer;font-size:13px}.av-send:disabled{opacity:.5;cursor:not-allowed}.av-note{font-size:11px;color:#7184a2;margin-top:8px;line-height:1.5}
+.av-side{padding:20px}.av-side h4{font-size:17px;margin-bottom:13px}.av-panel{padding:14px;border:1px solid #1b3154;border-radius:12px;background:#071126;margin-bottom:12px}.av-panel small{color:var(--muted);display:block;font-size:10px;letter-spacing:.5px}.av-panel strong{display:block;color:var(--cyan);margin-top:4px;font-size:15px}.av-session-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}.av-session{padding:11px;border:1px solid #1b3154;border-radius:10px;background:#071126}.av-session small{display:block;color:var(--muted);font-size:10px}.av-session strong{display:block;color:#fff;font-size:17px;margin-top:3px}.av-topic-list{display:grid;grid-template-columns:1fr 1fr;gap:8px}.av-topic{padding:10px;border:1px solid #1b3154;border-radius:9px;background:#030914;color:#b8c7dd;cursor:pointer;font-size:12px;text-align:left}.av-topic:hover{border-color:var(--cyan);color:var(--cyan)}.av-result{margin-top:10px;padding:10px;border:1px solid rgba(33,212,253,.15);border-radius:9px;background:rgba(33,212,253,.035);font-size:12px;color:var(--muted);line-height:1.5}.av-clear{width:100%;padding:11px;border:1px solid rgba(239,68,68,.3);background:rgba(239,68,68,.04);color:#fecaca;border-radius:10px;cursor:pointer;margin-top:10px;font-size:12px;font-weight:700}.av-clear:hover{border-color:var(--red);background:rgba(239,68,68,.08)}.av-disclaimer{margin-top:12px;color:#7184a2;font-size:10px;line-height:1.6}
+@media(max-width:1000px){.av-mode-grid{grid-template-columns:repeat(3,1fr)}.askvolt-shell{grid-template-columns:1fr}}
+@media(max-width:700px){.av-mode-grid{grid-template-columns:1fr 1fr}.askvolt-chat{height:440px}.av-msg{max-width:96%}.av-input-row{flex-direction:column}.av-send{padding:12px}.av-topic-list{grid-template-columns:1fr 1fr}}
+@media(max-width:430px){.av-mode-grid{grid-template-columns:1fr}.av-topic-list,.av-session-grid{grid-template-columns:1fr}.askvolt-head{padding:18px}.askvolt-chat{padding:16px}.av-bubble{font-size:13px}}
 </style>
+
 </head>
 <body>
 <nav><div class="nav-container"><div class="logo">⚡ Volt<span>Lab</span></div><ul class="nav-links"><li><a href="#home">Home</a></li><li><a href="#learn">Learn</a></li><li><a href="#ohm">Ohm's Lab</a></li><li><a href="#series-parallel">Series/Parallel</a></li><li><a href="#kcl-kvl">KCL/KVL</a></li><li><a href="#led-sim">LED Brightness</a></li><li><a href="#builder">Circuit Builder</a></li><li><a href="#detective">Circuit Detective</a></li><li><a href="#quiz">Quiz</a></li><li><a href="#ask-volt">Ask Volt</a></li><li><a href="#virtual">Virtual Lab</a></li><li><a href="#challenge">Challenge</a></li><li><a href="#team">Team</a></li></ul></div></nav>
@@ -136,7 +157,73 @@ nav{position:fixed;top:0;width:100%;z-index:1000;background:rgba(5,8,22,.82);bac
 
 <section id="quiz" class="lab-section"><div class="container"><div class="section-title"><h2>🧠 Electrical Challenge Quiz</h2><p>Test your understanding, build a streak and see how well you can diagnose electrical concepts.</p></div><div class="quiz-shell"><div class="quiz-card"><div id="quizSetup"><div class="quiz-start-panel"><h3>Ready to test your circuit knowledge?</h3><p>Choose a topic and difficulty. Each round contains 10 questions with explanations, a timer and a scoring system.</p><div class="quiz-controls"><select class="quiz-select" id="quizTopic"><option value="all">All Topics</option><option value="Ohm's Law">Ohm's Law</option><option value="Circuits">Circuits</option><option value="KCL/KVL">KCL / KVL</option><option value="Components">Components</option></select><select class="quiz-select" id="quizDifficulty"><option value="all">Mixed Difficulty</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select></div><button class="quiz-btn primary" onclick="startVoltQuiz()">START QUIZ ⚡</button><div class="quiz-topics">Topics: <span class="quiz-badge">Ohm's Law</span><span class="quiz-badge">Series / Parallel</span><span class="quiz-badge">KCL / KVL</span><span class="quiz-badge">Components</span></div></div></div><div id="quizPlay" class="quiz-hidden"><div class="quiz-meta"><span id="quizCounter">QUESTION 1 / 10</span><span id="quizTimer">⏱ 20s</span><span id="quizLiveScore">SCORE 0</span></div><div class="quiz-progress"><div class="quiz-progress-fill" id="quizProgressFill"></div></div><div><span class="quiz-badge" id="quizTopicBadge">TOPIC</span><span class="quiz-badge" id="quizDifficultyBadge">DIFFICULTY</span></div><div class="quiz-question" id="quizQuestion"></div><div class="quiz-options" id="quizOptions"></div><div class="hint-text" id="quizHint"></div><div class="quiz-feedback" id="quizFeedback">Choose an answer to begin.</div><div class="quiz-actions"><button class="quiz-btn" id="quizHintBtn" onclick="showQuizHint()">💡 HINT</button><button class="quiz-btn primary" id="quizNextBtn" onclick="nextVoltQuestion()" disabled>NEXT QUESTION →</button></div></div><div id="quizResult" class="quiz-result"><div class="quiz-score-ring"><strong id="quizFinalPercent">0%</strong><small>FINAL SCORE</small></div><h3 id="quizResultTitle">Quiz Complete</h3><p id="quizResultMessage" style="color:var(--muted);margin-top:7px"></p><div class="quiz-breakdown"><div><small>CORRECT</small><strong id="quizFinalCorrect">0 / 10</strong></div><div><small>POINTS</small><strong id="quizFinalPoints">0</strong></div><div><small>BEST STREAK</small><strong id="quizFinalStreak">0</strong></div></div><div class="quiz-actions" style="justify-content:center"><button class="quiz-btn primary" onclick="startVoltQuiz()">RETRY QUIZ ⚡</button><button class="quiz-btn" onclick="resetVoltQuizSetup()">CHANGE MODE</button></div></div></div><div class="quiz-card"><div class="quiz-side-title">📊 Live Performance</div><div class="quiz-stat-grid"><div class="quiz-stat"><small>CORRECT</small><strong id="quizCorrectStat">0</strong></div><div class="quiz-stat"><small>POINTS</small><strong id="quizPointsStat">0</strong></div><div class="quiz-stat"><small>STREAK</small><strong id="quizStreakStat">0</strong></div><div class="quiz-stat"><small>BEST STREAK</small><strong id="quizBestStreakStat">0</strong></div></div><div class="streak-box">🔥 Current streak: <strong id="quizStreakText">0 correct in a row</strong></div><div class="explain-box" style="margin-top:15px"><strong>How scoring works</strong><br>Easy = 10 points • Medium = 20 points • Hard = 30 points. A correct answer also increases your streak. A timeout counts as incorrect.</div><div class="explain-box" style="margin-top:15px"><strong>Learning mode</strong><br>Every question gives a short explanation after you answer, so the quiz also works as a revision tool.</div></div></div></div></section>
 
-<section id="ask-volt"><div class="container"><div class="section-title"><h2>Ask Volt</h2><p>Your AI learning assistant — electrical engineering first, with support for other academic subjects.</p></div><div class="ask-volt-wrap"><div class="ask-volt-head"><div class="ask-volt-title"><div class="ask-volt-icon">⚡</div><div><h3>Ask Volt AI</h3><p>Powered by the VoltLab AI backend</p></div></div><div class="ask-volt-status"><span></span>AI BACKEND READY</div></div><div class="ask-volt-chat" id="askVoltChat"><div class="ask-welcome"><strong>Hi, I'm Ask Volt.</strong><br>I can help with Electrical Engineering, Physics, Mathematics, Chemistry, Biology, CSE, Programming, AI and more. I also know about VoltLab and its interactive learning tools.</div><div class="ask-prompts"><button class="ask-prompt" type="button" onclick="askVoltPrompt('Explain Ohm\'s Law with a simple example.')">Ohm's Law</button><button class="ask-prompt" type="button" onclick="askVoltPrompt('Explain Kirchhoff\'s Voltage Law step by step.')">KVL</button><button class="ask-prompt" type="button" onclick="askVoltPrompt('Write a simple C program to calculate factorial.')">C Programming</button><button class="ask-prompt" type="button" onclick="askVoltPrompt('Explain Newton\'s second law simply.')">Physics</button></div><div class="ask-typing" id="askVoltTyping">⚡ Ask Volt is thinking...</div></div><div class="ask-volt-compose"><div class="ask-input-row"><textarea id="askVoltInput" class="ask-input" placeholder="Ask anything about electricity, science, CSE or VoltLab..." rows="2"></textarea><button id="askVoltSend" class="ask-send" type="button" onclick="sendAskVolt()">Send ⚡</button></div><div class="ask-tools"><small>Ask follow-up questions naturally. Ask Volt keeps the recent conversation context.</small><button class="ask-clear" type="button" onclick="clearAskVolt()">Clear conversation</button></div></div></div></div></section>
+
+<section id="ask-volt">
+<div class="container">
+<div class="section-title"><h2>⚡ Ask Volt</h2><p>Your AI learning command center — Electrical Engineering first, with support for science, mathematics, CSE and general questions.</p></div>
+<div class="askvolt-shell">
+<div class="askvolt-card">
+<div class="askvolt-head">
+<div class="askvolt-brand"><div class="askvolt-orb">⚡</div><div><h3>Ask Volt AI Tutor</h3><p>Electrical reasoning • calculations • guided learning • multi-subject support</p></div></div>
+<div class="askvolt-status" id="askVoltStatus">● CHECKING AI BACKEND...</div>
+</div>
+<div class="av-command-board">
+<div class="av-command-title"><strong>AI COMMAND BOARD</strong><small>Choose a mode to guide the next question</small></div>
+<div class="av-mode-grid" id="askVoltModes">
+<button class="av-mode active" data-mode="Electrical Engineering" data-prompt="Explain this electrical engineering concept clearly with a practical example." onclick="askVoltSelectMode(this)"><span class="av-mode-icon">⚡</span><span class="av-mode-name">Electrical Engineering</span><span class="av-mode-desc">Circuits &amp; engineering</span></button>
+<button class="av-mode" data-mode="Ohm's Law" data-prompt="Explain Ohm's Law step by step with a numerical example." onclick="askVoltSelectMode(this)"><span class="av-mode-icon">Ω</span><span class="av-mode-name">Ohm's Law</span><span class="av-mode-desc">V, I, R &amp; power</span></button>
+<button class="av-mode" data-mode="KCL / KVL" data-prompt="Explain KCL and KVL step by step with a simple circuit example." onclick="askVoltSelectMode(this)"><span class="av-mode-icon">🔌</span><span class="av-mode-name">KCL / KVL</span><span class="av-mode-desc">Nodes &amp; loops</span></button>
+<button class="av-mode" data-mode="Circuit Analysis" data-prompt="Help me analyze a circuit step by step." onclick="askVoltSelectMode(this)"><span class="av-mode-icon">🧮</span><span class="av-mode-name">Circuit Analysis</span><span class="av-mode-desc">Solve circuit problems</span></button>
+<button class="av-mode" data-mode="Physics" data-prompt="Explain this physics concept simply and then give an example." onclick="askVoltSelectMode(this)"><span class="av-mode-icon">🪐</span><span class="av-mode-name">Physics</span><span class="av-mode-desc">Concepts &amp; numericals</span></button>
+<button class="av-mode" data-mode="Mathematics" data-prompt="Solve this mathematics problem step by step and explain the reasoning." onclick="askVoltSelectMode(this)"><span class="av-mode-icon">📐</span><span class="av-mode-name">Mathematics</span><span class="av-mode-desc">Solve &amp; explain</span></button>
+<button class="av-mode" data-mode="C Programming" data-prompt="Help me solve this C programming problem and explain the logic." onclick="askVoltSelectMode(this)"><span class="av-mode-icon">💻</span><span class="av-mode-name">C Programming</span><span class="av-mode-desc">Code &amp; logic</span></button>
+<button class="av-mode" data-mode="AI / CSE" data-prompt="Explain this AI or CSE topic clearly with a practical example." onclick="askVoltSelectMode(this)"><span class="av-mode-icon">🤖</span><span class="av-mode-name">AI / CSE</span><span class="av-mode-desc">Computing &amp; AI</span></button>
+<button class="av-mode" data-mode="Chemistry" data-prompt="Explain this chemistry concept clearly and give a simple example." onclick="askVoltSelectMode(this)"><span class="av-mode-icon">🧪</span><span class="av-mode-name">Chemistry</span><span class="av-mode-desc">Concepts &amp; reactions</span></button>
+<button class="av-mode" data-mode="Biology" data-prompt="Explain this biology concept in a clear student-friendly way." onclick="askVoltSelectMode(this)"><span class="av-mode-icon">🧬</span><span class="av-mode-name">Biology</span><span class="av-mode-desc">Life science</span></button>
+<button class="av-mode" data-mode="Quiz Me" data-prompt="Quiz me on electrical engineering. Ask one question at a time and wait for my answer." onclick="askVoltSelectMode(this)"><span class="av-mode-icon">🎯</span><span class="av-mode-name">Quiz Me</span><span class="av-mode-desc">Interactive questions</span></button>
+<button class="av-mode" data-mode="Challenge Mode" data-prompt="Give me a challenging circuit troubleshooting problem. Do not reveal the answer until I try." onclick="askVoltSelectMode(this)"><span class="av-mode-icon">🕵️</span><span class="av-mode-name">Challenge Mode</span><span class="av-mode-desc">Think like an engineer</span></button>
+<button class="av-mode" data-mode="VoltLab Help" data-prompt="Help me use VoltLab's interactive labs and explain which section I should open." onclick="askVoltSelectMode(this)"><span class="av-mode-icon">🛠️</span><span class="av-mode-name">VoltLab Help</span><span class="av-mode-desc">Labs &amp; features</span></button>
+<button class="av-mode" data-mode="Ask Anything" data-prompt="Answer my question clearly. If it is outside electrical engineering, still try to help." onclick="askVoltSelectMode(this)"><span class="av-mode-icon">🌐</span><span class="av-mode-name">Ask Anything</span><span class="av-mode-desc">General questions</span></button>
+</div>
+</div>
+<div class="askvolt-chat" id="avChat" aria-live="polite"></div>
+<div class="av-typing" id="avTyping"><span></span><span></span><span></span><small style="color:var(--muted);margin-left:4px;font-size:12px">Volt is thinking…</small></div>
+<div class="askvolt-composer">
+<div class="av-chips">
+<button class="av-chip" onclick="askVoltPrompt('Explain Ohm\'s Law with a practical example.')">Ohm's Law</button>
+<button class="av-chip" onclick="askVoltPrompt('Explain KCL step by step.')">KCL</button>
+<button class="av-chip" onclick="askVoltPrompt('What is the difference between series and parallel circuits?')">Series vs Parallel</button>
+<button class="av-chip" onclick="askVoltPrompt('Calculate current: V=12 V, R=6 Ω.')">Calculate</button>
+<button class="av-chip" onclick="askVoltPrompt('Why is my LED not glowing?')">Troubleshoot</button>
+</div>
+<div class="av-input-row"><input id="avInput" class="av-input" placeholder="Ask your question here..." autocomplete="off"><button id="avSend" class="av-send" onclick="sendAskVolt()">SEND ⚡</button></div>
+<div class="av-note">Enter = send • Shift+Enter = new line • Ask Volt keeps recent conversation context.</div>
+</div>
+</div>
+<div class="askvolt-card av-side">
+<h4>Current Learning Context</h4>
+<div class="av-panel"><small>ACTIVE MODE</small><strong id="avActiveMode">Electrical Engineering</strong></div>
+<div class="av-panel"><small>CURRENT TOPIC</small><strong id="avTopic">Electrical Engineering</strong></div>
+<div class="av-panel"><small>SESSION STATUS</small><strong id="avMemory">Ready for a conversation</strong></div>
+<div class="av-session-grid">
+<div class="av-session"><small>QUESTIONS</small><strong id="avQuestions">0</strong></div>
+<div class="av-session"><small>RESPONSES</small><strong id="avResponses">0</strong></div>
+</div>
+<h4 style="margin-top:18px">Explore Topics</h4>
+<div class="av-topic-list">
+<button class="av-topic" onclick="askVoltPrompt('What is voltage and how does it work?')">Voltage</button><button class="av-topic" onclick="askVoltPrompt('What is electric current?')">Current</button>
+<button class="av-topic" onclick="askVoltPrompt('Explain resistance.')">Resistance</button><button class="av-topic" onclick="askVoltPrompt('Explain electrical power.')">Power</button>
+<button class="av-topic" onclick="askVoltPrompt('Explain KVL with an example.')">KVL</button><button class="av-topic" onclick="askVoltPrompt('Explain a capacitor.')">Capacitor</button>
+<button class="av-topic" onclick="askVoltPrompt('Explain a diode and LED.')">Diode / LED</button><button class="av-topic" onclick="askVoltPrompt('How do I troubleshoot a dead circuit?')">Troubleshooting</button>
+</div>
+<div class="av-result" id="avCalcBox">AI calculator/context: ready</div>
+<button class="av-clear" onclick="clearAskVolt()">CLEAR CONVERSATION</button>
+<div class="av-disclaimer">Ask Volt uses the VoltLab Cloudflare AI backend. Do not use it as a substitute for supervised work on live electrical systems.</div>
+</div>
+</div>
+</div>
+</section>
+
 <section id="virtual"><div class="container"><div class="section-title"><h2>🧪 Virtual Electrical Lab</h2><p>A preview of the interactive laboratory environment.</p></div><div class="virtual-lab"><div class="lab-screen"><div class="screen-title">VOLTLAB / EXPERIMENT_01</div><div class="components"><div class="component"><div class="symbol">🔋</div><small>POWER SOURCE</small></div><div class="flow-line"></div><div class="component"><div class="symbol">〰️</div><small>RESISTOR</small></div><div class="flow-line"></div><div class="component"><div class="symbol">💡</div><small>LOAD</small></div></div><div class="lab-status">● CIRCUIT STATUS: ACTIVE — ELECTRICAL PATH COMPLETE</div></div><div class="lab-panel"><h3>What happens here?</h3><p class="lab-description">A real electrical circuit needs a source, a conducting path and a load. Voltage provides the potential difference while current represents the movement of charge.</p><div class="card"><h3>Coming Next</h3><p>Interactive circuit construction, component connections and practical troubleshooting experiments.</p></div></div></div></div></section>
 <section id="challenge"><div class="container"><div class="section-title"><h2>🎯 Circuit Challenge</h2><p>Think like an electrical engineer.</p></div><div class="challenge card"><div class="question">A circuit has a voltage of 12 V and resistance of 6 Ω. What is the current?</div><div class="options"><button class="option" onclick="checkAnswer(this,false)">A. 0.5 A</button><button class="option" onclick="checkAnswer(this,true)">B. 2 A</button><button class="option" onclick="checkAnswer(this,false)">C. 6 A</button><button class="option" onclick="checkAnswer(this,false)">D. 72 A</button></div><div class="feedback" id="feedback"></div></div></div></section>
 <section id="team"><div class="container"><div class="section-title"><h2>👨‍💻 Project Team</h2><p>Designed and developed by CSE students of Jamalpur Science and Technology University.</p></div><div class="team-grid"><div class="team-card"><div class="member-photo"><img src="tahmid.jpg" alt="Md. Tahmid Siddique"></div><h3><a class="bio-link" href="bio.html" target="_blank" rel="noopener">Md. Tahmid Siddique</a></h3><div class="role">Website Builder / Project Lead</div><div class="team-info">Jamalpur Science and Technology University<br>Department of Computer Science &amp; Engineering<br>trustinunivers@gmail.com</div></div><div class="team-card"><div class="member-photo">02</div><h3>Team Member 02</h3><div class="role">Team Member</div><div class="team-info">Name to be added</div></div><div class="team-card"><div class="member-photo">03</div><h3>Team Member 03</h3><div class="role">Team Member</div><div class="team-info">Name to be added</div></div><div class="team-card"><div class="member-photo">04</div><h3>Team Member 04</h3><div class="role">Team Member</div><div class="team-info">Name to be added</div></div></div></div></section>
@@ -173,49 +260,131 @@ function checkAnswer(btn,ok){document.querySelectorAll(".option").forEach(b=>b.s
 setCircuitMode("series");updateLED();setupBuilder();
 </script>
 
-<script id="voltlab-ask-volt-script">
-/* ================= ASK VOLT AI ================= */
+
+<script id="ask-volt-2-script">
+/* ================= ASK VOLT 2.0 — REAL AI + COMMAND CENTER ================= */
 const ASK_VOLT_WORKER='https://voltlab-ask-volt.trustinunivers.workers.dev/';
 let askVoltMessages=[];
 let askVoltBusy=false;
-function askVoltEscape(text){return String(text).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;')}
-function askVoltRender(){
- const chat=document.getElementById('askVoltChat');
- if(!chat)return;
- const welcome='<div class="ask-welcome"><strong>Hi, I\'m Ask Volt.</strong><br>I can help with Electrical Engineering, Physics, Mathematics, Chemistry, Biology, CSE, Programming, AI and more. I also know about VoltLab and its interactive learning tools.</div>';
- const prompts='<div class="ask-prompts"><button class="ask-prompt" type="button" onclick="askVoltPrompt(\'Explain Ohm\\'s Law with a simple example.\')">Ohm\'s Law</button><button class="ask-prompt" type="button" onclick="askVoltPrompt(\'Explain Kirchhoff\\'s Voltage Law step by step.\')">KVL</button><button class="ask-prompt" type="button" onclick="askVoltPrompt(\'Write a simple C program to calculate factorial.\')">C Programming</button><button class="ask-prompt" type="button" onclick="askVoltPrompt(\'Explain Newton\\'s second law simply.\')">Physics</button></div>';
- let html=welcome+prompts;
- askVoltMessages.forEach(m=>{html+='<div class="ask-msg '+(m.role==='user'?'user':'ai')+'"><div><div class="ask-label">'+(m.role==='user'?'YOU':'ASK VOLT')+'</div><div class="ask-bubble">'+askVoltEscape(m.content)+'</div></div></div>'});
- html+='<div class="ask-typing" id="askVoltTyping">⚡ Ask Volt is thinking...</div>';
- chat.innerHTML=html;chat.scrollTop=chat.scrollHeight;
+let askVoltMode='Electrical Engineering';
+let askVoltQuestions=0;
+let askVoltResponses=0;
+
+function askVoltEscape(text){
+ return String(text)
+ .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+ .replace(/"/g,'&quot;').replace(/'/g,'&#039;');
 }
-function askVoltPrompt(text){const input=document.getElementById('askVoltInput');if(!input)return;input.value=text;input.focus();sendAskVolt()}
+function askVoltFormat(text){
+ let s=askVoltEscape(text);
+ s=s.replace(/\$\$([\s\S]*?)\$\$/g,'<span class="av-formula">$1</span>');
+ s=s.replace(/\\\[([\s\S]*?)\\\]/g,'<span class="av-formula">$1</span>');
+ s=s.replace(/^### (.+)$/gm,'<h4>$1</h4>');
+ s=s.replace(/^## (.+)$/gm,'<h4>$1</h4>');
+ s=s.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>');
+ s=s.replace(/`([^`]+)`/g,'<code>$1</code>');
+ s=s.replace(/^\s*[-*]\s+(.+)$/gm,'• $1');
+ s=s.replace(/\n/g,'<br>');
+ return s;
+}
+function askVoltFollowUps(text){
+ const low=String(text).toLowerCase();
+ if(/series|parallel/.test(low))return ['Show me a series vs parallel example.','Calculate equivalent resistance.'];
+ if(/kcl|kvl|kirchhoff/.test(low))return ['Give me a numerical KCL example.','Explain KVL step by step.'];
+ if(/ohm|voltage|current|resistance/.test(low))return ['Give me a practical example.','Give me a calculation problem.'];
+ if(/led|diode/.test(low))return ['Why does an LED need a resistor?','Help me troubleshoot an LED circuit.'];
+ if(/physics|math|chemistry|biology|programming|code|cse|ai/.test(low))return ['Explain it more simply.','Give me an example.'];
+ return ['Explain that with an example.','Ask me a practice question.'];
+}
+function askVoltUpdateStats(){
+ const q=document.getElementById('avQuestions'),r=document.getElementById('avResponses'),m=document.getElementById('avMemory');
+ if(q)q.textContent=askVoltQuestions;
+ if(r)r.textContent=askVoltResponses;
+ if(m)m.textContent=askVoltBusy?'AI is generating a response…':(askVoltMessages.length?'Conversation active':'Ready for a conversation');
+}
+function askVoltSetTopic(topic){
+ const el=document.getElementById('avTopic');if(el)el.textContent=topic;
+ const result=document.getElementById('avCalcBox');if(result)result.textContent='Active learning mode: '+topic;
+}
+function askVoltTyping(show){
+ const el=document.getElementById('avTyping');if(el)el.classList.toggle('show',show);
+}
+function askVoltCopy(btn,text){
+ navigator.clipboard.writeText(text).then(()=>{const old=btn.textContent;btn.textContent='COPIED ✓';setTimeout(()=>btn.textContent=old,1000)}).catch(()=>{});
+}
+function askVoltUseFollowUp(text){const i=document.getElementById('avInput');if(!i)return;i.value=text;i.focus();sendAskVolt();}
+function askVoltRender(){
+ const chat=document.getElementById('avChat');if(!chat)return;
+ let html='<div class="av-welcome"><strong>⚡ Ask Volt is ready.</strong><br>Electrical Engineering is the primary mode. You can also switch to Physics, Mathematics, C Programming, AI/CSE, Chemistry, Biology, Quiz Me, Challenge Mode, VoltLab Help or Ask Anything.</div>';
+ askVoltMessages.forEach((m,index)=>{
+   const isUser=m.role==='user';
+   const follow=!isUser && index===askVoltMessages.length-1;
+   html+='<div class="av-msg '+(isUser?'user':'bot')+'"><div class="av-avatar">'+(isUser?'YOU':'⚡')+'</div><div><div style="font-size:11px;color:var(--muted);margin-bottom:4px;font-weight:700">'+(isUser?'YOU':'ASK VOLT')+'</div><div class="av-bubble">'+askVoltFormat(m.content)+'</div>';
+   if(!isUser)html+='<div class="av-actions"><button class="av-action" onclick=\'askVoltCopy(this,'+JSON.stringify(m.content)+')\'>COPY</button><button class="av-action" onclick="askVoltRegenerate()">REGENERATE</button></div>';
+   if(follow)html+='<div class="av-followups">'+askVoltFollowUps(m.content).map(x=>'<button class="av-followup" onclick=\'askVoltUseFollowUp('+JSON.stringify(x)+')\'>'+askVoltEscape(x)+'</button>').join('')+'</div>';
+   html+='</div></div>';
+ });
+ chat.innerHTML=html;chat.scrollTop=chat.scrollHeight;askVoltUpdateStats();
+}
+function askVoltPrompt(text){const i=document.getElementById('avInput');if(!i)return;i.value=text;i.focus();sendAskVolt();}
+function askVoltSelectMode(btn){
+ document.querySelectorAll('#askVoltModes .av-mode').forEach(b=>b.classList.remove('active'));
+ btn.classList.add('active');
+ askVoltMode=btn.dataset.mode||'Electrical Engineering';
+ document.getElementById('avActiveMode').textContent=askVoltMode;
+ askVoltSetTopic(askVoltMode);
+ const i=document.getElementById('avInput');if(i){i.value=btn.dataset.prompt||'';i.focus();}
+}
 async function sendAskVolt(){
  if(askVoltBusy)return;
- const input=document.getElementById('askVoltInput');
- const text=(input.value||'').trim();
- if(!text)return;
- askVoltMessages.push({role:'user',content:text});
- input.value='';
- askVoltBusy=true;
- document.getElementById('askVoltSend').disabled=true;
- askVoltRender();
- const typing=document.getElementById('askVoltTyping');if(typing)typing.classList.add('show');
+ const input=document.getElementById('avInput');if(!input)return;
+ const raw=input.value.trim();if(!raw)return;
+ const modeInstruction='Current Ask Volt learning mode: '+askVoltMode+'. Answer according to this mode while staying accurate. For electrical questions, prefer clear step-by-step reasoning, formulas, units, assumptions and practical interpretation.';
+ const userContent=modeInstruction+'\nUser question: '+raw;
+ askVoltMessages.push({role:'user',content:raw});
+ askVoltQuestions++;
+ input.value='';askVoltBusy=true;
+ const send=document.getElementById('avSend');if(send)send.disabled=true;
+ askVoltTyping(true);askVoltRender();
  try{
-  const res=await fetch(ASK_VOLT_WORKER,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:askVoltMessages.slice(-20)})});
-  const data=await res.json();
-  if(!res.ok||!data.ok)throw new Error(data.error||'AI request failed');
-  askVoltMessages.push({role:'assistant',content:data.response||'I could not generate a response right now.'});
+   const apiMessages=[{role:'system',content:'You are Ask Volt, the educational AI tutor inside VoltLab. Electrical Engineering is your primary expertise. You also help with Physics, Mathematics, C Programming, AI/CSE, Chemistry, Biology and general questions. Explain clearly for students. Show formulas and units when relevant. Never claim to physically operate a circuit. Keep answers useful and reasonably concise.'},
+     ...askVoltMessages.slice(-20).map((m,i)=>({role:m.role==='assistant'?'assistant':'user',content:i===askVoltMessages.slice(-20).length-1&&m.role==='user'?userContent:m.content}))];
+   const res=await fetch(ASK_VOLT_WORKER,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:apiMessages})});
+   const data=await res.json();
+   if(!res.ok||!data.ok)throw new Error(data.error||'AI request failed');
+   askVoltMessages.push({role:'assistant',content:data.response||'I could not generate a response right now.'});
+   askVoltResponses++;
  }catch(err){
-  askVoltMessages.push({role:'assistant',content:'I could not connect to the Ask Volt AI backend right now. Please check the Worker deployment and try again.'});
+   askVoltMessages.push({role:'assistant',content:'⚠️ I could not connect to the Ask Volt AI backend right now. Please try again in a moment.'});
+   askVoltResponses++;
  }
- askVoltBusy=false;
- document.getElementById('askVoltSend').disabled=false;
- askVoltRender();
+ askVoltBusy=false;askVoltTyping(false);if(send)send.disabled=false;askVoltRender();
 }
-function clearAskVolt(){askVoltMessages=[];askVoltRender();document.getElementById('askVoltInput').focus()}
-document.addEventListener('DOMContentLoaded',function(){const input=document.getElementById('askVoltInput');if(input){input.addEventListener('keydown',function(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendAskVolt()}})}});
+async function askVoltRegenerate(){
+ if(askVoltBusy||!askVoltMessages.length)return;
+ const lastUser=[...askVoltMessages].reverse().find(m=>m.role==='user');if(!lastUser)return;
+ askVoltMessages=askVoltMessages.slice(0,askVoltMessages.lastIndexOf(lastUser)+1);
+ const i=document.getElementById('avInput');if(i)i.value=lastUser.content;
+ askVoltMessages.pop();askVoltQuestions=Math.max(0,askVoltQuestions-1);
+ sendAskVolt();
+}
+function clearAskVolt(){if(askVoltBusy)return;askVoltMessages=[];askVoltQuestions=0;askVoltResponses=0;askVoltTyping(false);askVoltRender();}
+async function askVoltCheckBackend(){
+ const status=document.getElementById('askVoltStatus');if(!status)return;
+ try{
+   const res=await fetch(ASK_VOLT_WORKER,{method:'GET',cache:'no-store'});
+   const data=await res.json();
+   if(res.ok&&data.ok){status.textContent='● AI BACKEND ONLINE';status.style.color='var(--green)';}
+   else throw new Error('offline');
+ }catch(e){status.textContent='● AI BACKEND OFFLINE';status.style.color='var(--red)';}
+}
+document.addEventListener('DOMContentLoaded',()=>{
+ const input=document.getElementById('avInput');
+ if(input)input.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendAskVolt();}});
+ askVoltSetTopic('Electrical Engineering');askVoltRender();askVoltCheckBackend();
+});
 </script>
+
 <script id="voltlab-quiz-script">
 /* ================= QUIZ + SCORE SYSTEM ================= */
 const voltQuizBank=[
