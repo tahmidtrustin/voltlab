@@ -24,123 +24,131 @@ nav{position:fixed;top:0;width:100%;z-index:1000;background:rgba(5,8,22,.82);bac
 @media(max-width:600px){section{padding:75px 0}.container{padding:0 16px}.section-title h2{font-size:30px}.cards,.team-grid,.options{grid-template-columns:1fr}.hero-grid{gap:25px}.hero h1{font-size:48px}.nav-container{flex-direction:column;gap:10px}.nav-links{font-size:12px;gap:9px}.lab-panel,.law-card,.team-card{padding:20px}.metric-grid,.led-stat-grid,.builder-results{grid-template-columns:1fr}.components{gap:7px}.component{width:90px;height:100px}.flow-line{width:18px}.screen-title{font-size:12px}.builder-board{height:520px}.builder-component{width:105px}.builder-toolbar{flex-direction:column}.builder-status{margin-left:0}}
 
  /* =========================================================
-   VOLTLAB PREMIUM ASTRAL BACKGROUND
-   Existing VoltLab identity preserved
+   VOLTLAB ASTRA — INTERACTIVE ENERGY UNIVERSE
+   Original VoltLab background stays underneath
    ========================================================= */
-body{
-  position:relative;
-  isolation:isolate;
-  background:
-    radial-gradient(circle at 15% 15%,rgba(33,212,253,.10),transparent 28%),
-    radial-gradient(circle at 85% 20%,rgba(139,92,246,.11),transparent 30%),
-    radial-gradient(circle at 50% 80%,rgba(59,130,246,.07),transparent 35%),
-    #050816;
-}
-/* Keep the existing cyan grid */
-body:before{
-  z-index:-1;
-  opacity:.13;
-  background-image:
-    linear-gradient(rgba(33,212,253,.055) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(33,212,253,.055) 1px,transparent 1px);
-  background-size:50px 50px;
-  mask-image:linear-gradient(to bottom,black,transparent 88%);
-}
 
-/* New animated light atmosphere */
 #voltPremiumBackground{
   position:fixed;
   inset:0;
   width:100%;
   height:100%;
-  z-index:-2;
+  display:block;
   pointer-events:none;
-  opacity:.95;
+  z-index:0;
+  opacity:1;
+  mix-blend-mode:screen;
 }
-/* Soft atmospheric glow */
-body:after{
-  content:"";
+
+.volt-astral-vignette{
   position:fixed;
-  inset:-20%;
-  z-index:-3;
+  inset:0;
+  z-index:0;
   pointer-events:none;
   background:
-    radial-gradient(circle at 20% 35%,rgba(33,212,253,.055),transparent 22%),
-    radial-gradient(circle at 75% 25%,rgba(139,92,246,.055),transparent 25%),
-    radial-gradient(circle at 55% 75%,rgba(59,130,246,.045),transparent 25%);
-  filter:blur(35px);
-  animation:voltAtmosphere 16s ease-in-out infinite alternate;
+    radial-gradient(circle at 50% 45%,
+      rgba(33,212,253,.035),
+      transparent 38%),
+    radial-gradient(circle at 15% 25%,
+      rgba(59,130,246,.025),
+      transparent 30%),
+    radial-gradient(circle at 85% 65%,
+      rgba(139,92,246,.025),
+      transparent 32%);
+  mix-blend-mode:screen;
 }
-@keyframes voltAtmosphere{
-  0%{
-    transform:translate3d(-2%,0,0) scale(1);
-    opacity:.65;
-  }
-  50%{
-    transform:translate3d(2%,-1%,0) scale(1.04);
-    opacity:1;
-  }
-  100%{
-    transform:translate3d(-1%,2%,0) scale(1.02);
-    opacity:.72;
-  }
+
+body > *:not(#voltPremiumBackground):not(.volt-astral-vignette){
+  position:relative;
+  z-index:1;
 }
+
+nav{
+  z-index:1000 !important;
+}
+
+
 /* =========================================================
-   PREMIUM FLOATING SECTION / GLASS DEPTH
+   ASTRA ENERGY ATMOSPHERE
    ========================================================= */
-.card,
-.lab-panel,
-.law-card,
-.about-box,
-.team-card,
-.builder-palette,
-.builder-workbench{
+
+.volt-energy-haze{
+  position:fixed;
+  inset:-25%;
+  z-index:0;
+  pointer-events:none;
   background:
-    linear-gradient(
-      145deg,
-      rgba(16,28,54,.70),
-      rgba(5,12,27,.78)
+    radial-gradient(
+      ellipse at 25% 35%,
+      rgba(33,212,253,.035),
+      transparent 25%
+    ),
+    radial-gradient(
+      ellipse at 75% 30%,
+      rgba(139,92,246,.035),
+      transparent 27%
+    ),
+    radial-gradient(
+      ellipse at 50% 75%,
+      rgba(59,130,246,.025),
+      transparent 30%
     );
-  backdrop-filter:blur(18px) saturate(125%);
-  -webkit-backdrop-filter:blur(18px) saturate(125%);
-  border-color:rgba(91,142,202,.30);
-  box-shadow:
-    0 18px 55px rgba(0,0,0,.28),
-    inset 0 1px 0 rgba(255,255,255,.035);
+  filter:blur(55px);
+  animation:
+    voltAstralHaze
+    22s ease-in-out infinite alternate;
+  pointer-events:none;
 }
-.card:hover,
-.team-card:hover{
-  border-color:rgba(33,212,253,.55);
-  box-shadow:
-    0 20px 60px rgba(0,0,0,.34),
-    0 0 35px rgba(33,212,253,.10);
+
+@keyframes voltAstralHaze{
+
+  0%{
+    transform:
+      translate3d(-2%,-1%,0)
+      scale(1);
+  }
+
+  50%{
+    transform:
+      translate3d(2%,1%,0)
+      scale(1.06);
+  }
+
+  100%{
+    transform:
+      translate3d(-1%,2%,0)
+      scale(1.02);
+  }
+
 }
-/* Main lab blocks get subtle glass depth */
-.lab-panel,
-.law-card{
-  box-shadow:
-    0 20px 60px rgba(0,0,0,.30),
-    0 0 30px rgba(33,212,253,.045),
-    inset 0 1px 0 rgba(255,255,255,.035);
+
+
+/* =========================================================
+   MOTION / PERFORMANCE
+   ========================================================= */
+
+#voltPremiumBackground,
+.volt-astral-vignette,
+.volt-energy-haze{
+  will-change:transform,opacity;
 }
-/* Keep circuit boards dark and cyan */
-.circuit-stage,
-.builder-board,
-.node-diagram,
-.loop-diagram,
-.lab-screen{
-  box-shadow:
-    inset 0 0 45px rgba(33,212,253,.035),
-    0 15px 45px rgba(0,0,0,.25);
+
+@media(max-width:900px){
+
+  #voltPremiumBackground{
+    opacity:.88;
+  }
+
 }
-/* Preserve cyan circuit/grid language */
-.builder-grid{
-  opacity:.9;
+
+@media(max-width:600px){
+
+  #voltPremiumBackground{
+    opacity:.78;
+  }
+
 }
-.builder-wire{
-  stroke:var(--cyan);
-  filter:drop-shadow(0 0 6px rgba(33,212,253,.70));
-}
+
 /* STEP 7 — CIRCUIT DETECTIVE */
 .detective-layout{display:grid;grid-template-columns:1.05fr .95fr;gap:24px}
 .detective-card{background:linear-gradient(145deg,rgba(16,28,54,.88),rgba(8,16,32,.94));border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:var(--glow)}
@@ -238,7 +246,11 @@ window.MathJax = {
  
 </head>
 <body>
- <canvas id="voltPremiumBackground"></canvas>
+
+<canvas id="voltPremiumBackground"></canvas>
+<div class="volt-astral-vignette"></div>
+<div class="volt-energy-haze"></div>
+
 <nav><div class="nav-container"><div class="logo">⚡ Volt<span>Lab</span></div><ul class="nav-links"><li><a href="#home">Home</a></li><li><a href="#learn">Learn</a></li><li><a href="#ohm">Ohm's Lab</a></li><li><a href="#series-parallel">Series/Parallel</a></li><li><a href="#kcl-kvl">KCL/KVL</a></li><li><a href="#led-sim">LED Brightness</a></li><li><a href="#builder">Circuit Builder</a></li><li><a href="#detective">Circuit Detective</a></li><li><a href="#quiz">Quiz</a></li><li><a href="#ask-volt">Ask Volt</a></li><li><a href="#virtual">Virtual Lab</a></li><li><a href="#challenge">Challenge</a></li><li><a href="#team">Team</a></li></ul></div></nav>
 <section id="home" class="hero"><div class="container"><div class="hero-grid"><div><div class="badge">INTERACTIVE ELECTRICAL LABORATORY</div><h1>Where <span class="gradient-text">Electricity</span> Comes Alive.</h1><p>Learn electrical concepts through interactive calculations, visual circuits, experiments and challenges — not just static notes.</p><a href="#learn" class="btn btn-primary">Explore VoltLab ⚡</a><a href="#ohm" class="btn btn-secondary">Open Lab</a></div><div class="hero-circuit"><div class="circuit-box"><div class="energy"></div><div class="energy"></div><div class="energy"></div><div class="wire w1"></div><div class="wire w2"></div><div class="wire w3"></div><div class="wire w4"></div><div class="battery"></div><div class="resistor"></div></div></div></div></div></section>
 <section id="learn"><div class="container"><div class="section-title"><h2>Learn Fundamentals</h2><p>Build your electrical foundation before entering the laboratory.</p></div><div class="cards"><div class="card"><div class="icon">⚡</div><div class="lesson-number">01 — FUNDAMENTAL</div><h3>Voltage</h3><p>Understand potential difference and how voltage drives current through a circuit.</p></div><div class="card"><div class="icon">〰️</div><div class="lesson-number">02 — FUNDAMENTAL</div><h3>Current</h3><p>Learn how electric charge moves and how current is measured in amperes.</p></div><div class="card"><div class="icon">Ω</div><div class="lesson-number">03 — FUNDAMENTAL</div><h3>Resistance</h3><p>Explore how resistance opposes current and affects circuit behaviour.</p></div><div class="card"><div class="icon">📐</div><div class="lesson-number">04 — LAW</div><h3>Ohm's Law</h3><p>Connect voltage, current and resistance using V = I × R.</p></div><div class="card"><div class="icon">🔌</div><div class="lesson-number">05 — CIRCUITS</div><h3>Series &amp; Parallel</h3><p>Learn how components behave when connected in series or parallel.</p></div><div class="card"><div class="icon">⚖️</div><div class="lesson-number">06 — LAWS</div><h3>KCL &amp; KVL</h3><p>Explore Kirchhoff's Current and Voltage Laws through practical circuits.</p></div></div></div></section>
@@ -1075,25 +1087,92 @@ function nextDetectiveCase(){
 
 loadDetectiveCase(0);
 </script>
- <script id="voltlab-premium-background-script">
+<script id="voltlab-astra-background">
+
 (function(){
 
-const canvas=document.getElementById("voltPremiumBackground");
-if(!canvas)return;
+"use strict";
 
-const ctx=canvas.getContext("2d");
+const canvas =
+  document.getElementById("voltPremiumBackground");
 
-let W=0,H=0,DPR=1;
+if(!canvas) return;
+
+const ctx =
+  canvas.getContext("2d",{
+    alpha:true
+  });
+
+let W=0;
+let H=0;
+let DPR=1;
+
 let particles=[];
-let ribbons=[];
 let sparks=[];
-let last=performance.now();
-let trustPulse=0;
-let trustCooldown=0;
+let pulses=[];
+let streams=[];
+let formations=[];
+
+let lastTime=performance.now();
+let formationTimer=0;
+let sparkTimer=0;
+
+const pointer={
+  x:-9999,
+  y:-9999,
+  previousX:-9999,
+  previousY:-9999,
+  active:false,
+  pressed:false,
+  radius:220
+};
+
+
+/* =========================================================
+   CONFIGURATION
+   ========================================================= */
+
+const CONFIG={
+
+  desktopParticles:280,
+
+  mobileParticles:145,
+
+  connectionDistance:145,
+
+  strongConnectionDistance:95,
+
+  pointerDistance:240,
+
+  particleSpeed:.22,
+
+  maxSpeed:3.2,
+
+  friction:.985,
+
+  formationIntervalMin:5500,
+
+  formationIntervalMax:11000,
+
+  maxSparks:180,
+
+  maxPulses:12,
+
+  maxStreams:18
+
+};
+
+
+/* =========================================================
+   RESIZE
+   ========================================================= */
 
 function resize(){
 
-  DPR=Math.min(window.devicePixelRatio||1,2);
+  DPR=Math.min(
+    window.devicePixelRatio||1,
+    2
+  );
 
   W=window.innerWidth;
   H=window.innerHeight;
@@ -1104,402 +1183,15 @@ function resize(){
   canvas.style.width=W+"px";
   canvas.style.height=H+"px";
 
-  ctx.setTransform(DPR,0,0,DPR,0,0);
+  ctx.setTransform(
+    DPR,0,
+    0,DPR,
+    0,0
+  );
 
   createParticles();
-  createRibbons();
-}
+  createStreams();
 
-function createParticles(){
-
-  const count=Math.min(
-    170,
-    Math.max(70,Math.floor((W*H)/15000))
-  );
-
-  particles=[];
-
-  for(let i=0;i<count;i++){
-
-    particles.push({
-      x:Math.random()*W,
-      y:Math.random()*H,
-      r:Math.random()*1.5+.25,
-      a:Math.random()*.55+.12,
-      vx:(Math.random()-.5)*.10,
-      vy:(Math.random()-.5)*.10,
-      phase:Math.random()*Math.PI*2
-    });
-
-  }
-}
-
-function createRibbons(){
-
-  ribbons=[];
-
-  for(let i=0;i<5;i++){
-
-    ribbons.push({
-      offset:Math.random()*Math.PI*2,
-      speed:.00016+Math.random()*.00010,
-      width:1+Math.random()*1.5,
-      alpha:.035+Math.random()*.045,
-      side:i%2
-    });
-
-  }
-}
-
-function spawnSpark(){
-
-  const side=Math.random();
-
-  let x,y;
-
-  if(side<.5){
-    x=Math.random()*W;
-    y=H*.15+Math.random()*H*.70;
-  }else{
-    x=W*.15+Math.random()*W*.70;
-    y=Math.random()*H;
-  }
-
-  sparks.push({
-    x:x,
-    y:y,
-    life:0,
-    max:500+Math.random()*900,
-    angle:Math.random()*Math.PI*2,
-    length:20+Math.random()*65,
-    alpha:.45+Math.random()*.35
-  });
-}
-
-function drawParticles(t){
-
-  for(const p of particles){
-
-    p.x+=p.vx;
-    p.y+=p.vy;
-    p.phase+=.008;
-
-    if(p.x<-5)p.x=W+5;
-    if(p.x>W+5)p.x=-5;
-
-    if(p.y<-5)p.y=H+5;
-    if(p.y>H+5)p.y=-5;
-
-    const pulse=.45+.55*Math.sin(p.phase);
-
-    ctx.beginPath();
-    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-
-    ctx.fillStyle=
-      "rgba(120,205,255,"+
-      (p.a*pulse)+")";
-
-    ctx.shadowBlur=10;
-    ctx.shadowColor="rgba(33,212,253,.7)";
-    ctx.fill();
-    ctx.shadowBlur=0;
-  }
-}
-
-function drawRibbons(t){
-
-  ribbons.forEach((r,index)=>{
-
-    ctx.beginPath();
-
-    const baseY=
-      H*(.25+index*.13);
-
-    for(let x=-40;x<=W+40;x+=18){
-
-      const wave=
-        Math.sin(
-          x*.004+
-          t*r.speed+
-          r.offset
-        )*45;
-
-      const wave2=
-        Math.sin(
-          x*.0018-
-          t*r.speed*.7+
-          r.offset
-        )*70;
-
-      const y=
-        baseY+
-        wave+
-        wave2;
-
-      if(x===-40)ctx.moveTo(x,y);
-      else ctx.lineTo(x,y);
-    }
-
-    const gradient=ctx.createLinearGradient(
-      0,0,W,0
-    );
-
-    gradient.addColorStop(
-      0,
-      "rgba(33,212,253,0)"
-    );
-
-    gradient.addColorStop(
-      .25,
-      "rgba(33,212,253,"+r.alpha+")"
-    );
-
-    gradient.addColorStop(
-      .5,
-      "rgba(139,92,246,"+(r.alpha*.8)+")"
-    );
-
-    gradient.addColorStop(
-      .75,
-      "rgba(33,212,253,"+r.alpha+")"
-    );
-
-    gradient.addColorStop(
-      1,
-      "rgba(33,212,253,0)"
-    );
-
-    ctx.strokeStyle=gradient;
-    ctx.lineWidth=r.width;
-    ctx.shadowBlur=18;
-    ctx.shadowColor="rgba(33,212,253,.18)";
-    ctx.stroke();
-    ctx.shadowBlur=0;
-
-  });
-}
-
-function drawSparks(){
-
-  for(let i=sparks.length-1;i>=0;i--){
-
-    const s=sparks[i];
-
-    s.life+=16;
-
-    const progress=s.life/s.max;
-
-    if(progress>=1){
-      sparks.splice(i,1);
-      continue;
-    }
-
-    const fade=
-      progress<.15
-      ?progress/.15
-      :1-(progress-.15)/.85;
-
-    ctx.save();
-
-    ctx.translate(s.x,s.y);
-    ctx.rotate(s.angle);
-
-    const g=ctx.createLinearGradient(
-      0,0,s.length,0
-    );
-
-    g.addColorStop(
-      0,
-      "rgba(33,212,253,0)"
-    );
-
-    g.addColorStop(
-      .45,
-      "rgba(120,220,255,"+
-      (.7*fade*s.alpha)+")"
-    );
-
-    g.addColorStop(
-      1,
-      "rgba(139,92,246,0)"
-    );
-
-    ctx.strokeStyle=g;
-    ctx.lineWidth=1.2;
-
-    ctx.shadowBlur=14;
-    ctx.shadowColor="rgba(33,212,253,.65)";
-
-    ctx.beginPath();
-    ctx.moveTo(0,0);
-    ctx.lineTo(s.length,0);
-    ctx.stroke();
-
-    ctx.restore();
-  }
-}
-
-/* =========================================================
-   FAINT TRUSTINUNIVERS LIGHT SIGNATURE
-   Appears as part of the light field, never as static text
-   ========================================================= */
-
-function drawTrustinUnivers(t){
-
-  trustCooldown-=16;
-
-  if(trustCooldown<=0 && Math.random()<.004){
-
-    trustPulse=1;
-    trustCooldown=12000+Math.random()*16000;
-
-  }
-
-  if(trustPulse<=0)return;
-
-  trustPulse-=.008;
-
-  const alpha=
-    Math.sin(Math.PI*(1-trustPulse))*
-    .055*
-    trustPulse;
-
-  ctx.save();
-
-  ctx.font=
-    "800 "+Math.max(18,Math.min(38,W*.025))+
-    "px Arial";
-
-  ctx.textAlign="center";
-  ctx.textBaseline="middle";
-
-  const x=
-    W*.5+
-    Math.sin(t*.00025)*W*.12;
-
-  const y=
-    H*.42+
-    Math.sin(t*.00019)*H*.08;
-
-  const glow=ctx.createRadialGradient(
-    x,y,0,
-    x,y,Math.max(W,H)*.18
-  );
-
-  glow.addColorStop(
-    0,
-    "rgba(33,212,253,"+
-    (alpha*.65)+")"
-  );
-
-  glow.addColorStop(
-    .45,
-    "rgba(139,92,246,"+
-    (alpha*.35)+")"
-  );
-
-  glow.addColorStop(
-    1,
-    "rgba(0,0,0,0)"
-  );
-
-  ctx.fillStyle=glow;
-  ctx.fillRect(
-    x-W*.25,
-    y-H*.18,
-    W*.5,
-    H*.36
-  );
-
-  ctx.shadowBlur=22;
-  ctx.shadowColor=
-    "rgba(33,212,253,"+
-    (alpha*3)+")";
-
-  const textGradient=ctx.createLinearGradient(
-    x-200,y,
-    x+200,y
-  );
-
-  textGradient.addColorStop(
-    0,
-    "rgba(33,212,253,0)"
-  );
-
-  textGradient.addColorStop(
-    .35,
-    "rgba(150,230,255,"+
-    alpha+")"
-  );
-
-  textGradient.addColorStop(
-    .5,
-    "rgba(255,255,255,"+
-    (alpha*.9)+")"
-  );
-
-  textGradient.addColorStop(
-    .65,
-    "rgba(160,130,255,"+
-    alpha+")"
-  );
-
-  textGradient.addColorStop(
-    1,
-    "rgba(139,92,246,0)"
-  );
-
-  ctx.fillStyle=textGradient;
-
-  ctx.fillText(
-    "TrustinUnivers",
-    x,
-    y
-  );
-
-  ctx.restore();
-}
-
-function animate(t){
-
-  ctx.clearRect(0,0,W,H);
-
-  /* extremely dark atmospheric base */
-  const bg=ctx.createRadialGradient(
-    W*.5,H*.45,0,
-    W*.5,H*.45,
-    Math.max(W,H)*.75
-  );
-
-  bg.addColorStop(
-    0,
-    "rgba(14,30,58,.28)"
-  );
-
-  bg.addColorStop(
-    .5,
-    "rgba(5,12,28,.10)"
-  );
-
-  bg.addColorStop(
-    1,
-    "rgba(0,0,0,0)"
-  );
-
-  ctx.fillStyle=bg;
-  ctx.fillRect(0,0,W,H);
-
-  drawRibbons(t);
-  drawParticles(t);
-
-  if(Math.random()<.018){
-    spawnSpark();
-  }
-
-  drawSparks();
-  drawTrustinUnivers(t);
-
-  requestAnimationFrame(animate);
 }
 
 window.addEventListener(
@@ -1508,9 +1200,1618 @@ window.addEventListener(
   {passive:true}
 );
 
+
+/* =========================================================
+   PARTICLES
+   ========================================================= */
+
+function createParticles(){
+
+  const mobile=W<700;
+
+  const amount=mobile
+    ?CONFIG.mobileParticles
+    :Math.min(
+       CONFIG.desktopParticles,
+       Math.max(
+         150,
+         Math.floor(
+           W*H/7000
+         )
+       )
+     );
+
+  particles=[];
+
+  for(
+    let i=0;
+    i<amount;
+    i++
+  ){
+
+    const angle=
+      Math.random()*
+      Math.PI*2;
+
+    const speed=
+      CONFIG.particleSpeed*
+      (
+        .35+
+        Math.random()*1.5
+      );
+
+    const depth=
+      Math.random();
+
+    particles.push({
+
+      x:Math.random()*W,
+      y:Math.random()*H,
+
+      vx:
+        Math.cos(angle)*
+        speed,
+
+      vy:
+        Math.sin(angle)*
+        speed,
+
+      baseVx:
+        Math.cos(angle)*
+        speed,
+
+      baseVy:
+        Math.sin(angle)*
+        speed,
+
+      depth:depth,
+
+      radius:
+        depth>.78
+        ?1.5+
+         Math.random()*2
+        :
+        .45+
+         Math.random()*1.45,
+
+      alpha:
+        .22+
+        depth*.62+
+        Math.random()*.18,
+
+      phase:
+        Math.random()*
+        Math.PI*2,
+
+      phaseSpeed:
+        .003+
+        Math.random()*.012,
+
+      energy:0,
+
+      type:
+        Math.random()<.75
+        ?"cyan"
+        :
+        Math.random()<.65
+        ?"blue"
+        :"violet"
+
+    });
+
+  }
+
+}
+
+
+/* =========================================================
+   ENERGY STREAMS
+   ========================================================= */
+
+function createStreams(){
+
+  streams=[];
+
+  const count=
+    W<700
+    ?8
+    :16;
+
+  for(
+    let i=0;
+    i<count;
+    i++
+  ){
+
+    streams.push({
+
+      y:
+        Math.random()*
+        H,
+
+      amplitude:
+        20+
+        Math.random()*100,
+
+      frequency:
+        .0015+
+        Math.random()*.004,
+
+      speed:
+        .0003+
+        Math.random()*.0008,
+
+      phase:
+        Math.random()*
+        Math.PI*2,
+
+      alpha:
+        .025+
+        Math.random()*.055,
+
+      width:
+        .5+
+        Math.random()*1.3
+
+    });
+
+  }
+
+}
+
+
+/* =========================================================
+   UPDATE PARTICLES
+   ========================================================= */
+
+function updateParticles(dt,time){
+
+  const scale=
+    Math.min(dt,32)/16;
+
+  for(const p of particles){
+
+    p.phase+=
+      p.phaseSpeed*
+      scale;
+
+
+    /* natural movement */
+
+    p.x+=
+      p.vx*
+      scale;
+
+    p.y+=
+      p.vy*
+      scale;
+
+
+    /* =====================================================
+       POINTER GRAVITY + SWIRL
+       ===================================================== */
+
+    if(pointer.active){
+
+      const dx=
+        pointer.x-p.x;
+
+      const dy=
+        pointer.y-p.y;
+
+      const distance=
+        Math.sqrt(
+          dx*dx+
+          dy*dy
+        );
+
+      if(
+        distance<
+        pointer.radius
+      ){
+
+        const safe=
+          Math.max(
+            distance,
+            1
+          );
+
+        const nx=
+          dx/safe;
+
+        const ny=
+          dy/safe;
+
+        const influence=
+          Math.pow(
+            1-
+            distance/
+            pointer.radius,
+            2
+          );
+
+        const swirl=.72;
+
+        p.vx+=
+          (
+            nx*.18+
+            -ny*
+            swirl
+          )*
+          influence;
+
+        p.vy+=
+          (
+            ny*.18+
+            nx*
+            swirl
+          )*
+          influence;
+
+        p.energy=
+          Math.min(
+            1,
+            p.energy+
+            influence*.055
+          );
+
+      }
+
+    }
+
+
+    /* =====================================================
+       FORMATION FORCES
+       ===================================================== */
+
+    for(
+      const f of formations
+    ){
+
+      const dx=
+        f.x-p.x;
+
+      const dy=
+        f.y-p.y;
+
+      const distance=
+        Math.sqrt(
+          dx*dx+
+          dy*dy
+        );
+
+      if(
+        distance<
+        f.radius
+      ){
+
+        const influence=
+          1-
+          distance/
+          f.radius;
+
+        const safe=
+          Math.max(
+            distance,
+            1
+          );
+
+        p.vx+=
+          dx/safe*
+          influence*
+          f.strength;
+
+        p.vy+=
+          dy/safe*
+          influence*
+          f.strength;
+
+        p.energy=
+          Math.min(
+            1,
+            p.energy+
+            influence*.035
+          );
+
+      }
+
+    }
+
+
+    /* =====================================================
+       NATURAL DRIFT RESTORATION
+       ===================================================== */
+
+    p.vx+=
+      (
+        p.baseVx-
+        p.vx
+      )*.008;
+
+    p.vy+=
+      (
+        p.baseVy-
+        p.vy
+      )*.008;
+
+
+    p.vx*=CONFIG.friction;
+    p.vy*=CONFIG.friction;
+
+
+    /* =====================================================
+       SPEED LIMIT
+       ===================================================== */
+
+    const velocity=
+      Math.sqrt(
+        p.vx*p.vx+
+        p.vy*p.vy
+      );
+
+    if(
+      velocity>
+      CONFIG.maxSpeed
+    ){
+
+      p.vx=
+        p.vx/
+        velocity*
+        CONFIG.maxSpeed;
+
+      p.vy=
+        p.vy/
+        velocity*
+        CONFIG.maxSpeed;
+
+    }
+
+
+    /* energy fade */
+
+    p.energy*=.968;
+
+
+    /* =====================================================
+       SCREEN WRAP
+       ===================================================== */
+
+    if(p.x<-30)
+      p.x=W+30;
+
+    if(p.x>W+30)
+      p.x=-30;
+
+    if(p.y<-30)
+      p.y=H+30;
+
+    if(p.y>H+30)
+      p.y=-30;
+
+  }
+
+}
+
+
+/* =========================================================
+   ENERGY FORMATIONS
+   ========================================================= */
+
+function createFormation(
+  x=null,
+  y=null
+){
+
+  if(
+    formations.length>4
+  )return;
+
+  if(x===null)
+    x=
+      W*.15+
+      Math.random()*
+      W*.70;
+
+  if(y===null)
+    y=
+      H*.15+
+      Math.random()*
+      H*.70;
+
+  formations.push({
+
+    x:x,
+    y:y,
+
+    radius:
+      120+
+      Math.random()*160,
+
+    strength:
+      .018+
+      Math.random()*.035,
+
+    life:0,
+
+    maxLife:
+      2500+
+      Math.random()*3500
+
+  });
+
+}
+
+
+function updateFormations(dt){
+
+  for(
+    let i=
+      formations.length-1;
+    i>=0;
+    i--
+  ){
+
+    const f=
+      formations[i];
+
+    f.life+=dt;
+
+    if(
+      f.life>
+      f.maxLife
+    ){
+
+      formations.splice(
+        i,
+        1
+      );
+
+    }
+
+  }
+
+}
+
+
+/* =========================================================
+   CONNECTION NETWORK
+   ========================================================= */
+
+function drawConnections(){
+
+  for(
+    let i=0;
+    i<particles.length;
+    i++
+  ){
+
+    const a=
+      particles[i];
+
+    for(
+      let j=i+1;
+      j<particles.length;
+      j++
+    ){
+
+      const b=
+        particles[j];
+
+      const dx=
+        a.x-b.x;
+
+      const dy=
+        a.y-b.y;
+
+      const distSq=
+        dx*dx+
+        dy*dy;
+
+      const max=
+        CONFIG.connectionDistance;
+
+      if(
+        distSq>
+        max*max
+      )continue;
+
+      const distance=
+        Math.sqrt(distSq);
+
+      let alpha=
+        1-
+        distance/max;
+
+      alpha*=.16;
+
+
+      /* pointer activates network */
+
+      if(pointer.active){
+
+        const da=
+          Math.hypot(
+            pointer.x-a.x,
+            pointer.y-a.y
+          );
+
+        const db=
+          Math.hypot(
+            pointer.x-b.x,
+            pointer.y-b.y
+          );
+
+        if(
+          da<CONFIG.pointerDistance||
+          db<CONFIG.pointerDistance
+        ){
+
+          alpha+=.20;
+
+        }
+
+      }
+
+
+      const energy=
+        Math.max(
+          a.energy,
+          b.energy
+        );
+
+      alpha+=
+        energy*.18;
+
+      alpha=
+        Math.min(
+          alpha,
+          .68
+        );
+
+
+      let c1=
+        "rgba(33,212,253,"+
+        alpha+")";
+
+      let c2=
+        "rgba(139,92,246,"+
+        alpha*.75+")";
+
+
+      const gradient=
+        ctx.createLinearGradient(
+          a.x,
+          a.y,
+          b.x,
+          b.y
+        );
+
+      gradient.addColorStop(
+        0,
+        c1
+      );
+
+      gradient.addColorStop(
+        .48,
+        "rgba(120,220,255,"+
+        alpha*.9+")"
+      );
+
+      gradient.addColorStop(
+        1,
+        c2
+      );
+
+      ctx.strokeStyle=
+        gradient;
+
+      ctx.lineWidth=
+        distance<
+        CONFIG.strongConnectionDistance
+        ?1.15
+        :.55;
+
+      ctx.beginPath();
+
+      ctx.moveTo(
+        a.x,
+        a.y
+      );
+
+      ctx.lineTo(
+        b.x,
+        b.y
+      );
+
+      ctx.stroke();
+
+    }
+
+  }
+
+}
+
+
+/* =========================================================
+   DRAW PARTICLES
+   ========================================================= */
+
+function drawParticles(time){
+
+  for(
+    const p of particles
+  ){
+
+    const breathing=
+      .72+
+      Math.sin(
+        p.phase+
+        time*.0004
+      )*.28;
+
+    const alpha=
+      p.alpha*
+      breathing;
+
+
+    const radius=
+      p.radius+
+      p.energy*
+      2.2;
+
+
+    ctx.beginPath();
+
+    ctx.arc(
+      p.x,
+      p.y,
+      radius,
+      0,
+      Math.PI*2
+    );
+
+
+    if(
+      p.type==="cyan"
+    ){
+
+      ctx.fillStyle=
+        "rgba(100,220,255,"+
+        alpha+")";
+
+      ctx.shadowColor=
+        "rgba(33,212,253,"+
+        (.5+
+         p.energy*.5)+")";
+
+    }
+
+    else if(
+      p.type==="blue"
+    ){
+
+      ctx.fillStyle=
+        "rgba(90,165,255,"+
+        alpha+")";
+
+      ctx.shadowColor=
+        "rgba(59,130,246,"+
+        (.45+
+         p.energy*.5)+")";
+
+    }
+
+    else{
+
+      ctx.fillStyle=
+        "rgba(175,140,255,"+
+        alpha+")";
+
+      ctx.shadowColor=
+        "rgba(139,92,246,"+
+        (.45+
+         p.energy*.5)+")";
+
+    }
+
+
+    ctx.shadowBlur=
+      4+
+      p.energy*22;
+
+    ctx.fill();
+
+    ctx.shadowBlur=0;
+
+  }
+
+}
+
+
+/* =========================================================
+   FLOWING ENERGY LINES
+   ========================================================= */
+
+function drawStreams(time){
+
+  for(
+    let i=0;
+    i<streams.length;
+    i++
+  ){
+
+    const s=
+      streams[i];
+
+    ctx.beginPath();
+
+    for(
+      let x=-50;
+      x<=W+50;
+      x+=24
+    ){
+
+      const wave=
+        Math.sin(
+          x*s.frequency+
+          time*s.speed+
+          s.phase
+        )*
+        s.amplitude;
+
+      const wave2=
+        Math.sin(
+          x*.0015-
+          time*s.speed*.65+
+          s.phase
+        )*
+        35;
+
+      const y=
+        s.y+
+        wave+
+        wave2;
+
+      if(
+        x===-50
+      )
+        ctx.moveTo(
+          x,
+          y
+        );
+      else
+        ctx.lineTo(
+          x,
+          y
+        );
+
+    }
+
+
+    const gradient=
+      ctx.createLinearGradient(
+        0,
+        0,
+        W,
+        0
+      );
+
+    gradient.addColorStop(
+      0,
+      "rgba(33,212,253,0)"
+    );
+
+    gradient.addColorStop(
+      .22,
+      "rgba(33,212,253,"+
+      s.alpha+")"
+    );
+
+    gradient.addColorStop(
+      .5,
+      "rgba(139,92,246,"+
+      s.alpha*.7+")"
+    );
+
+    gradient.addColorStop(
+      .78,
+      "rgba(33,212,253,"+
+      s.alpha+")"
+    );
+
+    gradient.addColorStop(
+      1,
+      "rgba(33,212,253,0)"
+    );
+
+
+    ctx.strokeStyle=
+      gradient;
+
+    ctx.lineWidth=
+      s.width;
+
+    ctx.shadowBlur=14;
+
+    ctx.shadowColor=
+      "rgba(33,212,253,.12)";
+
+    ctx.stroke();
+
+    ctx.shadowBlur=0;
+
+  }
+
+}
+
+
+/* =========================================================
+   SPARKS
+   ========================================================= */
+
+function spawnSpark(
+  x,
+  y,
+  powerful=false
+){
+
+  if(
+    sparks.length>
+    CONFIG.maxSparks
+  )return;
+
+  const angle=
+    Math.random()*
+    Math.PI*2;
+
+  const speed=
+    powerful
+    ?2+
+     Math.random()*4
+    :
+     .6+
+     Math.random()*2.7;
+
+  sparks.push({
+
+    x:x,
+    y:y,
+
+    vx:
+      Math.cos(angle)*
+      speed,
+
+    vy:
+      Math.sin(angle)*
+      speed,
+
+    life:0,
+
+    maxLife:
+      powerful
+      ?500+
+       Math.random()*700
+      :
+       250+
+       Math.random()*650,
+
+    size:
+      .5+
+      Math.random()*1.7
+
+  });
+
+}
+
+
+function updateSparks(dt){
+
+  const scale=
+    Math.min(dt,32)/16;
+
+  for(
+    let i=sparks.length-1;
+    i>=0;
+    i--
+  ){
+
+    const s=
+      sparks[i];
+
+    s.life+=dt;
+
+    s.x+=
+      s.vx*
+      scale;
+
+    s.y+=
+      s.vy*
+      scale;
+
+    s.vx*=.975;
+    s.vy*=.975;
+
+    if(
+      s.life>
+      s.maxLife
+    ){
+
+      sparks.splice(
+        i,
+        1
+      );
+
+    }
+
+  }
+
+}
+
+
+function drawSparks(){
+
+  for(
+    const s of sparks
+  ){
+
+    const progress=
+      s.life/
+      s.maxLife;
+
+    const alpha=
+      progress<.18
+      ?progress/.18
+      :1-progress;
+
+
+    ctx.beginPath();
+
+    ctx.arc(
+      s.x,
+      s.y,
+      s.size+
+      alpha,
+      0,
+      Math.PI*2
+    );
+
+    ctx.fillStyle=
+      "rgba(190,245,255,"+
+      (.9*alpha)+")";
+
+    ctx.shadowBlur=14;
+
+    ctx.shadowColor=
+      "rgba(33,212,253,.9)";
+
+    ctx.fill();
+
+    ctx.shadowBlur=0;
+
+  }
+
+}
+
+
+/* =========================================================
+   POINTER ENERGY FIELD
+   ========================================================= */
+
+function drawPointerField(time){
+
+  if(!pointer.active)
+    return;
+
+
+  const pulse=
+    .75+
+    Math.sin(
+      time*.004
+    )*.2;
+
+  const radius=
+    115+
+    Math.sin(
+      time*.002
+    )*18;
+
+
+  const glow=
+    ctx.createRadialGradient(
+      pointer.x,
+      pointer.y,
+      0,
+      pointer.x,
+      pointer.y,
+      radius
+    );
+
+  glow.addColorStop(
+    0,
+    "rgba(33,212,253,"+
+    (.09*pulse)+")"
+  );
+
+  glow.addColorStop(
+    .25,
+    "rgba(33,212,253,.035)"
+  );
+
+  glow.addColorStop(
+    .6,
+    "rgba(139,92,246,.018)"
+  );
+
+  glow.addColorStop(
+    1,
+    "rgba(0,0,0,0)"
+  );
+
+
+  ctx.fillStyle=
+    glow;
+
+  ctx.beginPath();
+
+  ctx.arc(
+    pointer.x,
+    pointer.y,
+    radius,
+    0,
+    Math.PI*2
+  );
+
+  ctx.fill();
+
+
+  /* pointer energy ring */
+
+  ctx.beginPath();
+
+  ctx.arc(
+    pointer.x,
+    pointer.y,
+    radius*.72,
+    0,
+    Math.PI*2
+  );
+
+  ctx.strokeStyle=
+    "rgba(33,212,253,.055)";
+
+  ctx.lineWidth=.7;
+
+  ctx.stroke();
+
+}
+
+
+/* =========================================================
+   POINTER INTERACTION
+   ========================================================= */
+
+function pointerMove(
+  x,
+  y
+){
+
+  pointer.previousX=
+    pointer.x;
+
+  pointer.previousY=
+    pointer.y;
+
+  pointer.x=x;
+  pointer.y=y;
+
+  pointer.active=true;
+
+}
+
+
+window.addEventListener(
+  "mousemove",
+  function(e){
+
+    pointerMove(
+      e.clientX,
+      e.clientY
+    );
+
+  },
+  {passive:true}
+);
+
+
+window.addEventListener(
+  "mouseleave",
+  function(){
+
+    pointer.active=false;
+
+  },
+  {passive:true}
+);
+
+
+/* =========================================================
+   CLICK ENERGY BURST
+   ========================================================= */
+
+function energyBurst(
+  x,
+  y
+){
+
+  if(
+    pulses.length>
+    CONFIG.maxPulses
+  )
+    pulses.shift();
+
+
+  pulses.push({
+
+    x:x,
+    y:y,
+
+    radius:0,
+
+    maxRadius:
+      100+
+      Math.random()*180,
+
+    life:0,
+
+    duration:
+      800+
+      Math.random()*700
+
+  });
+
+
+  for(
+    const p of particles
+  ){
+
+    const dx=
+      p.x-x;
+
+    const dy=
+      p.y-y;
+
+    const distance=
+      Math.sqrt(
+        dx*dx+
+        dy*dy
+      );
+
+    if(
+      distance<220
+    ){
+
+      const force=
+        1-
+        distance/220;
+
+      const safe=
+        Math.max(
+          distance,
+          1
+        );
+
+      p.vx+=
+        dx/safe*
+        force*
+        1.7;
+
+      p.vy+=
+        dy/safe*
+        force*
+        1.7;
+
+      p.energy=
+        Math.min(
+          1,
+          p.energy+
+          force
+        );
+
+    }
+
+  }
+
+
+  for(
+    let i=0;
+    i<18;
+    i++
+  ){
+
+    spawnSpark(
+      x,
+      y,
+      true
+    );
+
+  }
+
+}
+
+
+window.addEventListener(
+  "click",
+  function(e){
+
+    energyBurst(
+      e.clientX,
+      e.clientY
+    );
+
+  },
+  {passive:true}
+);
+
+
+/* =========================================================
+   TOUCH
+   ========================================================= */
+
+window.addEventListener(
+  "touchstart",
+  function(e){
+
+    if(
+      !e.touches.length
+    )return;
+
+    const t=
+      e.touches[0];
+
+    pointerMove(
+      t.clientX,
+      t.clientY
+    );
+
+    pointer.pressed=true;
+
+    energyBurst(
+      t.clientX,
+      t.clientY
+    );
+
+  },
+  {passive:true}
+);
+
+
+window.addEventListener(
+  "touchmove",
+  function(e){
+
+    if(
+      !e.touches.length
+    )return;
+
+    const t=
+      e.touches[0];
+
+    pointerMove(
+      t.clientX,
+      t.clientY
+    );
+
+  },
+  {passive:true}
+);
+
+
+window.addEventListener(
+  "touchend",
+  function(){
+
+    pointer.pressed=false;
+
+    setTimeout(
+      function(){
+
+        if(
+          !pointer.pressed
+        )
+          pointer.active=false;
+
+      },
+      450
+    );
+
+  },
+  {passive:true}
+);
+
+
+/* =========================================================
+   PULSE UPDATE
+   ========================================================= */
+
+function updatePulses(dt){
+
+  for(
+    let i=pulses.length-1;
+    i>=0;
+    i--
+  ){
+
+    const p=
+      pulses[i];
+
+    p.life+=dt;
+
+    const progress=
+      p.life/
+      p.duration;
+
+    p.radius=
+      p.maxRadius*
+      (
+        1-
+        Math.pow(
+          1-progress,
+          3
+        )
+      );
+
+    if(
+      progress>=1
+    ){
+
+      pulses.splice(
+        i,
+        1
+      );
+
+    }
+
+  }
+
+}
+
+
+function drawPulses(){
+
+  for(
+    const p of pulses
+  ){
+
+    const progress=
+      p.life/
+      p.duration;
+
+    const alpha=
+      .20*
+      (1-progress);
+
+
+    ctx.beginPath();
+
+    ctx.arc(
+      p.x,
+      p.y,
+      p.radius,
+      0,
+      Math.PI*2
+    );
+
+    ctx.strokeStyle=
+      "rgba(33,212,253,"+
+      alpha+")";
+
+    ctx.lineWidth=
+      1.1;
+
+    ctx.shadowBlur=20;
+
+    ctx.shadowColor=
+      "rgba(33,212,253,.4)";
+
+    ctx.stroke();
+
+    ctx.shadowBlur=0;
+
+  }
+
+}
+
+
+/* =========================================================
+   RANDOM PARTICLE SPARK
+   ========================================================= */
+
+function randomParticleSpark(){
+
+  if(
+    Math.random()>
+    .018
+  )return;
+
+  const p=
+    particles[
+      Math.floor(
+        Math.random()*
+        particles.length
+      )
+    ];
+
+  if(!p)return;
+
+  spawnSpark(
+    p.x,
+    p.y
+  );
+
+}
+
+
+/* =========================================================
+   AUTOMATIC FORMATION TIMER
+   ========================================================= */
+
+function automaticFormation(dt){
+
+  formationTimer+=dt;
+
+  if(
+    formationTimer>
+    CONFIG.formationIntervalMin+
+    Math.random()*
+    (
+      CONFIG.formationIntervalMax-
+      CONFIG.formationIntervalMin
+    )
+  ){
+
+    formationTimer=0;
+
+    createFormation();
+
+  }
+
+}
+
+
+/* =========================================================
+   ATMOSPHERIC BACKGROUND
+   ========================================================= */
+
+function drawAtmosphere(){
+
+  const g=
+    ctx.createRadialGradient(
+      W*.5,
+      H*.48,
+      0,
+      W*.5,
+      H*.48,
+      Math.max(W,H)*.78
+    );
+
+  g.addColorStop(
+    0,
+    "rgba(20,45,85,.055)"
+  );
+
+  g.addColorStop(
+    .45,
+    "rgba(8,20,42,.025)"
+  );
+
+  g.addColorStop(
+    1,
+    "rgba(0,0,0,0)"
+  );
+
+  ctx.fillStyle=g;
+
+  ctx.fillRect(
+    0,
+    0,
+    W,
+    H
+  );
+
+}
+
+
+/* =========================================================
+   MAIN LOOP
+   ========================================================= */
+
+function animate(time){
+
+  const dt=
+    Math.min(
+      time-lastTime,
+      40
+    );
+
+  lastTime=time;
+
+
+  ctx.clearRect(
+    0,
+    0,
+    W,
+    H
+  );
+
+
+  drawAtmosphere();
+
+
+  automaticFormation(dt);
+
+  updateFormations(dt);
+
+  updateParticles(
+    dt,
+    time
+  );
+
+  updateSparks(dt);
+
+  updatePulses(dt);
+
+
+  /* Deep flowing layer */
+
+  drawStreams(time);
+
+
+  /* Network layer */
+
+  drawConnections();
+
+
+  /* Energy rings */
+
+  drawPulses();
+
+
+  /* Particle field */
+
+  drawParticles(time);
+
+
+  /* Electrical sparks */
+
+  drawSparks();
+
+
+  /* Mouse/touch field */
+
+  drawPointerField(time);
+
+
+  randomParticleSpark();
+
+
+  requestAnimationFrame(
+    animate
+  );
+
+}
+
+
+/* =========================================================
+   START
+   ========================================================= */
+
 resize();
-requestAnimationFrame(animate);
+
+requestAnimationFrame(
+  animate
+);
 
 })();
+
 </script>
 </body></html>
