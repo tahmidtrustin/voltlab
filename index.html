@@ -23,7 +23,124 @@ nav{position:fixed;top:0;width:100%;z-index:1000;background:rgba(5,8,22,.82);bac
 @media(max-width:900px){.hero-grid,.lab-wrapper,.kirch-grid,.virtual-lab,.builder-layout{grid-template-columns:1fr}.cards{grid-template-columns:1fr 1fr}.team-grid{grid-template-columns:1fr 1fr}.nav-links{gap:12px}.nav-container{align-items:flex-start}.components{margin:55px 0}.flow-line{width:30px}.builder-properties{grid-template-columns:1fr}}
 @media(max-width:600px){section{padding:75px 0}.container{padding:0 16px}.section-title h2{font-size:30px}.cards,.team-grid,.options{grid-template-columns:1fr}.hero-grid{gap:25px}.hero h1{font-size:48px}.nav-container{flex-direction:column;gap:10px}.nav-links{font-size:12px;gap:9px}.lab-panel,.law-card,.team-card{padding:20px}.metric-grid,.led-stat-grid,.builder-results{grid-template-columns:1fr}.components{gap:7px}.component{width:90px;height:100px}.flow-line{width:18px}.screen-title{font-size:12px}.builder-board{height:520px}.builder-component{width:105px}.builder-toolbar{flex-direction:column}.builder-status{margin-left:0}}
 
+ /* =========================================================
+   VOLTLAB PREMIUM ASTRAL BACKGROUND
+   Existing VoltLab identity preserved
+   ========================================================= */
+body{
+  position:relative;
+  isolation:isolate;
+  background:
+    radial-gradient(circle at 15% 15%,rgba(33,212,253,.10),transparent 28%),
+    radial-gradient(circle at 85% 20%,rgba(139,92,246,.11),transparent 30%),
+    radial-gradient(circle at 50% 80%,rgba(59,130,246,.07),transparent 35%),
+    #050816;
+}
+/* Keep the existing cyan grid */
+body:before{
+  z-index:-1;
+  opacity:.13;
+  background-image:
+    linear-gradient(rgba(33,212,253,.055) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(33,212,253,.055) 1px,transparent 1px);
+  background-size:50px 50px;
+  mask-image:linear-gradient(to bottom,black,transparent 88%);
+}
 
+/* New animated light atmosphere */
+#voltPremiumBackground{
+  position:fixed;
+  inset:0;
+  width:100%;
+  height:100%;
+  z-index:-2;
+  pointer-events:none;
+  opacity:.95;
+}
+/* Soft atmospheric glow */
+body:after{
+  content:"";
+  position:fixed;
+  inset:-20%;
+  z-index:-3;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 20% 35%,rgba(33,212,253,.055),transparent 22%),
+    radial-gradient(circle at 75% 25%,rgba(139,92,246,.055),transparent 25%),
+    radial-gradient(circle at 55% 75%,rgba(59,130,246,.045),transparent 25%);
+  filter:blur(35px);
+  animation:voltAtmosphere 16s ease-in-out infinite alternate;
+}
+@keyframes voltAtmosphere{
+  0%{
+    transform:translate3d(-2%,0,0) scale(1);
+    opacity:.65;
+  }
+  50%{
+    transform:translate3d(2%,-1%,0) scale(1.04);
+    opacity:1;
+  }
+  100%{
+    transform:translate3d(-1%,2%,0) scale(1.02);
+    opacity:.72;
+  }
+}
+/* =========================================================
+   PREMIUM FLOATING SECTION / GLASS DEPTH
+   ========================================================= */
+.card,
+.lab-panel,
+.law-card,
+.about-box,
+.team-card,
+.builder-palette,
+.builder-workbench{
+  background:
+    linear-gradient(
+      145deg,
+      rgba(16,28,54,.70),
+      rgba(5,12,27,.78)
+    );
+  backdrop-filter:blur(18px) saturate(125%);
+  -webkit-backdrop-filter:blur(18px) saturate(125%);
+  border-color:rgba(91,142,202,.30);
+  box-shadow:
+    0 18px 55px rgba(0,0,0,.28),
+    inset 0 1px 0 rgba(255,255,255,.035);
+}
+.card:hover,
+.team-card:hover{
+  border-color:rgba(33,212,253,.55);
+  box-shadow:
+    0 20px 60px rgba(0,0,0,.34),
+    0 0 35px rgba(33,212,253,.10);
+}
+/* Main lab blocks get subtle glass depth */
+.lab-panel,
+.law-card{
+  box-shadow:
+    0 20px 60px rgba(0,0,0,.30),
+    0 0 30px rgba(33,212,253,.045),
+    inset 0 1px 0 rgba(255,255,255,.035);
+}
+/* Keep circuit boards dark and cyan */
+.circuit-stage,
+.builder-board,
+.node-diagram,
+.loop-diagram,
+.lab-screen{
+  box-shadow:
+    inset 0 0 45px rgba(33,212,253,.035),
+    0 15px 45px rgba(0,0,0,.25);
+}
+/* Preserve cyan circuit/grid language */
+.builder-grid{
+  opacity:.9;
+}
+.builder-wire{
+  stroke:var(--cyan);
+  filter:drop-shadow(0 0 6px rgba(33,212,253,.70));
+}
 /* STEP 7 — CIRCUIT DETECTIVE */
 .detective-layout{display:grid;grid-template-columns:1.05fr .95fr;gap:24px}
 .detective-card{background:linear-gradient(145deg,rgba(16,28,54,.88),rgba(8,16,32,.94));border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:var(--glow)}
@@ -121,6 +238,7 @@ window.MathJax = {
  
 </head>
 <body>
+ <canvas id="voltPremiumBackground"></canvas>
 <nav><div class="nav-container"><div class="logo">⚡ Volt<span>Lab</span></div><ul class="nav-links"><li><a href="#home">Home</a></li><li><a href="#learn">Learn</a></li><li><a href="#ohm">Ohm's Lab</a></li><li><a href="#series-parallel">Series/Parallel</a></li><li><a href="#kcl-kvl">KCL/KVL</a></li><li><a href="#led-sim">LED Brightness</a></li><li><a href="#builder">Circuit Builder</a></li><li><a href="#detective">Circuit Detective</a></li><li><a href="#quiz">Quiz</a></li><li><a href="#ask-volt">Ask Volt</a></li><li><a href="#virtual">Virtual Lab</a></li><li><a href="#challenge">Challenge</a></li><li><a href="#team">Team</a></li></ul></div></nav>
 <section id="home" class="hero"><div class="container"><div class="hero-grid"><div><div class="badge">INTERACTIVE ELECTRICAL LABORATORY</div><h1>Where <span class="gradient-text">Electricity</span> Comes Alive.</h1><p>Learn electrical concepts through interactive calculations, visual circuits, experiments and challenges — not just static notes.</p><a href="#learn" class="btn btn-primary">Explore VoltLab ⚡</a><a href="#ohm" class="btn btn-secondary">Open Lab</a></div><div class="hero-circuit"><div class="circuit-box"><div class="energy"></div><div class="energy"></div><div class="energy"></div><div class="wire w1"></div><div class="wire w2"></div><div class="wire w3"></div><div class="wire w4"></div><div class="battery"></div><div class="resistor"></div></div></div></div></div></section>
 <section id="learn"><div class="container"><div class="section-title"><h2>Learn Fundamentals</h2><p>Build your electrical foundation before entering the laboratory.</p></div><div class="cards"><div class="card"><div class="icon">⚡</div><div class="lesson-number">01 — FUNDAMENTAL</div><h3>Voltage</h3><p>Understand potential difference and how voltage drives current through a circuit.</p></div><div class="card"><div class="icon">〰️</div><div class="lesson-number">02 — FUNDAMENTAL</div><h3>Current</h3><p>Learn how electric charge moves and how current is measured in amperes.</p></div><div class="card"><div class="icon">Ω</div><div class="lesson-number">03 — FUNDAMENTAL</div><h3>Resistance</h3><p>Explore how resistance opposes current and affects circuit behaviour.</p></div><div class="card"><div class="icon">📐</div><div class="lesson-number">04 — LAW</div><h3>Ohm's Law</h3><p>Connect voltage, current and resistance using V = I × R.</p></div><div class="card"><div class="icon">🔌</div><div class="lesson-number">05 — CIRCUITS</div><h3>Series &amp; Parallel</h3><p>Learn how components behave when connected in series or parallel.</p></div><div class="card"><div class="icon">⚖️</div><div class="lesson-number">06 — LAWS</div><h3>KCL &amp; KVL</h3><p>Explore Kirchhoff's Current and Voltage Laws through practical circuits.</p></div></div></div></section>
@@ -956,5 +1074,443 @@ function nextDetectiveCase(){
 }
 
 loadDetectiveCase(0);
+</script>
+ <script id="voltlab-premium-background-script">
+(function(){
+
+const canvas=document.getElementById("voltPremiumBackground");
+if(!canvas)return;
+
+const ctx=canvas.getContext("2d");
+
+let W=0,H=0,DPR=1;
+let particles=[];
+let ribbons=[];
+let sparks=[];
+let last=performance.now();
+let trustPulse=0;
+let trustCooldown=0;
+
+function resize(){
+
+  DPR=Math.min(window.devicePixelRatio||1,2);
+
+  W=window.innerWidth;
+  H=window.innerHeight;
+
+  canvas.width=W*DPR;
+  canvas.height=H*DPR;
+
+  canvas.style.width=W+"px";
+  canvas.style.height=H+"px";
+
+  ctx.setTransform(DPR,0,0,DPR,0,0);
+
+  createParticles();
+  createRibbons();
+}
+
+function createParticles(){
+
+  const count=Math.min(
+    170,
+    Math.max(70,Math.floor((W*H)/15000))
+  );
+
+  particles=[];
+
+  for(let i=0;i<count;i++){
+
+    particles.push({
+      x:Math.random()*W,
+      y:Math.random()*H,
+      r:Math.random()*1.5+.25,
+      a:Math.random()*.55+.12,
+      vx:(Math.random()-.5)*.10,
+      vy:(Math.random()-.5)*.10,
+      phase:Math.random()*Math.PI*2
+    });
+
+  }
+}
+
+function createRibbons(){
+
+  ribbons=[];
+
+  for(let i=0;i<5;i++){
+
+    ribbons.push({
+      offset:Math.random()*Math.PI*2,
+      speed:.00016+Math.random()*.00010,
+      width:1+Math.random()*1.5,
+      alpha:.035+Math.random()*.045,
+      side:i%2
+    });
+
+  }
+}
+
+function spawnSpark(){
+
+  const side=Math.random();
+
+  let x,y;
+
+  if(side<.5){
+    x=Math.random()*W;
+    y=H*.15+Math.random()*H*.70;
+  }else{
+    x=W*.15+Math.random()*W*.70;
+    y=Math.random()*H;
+  }
+
+  sparks.push({
+    x:x,
+    y:y,
+    life:0,
+    max:500+Math.random()*900,
+    angle:Math.random()*Math.PI*2,
+    length:20+Math.random()*65,
+    alpha:.45+Math.random()*.35
+  });
+}
+
+function drawParticles(t){
+
+  for(const p of particles){
+
+    p.x+=p.vx;
+    p.y+=p.vy;
+    p.phase+=.008;
+
+    if(p.x<-5)p.x=W+5;
+    if(p.x>W+5)p.x=-5;
+
+    if(p.y<-5)p.y=H+5;
+    if(p.y>H+5)p.y=-5;
+
+    const pulse=.45+.55*Math.sin(p.phase);
+
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+
+    ctx.fillStyle=
+      "rgba(120,205,255,"+
+      (p.a*pulse)+")";
+
+    ctx.shadowBlur=10;
+    ctx.shadowColor="rgba(33,212,253,.7)";
+    ctx.fill();
+    ctx.shadowBlur=0;
+  }
+}
+
+function drawRibbons(t){
+
+  ribbons.forEach((r,index)=>{
+
+    ctx.beginPath();
+
+    const baseY=
+      H*(.25+index*.13);
+
+    for(let x=-40;x<=W+40;x+=18){
+
+      const wave=
+        Math.sin(
+          x*.004+
+          t*r.speed+
+          r.offset
+        )*45;
+
+      const wave2=
+        Math.sin(
+          x*.0018-
+          t*r.speed*.7+
+          r.offset
+        )*70;
+
+      const y=
+        baseY+
+        wave+
+        wave2;
+
+      if(x===-40)ctx.moveTo(x,y);
+      else ctx.lineTo(x,y);
+    }
+
+    const gradient=ctx.createLinearGradient(
+      0,0,W,0
+    );
+
+    gradient.addColorStop(
+      0,
+      "rgba(33,212,253,0)"
+    );
+
+    gradient.addColorStop(
+      .25,
+      "rgba(33,212,253,"+r.alpha+")"
+    );
+
+    gradient.addColorStop(
+      .5,
+      "rgba(139,92,246,"+(r.alpha*.8)+")"
+    );
+
+    gradient.addColorStop(
+      .75,
+      "rgba(33,212,253,"+r.alpha+")"
+    );
+
+    gradient.addColorStop(
+      1,
+      "rgba(33,212,253,0)"
+    );
+
+    ctx.strokeStyle=gradient;
+    ctx.lineWidth=r.width;
+    ctx.shadowBlur=18;
+    ctx.shadowColor="rgba(33,212,253,.18)";
+    ctx.stroke();
+    ctx.shadowBlur=0;
+
+  });
+}
+
+function drawSparks(){
+
+  for(let i=sparks.length-1;i>=0;i--){
+
+    const s=sparks[i];
+
+    s.life+=16;
+
+    const progress=s.life/s.max;
+
+    if(progress>=1){
+      sparks.splice(i,1);
+      continue;
+    }
+
+    const fade=
+      progress<.15
+      ?progress/.15
+      :1-(progress-.15)/.85;
+
+    ctx.save();
+
+    ctx.translate(s.x,s.y);
+    ctx.rotate(s.angle);
+
+    const g=ctx.createLinearGradient(
+      0,0,s.length,0
+    );
+
+    g.addColorStop(
+      0,
+      "rgba(33,212,253,0)"
+    );
+
+    g.addColorStop(
+      .45,
+      "rgba(120,220,255,"+
+      (.7*fade*s.alpha)+")"
+    );
+
+    g.addColorStop(
+      1,
+      "rgba(139,92,246,0)"
+    );
+
+    ctx.strokeStyle=g;
+    ctx.lineWidth=1.2;
+
+    ctx.shadowBlur=14;
+    ctx.shadowColor="rgba(33,212,253,.65)";
+
+    ctx.beginPath();
+    ctx.moveTo(0,0);
+    ctx.lineTo(s.length,0);
+    ctx.stroke();
+
+    ctx.restore();
+  }
+}
+
+/* =========================================================
+   FAINT TRUSTINUNIVERS LIGHT SIGNATURE
+   Appears as part of the light field, never as static text
+   ========================================================= */
+
+function drawTrustinUnivers(t){
+
+  trustCooldown-=16;
+
+  if(trustCooldown<=0 && Math.random()<.004){
+
+    trustPulse=1;
+    trustCooldown=12000+Math.random()*16000;
+
+  }
+
+  if(trustPulse<=0)return;
+
+  trustPulse-=.008;
+
+  const alpha=
+    Math.sin(Math.PI*(1-trustPulse))*
+    .055*
+    trustPulse;
+
+  ctx.save();
+
+  ctx.font=
+    "800 "+Math.max(18,Math.min(38,W*.025))+
+    "px Arial";
+
+  ctx.textAlign="center";
+  ctx.textBaseline="middle";
+
+  const x=
+    W*.5+
+    Math.sin(t*.00025)*W*.12;
+
+  const y=
+    H*.42+
+    Math.sin(t*.00019)*H*.08;
+
+  const glow=ctx.createRadialGradient(
+    x,y,0,
+    x,y,Math.max(W,H)*.18
+  );
+
+  glow.addColorStop(
+    0,
+    "rgba(33,212,253,"+
+    (alpha*.65)+")"
+  );
+
+  glow.addColorStop(
+    .45,
+    "rgba(139,92,246,"+
+    (alpha*.35)+")"
+  );
+
+  glow.addColorStop(
+    1,
+    "rgba(0,0,0,0)"
+  );
+
+  ctx.fillStyle=glow;
+  ctx.fillRect(
+    x-W*.25,
+    y-H*.18,
+    W*.5,
+    H*.36
+  );
+
+  ctx.shadowBlur=22;
+  ctx.shadowColor=
+    "rgba(33,212,253,"+
+    (alpha*3)+")";
+
+  const textGradient=ctx.createLinearGradient(
+    x-200,y,
+    x+200,y
+  );
+
+  textGradient.addColorStop(
+    0,
+    "rgba(33,212,253,0)"
+  );
+
+  textGradient.addColorStop(
+    .35,
+    "rgba(150,230,255,"+
+    alpha+")"
+  );
+
+  textGradient.addColorStop(
+    .5,
+    "rgba(255,255,255,"+
+    (alpha*.9)+")"
+  );
+
+  textGradient.addColorStop(
+    .65,
+    "rgba(160,130,255,"+
+    alpha+")"
+  );
+
+  textGradient.addColorStop(
+    1,
+    "rgba(139,92,246,0)"
+  );
+
+  ctx.fillStyle=textGradient;
+
+  ctx.fillText(
+    "TrustinUnivers",
+    x,
+    y
+  );
+
+  ctx.restore();
+}
+
+function animate(t){
+
+  ctx.clearRect(0,0,W,H);
+
+  /* extremely dark atmospheric base */
+  const bg=ctx.createRadialGradient(
+    W*.5,H*.45,0,
+    W*.5,H*.45,
+    Math.max(W,H)*.75
+  );
+
+  bg.addColorStop(
+    0,
+    "rgba(14,30,58,.28)"
+  );
+
+  bg.addColorStop(
+    .5,
+    "rgba(5,12,28,.10)"
+  );
+
+  bg.addColorStop(
+    1,
+    "rgba(0,0,0,0)"
+  );
+
+  ctx.fillStyle=bg;
+  ctx.fillRect(0,0,W,H);
+
+  drawRibbons(t);
+  drawParticles(t);
+
+  if(Math.random()<.018){
+    spawnSpark();
+  }
+
+  drawSparks();
+  drawTrustinUnivers(t);
+
+  requestAnimationFrame(animate);
+}
+
+window.addEventListener(
+  "resize",
+  resize,
+  {passive:true}
+);
+
+resize();
+requestAnimationFrame(animate);
+
+})();
 </script>
 </body></html>
