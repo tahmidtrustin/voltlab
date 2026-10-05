@@ -105,6 +105,20 @@ nav{position:fixed;top:0;width:100%;z-index:1000;background:rgba(5,8,22,.82);bac
 @media(max-width:430px){.av-mode-grid{grid-template-columns:1fr}.av-topic-list,.av-session-grid{grid-template-columns:1fr}.askvolt-head{padding:18px}.askvolt-chat{padding:16px}.av-bubble{font-size:13px}}
 </style>
 
+ <script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$', '$$'], ['\\[', '\\]']],
+    processEscapes: true
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  }
+};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+ 
 </head>
 <body>
 <nav><div class="nav-container"><div class="logo">⚡ Volt<span>Lab</span></div><ul class="nav-links"><li><a href="#home">Home</a></li><li><a href="#learn">Learn</a></li><li><a href="#ohm">Ohm's Lab</a></li><li><a href="#series-parallel">Series/Parallel</a></li><li><a href="#kcl-kvl">KCL/KVL</a></li><li><a href="#led-sim">LED Brightness</a></li><li><a href="#builder">Circuit Builder</a></li><li><a href="#detective">Circuit Detective</a></li><li><a href="#quiz">Quiz</a></li><li><a href="#ask-volt">Ask Volt</a></li><li><a href="#virtual">Virtual Lab</a></li><li><a href="#challenge">Challenge</a></li><li><a href="#team">Team</a></li></ul></div></nav>
