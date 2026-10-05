@@ -271,6 +271,169 @@ nav{
   }
 
 }
+ /* =========================================================
+   VOLTLAB — RESPONSIVE NAVIGATION SYSTEM
+   ========================================================= */
+
+nav{
+  position:fixed !important;
+  top:0;
+  left:0;
+  width:100%;
+  z-index:1000 !important;
+}
+
+.nav-container{
+  width:100%;
+  max-width:1400px;
+  margin:0 auto;
+  padding:0 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  min-height:64px;
+}
+
+.nav-top{
+  display:flex;
+  align-items:center;
+  flex-shrink:0;
+}
+
+.nav-links{
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:clamp(7px,1vw,15px);
+  flex-wrap:nowrap !important;
+  white-space:nowrap;
+  margin:0;
+  padding:0;
+  list-style:none;
+  overflow:visible;
+}
+
+.nav-links li{
+  flex-shrink:0;
+}
+
+.nav-links a{
+  white-space:nowrap;
+  font-size:13px;
+}
+
+/* Mobile menu button — hidden on desktop */
+
+.mobile-menu-btn{
+  display:none;
+  border:1px solid rgba(33,212,253,.35);
+  background:rgba(7,17,38,.85);
+  color:var(--cyan);
+  width:42px;
+  height:42px;
+  border-radius:10px;
+  font-size:22px;
+  cursor:pointer;
+  align-items:center;
+  justify-content:center;
+  transition:.25s ease;
+}
+
+.mobile-menu-btn:hover{
+  border-color:var(--cyan);
+  box-shadow:0 0 18px rgba(33,212,253,.25);
+}
+
+
+/* =========================================================
+   MOBILE NAVIGATION
+   ========================================================= */
+
+@media(max-width:900px){
+
+  .nav-container{
+    display:block;
+    padding:8px 16px;
+  }
+
+  .nav-top{
+    width:100%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+
+  .mobile-menu-btn{
+    display:flex;
+  }
+
+  .nav-links{
+    display:none;
+    width:100%;
+    margin-top:10px;
+    padding:8px 0 12px;
+
+    flex-direction:column;
+    align-items:stretch;
+    justify-content:flex-start;
+    gap:3px;
+
+    max-height:70vh;
+    overflow-y:auto;
+    overflow-x:hidden;
+
+    border-top:1px solid rgba(33,212,253,.12);
+  }
+
+  .nav-links.mobile-open{
+    display:flex;
+  }
+
+  .nav-links li{
+    width:100%;
+  }
+
+  .nav-links a{
+    display:block;
+    width:100%;
+    padding:11px 14px;
+    border-radius:9px;
+    font-size:13px;
+  }
+
+  .nav-links a:hover{
+    background:rgba(33,212,253,.07);
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media(max-width:600px){
+
+  .nav-container{
+    padding:7px 14px;
+  }
+
+  .logo{
+    font-size:20px;
+  }
+
+  .mobile-menu-btn{
+    width:40px;
+    height:40px;
+    font-size:21px;
+  }
+
+  .nav-links{
+    max-height:72vh;
+  }
+
+}
 </style>
 
 <style id="voltlab-telemetry-style">
@@ -327,7 +490,40 @@ window.MathJax = {
 <div class="volt-astral-vignette"></div>
 <div class="volt-energy-haze"></div>
 
-<nav><div class="nav-container"><div class="logo">⚡ Volt<span>Lab</span></div><ul class="nav-links"><li><a href="#home">Home</a></li><li><a href="#learn">Learn</a></li><li><a href="#ohm">Ohm's Lab</a></li><li><a href="#series-parallel">Series/Parallel</a></li><li><a href="#kcl-kvl">KCL/KVL</a></li><li><a href="#led-sim">LED Brightness</a></li><li><a href="#builder">Circuit Builder</a></li><li><a href="#detective">Circuit Detective</a></li><li><a href="#quiz">Quiz</a></li><li><a href="#ask-volt">Ask Volt</a></li><li><a href="#virtual">Virtual Lab</a></li><li><a href="#challenge">Challenge</a></li><li><a href="#team">Team</a></li></ul></div></nav>
+<nav>
+  <div class="nav-container">
+
+    <div class="nav-top">
+      <div class="logo">⚡ Volt<span>Lab</span></div>
+
+      <button
+        class="mobile-menu-btn"
+        id="mobileMenuBtn"
+        aria-label="Open navigation"
+        aria-expanded="false"
+      >
+        ☰
+      </button>
+    </div>
+
+    <ul class="nav-links" id="mainNavLinks">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#learn">Learn</a></li>
+      <li><a href="#ohm">Ohm's Lab</a></li>
+      <li><a href="#series-parallel">Series/Parallel</a></li>
+      <li><a href="#kcl-kvl">KCL/KVL</a></li>
+      <li><a href="#led-sim">LED Brightness</a></li>
+      <li><a href="#builder">Circuit Builder</a></li>
+      <li><a href="#detective">Circuit Detective</a></li>
+      <li><a href="#quiz">Quiz</a></li>
+      <li><a href="#ask-volt">Ask Volt</a></li>
+      <li><a href="#virtual">Virtual Lab</a></li>
+      <li><a href="#challenge">Challenge</a></li>
+      <li><a href="#team">Team</a></li>
+    </ul>
+
+  </div>
+</nav>
 <section id="home" class="hero"><div class="container"><div class="hero-grid"><div><div class="badge">INTERACTIVE ELECTRICAL LABORATORY</div><h1>Where <span class="gradient-text">Electricity</span> Comes Alive.</h1><p>Learn electrical concepts through interactive calculations, visual circuits, experiments and challenges — not just static notes.</p><a href="#learn" class="btn btn-primary">Explore VoltLab ⚡</a><a href="#ohm" class="btn btn-secondary">Open Lab</a></div><div class="hero-circuit"><div class="circuit-box"><div class="energy"></div><div class="energy"></div><div class="energy"></div><div class="wire w1"></div><div class="wire w2"></div><div class="wire w3"></div><div class="wire w4"></div><div class="battery"></div><div class="resistor"></div></div></div></div></div></section>
 <section id="learn"><div class="container"><div class="section-title"><h2>Learn Fundamentals</h2><p>Build your electrical foundation before entering the laboratory.</p></div><div class="cards"><div class="card"><div class="icon">⚡</div><div class="lesson-number">01 — FUNDAMENTAL</div><h3>Voltage</h3><p>Understand potential difference and how voltage drives current through a circuit.</p></div><div class="card"><div class="icon">〰️</div><div class="lesson-number">02 — FUNDAMENTAL</div><h3>Current</h3><p>Learn how electric charge moves and how current is measured in amperes.</p></div><div class="card"><div class="icon">Ω</div><div class="lesson-number">03 — FUNDAMENTAL</div><h3>Resistance</h3><p>Explore how resistance opposes current and affects circuit behaviour.</p></div><div class="card"><div class="icon">📐</div><div class="lesson-number">04 — LAW</div><h3>Ohm's Law</h3><p>Connect voltage, current and resistance using V = I × R.</p></div><div class="card"><div class="icon">🔌</div><div class="lesson-number">05 — CIRCUITS</div><h3>Series &amp; Parallel</h3><p>Learn how components behave when connected in series or parallel.</p></div><div class="card"><div class="icon">⚖️</div><div class="lesson-number">06 — LAWS</div><h3>KCL &amp; KVL</h3><p>Explore Kirchhoff's Current and Voltage Laws through practical circuits.</p></div></div></div></section>
 <section id="ohm" class="lab-section"><div class="container"><div class="section-title"><h2>⚡ Ohm's Law Interactive Lab</h2><p>Enter any two values and VoltLab calculates the missing quantity.</p></div><div class="lab-wrapper"><div class="lab-panel"><h3>Input Parameters</h3><p class="lab-description">Leave exactly one field empty. The other two values are used to solve it.</p><div class="input-group"><label>Voltage <span>V</span></label><input type="number" id="voltage" placeholder="Example: 12" step="any"></div><div class="input-group"><label>Current <span>A</span></label><input type="number" id="current" placeholder="Example: 2" step="any"></div><div class="input-group"><label>Resistance <span>Ω</span></label><input type="number" id="resistance" placeholder="Example: 6" step="any"></div><button class="calculate-btn" onclick="calculateOhm()">CALCULATE ⚡</button><div class="result-box"><div class="result-label">CALCULATED RESULT</div><div class="result-value" id="ohmResult">—</div></div></div><div class="lab-panel ohm-visual"><h3>Live Circuit View</h3><div class="visual-circuit"><div class="v-wire v-top"></div><div class="v-wire v-bottom"></div><div class="v-wire v-left"></div><div class="v-wire v-right"></div><div class="v-battery"></div><div class="v-resistor"></div><div class="current-dot"></div><div class="v-current">CURRENT FLOW →</div></div><div class="formula">Ohm's Law: <strong>V = I × R</strong></div></div></div></div></section>
@@ -2925,6 +3121,73 @@ requestAnimationFrame(
       top:0,
       behavior:"smooth"
     });
+
+  });
+
+})();
+</script>
+ <script>
+(function(){
+
+  const menuBtn = document.getElementById("mobileMenuBtn");
+  const navLinks = document.getElementById("mainNavLinks");
+
+  if(!menuBtn || !navLinks) return;
+
+  menuBtn.addEventListener("click", function(){
+
+    const isOpen = navLinks.classList.toggle("mobile-open");
+
+    menuBtn.setAttribute(
+      "aria-expanded",
+      isOpen ? "true" : "false"
+    );
+
+    menuBtn.innerHTML = isOpen ? "✕" : "☰";
+
+  });
+
+
+  /* Close menu after selecting a section */
+
+  navLinks.querySelectorAll("a").forEach(function(link){
+
+    link.addEventListener("click", function(){
+
+      if(window.innerWidth <= 900){
+
+        navLinks.classList.remove("mobile-open");
+
+        menuBtn.setAttribute(
+          "aria-expanded",
+          "false"
+        );
+
+        menuBtn.innerHTML = "☰";
+
+      }
+
+    });
+
+  });
+
+
+  /* Reset mobile menu when returning to desktop */
+
+  window.addEventListener("resize", function(){
+
+    if(window.innerWidth > 900){
+
+      navLinks.classList.remove("mobile-open");
+
+      menuBtn.setAttribute(
+        "aria-expanded",
+        "false"
+      );
+
+      menuBtn.innerHTML = "☰";
+
+    }
 
   });
 
