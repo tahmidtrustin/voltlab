@@ -1,391 +1,414 @@
 
 /* =====================================================
-   VOLTLAB VIRTUAL LAB — SEPARATE STYLESHEET
-   Uses the existing VoltLab dark neon theme
+   VOLTLAB VIRTUAL ELECTRICAL LAB — UPGRADED UI
    ===================================================== */
 
 #virtual .vlab-app {
-  display: grid;
-  grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
-  gap: 22px;
-  align-items: start;
+  display:grid;
+  grid-template-columns:minmax(300px,.82fr) minmax(0,1.45fr);
+  gap:20px;
+  align-items:start;
 }
+#virtual .vlab-title { margin-bottom:28px; }
+#virtual .vlab-title>span {
+  color:var(--cyan,#21d4fd);
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:2px;
+}
+#virtual .vlab-title h2 { margin:9px 0; }
+#virtual .vlab-title p { color:var(--muted,#91a5c5); }
 
 #virtual .vlab-card {
-  min-width: 0;
-  padding: 24px;
-  border: 1px solid var(--line, #1d3157);
-  border-radius: 18px;
-  background: linear-gradient(145deg, rgba(16,28,54,.92), rgba(8,16,32,.96));
-  box-shadow: var(--glow, 0 0 25px rgba(33,212,253,.2));
+  min-width:0;
+  padding:22px;
+  border:1px solid rgba(33,212,253,.17);
+  border-radius:19px;
+  background:linear-gradient(145deg,rgba(16,28,54,.94),rgba(5,12,27,.98));
+  box-shadow:0 0 30px rgba(33,212,253,.06),inset 0 0 28px rgba(33,212,253,.015);
 }
-
 #virtual .vlab-card-heading {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 22px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:19px;
 }
-
 #virtual .vlab-icon {
-  width: 44px;
-  height: 44px;
-  flex: 0 0 44px;
-  display: grid;
-  place-items: center;
-  border: 1px solid rgba(33,212,253,.25);
-  border-radius: 13px;
-  background: rgba(33,212,253,.07);
-  font-size: 23px;
+  width:44px;
+  height:44px;
+  flex:0 0 44px;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(33,212,253,.25);
+  border-radius:13px;
+  background:rgba(33,212,253,.07);
+  font-size:22px;
 }
-
 #virtual .vlab-card h3 {
-  font-size: 21px;
-  line-height: 1.35;
-  overflow-wrap: anywhere;
+  font-size:19px;
+  line-height:1.4;
+  overflow-wrap:anywhere;
 }
-
-#virtual .vlab-card-heading p,
-#virtual .vlab-note {
-  color: var(--muted, #91a5c5);
-  font-size: 13px;
-  line-height: 1.6;
+#virtual .vlab-card-heading p {
+  margin-top:3px;
+  color:var(--muted,#91a5c5);
+  font-size:12px;
+  line-height:1.6;
 }
-
-#virtual .vlab-field {
-  margin-bottom: 18px;
+#virtual .vlab-kit-grid {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px;
 }
-
-#virtual .vlab-field label {
-  display: block;
-  margin-bottom: 7px;
-  color: #cbd8ea;
-  font-size: 14px;
-  font-weight: 600;
+#virtual .vlab-kit-item {
+  display:flex;
+  min-width:0;
+  min-height:106px;
+  flex-direction:column;
+  align-items:flex-start;
+  justify-content:center;
+  gap:5px;
+  padding:13px;
+  border:1px solid #1d3157;
+  border-radius:13px;
+  background:rgba(3,9,20,.72);
+  color:#eef6ff;
+  text-align:left;
+  cursor:grab;
+  transition:transform .2s,border-color .2s,box-shadow .2s;
 }
-
-#virtual .vlab-field label span {
-  color: var(--cyan, #21d4fd);
+#virtual .vlab-kit-item:hover,
+#virtual .vlab-kit-item:focus-visible {
+  transform:translateY(-2px);
+  border-color:var(--cyan,#21d4fd);
+  box-shadow:0 0 17px rgba(33,212,253,.12);
+  outline:none;
 }
+#virtual .vlab-kit-item:active { cursor:grabbing; }
+#virtual .vlab-kit-item>span { font-size:23px; }
+#virtual .vlab-kit-item strong { font-size:12px; }
+#virtual .vlab-kit-item small { color:var(--muted,#91a5c5);font-size:10px; }
 
-#virtual .vlab-field input,
-#virtual .vlab-field select,
-#virtual .vlab-component input {
-  width: 100%;
-  min-width: 0;
-  min-height: 46px;
-  padding: 11px 13px;
-  border: 1px solid #29466e;
-  border-radius: 10px;
-  outline: none;
-  background: #060d1c;
-  color: #eef6ff;
-  font: inherit;
-  font-size: 15px;
+#virtual .vlab-hint {
+  margin-top:17px;
+  padding:13px 14px;
+  border:1px solid rgba(33,212,253,.12);
+  border-radius:12px;
+  background:rgba(33,212,253,.035);
 }
-
-#virtual .vlab-field input:focus,
-#virtual .vlab-field select:focus,
-#virtual .vlab-component input:focus {
-  border-color: var(--cyan, #21d4fd);
-  box-shadow: 0 0 14px rgba(33,212,253,.1);
+#virtual .vlab-hint strong { color:var(--cyan,#21d4fd);font-size:12px; }
+#virtual .vlab-hint p {
+  margin-top:6px;
+  color:#aebfd8;
+  font-size:11px;
+  line-height:1.65;
 }
-
-#virtual .vlab-field input::placeholder,
-#virtual .vlab-component input::placeholder {
-  color: #7184a2;
-}
-
 #virtual .vlab-toolbar {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin: 18px 0;
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:8px;
+  margin-top:16px;
 }
-
 #virtual .vlab-btn {
-  min-height: 42px;
-  padding: 10px 12px;
-  border: 1px solid #29466e;
-  border-radius: 9px;
-  background: #071126;
-  color: #dbe8f8;
-  font: inherit;
-  font-size: 12px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: .2s ease;
+  min-width:0;
+  min-height:42px;
+  padding:10px 12px;
+  border:1px solid #29466e;
+  border-radius:9px;
+  background:#071126;
+  color:#dbe8f8;
+  font:inherit;
+  font-size:11px;
+  font-weight:800;
+  cursor:pointer;
+  transition:.2s ease;
 }
-
 #virtual .vlab-btn:hover {
-  border-color: var(--cyan, #21d4fd);
+  border-color:var(--cyan,#21d4fd);
+  color:var(--cyan,#21d4fd);
 }
-
 #virtual .vlab-btn.primary {
-  border-color: transparent;
-  background: linear-gradient(90deg, var(--cyan, #21d4fd), var(--blue, #3b82f6));
-  color: #03101c;
+  border-color:transparent;
+  background:linear-gradient(90deg,var(--cyan,#21d4fd),var(--blue,#3b82f6));
+  color:#03101c;
 }
-
-#virtual .vlab-btn.active {
-  border-color: rgba(34,197,94,.5);
-  color: #6ee7a0;
+#virtual .vlab-btn.danger { border-color:rgba(239,68,68,.35);color:#fca5a5; }
+#virtual .vlab-btn.small { min-height:34px;padding:7px 9px;font-size:10px; }
+#virtual .vlab-status {
+  margin-top:13px;
+  padding:12px;
+  border:1px solid rgba(33,212,253,.18);
+  border-radius:10px;
+  background:rgba(33,212,253,.035);
+  color:#b9eaf8;
+  font-size:12px;
+  line-height:1.65;
+  overflow-wrap:anywhere;
 }
+#virtual .vlab-status.error { border-color:rgba(239,68,68,.35);color:#fca5a5; }
+#virtual .vlab-status.success { border-color:rgba(34,197,94,.3);color:#86efac; }
 
-#virtual .vlab-components {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
-  margin-top: 14px;
+#virtual .vlab-workspace-card { grid-column:2;grid-row:1 / span 2; }
+#virtual .vlab-board-tools {
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  flex-wrap:wrap;
+  gap:7px;
+  margin-bottom:10px;
 }
-
-#virtual .vlab-component {
-  min-width: 0;
-  padding: 13px;
-  border: 1px solid #1b3154;
-  border-radius: 12px;
-  background: rgba(3,9,20,.65);
+#virtual .vlab-board-state {
+  margin-right:auto;
+  color:var(--cyan,#21d4fd);
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:1px;
 }
-
-#virtual .vlab-component-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  margin-bottom: 12px;
+#virtual .vlab-board-scroll {
+  width:100%;
+  overflow:auto;
+  border:1px solid rgba(33,212,253,.2);
+  border-radius:14px;
+  background:#040b19;
+  scrollbar-color:#29466e #030914;
 }
-
-#virtual .vlab-component-head strong {
-  color: var(--cyan, #21d4fd);
-  font-size: 12px;
-}
-
-#virtual .vlab-remove {
-  padding: 5px 7px;
-  border: 1px solid rgba(239,68,68,.3);
-  border-radius: 7px;
-  background: rgba(239,68,68,.05);
-  color: #fecaca;
-  font-size: 11px;
-  cursor: pointer;
-}
-
 #virtual .vlab-board {
-  padding: 18px;
-  border: 1px solid #1b3154;
-  border-radius: 15px;
-  background: radial-gradient(circle at center, rgba(33,212,253,.06), transparent 65%), #030914;
+  display:block;
+  width:100%;
+  min-width:690px;
+  height:auto;
+  touch-action:pan-x pan-y;
+  user-select:none;
 }
-
-#virtual .vlab-board-label {
-  color: var(--cyan, #21d4fd);
-  font-size: 11px;
-  letter-spacing: 1px;
-  font-weight: 800;
+#virtual .vlab-board-footer {
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:10px;
+  color:var(--muted,#91a5c5);
+  font-size:10px;
 }
-
-#virtual .vlab-circuit-scroll {
-  width: 100%;
-  overflow-x: auto;
-  padding: 22px 0;
-  scrollbar-color: #29466e #030914;
+#virtual .vlab-board-footer i {
+  display:inline-block;
+  width:13px;
+  height:3px;
+  margin-right:3px;
+  vertical-align:middle;
 }
+#virtual .wire-legend { background:#21d4fd; }
+#virtual .pin-legend { width:8px!important;height:8px!important;border-radius:50%;background:#f59e0b; }
 
-#virtual .vlab-circuit-row {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0;
-  min-width: max-content;
-  min-height: 78px;
-  padding: 8px 2px;
+#virtual .vlab-wire-line {
+  stroke:#21d4fd;
+  stroke-width:3.2;
+  fill:none;
+  cursor:pointer;
 }
-
-#virtual .vlab-terminal {
-  display: grid;
-  place-items: center;
-  width: 29px;
-  height: 29px;
-  flex: 0 0 29px;
-  border: 1px solid var(--cyan, #21d4fd);
-  border-radius: 50%;
-  color: var(--cyan, #21d4fd);
-  font-weight: 800;
+#virtual .vlab-wire-line.powered {
+  stroke:#86efac;
+  filter:url(#vlabGlow);
 }
-
-#virtual .vlab-wire {
-  width: clamp(14px, 2.5vw, 30px);
-  height: 3px;
-  flex: 0 0 clamp(14px, 2.5vw, 30px);
-  background: var(--cyan, #21d4fd);
-  box-shadow: 0 0 8px rgba(33,212,253,.4);
+#virtual .vlab-wire-line.selected {
+  stroke:#f59e0b;
+  stroke-width:5;
 }
-
-#virtual .vlab-part {
-  display: grid;
-  place-items: center;
-  min-width: 68px;
-  max-width: 115px;
-  min-height: 48px;
-  padding: 6px;
-  border: 2px solid var(--orange, #f59e0b);
-  border-radius: 7px;
-  background: #081126;
-  color: #fbbf24;
-  font-size: 11px;
-  font-weight: 800;
-  text-align: center;
-  overflow-wrap: anywhere;
+#virtual .vlab-component-group { cursor:move; }
+#virtual .vlab-component-group.selected .component-body {
+  stroke:#21d4fd;
+  stroke-width:2.6;
 }
-
-#virtual .vlab-part.lamp {
-  border-color: #8b5cf6;
-  color: #c4b5fd;
+#virtual .component-body {
+  fill:#0b1830;
+  stroke:#3b5579;
+  stroke-width:1.8;
 }
-
-#virtual .vlab-circuit-row.open .vlab-wire {
-  background: repeating-linear-gradient(90deg, #526783 0 5px, transparent 5px 10px);
-  box-shadow: none;
+#virtual .component-label {
+  fill:#eef6ff;
+  font-size:13px;
+  font-weight:800;
+  text-anchor:middle;
+  pointer-events:none;
 }
-
-#virtual .vlab-live-status {
-  padding: 12px;
-  border: 1px solid rgba(34,197,94,.25);
-  border-radius: 10px;
-  background: rgba(34,197,94,.05);
-  color: #86efac;
-  font-size: 13px;
-  line-height: 1.6;
-  overflow-wrap: anywhere;
+#virtual .component-value {
+  fill:#91a5c5;
+  font-size:11px;
+  text-anchor:middle;
+  pointer-events:none;
 }
-
-#virtual .vlab-live-status.off {
-  border-color: rgba(245,158,11,.3);
-  background: rgba(245,158,11,.05);
-  color: #fcd34d;
+#virtual .component-symbol {
+  stroke:#21d4fd;
+  stroke-width:2.5;
+  fill:none;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  pointer-events:none;
 }
-
-#virtual .vlab-lamp-wrap {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  margin-top: 18px;
+#virtual .vlab-pin {
+  fill:#f59e0b;
+  stroke:#fff0b5;
+  stroke-width:1.5;
+  cursor:crosshair;
 }
-
-#virtual .vlab-lamp {
-  width: 43px;
-  height: 43px;
-  flex: 0 0 43px;
-  border: 2px solid #526783;
-  border-radius: 50%;
-  background: #162238;
-  transition: .25s ease;
+#virtual .vlab-pin:hover { fill:#86efac;stroke:#fff; }
+#virtual .vlab-pin.pending { fill:#f43f5e;stroke:#fff; }
+#virtual .vlab-preview-line {
+  stroke:#f59e0b;
+  stroke-width:2.5;
+  stroke-dasharray:7 6;
+  pointer-events:none;
 }
-
-#virtual .vlab-lamp.lit {
-  border-color: #fde047;
-  background: #facc15;
-  box-shadow: 0 0 12px #facc15, 0 0 32px rgba(250,204,21,.5);
+#virtual .vlab-editor-card,
+#virtual .vlab-measure-card { grid-column:1/-1; }
+#virtual .vlab-editor-list {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px;
 }
-
-#virtual .vlab-lamp-wrap strong {
-  color: #eef6ff;
+#virtual .vlab-editor-item {
+  min-width:0;
+  padding:14px;
+  border:1px solid #1b3154;
+  border-radius:12px;
+  background:rgba(3,9,20,.65);
 }
+#virtual .vlab-editor-head {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+  margin-bottom:12px;
+}
+#virtual .vlab-editor-head strong { color:var(--cyan,#21d4fd);font-size:12px; }
+#virtual .vlab-editor-item label,
+#virtual .vlab-supply label {
+  display:block;
+  margin:9px 0 6px;
+  color:#cbd8ea;
+  font-size:11px;
+  font-weight:700;
+}
+#virtual .vlab-editor-item input,
+#virtual .vlab-supply input {
+  width:100%;
+  min-width:0;
+  min-height:40px;
+  padding:9px 11px;
+  border:1px solid #29466e;
+  border-radius:9px;
+  outline:none;
+  background:#060d1c;
+  color:#eef6ff;
+  font:inherit;
+  font-size:13px;
+}
+#virtual .vlab-editor-item input:focus,
+#virtual .vlab-supply input:focus { border-color:var(--cyan,#21d4fd); }
+#virtual .vlab-remove {
+  padding:6px 8px;
+  border:1px solid rgba(239,68,68,.35);
+  border-radius:7px;
+  background:rgba(239,68,68,.05);
+  color:#fecaca;
+  font-size:10px;
+  cursor:pointer;
+}
+#virtual .vlab-editor-actions { display:flex;gap:6px;margin-top:9px; }
+#virtual .vlab-editor-actions button { flex:1; }
+#virtual .vlab-empty { grid-column:1/-1;padding:18px;color:var(--muted,#91a5c5);font-size:12px; }
 
+#virtual .vlab-supply {
+  max-width:420px;
+  margin-bottom:17px;
+  padding:14px;
+  border:1px solid rgba(33,212,253,.15);
+  border-radius:12px;
+  background:rgba(33,212,253,.03);
+}
+#virtual .vlab-supply p { margin-top:6px;color:var(--muted,#91a5c5);font-size:10px;line-height:1.6; }
 #virtual .vlab-metrics {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
-  margin-top: 15px;
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:10px;
 }
-
 #virtual .vlab-metric {
-  min-width: 0;
-  padding: 14px 10px;
-  border: 1px solid #1b3154;
-  border-radius: 12px;
-  background: #071126;
-  text-align: center;
+  min-width:0;
+  padding:15px 10px;
+  border:1px solid #1b3154;
+  border-radius:12px;
+  background:#071126;
+  text-align:center;
 }
-
 #virtual .vlab-metric small {
-  display: block;
-  color: var(--muted, #91a5c5);
-  font-size: 10px;
-  line-height: 1.5;
+  display:block;
+  min-height:30px;
+  color:var(--muted,#91a5c5);
+  font-size:9px;
+  line-height:1.5;
 }
-
 #virtual .vlab-metric strong {
-  display: block;
-  margin-top: 6px;
-  color: var(--cyan, #21d4fd);
-  font-size: clamp(16px, 2vw, 21px);
-  overflow-wrap: anywhere;
+  display:block;
+  margin-top:5px;
+  color:var(--cyan,#21d4fd);
+  font-size:clamp(15px,2vw,22px);
+  overflow-wrap:anywhere;
 }
-
+#virtual .vlab-metric span { color:var(--muted,#91a5c5);font-size:10px; }
+#virtual .vlab-meter-results {
+  margin-top:17px;
+  padding:15px;
+  border:1px solid #1b3154;
+  border-radius:12px;
+  background:rgba(3,9,20,.55);
+}
+#virtual .vlab-meter-results h4 { margin-bottom:10px;color:#eef6ff;font-size:13px; }
+#virtual .vlab-reading-list { display:grid;gap:7px; }
+#virtual .vlab-reading {
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  padding:10px;
+  border-radius:8px;
+  background:rgba(33,212,253,.035);
+  color:#cbd8ea;
+  font-size:11px;
+}
+#virtual .vlab-reading strong { color:var(--cyan,#21d4fd);text-align:right;overflow-wrap:anywhere; }
+#virtual .vlab-reading-list>p { color:var(--muted,#91a5c5);font-size:11px; }
 #virtual .vlab-explanation {
-  margin-top: 15px;
-  padding: 15px;
-  border: 1px solid rgba(33,212,253,.18);
-  border-radius: 12px;
-  background: rgba(33,212,253,.04);
-  color: #b8c7dd;
-  font-size: 13px;
-  line-height: 1.75;
-  overflow-wrap: anywhere;
+  margin-top:16px;
+  padding:15px;
+  border:1px solid rgba(33,212,253,.18);
+  border-radius:12px;
+  background:rgba(33,212,253,.04);
+  color:#b8c7dd;
+  font-size:12px;
+  line-height:1.75;
 }
+#virtual .vlab-explanation strong { color:var(--cyan,#21d4fd); }
+#virtual .vlab-explanation p { margin-top:5px; }
 
-@media (max-width: 900px) {
-  #virtual .vlab-app {
-    grid-template-columns: minmax(0, 1fr);
-  }
+@media(max-width:1050px) {
+  #virtual .vlab-app { grid-template-columns:minmax(0,1fr); }
+  #virtual .vlab-workspace-card { grid-column:1;grid-row:auto; }
+  #virtual .vlab-editor-card,
+  #virtual .vlab-measure-card { grid-column:1; }
+  #virtual .vlab-metrics { grid-template-columns:repeat(2,minmax(0,1fr)); }
 }
-
-@media (max-width: 600px) {
-  #virtual .vlab-card {
-    padding: 16px;
-    border-radius: 14px;
-  }
-
-  #virtual .vlab-card h3 {
-    font-size: 18px;
-  }
-
-  #virtual .vlab-toolbar {
-    display: grid;
-    grid-template-columns: 1fr;
-  }
-
-  #virtual .vlab-btn {
-    width: 100%;
-    min-height: 44px;
-    font-size: 13px;
-  }
-
-  #virtual .vlab-components {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  #virtual .vlab-board {
-    padding: 12px;
-  }
-
-  #virtual .vlab-metrics {
-    gap: 8px;
-  }
-
-  #virtual .vlab-metric {
-    padding: 12px 7px;
-  }
-
-  #virtual .vlab-lamp-wrap {
-    align-items: flex-start;
-  }
+@media(max-width:600px) {
+  #virtual .vlab-card { padding:15px;border-radius:15px; }
+  #virtual .vlab-kit-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  #virtual .vlab-editor-list { grid-template-columns:minmax(0,1fr); }
+  #virtual .vlab-toolbar { grid-template-columns:minmax(0,1fr); }
+  #virtual .vlab-board { min-width:650px; }
+  #virtual .vlab-board-tools { justify-content:flex-start; }
+  #virtual .vlab-board-state { width:100%; }
+  #virtual .vlab-metrics { gap:8px; }
+  #virtual .vlab-metric { padding:12px 6px; }
+  #virtual .vlab-metric small { font-size:8px; }
+  #virtual .vlab-reading { flex-direction:column;gap:5px; }
+  #virtual .vlab-reading strong { text-align:left; }
 }
-
-@media (prefers-reduced-motion: reduce) {
+@media(prefers-reduced-motion:reduce) {
   #virtual .vlab-btn,
-  #virtual .vlab-lamp {
-    transition: none;
-  }
+  #virtual .vlab-kit-item { transition:none; }
 }
