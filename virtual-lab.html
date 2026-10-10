@@ -1,99 +1,146 @@
 
-<div class="section-title">
-  <h2>🧪 Virtual Electrical Lab</h2>
-  <p>Build a circuit, adjust resistance and observe how electrical quantities respond.</p>
+<!-- VOLTLAB VIRTUAL LAB — HTML FRAGMENT -->
+<div class="section-title vlab-title">
+  <span>⚡ INTERACTIVE ELECTRICAL ENGINEERING</span>
+  <h2>Virtual Electrical Laboratory</h2>
+  <p>Build circuits, connect components, supply power and measure electrical quantities.</p>
 </div>
 
 <div class="vlab-app">
-  <div class="vlab-card">
+  <section class="vlab-card vlab-kit-card">
     <div class="vlab-card-heading">
-      <span class="vlab-icon">⚙️</span>
+      <span class="vlab-icon">🧰</span>
       <div>
-        <h3>Experiment Controls</h3>
-        <p>Configure your electrical circuit.</p>
+        <h3>Component Kit</h3>
+        <p>Drag a component onto the board, or click to add it.</p>
       </div>
     </div>
 
-    <div class="vlab-field">
-      <label for="vlabVoltage">Supply voltage <span>(V)</span></label>
-      <input id="vlabVoltage" type="number" min="0" max="10000" step="any" placeholder="Enter voltage in volts">
+    <div class="vlab-kit-grid">
+      <button class="vlab-kit-item" draggable="true" data-add="battery"><span>🔋</span><strong>Battery</strong><small>DC source</small></button>
+      <button class="vlab-kit-item" draggable="true" data-add="resistor"><span>〰️</span><strong>Resistor</strong><small>Resistance</small></button>
+      <button class="vlab-kit-item" draggable="true" data-add="bulb"><span>💡</span><strong>Bulb / Load</strong><small>Load resistance</small></button>
+      <button class="vlab-kit-item" draggable="true" data-add="switch"><span>🔘</span><strong>Switch</strong><small>Open / close</small></button>
+      <button class="vlab-kit-item" draggable="true" data-add="ammeter"><span>Ⓐ</span><strong>Ammeter</strong><small>Current meter</small></button>
+      <button class="vlab-kit-item" draggable="true" data-add="voltmeter"><span>Ⓥ</span><strong>Voltmeter</strong><small>Voltage meter</small></button>
     </div>
 
-    <div class="vlab-field">
-      <label for="vlabTopology">Circuit arrangement</label>
-      <select id="vlabTopology">
-        <option value="series">Series circuit</option>
-        <option value="parallel">Parallel circuit</option>
-      </select>
+    <div class="vlab-hint">
+      <strong>How to connect</strong>
+      <p>1. Add components to the board.</p>
+      <p>2. Click one component terminal, then click another terminal to connect a wire.</p>
+      <p>3. Connect a complete circuit with a battery and load.</p>
     </div>
 
     <div class="vlab-toolbar">
-      <button class="vlab-btn primary" id="vlabAddBtn" type="button">＋ Add resistor</button>
-      <button class="vlab-btn active" id="vlabSwitchBtn" type="button">SWITCH: CLOSED</button>
-      <button class="vlab-btn" id="vlabResetBtn" type="button">Reset experiment</button>
+      <button class="vlab-btn primary" id="vlabPowerBtn" type="button">⏻ Power OFF</button>
+      <button class="vlab-btn" id="vlabRunBtn" type="button">▶ Run experiment</button>
+      <button class="vlab-btn" id="vlabStopBtn" type="button">■ Stop</button>
+      <button class="vlab-btn danger" id="vlabResetBtn" type="button">↻ Reset board</button>
     </div>
 
-    <p class="vlab-note">Add up to 8 resistors. Enter positive resistance values to calculate the circuit.</p>
-    <div id="vlabComponents" class="vlab-components"></div>
-  </div>
+    <div class="vlab-status" id="vlabStatus" role="status">READY — Add a battery and components to begin.</div>
+  </section>
 
-  <div class="vlab-card">
-    <div class="vlab-card-heading">
+  <section class="vlab-card vlab-workspace-card">
+    <div class="vlab-card-heading vlab-workspace-heading">
       <span class="vlab-icon">⚡</span>
       <div>
-        <h3>Live Circuit Simulation</h3>
-        <p>Measurements update when you change the inputs.</p>
+        <h3>Circuit Workbench</h3>
+        <p>Move components freely and wire their terminals.</p>
       </div>
     </div>
 
-    <div class="vlab-board">
-      <div class="vlab-board-label" id="vlabBoardLabel">VOLTLAB / READY</div>
-      <div class="vlab-circuit-scroll">
-        <div class="vlab-circuit-row" id="vlabCircuitRow">
-          <div class="vlab-terminal">+</div>
-          <div class="vlab-wire"></div>
-          <div class="vlab-part">SOURCE</div>
-          <div class="vlab-wire"></div>
-          <div class="vlab-part">ADD R</div>
-          <div class="vlab-wire"></div>
-          <div class="vlab-part lamp">LOAD</div>
-          <div class="vlab-wire"></div>
-          <div class="vlab-terminal">−</div>
-        </div>
-      </div>
+    <div class="vlab-board-tools">
+      <span class="vlab-board-state" id="vlabBoardState">BOARD READY</span>
+      <button class="vlab-btn small" id="vlabDeleteWireBtn" type="button">Delete last wire</button>
+      <button class="vlab-btn small" id="vlabCancelWireBtn" type="button">Cancel wire</button>
+    </div>
 
-      <div id="vlabStatus" class="vlab-live-status">● READY — Enter a voltage and add a resistor.</div>
+    <div class="vlab-board-scroll">
+      <svg id="vlabBoard" class="vlab-board" viewBox="0 0 1000 600"
+           role="img" aria-label="Interactive electrical circuit building board">
+        <defs>
+          <pattern id="vlabGrid" width="25" height="25" patternUnits="userSpaceOnUse">
+            <path d="M 25 0 L 0 0 0 25" fill="none" stroke="#173052" stroke-width="1"/>
+          </pattern>
+          <filter id="vlabGlow">
+            <feGaussianBlur stdDeviation="3" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+        <rect width="1000" height="600" fill="#040b19"/>
+        <rect width="1000" height="600" fill="url(#vlabGrid)"/>
+        <g id="vlabWireLayer"></g>
+        <g id="vlabComponentLayer"></g>
+        <g id="vlabPreviewLayer"></g>
+      </svg>
+    </div>
 
-      <div class="vlab-lamp-wrap">
-        <div id="vlabLamp" class="vlab-lamp"></div>
-        <div>
-          <strong id="vlabLampText">Load: OFF</strong>
-          <p class="vlab-note">Illustrative load indicator; not a physical LED model.</p>
-        </div>
+    <div class="vlab-board-footer">
+      <span>● <i class="wire-legend"></i> Wire</span>
+      <span>● <i class="pin-legend"></i> Terminal</span>
+      <span>Drag components to reposition them.</span>
+    </div>
+
+    <div class="vlab-hint">
+      <strong>Connection tip</strong>
+      <p>Click two terminals to create a wire. Click a connected wire to select it, then use Delete last wire to remove the most recent connection. Use Cancel wire to clear an unfinished connection.</p>
+    </div>
+  </section>
+
+  <section class="vlab-card vlab-editor-card">
+    <div class="vlab-card-heading">
+      <span class="vlab-icon">🛠️</span>
+      <div>
+        <h3>Component Inspector</h3>
+        <p>Change values, rename components and remove components.</p>
       </div>
+    </div>
+    <div id="vlabComponentEditor" class="vlab-editor-list">
+      <div class="vlab-empty">No components yet. Add one from the Component Kit.</div>
+    </div>
+  </section>
+
+  <section class="vlab-card vlab-measure-card">
+    <div class="vlab-card-heading">
+      <span class="vlab-icon">📟</span>
+      <div>
+        <h3>Measurements & Calculator</h3>
+        <p>Enter component values and run the circuit to calculate DC results.</p>
+      </div>
+    </div>
+
+    <div class="vlab-supply">
+      <label for="vlabSupply">Default new battery voltage (V)</label>
+      <input id="vlabSupply" type="number" min="0.1" max="1000" step="any" placeholder="Enter voltage">
+      <p>Each battery has its own editable voltage in Component Inspector.</p>
     </div>
 
     <div class="vlab-metrics">
-      <div class="vlab-metric">
-        <small>EQUIVALENT RESISTANCE</small>
-        <strong id="vlabReq">—</strong>
-      </div>
-      <div class="vlab-metric">
-        <small>TOTAL CURRENT</small>
-        <strong id="vlabCurrent">—</strong>
-      </div>
-      <div class="vlab-metric">
-        <small>TOTAL POWER</small>
-        <strong id="vlabPower">—</strong>
-      </div>
-      <div class="vlab-metric">
-        <small>SUPPLY VOLTAGE</small>
-        <strong id="vlabVout">—</strong>
+      <div class="vlab-metric"><small>SUPPLY / NODE VOLTAGE</small><strong id="vlabVoltageReadout">—</strong><span>V</span></div>
+      <div class="vlab-metric"><small>TOTAL SOURCE CURRENT</small><strong id="vlabCurrentReadout">—</strong><span>A</span></div>
+      <div class="vlab-metric"><small>TOTAL SOURCE POWER</small><strong id="vlabPowerReadout">—</strong><span>W</span></div>
+      <div class="vlab-metric"><small>RESISTIVE LOAD POWER</small><strong id="vlabLoadPowerReadout">—</strong><span>W</span></div>
+    </div>
+
+    <div class="vlab-meter-results">
+      <h4>Instrument readings</h4>
+      <div id="vlabMeterReadings" class="vlab-reading-list">
+        <p>No ammeter or voltmeter readings yet.</p>
       </div>
     </div>
 
-    <div id="vlabExplanation" class="vlab-explanation">
-      Enter your values to begin. Results will appear after the inputs are valid.
+    <div class="vlab-meter-results">
+      <h4>Component results</h4>
+      <div id="vlabPartReadings" class="vlab-reading-list">
+        <p>Run a connected circuit to see component readings.</p>
+      </div>
     </div>
-  </div>
+
+    <div class="vlab-explanation" id="vlabExplanation">
+      <strong>Experiment guide</strong>
+      <p>Add a battery, one or more loads, and wires. Close any switches, then turn the power on and run the experiment. Unconnected circuits cannot produce a complete measurement.</p>
+    </div>
+  </section>
 </div>
