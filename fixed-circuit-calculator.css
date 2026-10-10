@@ -1,0 +1,50 @@
+
+#fixed-circuit-calculator {
+  margin: 36px auto;
+  color: #eaf7ff;
+  font-family: Arial, Helvetica, sans-serif;
+}
+#fixed-circuit-calculator * { box-sizing: border-box; }
+#fixed-circuit-calculator .fcc-app { display: grid; gap: 22px; }
+#fixed-circuit-calculator .fcc-heading { text-align: center; margin-bottom: 8px; }
+#fixed-circuit-calculator .fcc-eyebrow { color: #36e6a4; font-size: 12px; font-weight: 800; letter-spacing: 2px; }
+#fixed-circuit-calculator h2 { color: #21d4fd; font-size: clamp(25px, 4vw, 36px); margin: 10px 0; }
+#fixed-circuit-calculator h3 { margin: 0 0 18px; color: #21d4fd; }
+#fixed-circuit-calculator p { line-height: 1.6; }
+#fixed-circuit-calculator .fcc-layout { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 20px; align-items: start; }
+#fixed-circuit-calculator .fcc-card { min-width: 0; padding: 22px; background: linear-gradient(145deg, #0b1530, #080d20); border: 1px solid #243a60; border-radius: 18px; box-shadow: 0 0 24px #21d4fd0b; }
+#fixed-circuit-calculator label { display: block; margin: 15px 0 7px; color: #bdcde5; font-size: 14px; }
+#fixed-circuit-calculator input,
+#fixed-circuit-calculator select { width: 100%; min-width: 0; padding: 12px; color: #f1f8ff; background: #050b1a; border: 1px solid #30466c; border-radius: 9px; outline: none; }
+#fixed-circuit-calculator input:focus,
+#fixed-circuit-calculator select:focus { border-color: #21d4fd; box-shadow: 0 0 0 2px #21d4fd1c; }
+#fixed-circuit-calculator .fcc-actions { display: flex; flex-wrap: wrap; gap: 9px; margin: 17px 0; }
+#fixed-circuit-calculator button { cursor: pointer; border: 1px solid #2c6d91; border-radius: 9px; padding: 11px 14px; color: #eafaff; background: #102642; font-weight: 700; }
+#fixed-circuit-calculator button:hover { filter: brightness(1.2); }
+#fixed-circuit-calculator .fcc-primary { width: 100%; color: #031321; background: linear-gradient(90deg, #21d4fd, #36e6a4); border: 0; padding: 14px; margin-top: 5px; }
+#fixed-circuit-calculator .fcc-secondary { width: 100%; margin-top: 9px; background: transparent; }
+#fixed-circuit-calculator .fcc-note { color: #91a8c9; font-size: 12px; }
+#fixed-circuit-calculator .fcc-error { color: #ff8e9c; font-size: 13px; }
+#fixed-circuit-calculator .fcc-group { border: 1px solid #263d60; border-radius: 12px; padding: 14px; margin-top: 17px; }
+#fixed-circuit-calculator .fcc-group h4 { margin: 0 0 10px; color: #36e6a4; }
+#fixed-circuit-calculator .fcc-resistor-row { display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 10px; margin-top: 10px; }
+#fixed-circuit-calculator .fcc-resistor-row button { color: #ffb3be; padding: 10px; }
+#fixed-circuit-calculator .fcc-diagram { width: 100%; min-height: 210px; display: flex; align-items: center; justify-content: center; overflow: auto; background: #050b1a; border: 1px solid #203656; border-radius: 12px; padding: 10px; }
+#fixed-circuit-calculator .fcc-diagram svg { display: block; width: 100%; min-width: 300px; height: auto; }
+#fixed-circuit-calculator .fcc-metrics { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+#fixed-circuit-calculator .fcc-metrics > div { padding: 17px; border: 1px solid #284567; background: #070f22; border-radius: 12px; }
+#fixed-circuit-calculator .fcc-metrics span { display: block; font-size: 12px; color: #9cb3d2; margin-bottom: 9px; }
+#fixed-circuit-calculator .fcc-metrics strong { display: block; font-size: clamp(18px, 3vw, 25px); color: #36e6a4; overflow-wrap: anywhere; }
+#fixed-circuit-calculator .fcc-explanation { margin: 18px 0; padding: 15px; line-height: 1.8; background: #07172a; border-left: 3px solid #21d4fd; border-radius: 6px; }
+#fixed-circuit-calculator .fcc-table-wrap { width: 100%; overflow-x: auto; }
+#fixed-circuit-calculator .fcc-table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 13px; }
+#fixed-circuit-calculator .fcc-table th,
+#fixed-circuit-calculator .fcc-table td { padding: 11px; text-align: left; border-bottom: 1px solid #243854; white-space: nowrap; }
+#fixed-circuit-calculator .fcc-table th { color: #21d4fd; }
+@media (max-width: 760px) {
+  #fixed-circuit-calculator .fcc-layout { grid-template-columns: 1fr; }
+  #fixed-circuit-calculator .fcc-card { padding: 16px; }
+}
+@media (max-width: 420px) {
+  #fixed-circuit-calculator .fcc-metrics { grid-template-columns: 1fr; }
+}
