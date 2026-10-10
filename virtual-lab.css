@@ -1,592 +1,391 @@
 
-.virtual-lab-section{
-  padding:100px 0;
-  position:relative;
+/* =====================================================
+   VOLTLAB VIRTUAL LAB — SEPARATE STYLESHEET
+   Uses the existing VoltLab dark neon theme
+   ===================================================== */
+
+#virtual .vlab-app {
+  display: grid;
+  grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+  gap: 22px;
+  align-items: start;
 }
 
-.virtual-lab-section .section-title{
-  text-align:center;
-  margin-bottom:35px;
+#virtual .vlab-card {
+  min-width: 0;
+  padding: 24px;
+  border: 1px solid var(--line, #1d3157);
+  border-radius: 18px;
+  background: linear-gradient(145deg, rgba(16,28,54,.92), rgba(8,16,32,.96));
+  box-shadow: var(--glow, 0 0 25px rgba(33,212,253,.2));
 }
 
-.virtual-lab-section .section-title span{
-  color:var(--cyan);
-  font-size:12px;
-  font-weight:800;
-  letter-spacing:2px;
+#virtual .vlab-card-heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 22px;
 }
 
-.virtual-lab-section .section-title h2{
-  margin:8px 0 10px;
+#virtual .vlab-icon {
+  width: 44px;
+  height: 44px;
+  flex: 0 0 44px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(33,212,253,.25);
+  border-radius: 13px;
+  background: rgba(33,212,253,.07);
+  font-size: 23px;
 }
 
-
-/* =========================================================
-   MAIN LAB PANEL
-   ========================================================= */
-
-.virtual-lab-panel{
-  background:
-    linear-gradient(
-      145deg,
-      rgba(16,28,54,.92),
-      rgba(5,12,27,.97)
-    );
-  border:1px solid rgba(33,212,253,.18);
-  border-radius:24px;
-  padding:24px;
-  box-shadow:
-    0 0 45px rgba(33,212,253,.08),
-    inset 0 0 40px rgba(33,212,253,.018);
-  overflow:hidden;
+#virtual .vlab-card h3 {
+  font-size: 21px;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
 }
 
-
-/* =========================================================
-   LAB HEADER
-   ========================================================= */
-
-.virtual-lab-header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:20px;
-  padding-bottom:22px;
-  margin-bottom:22px;
-  border-bottom:1px solid rgba(33,212,253,.10);
+#virtual .vlab-card-heading p,
+#virtual .vlab-note {
+  color: var(--muted, #91a5c5);
+  font-size: 13px;
+  line-height: 1.6;
 }
 
-.virtual-lab-header h3{
-  margin:8px 0 6px;
-  font-size:22px;
+#virtual .vlab-field {
+  margin-bottom: 18px;
 }
 
-.virtual-lab-header p{
-  color:var(--muted);
-  font-size:13px;
-  margin:0;
+#virtual .vlab-field label {
+  display: block;
+  margin-bottom: 7px;
+  color: #cbd8ea;
+  font-size: 14px;
+  font-weight: 600;
 }
 
-.lab-status{
-  display:flex;
-  align-items:center;
-  gap:7px;
-  color:var(--muted);
-  font-size:10px;
-  letter-spacing:1.5px;
-  font-weight:800;
+#virtual .vlab-field label span {
+  color: var(--cyan, #21d4fd);
 }
 
-.lab-status-dot{
-  width:7px;
-  height:7px;
-  border-radius:50%;
-  background:var(--muted);
-  box-shadow:0 0 8px rgba(145,165,197,.3);
+#virtual .vlab-field input,
+#virtual .vlab-field select,
+#virtual .vlab-component input {
+  width: 100%;
+  min-width: 0;
+  min-height: 46px;
+  padding: 11px 13px;
+  border: 1px solid #29466e;
+  border-radius: 10px;
+  outline: none;
+  background: #060d1c;
+  color: #eef6ff;
+  font: inherit;
+  font-size: 15px;
 }
 
-.virtual-power{
-  display:flex;
-  align-items:center;
-  gap:10px;
+#virtual .vlab-field input:focus,
+#virtual .vlab-field select:focus,
+#virtual .vlab-component input:focus {
+  border-color: var(--cyan, #21d4fd);
+  box-shadow: 0 0 14px rgba(33,212,253,.1);
 }
 
-.virtual-power > span{
-  color:var(--muted);
-  font-size:10px;
-  font-weight:800;
-  letter-spacing:1px;
+#virtual .vlab-field input::placeholder,
+#virtual .vlab-component input::placeholder {
+  color: #7184a2;
 }
 
-#virtualPowerBtn{
-  min-width:70px;
-  padding:10px 15px;
-  border:1px solid rgba(239,68,68,.35);
-  border-radius:10px;
-  background:rgba(239,68,68,.08);
-  color:var(--red);
-  font-weight:800;
-  cursor:pointer;
-  transition:.25s ease;
+#virtual .vlab-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 18px 0;
 }
 
-#virtualPowerBtn:hover{
-  box-shadow:0 0 18px rgba(239,68,68,.2);
+#virtual .vlab-btn {
+  min-height: 42px;
+  padding: 10px 12px;
+  border: 1px solid #29466e;
+  border-radius: 9px;
+  background: #071126;
+  color: #dbe8f8;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: .2s ease;
 }
 
-#virtualPowerBtn.power-on{
-  border-color:rgba(34,197,94,.5);
-  background:rgba(34,197,94,.10);
-  color:var(--green);
-  box-shadow:0 0 20px rgba(34,197,94,.15);
+#virtual .vlab-btn:hover {
+  border-color: var(--cyan, #21d4fd);
 }
 
-
-/* =========================================================
-   WORKSPACE
-   ========================================================= */
-
-.virtual-workspace{
-  display:grid;
-  grid-template-columns:220px 1fr;
-  gap:18px;
+#virtual .vlab-btn.primary {
+  border-color: transparent;
+  background: linear-gradient(90deg, var(--cyan, #21d4fd), var(--blue, #3b82f6));
+  color: #03101c;
 }
 
-
-/* =========================================================
-   COMPONENT PANEL
-   ========================================================= */
-
-.virtual-components{
-  background:rgba(5,14,30,.72);
-  border:1px solid rgba(33,212,253,.12);
-  border-radius:18px;
-  padding:15px;
+#virtual .vlab-btn.active {
+  border-color: rgba(34,197,94,.5);
+  color: #6ee7a0;
 }
 
-.virtual-panel-title{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:3px 5px 13px;
-  margin-bottom:5px;
-  border-bottom:1px solid rgba(33,212,253,.08);
+#virtual .vlab-components {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 14px;
 }
 
-.virtual-panel-title span{
-  color:#eef6ff;
-  font-size:11px;
-  font-weight:800;
-  letter-spacing:1px;
+#virtual .vlab-component {
+  min-width: 0;
+  padding: 13px;
+  border: 1px solid #1b3154;
+  border-radius: 12px;
+  background: rgba(3,9,20,.65);
 }
 
-.virtual-panel-title small{
-  color:var(--cyan);
-  font-size:8px;
-  letter-spacing:1px;
+#virtual .vlab-component-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 12px;
 }
 
-.virtual-component{
-  width:100%;
-  display:flex;
-  align-items:center;
-  gap:12px;
-  padding:11px;
-  margin-top:7px;
-  border:1px solid rgba(29,49,87,.9);
-  border-radius:11px;
-  background:#071126;
-  color:#dbe8f8;
-  text-align:left;
-  cursor:pointer;
-  transition:.22s ease;
+#virtual .vlab-component-head strong {
+  color: var(--cyan, #21d4fd);
+  font-size: 12px;
 }
 
-.virtual-component:hover{
-  transform:translateX(3px);
-  border-color:rgba(33,212,253,.5);
-  box-shadow:0 0 17px rgba(33,212,253,.10);
+#virtual .vlab-remove {
+  padding: 5px 7px;
+  border: 1px solid rgba(239,68,68,.3);
+  border-radius: 7px;
+  background: rgba(239,68,68,.05);
+  color: #fecaca;
+  font-size: 11px;
+  cursor: pointer;
 }
 
-.virtual-component:active{
-  transform:scale(.98);
+#virtual .vlab-board {
+  padding: 18px;
+  border: 1px solid #1b3154;
+  border-radius: 15px;
+  background: radial-gradient(circle at center, rgba(33,212,253,.06), transparent 65%), #030914;
 }
 
-.component-icon{
-  width:34px;
-  height:34px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  flex-shrink:0;
-  border-radius:9px;
-  background:rgba(33,212,253,.06);
-  font-size:18px;
+#virtual .vlab-board-label {
+  color: var(--cyan, #21d4fd);
+  font-size: 11px;
+  letter-spacing: 1px;
+  font-weight: 800;
 }
 
-.virtual-component strong{
-  display:block;
-  font-size:12px;
+#virtual .vlab-circuit-scroll {
+  width: 100%;
+  overflow-x: auto;
+  padding: 22px 0;
+  scrollbar-color: #29466e #030914;
 }
 
-.virtual-component small{
-  display:block;
-  color:var(--muted);
-  font-size:9px;
-  margin-top:2px;
+#virtual .vlab-circuit-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  min-width: max-content;
+  min-height: 78px;
+  padding: 8px 2px;
 }
 
-
-/* =========================================================
-   CIRCUIT BOARD AREA
-   ========================================================= */
-
-.virtual-board-area{
-  min-width:0;
+#virtual .vlab-terminal {
+  display: grid;
+  place-items: center;
+  width: 29px;
+  height: 29px;
+  flex: 0 0 29px;
+  border: 1px solid var(--cyan, #21d4fd);
+  border-radius: 50%;
+  color: var(--cyan, #21d4fd);
+  font-weight: 800;
 }
 
-.virtual-board-top{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:15px;
-  margin-bottom:10px;
+#virtual .vlab-wire {
+  width: clamp(14px, 2.5vw, 30px);
+  height: 3px;
+  flex: 0 0 clamp(14px, 2.5vw, 30px);
+  background: var(--cyan, #21d4fd);
+  box-shadow: 0 0 8px rgba(33,212,253,.4);
 }
 
-.virtual-board-top > div{
-  display:flex;
-  flex-direction:column;
-  gap:3px;
+#virtual .vlab-part {
+  display: grid;
+  place-items: center;
+  min-width: 68px;
+  max-width: 115px;
+  min-height: 48px;
+  padding: 6px;
+  border: 2px solid var(--orange, #f59e0b);
+  border-radius: 7px;
+  background: #081126;
+  color: #fbbf24;
+  font-size: 11px;
+  font-weight: 800;
+  text-align: center;
+  overflow-wrap: anywhere;
 }
 
-.board-label{
-  color:var(--cyan);
-  font-size:9px;
-  letter-spacing:1.5px;
-  font-weight:800;
+#virtual .vlab-part.lamp {
+  border-color: #8b5cf6;
+  color: #c4b5fd;
 }
 
-#virtualCircuitName{
-  color:#eef6ff;
-  font-size:13px;
+#virtual .vlab-circuit-row.open .vlab-wire {
+  background: repeating-linear-gradient(90deg, #526783 0 5px, transparent 5px 10px);
+  box-shadow: none;
 }
 
-#virtualResetBtn{
-  padding:8px 13px;
-  border:1px solid #29466e;
-  border-radius:9px;
-  background:#071126;
-  color:#dbe8f8;
-  cursor:pointer;
-  font-weight:700;
-  transition:.2s ease;
+#virtual .vlab-live-status {
+  padding: 12px;
+  border: 1px solid rgba(34,197,94,.25);
+  border-radius: 10px;
+  background: rgba(34,197,94,.05);
+  color: #86efac;
+  font-size: 13px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
 }
 
-#virtualResetBtn:hover{
-  border-color:var(--cyan);
-  color:var(--cyan);
+#virtual .vlab-live-status.off {
+  border-color: rgba(245,158,11,.3);
+  background: rgba(245,158,11,.05);
+  color: #fcd34d;
 }
 
-
-/* =========================================================
-   CIRCUIT BOARD
-   ========================================================= */
-
-.virtual-circuit-board{
-  position:relative;
-  min-height:430px;
-  overflow:hidden;
-  border:1px solid rgba(33,212,253,.18);
-  border-radius:17px;
-  background:
-    radial-gradient(
-      circle at 50% 50%,
-      rgba(33,212,253,.055),
-      transparent 45%
-    ),
-    #040b19;
-  box-shadow:
-    inset 0 0 40px rgba(0,0,0,.35);
+#virtual .vlab-lamp-wrap {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 18px;
 }
 
-.virtual-grid{
-  position:absolute;
-  inset:0;
-  opacity:.42;
-  background-image:
-    linear-gradient(
-      rgba(33,212,253,.055) 1px,
-      transparent 1px
-    ),
-    linear-gradient(
-      90deg,
-      rgba(33,212,253,.055) 1px,
-      transparent 1px
-    );
-  background-size:25px 25px;
-  pointer-events:none;
+#virtual .vlab-lamp {
+  width: 43px;
+  height: 43px;
+  flex: 0 0 43px;
+  border: 2px solid #526783;
+  border-radius: 50%;
+  background: #162238;
+  transition: .25s ease;
 }
 
-.virtual-empty-state{
-  position:absolute;
-  inset:0;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  flex-direction:column;
-  text-align:center;
-  padding:25px;
-  pointer-events:none;
+#virtual .vlab-lamp.lit {
+  border-color: #fde047;
+  background: #facc15;
+  box-shadow: 0 0 12px #facc15, 0 0 32px rgba(250,204,21,.5);
 }
 
-.empty-icon{
-  width:64px;
-  height:64px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border:1px solid rgba(33,212,253,.22);
-  border-radius:50%;
-  background:rgba(33,212,253,.045);
-  font-size:28px;
-  margin-bottom:15px;
-  box-shadow:0 0 25px rgba(33,212,253,.08);
+#virtual .vlab-lamp-wrap strong {
+  color: #eef6ff;
 }
 
-.virtual-empty-state h4{
-  margin-bottom:6px;
-  font-size:17px;
+#virtual .vlab-metrics {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 15px;
 }
 
-.virtual-empty-state p{
-  color:var(--muted);
-  font-size:12px;
-  max-width:350px;
-  line-height:1.6;
+#virtual .vlab-metric {
+  min-width: 0;
+  padding: 14px 10px;
+  border: 1px solid #1b3154;
+  border-radius: 12px;
+  background: #071126;
+  text-align: center;
 }
 
-
-/* =========================================================
-   MEASUREMENTS
-   ========================================================= */
-
-.virtual-measurements{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:9px;
-  margin-top:10px;
+#virtual .vlab-metric small {
+  display: block;
+  color: var(--muted, #91a5c5);
+  font-size: 10px;
+  line-height: 1.5;
 }
 
-.virtual-measurement{
-  padding:13px;
-  border:1px solid rgba(29,49,87,.9);
-  border-radius:11px;
-  background:#071126;
-  text-align:center;
+#virtual .vlab-metric strong {
+  display: block;
+  margin-top: 6px;
+  color: var(--cyan, #21d4fd);
+  font-size: clamp(16px, 2vw, 21px);
+  overflow-wrap: anywhere;
 }
 
-.virtual-measurement small{
-  display:block;
-  color:var(--muted);
-  font-size:8px;
-  letter-spacing:1px;
+#virtual .vlab-explanation {
+  margin-top: 15px;
+  padding: 15px;
+  border: 1px solid rgba(33,212,253,.18);
+  border-radius: 12px;
+  background: rgba(33,212,253,.04);
+  color: #b8c7dd;
+  font-size: 13px;
+  line-height: 1.75;
+  overflow-wrap: anywhere;
 }
 
-.virtual-measurement strong{
-  color:var(--cyan);
-  font-size:21px;
-  margin-top:4px;
+@media (max-width: 900px) {
+  #virtual .vlab-app {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
-.virtual-measurement span{
-  color:var(--muted);
-  font-size:10px;
-  margin-left:2px;
-}
-
-
-/* =========================================================
-   LAB MESSAGE
-   ========================================================= */
-
-.virtual-lab-message{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  margin-top:18px;
-  padding:14px 16px;
-  border:1px solid rgba(33,212,253,.13);
-  border-radius:12px;
-  background:rgba(33,212,253,.035);
-}
-
-.virtual-lab-message > span{
-  width:34px;
-  height:34px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border-radius:9px;
-  background:rgba(33,212,253,.08);
-  color:var(--cyan);
-}
-
-.virtual-lab-message strong{
-  font-size:12px;
-}
-
-.virtual-lab-message p{
-  color:var(--muted);
-  font-size:11px;
-  margin:3px 0 0;
-}
-
-
-/* =========================================================
-   CONTROLS
-   ========================================================= */
-
-.virtual-experiment-controls{
-  display:flex;
-  flex-wrap:wrap;
-  gap:9px;
-  margin-top:15px;
-}
-
-.virtual-action{
-  padding:11px 16px;
-  border:1px solid #29466e;
-  border-radius:10px;
-  background:#071126;
-  color:#dbe8f8;
-  cursor:pointer;
-  font-size:12px;
-  font-weight:800;
-  transition:.22s ease;
-}
-
-.virtual-action:hover{
-  border-color:var(--cyan);
-  color:var(--cyan);
-  transform:translateY(-1px);
-}
-
-.virtual-action.primary{
-  border:none;
-  color:#03101c;
-  background:linear-gradient(
-    90deg,
-    var(--cyan),
-    var(--blue)
-  );
-}
-
-
-/* =========================================================
-   ACTIVE STATE
-   ========================================================= */
-
-.virtual-lab-panel.lab-active{
-  border-color:rgba(34,197,94,.28);
-  box-shadow:
-    0 0 45px rgba(34,197,94,.07),
-    inset 0 0 40px rgba(34,197,94,.015);
-}
-
-.virtual-lab-panel.lab-active .lab-status-dot{
-  background:var(--green);
-  box-shadow:
-    0 0 8px var(--green),
-    0 0 16px rgba(34,197,94,.45);
-}
-
-
-/* =========================================================
-   TABLET
-   ========================================================= */
-
-@media(max-width:900px){
-
-  .virtual-workspace{
-    grid-template-columns:1fr;
+@media (max-width: 600px) {
+  #virtual .vlab-card {
+    padding: 16px;
+    border-radius: 14px;
   }
 
-  .virtual-components{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:7px;
+  #virtual .vlab-card h3 {
+    font-size: 18px;
   }
 
-  .virtual-panel-title{
-    grid-column:1/-1;
+  #virtual .vlab-toolbar {
+    display: grid;
+    grid-template-columns: 1fr;
   }
 
-  .virtual-component{
-    margin-top:0;
+  #virtual .vlab-btn {
+    width: 100%;
+    min-height: 44px;
+    font-size: 13px;
   }
 
-  .virtual-circuit-board{
-    min-height:400px;
+  #virtual .vlab-components {
+    grid-template-columns: minmax(0, 1fr);
   }
 
+  #virtual .vlab-board {
+    padding: 12px;
+  }
+
+  #virtual .vlab-metrics {
+    gap: 8px;
+  }
+
+  #virtual .vlab-metric {
+    padding: 12px 7px;
+  }
+
+  #virtual .vlab-lamp-wrap {
+    align-items: flex-start;
+  }
 }
 
-
-/* =========================================================
-   MOBILE
-   ========================================================= */
-
-@media(max-width:600px){
-
-  .virtual-lab-section{
-    padding:75px 0;
+@media (prefers-reduced-motion: reduce) {
+  #virtual .vlab-btn,
+  #virtual .vlab-lamp {
+    transition: none;
   }
-
-  .virtual-lab-panel{
-    padding:15px;
-    border-radius:18px;
-  }
-
-  .virtual-lab-header{
-    align-items:flex-start;
-    flex-direction:column;
-  }
-
-  .virtual-lab-header h3{
-    font-size:19px;
-  }
-
-  .virtual-power{
-    width:100%;
-    justify-content:space-between;
-  }
-
-  .virtual-components{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .virtual-component{
-    padding:9px;
-    gap:8px;
-  }
-
-  .component-icon{
-    width:30px;
-    height:30px;
-    font-size:16px;
-  }
-
-  .virtual-component strong{
-    font-size:11px;
-  }
-
-  .virtual-component small{
-    font-size:8px;
-  }
-
-  .virtual-board-top{
-    align-items:flex-start;
-  }
-
-  .virtual-circuit-board{
-    min-height:360px;
-  }
-
-  .virtual-measurements{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .virtual-lab-message{
-    align-items:flex-start;
-  }
-
-  .virtual-experiment-controls{
-    display:grid;
-    grid-template-columns:1fr;
-  }
-
-  .virtual-action{
-    width:100%;
-  }
-
 }
