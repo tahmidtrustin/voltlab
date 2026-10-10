@@ -297,11 +297,11 @@
     }
 
     function batterySymbol(x, y) {
-      return `${line(x, y - 14, x, y + 14)}
-        ${line(x + 10, y - 8, x + 10, y + 8)}
-        ${svgText(x + 4, y - 23, "+", 12, "#36e6a4)}
-        ${svgText(x + 4, y + 30, "−", 12, "#36e6a4)}`;
-    }
+  return `${line(x, y - 14, x, y + 14)}
+    ${line(x + 10, y - 8, x + 10, y + 8)}
+    ${svgText(x + 4, y - 23, "+", 12, "#36e6a4")}
+    ${svgText(x + 4, y + 30, "−", 12, "#36e6a4")}`;
+}
 
     function updateDiagram() {
       const type = typeSelect.value;
