@@ -482,7 +482,7 @@ window.MathJax = {
 };
 </script>
 <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
- 
+<link rel="stylesheet" href="virtual-lab.css">
 </head>
 <body>
 
@@ -639,8 +639,14 @@ window.MathJax = {
 </div>
 </div>
 </section>
-
-<section id="virtual"><div class="container"><div class="section-title"><h2>🧪 Virtual Electrical Lab</h2><p>A preview of the interactive laboratory environment.</p></div><div class="virtual-lab"><div class="lab-screen"><div class="screen-title">VOLTLAB / EXPERIMENT_01</div><div class="components"><div class="component"><div class="symbol">🔋</div><small>POWER SOURCE</small></div><div class="flow-line"></div><div class="component"><div class="symbol">〰️</div><small>RESISTOR</small></div><div class="flow-line"></div><div class="component"><div class="symbol">💡</div><small>LOAD</small></div></div><div class="lab-status">● CIRCUIT STATUS: ACTIVE — ELECTRICAL PATH COMPLETE</div></div><div class="lab-panel"><h3>What happens here?</h3><p class="lab-description">A real electrical circuit needs a source, a conducting path and a load. Voltage provides the potential difference while current represents the movement of charge.</p><div class="card"><h3>Coming Next</h3><p>Interactive circuit construction, component connections and practical troubleshooting experiments.</p></div></div></div></div></section>
+<section id="virtual" class="lab-section">
+  <div id="virtualLabContainer" class="container">
+    <div class="section-title">
+      <h2>🧪 Virtual Electrical Lab</h2>
+      <p>Loading your interactive laboratory...</p>
+    </div>
+  </div>
+</section>
 <section id="challenge"><div class="container"><div class="section-title"><h2>🎯 Circuit Challenge</h2><p>Think like an electrical engineer.</p></div><div class="challenge card"><div class="question">A circuit has a voltage of 12 V and resistance of 6 Ω. What is the current?</div><div class="options"><button class="option" onclick="checkAnswer(this,false)">A. 0.5 A</button><button class="option" onclick="checkAnswer(this,true)">B. 2 A</button><button class="option" onclick="checkAnswer(this,false)">C. 6 A</button><button class="option" onclick="checkAnswer(this,false)">D. 72 A</button></div><div class="feedback" id="feedback"></div></div></div></section>
 <section id="team"><div class="container"><div class="section-title"><h2>👨‍💻 Project Team</h2><p>Designed and developed by CSE students of Jamalpur Science and Technology University.</p></div><div class="team-grid"><div class="team-card"><div class="member-photo"><img src="tahmid.jpg" alt="Md. Tahmid Siddique"></div><h3><a class="bio-link" href="bio.html" target="_blank" rel="noopener">Md. Tahmid Siddique</a></h3><div class="role">Website Builder / Project Lead</div><div class="team-info">Jamalpur Science and Technology University<br>Department of Computer Science &amp; Engineering<br>trustinunivers@gmail.com</div></div><div class="team-card"><div class="member-photo">02</div><h3>Team Member 02</h3><div class="role">Team Member</div><div class="team-info">Name to be added</div></div><div class="team-card"><div class="member-photo">03</div><h3>Team Member 03</h3><div class="role">Team Member</div><div class="team-info">Name to be added</div></div><div class="team-card"><div class="member-photo">04</div><h3>Team Member 04</h3><div class="role">Team Member</div><div class="team-info">Name to be added</div></div></div></div></section>
 <section><div class="container"><div class="section-title"><h2>About VoltLab</h2></div><div class="about-box"><p><strong>VoltLab</strong> is an interactive educational website designed to make Basic Electricity easier to understand through visualization, calculation and experimentation.</p><p>Instead of presenting electricity only as formulas and theoretical notes, VoltLab aims to create a virtual laboratory where students can interact with electrical concepts.</p><p>The project combines web technology, interactive simulations and engineering concepts to create a more engaging learning experience.</p></div></div></section>
