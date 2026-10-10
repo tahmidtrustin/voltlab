@@ -1,0 +1,56 @@
+
+<div class="fcc-app">
+  <div class="fcc-heading">
+    <span class="fcc-eyebrow">VOLTLAB • CALCULATION STUDIO</span>
+    <h2>Fixed Circuit Calculator</h2>
+    <p>Select a circuit, enter component values, and calculate the electrical quantities.</p>
+  </div>
+
+  <div class="fcc-layout">
+    <section class="fcc-card">
+      <h3>⚙️ Circuit Configuration</h3>
+
+      <label for="fccType">Circuit arrangement</label>
+      <select id="fccType">
+        <option value="series">Series circuit</option>
+        <option value="parallel">Parallel circuit</option>
+        <option value="mixed">Series + Parallel circuit</option>
+      </select>
+
+      <label for="fccVoltage">Supply voltage (V)</label>
+      <input id="fccVoltage" type="number" min="0" step="any" placeholder="Enter supply voltage">
+
+      <div id="fccResistorEditor"></div>
+
+      <div class="fcc-actions">
+        <button type="button" id="fccAddResistor">＋ Add resistor</button>
+        <button type="button" id="fccAddBranch">＋ Add parallel branch</button>
+      </div>
+
+      <button type="button" class="fcc-primary" id="fccCalculate">Calculate Circuit</button>
+      <button type="button" class="fcc-secondary" id="fccReset">Reset calculator</button>
+
+      <p class="fcc-note">Enter positive resistance values in ohms (Ω). Results appear only after a successful calculation.</p>
+      <p id="fccError" class="fcc-error" role="alert"></p>
+    </section>
+
+    <section class="fcc-card">
+      <h3>⚡ Fixed Circuit Diagram</h3>
+      <p id="fccDiagramCaption">Series circuit</p>
+      <div class="fcc-diagram" id="fccDiagram" role="img" aria-label="Circuit diagram"></div>
+      <p class="fcc-note">This is a fixed schematic representation. You do not need to drag components or connect wires here.</p>
+    </section>
+  </div>
+
+  <section class="fcc-card fcc-results">
+    <h3>📊 Calculation Results</h3>
+    <div class="fcc-metrics">
+      <div><span>Equivalent resistance</span><strong id="fccReq">—</strong></div>
+      <div><span>Total current</span><strong id="fccCurrent">—</strong></div>
+      <div><span>Total power</span><strong id="fccPower">—</strong></div>
+      <div><span>Supply voltage</span><strong id="fccVout">—</strong></div>
+    </div>
+    <div id="fccExplanation" class="fcc-explanation">Choose a circuit and enter your values, then click Calculate Circuit.</div>
+    <div id="fccDetails"></div>
+  </section>
+</div>
