@@ -1,225 +1,99 @@
 
-<section class="virtual-lab-section" id="virtualLabContent">
+<div class="section-title">
+  <h2>🧪 Virtual Electrical Lab</h2>
+  <p>Build a circuit, adjust resistance and observe how electrical quantities respond.</p>
+</div>
 
-  <div class="container">
-
-    <div class="section-title">
-      <span>⚡ INTERACTIVE LABORATORY</span>
-      <h2>Virtual Electrical Lab</h2>
-      <p>
-        Build, power and experiment with electrical circuits in a
-        virtual laboratory environment.
-      </p>
+<div class="vlab-app">
+  <div class="vlab-card">
+    <div class="vlab-card-heading">
+      <span class="vlab-icon">⚙️</span>
+      <div>
+        <h3>Experiment Controls</h3>
+        <p>Configure your electrical circuit.</p>
+      </div>
     </div>
 
-    <div class="virtual-lab-panel">
-
-      <!-- LAB HEADER -->
-      <div class="virtual-lab-header">
-        <div>
-          <div class="lab-status">
-            <span class="lab-status-dot"></span>
-            <span id="virtualLabStatus">LAB IDLE</span>
-          </div>
-
-          <h3>Electrical Experiment Workspace</h3>
-
-          <p>
-            Select components, connect the circuit and turn on the power
-            to begin your experiment.
-          </p>
-        </div>
-
-        <div class="virtual-power">
-          <span>POWER</span>
-          <button id="virtualPowerBtn" type="button">
-            OFF
-          </button>
-        </div>
-      </div>
-
-
-      <!-- MAIN WORKSPACE -->
-      <div class="virtual-workspace">
-
-        <!-- COMPONENT PANEL -->
-        <aside class="virtual-components">
-
-          <div class="virtual-panel-title">
-            <span>COMPONENTS</span>
-            <small>LAB KIT</small>
-          </div>
-
-          <button class="virtual-component" data-component="battery">
-            <span class="component-icon">🔋</span>
-            <span>
-              <strong>Battery</strong>
-              <small>DC Source</small>
-            </span>
-          </button>
-
-          <button class="virtual-component" data-component="switch">
-            <span class="component-icon">🔘</span>
-            <span>
-              <strong>Switch</strong>
-              <small>Control</small>
-            </span>
-          </button>
-
-          <button class="virtual-component" data-component="resistor">
-            <span class="component-icon">🟫</span>
-            <span>
-              <strong>Resistor</strong>
-              <small>Resistance</small>
-            </span>
-          </button>
-
-          <button class="virtual-component" data-component="led">
-            <span class="component-icon">💡</span>
-            <span>
-              <strong>LED</strong>
-              <small>Light source</small>
-            </span>
-          </button>
-
-          <button class="virtual-component" data-component="bulb">
-            <span class="component-icon">🔆</span>
-            <span>
-              <strong>Bulb</strong>
-              <small>Load</small>
-            </span>
-          </button>
-
-          <button class="virtual-component" data-component="ammeter">
-            <span class="component-icon">📏</span>
-            <span>
-              <strong>Ammeter</strong>
-              <small>Current</small>
-            </span>
-          </button>
-
-          <button class="virtual-component" data-component="voltmeter">
-            <span class="component-icon">📐</span>
-            <span>
-              <strong>Voltmeter</strong>
-              <small>Voltage</small>
-            </span>
-          </button>
-
-        </aside>
-
-
-        <!-- CIRCUIT BOARD -->
-        <main class="virtual-board-area">
-
-          <div class="virtual-board-top">
-            <div>
-              <span class="board-label">CIRCUIT WORKSPACE</span>
-              <strong id="virtualCircuitName">
-                Untitled Experiment
-              </strong>
-            </div>
-
-            <button id="virtualResetBtn" type="button">
-              ↻ Reset
-            </button>
-          </div>
-
-
-          <div class="virtual-circuit-board" id="virtualCircuitBoard">
-
-            <div class="virtual-grid"></div>
-
-            <div class="virtual-empty-state" id="virtualEmptyState">
-              <div class="empty-icon">⚡</div>
-
-              <h4>Laboratory Workspace Ready</h4>
-
-              <p>
-                Select a component from the laboratory kit to begin.
-              </p>
-            </div>
-
-          </div>
-
-
-          <!-- MEASUREMENTS -->
-          <div class="virtual-measurements">
-
-            <div class="virtual-measurement">
-              <small>VOLTAGE</small>
-              <strong id="virtualVoltage">--</strong>
-              <span>V</span>
-            </div>
-
-            <div class="virtual-measurement">
-              <small>CURRENT</small>
-              <strong id="virtualCurrent">--</strong>
-              <span>A</span>
-            </div>
-
-            <div class="virtual-measurement">
-              <small>RESISTANCE</small>
-              <strong id="virtualResistance">--</strong>
-              <span>Ω</span>
-            </div>
-
-            <div class="virtual-measurement">
-              <small>POWER</small>
-              <strong id="virtualPower">--</strong>
-              <span>W</span>
-            </div>
-
-          </div>
-
-        </main>
-
-      </div>
-
-
-      <!-- LAB MESSAGE -->
-      <div class="virtual-lab-message" id="virtualLabMessage">
-        <span>⚡</span>
-        <div>
-          <strong>Laboratory Ready</strong>
-          <p>
-            Choose components and create your first electrical experiment.
-          </p>
-        </div>
-      </div>
-
-
-      <!-- EXPERIMENT CONTROLS -->
-      <div class="virtual-experiment-controls">
-
-        <button
-          class="virtual-action primary"
-          id="virtualRunBtn"
-          type="button"
-        >
-          ▶ Run Experiment
-        </button>
-
-        <button
-          class="virtual-action"
-          id="virtualStopBtn"
-          type="button"
-        >
-          ■ Stop
-        </button>
-
-        <button
-          class="virtual-action"
-          id="virtualClearBtn"
-          type="button"
-        >
-          Clear Workspace
-        </button>
-
-      </div>
-
+    <div class="vlab-field">
+      <label for="vlabVoltage">Supply voltage <span>(V)</span></label>
+      <input id="vlabVoltage" type="number" min="0" max="10000" step="any" placeholder="Enter voltage in volts">
     </div>
 
+    <div class="vlab-field">
+      <label for="vlabTopology">Circuit arrangement</label>
+      <select id="vlabTopology">
+        <option value="series">Series circuit</option>
+        <option value="parallel">Parallel circuit</option>
+      </select>
+    </div>
+
+    <div class="vlab-toolbar">
+      <button class="vlab-btn primary" id="vlabAddBtn" type="button">＋ Add resistor</button>
+      <button class="vlab-btn active" id="vlabSwitchBtn" type="button">SWITCH: CLOSED</button>
+      <button class="vlab-btn" id="vlabResetBtn" type="button">Reset experiment</button>
+    </div>
+
+    <p class="vlab-note">Add up to 8 resistors. Enter positive resistance values to calculate the circuit.</p>
+    <div id="vlabComponents" class="vlab-components"></div>
   </div>
 
-</section>
+  <div class="vlab-card">
+    <div class="vlab-card-heading">
+      <span class="vlab-icon">⚡</span>
+      <div>
+        <h3>Live Circuit Simulation</h3>
+        <p>Measurements update when you change the inputs.</p>
+      </div>
+    </div>
+
+    <div class="vlab-board">
+      <div class="vlab-board-label" id="vlabBoardLabel">VOLTLAB / READY</div>
+      <div class="vlab-circuit-scroll">
+        <div class="vlab-circuit-row" id="vlabCircuitRow">
+          <div class="vlab-terminal">+</div>
+          <div class="vlab-wire"></div>
+          <div class="vlab-part">SOURCE</div>
+          <div class="vlab-wire"></div>
+          <div class="vlab-part">ADD R</div>
+          <div class="vlab-wire"></div>
+          <div class="vlab-part lamp">LOAD</div>
+          <div class="vlab-wire"></div>
+          <div class="vlab-terminal">−</div>
+        </div>
+      </div>
+
+      <div id="vlabStatus" class="vlab-live-status">● READY — Enter a voltage and add a resistor.</div>
+
+      <div class="vlab-lamp-wrap">
+        <div id="vlabLamp" class="vlab-lamp"></div>
+        <div>
+          <strong id="vlabLampText">Load: OFF</strong>
+          <p class="vlab-note">Illustrative load indicator; not a physical LED model.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="vlab-metrics">
+      <div class="vlab-metric">
+        <small>EQUIVALENT RESISTANCE</small>
+        <strong id="vlabReq">—</strong>
+      </div>
+      <div class="vlab-metric">
+        <small>TOTAL CURRENT</small>
+        <strong id="vlabCurrent">—</strong>
+      </div>
+      <div class="vlab-metric">
+        <small>TOTAL POWER</small>
+        <strong id="vlabPower">—</strong>
+      </div>
+      <div class="vlab-metric">
+        <small>SUPPLY VOLTAGE</small>
+        <strong id="vlabVout">—</strong>
+      </div>
+    </div>
+
+    <div id="vlabExplanation" class="vlab-explanation">
+      Enter your values to begin. Results will appear after the inputs are valid.
+    </div>
+  </div>
+</div>
