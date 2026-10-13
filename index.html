@@ -1063,7 +1063,7 @@ async function sendAskVolt(){
    /* Prevent a permanently hanging request */
    const timeout=setTimeout(()=>{
      controller.abort();
-   },30000);
+   },90000);
 
    let res;
 
